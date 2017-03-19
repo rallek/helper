@@ -310,7 +310,6 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     
     
     
-    
     /**
      * Returns the formatted title conforming to the display pattern
      * specified for this entity.
@@ -326,7 +325,6 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     
         return $formattedTitle;
     }
-    
     
     /**
      * Returns a list of possible choices for the workflowState list field.

@@ -16,6 +16,7 @@ use Twig_Extension;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\Common\Translator\TranslatorTrait;
 use Zikula\ExtensionsModule\Api\VariableApi;
+use Zikula\UsersModule\Entity\RepositoryInterface\UserRepositoryInterface;
 use RK\HelperModule\Helper\ListEntriesHelper;
 use RK\HelperModule\Helper\WorkflowHelper;
 
@@ -32,6 +33,11 @@ abstract class AbstractTwigExtension extends Twig_Extension
     protected $variableApi;
     
     /**
+     * @var UserRepositoryInterface
+     */
+    protected $userRepository;
+    
+    /**
      * @var WorkflowHelper
      */
     protected $workflowHelper;
@@ -46,13 +52,20 @@ abstract class AbstractTwigExtension extends Twig_Extension
      *
      * @param TranslatorInterface $translator     Translator service instance
      * @param VariableApi         $variableApi    VariableApi service instance
+     * @param UserRepositoryInterface $userRepository UserRepository service instance
      * @param WorkflowHelper      $workflowHelper WorkflowHelper service instance
      * @param ListEntriesHelper   $listHelper     ListEntriesHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, VariableApi $variableApi, WorkflowHelper $workflowHelper, ListEntriesHelper $listHelper)
+    public function __construct(
+        TranslatorInterface $translator,
+        VariableApi $variableApi,
+        UserRepositoryInterface $userRepository,
+        WorkflowHelper $workflowHelper,
+        ListEntriesHelper $listHelper)
     {
         $this->setTranslator($translator);
         $this->variableApi = $variableApi;
+        $this->userRepository = $userRepository;
         $this->workflowHelper = $workflowHelper;
         $this->listHelper = $listHelper;
     }
@@ -190,9 +203,7 @@ abstract class AbstractTwigExtension extends Twig_Extension
         }
     
         // return either only the description or the complete string
-        $result = ($onlydesc) ? $sizeDesc : $size;
-    
-        return $result;
+        return $onlydesc ? $sizeDesc : $size;
     }
     
     
@@ -228,11 +239,26 @@ abstract class AbstractTwigExtension extends Twig_Extension
     {
         $result = [];
     
-        $result[] = ['text' => $this->__('Linkers'), 'value' => 'linker'];
-        $result[] = ['text' => $this->__('Carousel items'), 'value' => 'carouselItem'];
-        $result[] = ['text' => $this->__('Carousells'), 'value' => 'carousel'];
-        $result[] = ['text' => $this->__('Images'), 'value' => 'image'];
-        $result[] = ['text' => $this->__('Infos'), 'value' => 'info'];
+        $result[] = [
+            'text' => $this->__('Linkers'),
+            'value' => 'linker'
+        ];
+        $result[] = [
+            'text' => $this->__('Carousel items'),
+            'value' => 'carouselItem'
+        ];
+        $result[] = [
+            'text' => $this->__('Carousells'),
+            'value' => 'carousel'
+        ];
+        $result[] = [
+            'text' => $this->__('Images'),
+            'value' => 'image'
+        ];
+        $result[] = [
+            'text' => $this->__('Infos'),
+            'value' => 'info'
+        ];
     
         return $result;
     }
@@ -247,9 +273,18 @@ abstract class AbstractTwigExtension extends Twig_Extension
     {
         $result = [];
     
-        $result[] = ['text' => $this->__('Only item titles'), 'value' => 'itemlist_display.html.twig'];
-        $result[] = ['text' => $this->__('With description'), 'value' => 'itemlist_display_description.html.twig'];
-        $result[] = ['text' => $this->__('Custom template'), 'value' => 'custom'];
+        $result[] = [
+            'text' => $this->__('Only item titles'),
+            'value' => 'itemlist_display.html.twig'
+        ];
+        $result[] = [
+            'text' => $this->__('With description'),
+            'value' => 'itemlist_display_description.html.twig'
+        ];
+        $result[] = [
+            'text' => $this->__('Custom template'),
+            'value' => 'custom'
+        ];
     
         return $result;
     }
@@ -268,7 +303,16 @@ abstract class AbstractTwigExtension extends Twig_Extension
     public function getUserAvatar($uid = 0, $width = 0, $height = 0, $size = 0, $rating = '')
     {
         if (!is_numeric($uid)) {
-            $uid = \UserUtil::getIdFromName($uid);
+            $limit = 1;
+            $filter = [
+                'uname' => ['operator' => 'eq', 'operand' => $uid]
+            ];
+            $results = $this->userRepository->query($filter, [], $limit);
+            if (!count($results)) {
+                return '';
+            }
+    
+            $uid = $results[0]->getUname();
         }
         $params = ['uid' => $uid];
         if ($width > 0) {

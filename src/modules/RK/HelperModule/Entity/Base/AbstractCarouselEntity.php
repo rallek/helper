@@ -431,7 +431,6 @@ abstract class AbstractCarouselEntity extends EntityAccess
     }
     
     
-    
     /**
      * Returns the formatted title conforming to the display pattern
      * specified for this entity.
@@ -447,7 +446,6 @@ abstract class AbstractCarouselEntity extends EntityAccess
     
         return $formattedTitle;
     }
-    
     
     /**
      * Returns a list of possible choices for the workflowState list field.

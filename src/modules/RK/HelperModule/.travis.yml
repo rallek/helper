@@ -47,7 +47,7 @@ install:
     - unzip -q ../../../../RKHelperModule
     - cd  ../../..
     - php app/console bootstrap:bundles
-    - mysql -e "INSERT INTO zk_test.modules (id, name, type, displayname, url, description, directory, version, capabilities, state, securityschema, core_min, core_max) VALUES (NULL, 'RKHelperModule', '3', 'Helper', 'helper', 'here you can find the helpers for this site e.g. carousel, linker, simple info pages or images', 'rk/helper-module', '0.7.1', 'N;', '3', 'N;', '1.4.4', '2.0.0');"
+    - mysql -e "INSERT INTO zk_test.modules (id, name, type, displayname, url, description, directory, version, capabilities, state, securityschema, core_min, core_max) VALUES (NULL, 'RKHelperModule', '3', 'Helper', 'helper', 'here you can find the helpers for this site e.g. carousel, linker, simple info pages or images', 'rk/helper-module', '0.7.2', 'N;', '3', 'N;', '1.4.6', '2.0.0');"
     - php app/console cache:warmup
 
 script:

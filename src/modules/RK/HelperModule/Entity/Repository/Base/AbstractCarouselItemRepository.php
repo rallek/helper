@@ -25,7 +25,6 @@ use Zikula\Component\FilterUtil\Config as FilterConfig;
 use Zikula\Component\FilterUtil\PluginManager as FilterPluginManager;
 use Zikula\Component\FilterUtil\Plugin\DatePlugin as DateFilter;
 use Psr\Log\LoggerInterface;
-use ServiceUtil;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\UsersModule\Api\CurrentUserApi;
 use RK\HelperModule\Entity\CarouselItemEntity;
@@ -284,7 +283,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->update('RK\HelperModule\Entity\CarouselItemEntity', 'tbl')
            ->set('tbl.createdBy', $newUserId)
-           ->where('tbl.createdBy= :creator')
+           ->where('tbl.createdBy = :creator')
            ->setParameter('creator', $userId);
         $query = $qb->getQuery();
         $query->execute();
@@ -460,7 +459,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
     
         $results = $query->getResult();
     
-        return (count($results) > 0) ? $results : null;
+        return count($results) > 0 ? $results : null;
     }
 
     /**
@@ -476,32 +475,6 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
         if ($excludeId > 0) {
             $qb->andWhere('tbl.id != :excludeId')
                ->setParameter('excludeId', $excludeId);
-        }
-    
-        return $qb;
-    }
-
-    /**
-     * Adds a filter for the createdBy field.
-     *
-     * @param QueryBuilder $qb Query builder to be enhanced
-     * @param integer      $userId The user identifier used for filtering (optional)
-     *
-     * @return QueryBuilder Enriched query builder instance
-     */
-    public function addCreatorFilter(QueryBuilder $qb, $userId = null)
-    {
-        if (null === $userId) {
-            $currentUserApi = ServiceUtil::get('zikula_users_module.current_user');
-            $userId = $currentUserApi->isLoggedIn() ? $currentUserApi->get('uid') : 1;
-        }
-    
-        if (is_array($userId)) {
-            $qb->andWhere('tbl.createdBy IN (:userIds)')
-               ->setParameter('userIds', $userId);
-        } else {
-            $qb->andWhere('tbl.createdBy = :userId')
-               ->setParameter('userId', $userId);
         }
     
         return $qb;
@@ -706,56 +679,32 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
             return $qb;
         }
     
-        $fragment = str_replace('\'', '', \DataUtil::formatForStore($fragment));
-        $fragmentIsNumeric = is_numeric($fragment);
+        $filters = [];
+        $parameters = [];
     
-        $where = '';
-        if (!$fragmentIsNumeric) {
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemName LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.title LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.subtitle LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.link LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemImage = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.titleColor LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemStartDate = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.intemEndDate = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.singleItemIdentifier LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemLocale LIKE \'%' . $fragment . '%\'';
-        } else {
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemName LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.title LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.subtitle LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.link LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemImage = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.titleColor LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemStartDate = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.intemEndDate = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.singleItemIdentifier LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.itemLocale LIKE \'%' . $fragment . '%\'';
-        }
-        $where = '(' . $where . ')';
+        $filters[] = 'tbl.itemName LIKE :searchItemName';
+        $parameters['searchItemName'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.title LIKE :searchTitle';
+        $parameters['searchTitle'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.subtitle LIKE :searchSubtitle';
+        $parameters['searchSubtitle'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.link LIKE :searchLink';
+        $parameters['searchLink'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.itemImage = :searchItemImage';
+        $parameters['searchItemImage'] = $fragment;
+        $filters[] = 'tbl.titleColor LIKE :searchTitleColor';
+        $parameters['searchTitleColor'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.itemStartDate = :searchItemStartDate';
+        $parameters['searchItemStartDate'] = $fragment;
+        $filters[] = 'tbl.intemEndDate = :searchIntemEndDate';
+        $parameters['searchIntemEndDate'] = $fragment;
+        $filters[] = 'tbl.singleItemIdentifier LIKE :searchSingleItemIdentifier';
+        $parameters['searchSingleItemIdentifier'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.itemLocale LIKE :searchItemLocale';
+        $parameters['searchItemLocale'] = '%' . $fragment . '%';
     
-        $qb->andWhere($where);
+        $qb->andWhere('(' . implode(' OR ', $filters) . ')')
+           ->setParameters($parameters);
     
         return $qb;
     }

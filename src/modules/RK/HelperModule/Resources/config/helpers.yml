@@ -43,6 +43,7 @@ services:
     rk_helper_module.search_helper:
         class: RK\HelperModule\Helper\SearchHelper
         arguments:
+            - "@translator.default"
             - "@zikula_permissions_module.api.permission"
             - "@templating.engine.twig"
             - "@session"
@@ -80,10 +81,12 @@ services:
     rk_helper_module.view_helper:
         class: RK\HelperModule\Helper\ViewHelper
         arguments:
-            - "@templating"
+            - "@twig"
+            - "@twig.loader"
             - "@request_stack"
             - "@zikula_permissions_module.api.permission"
             - "@zikula_extensions_module.api.variable"
+            - "@zikula_core.common.theme.pagevars"
             - "@rk_helper_module.controller_helper"
     
     rk_helper_module.workflow_helper:

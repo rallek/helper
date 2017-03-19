@@ -69,7 +69,7 @@ abstract class AbstractImageController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'image';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_OVERVIEW;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -127,7 +127,7 @@ abstract class AbstractImageController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'image';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_READ;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -207,12 +207,12 @@ abstract class AbstractImageController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'image';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_READ;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         // create identifier for permission check
         $instanceId = $image->createCompositeIdentifier();
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', $instanceId . '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', $instanceId . '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         
@@ -272,7 +272,7 @@ abstract class AbstractImageController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'image';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_EDIT;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -340,7 +340,7 @@ abstract class AbstractImageController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'image';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_DELETE;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $logger = $this->get('logger');

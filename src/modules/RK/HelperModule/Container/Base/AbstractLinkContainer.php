@@ -57,7 +57,12 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
      * @param CurrentUserApi      $currentUserApi   CurrentUserApi service instance
      * @param ControllerHelper    $controllerHelper ControllerHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, RouterInterface $router, PermissionApi $permissionApi, CurrentUserApi $currentUserApi, ControllerHelper $controllerHelper)
+    public function __construct(
+        TranslatorInterface $translator,
+        RouterInterface $router,
+        PermissionApi $permissionApi,
+        CurrentUserApi $currentUserApi,
+        ControllerHelper $controllerHelper)
     {
         $this->setTranslator($translator);
         $this->router = $router;
@@ -103,8 +108,8 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             if ($this->permissionApi->hasPermission($this->getBundleName() . '::', '::', ACCESS_READ)) {
                 $links[] = [
                     'url' => $this->router->generate('rkhelpermodule_linker_index'),
-                    'text' => $this->__('Frontend'),
-                    'title' => $this->__('Switch to user area.'),
+                    'text' => $this->__('Frontend', 'rkhelpermodule'),
+                    'title' => $this->__('Switch to user area.', 'rkhelpermodule'),
                     'icon' => 'home'
                 ];
             }
@@ -112,8 +117,8 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             if ($this->permissionApi->hasPermission($this->getBundleName() . '::', '::', ACCESS_ADMIN)) {
                 $links[] = [
                     'url' => $this->router->generate('rkhelpermodule_linker_adminindex'),
-                    'text' => $this->__('Backend'),
-                    'title' => $this->__('Switch to administration area.'),
+                    'text' => $this->__('Backend', 'rkhelpermodule'),
+                    'title' => $this->__('Switch to administration area.', 'rkhelpermodule'),
                     'icon' => 'wrench'
                 ];
             }
@@ -123,47 +128,47 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             && $this->permissionApi->hasPermission($this->getBundleName() . ':Linker:', '::', $permLevel)) {
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_linker_' . $routeArea . 'view'),
-                'text' => $this->__('Linkers'),
-                'title' => $this->__('Linker list')
+                'text' => $this->__('Linkers', 'rkhelpermodule'),
+                'title' => $this->__('Linker list', 'rkhelpermodule')
             ];
         }
         if (in_array('carouselItem', $allowedObjectTypes)
             && $this->permissionApi->hasPermission($this->getBundleName() . ':CarouselItem:', '::', $permLevel)) {
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_carouselitem_' . $routeArea . 'view'),
-                'text' => $this->__('Carousel items'),
-                'title' => $this->__('Carousel item list')
+                'text' => $this->__('Carousel items', 'rkhelpermodule'),
+                'title' => $this->__('Carousel item list', 'rkhelpermodule')
             ];
         }
         if (in_array('carousel', $allowedObjectTypes)
             && $this->permissionApi->hasPermission($this->getBundleName() . ':Carousel:', '::', $permLevel)) {
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_carousel_' . $routeArea . 'view'),
-                'text' => $this->__('Carousells'),
-                'title' => $this->__('Carousel list')
+                'text' => $this->__('Carousells', 'rkhelpermodule'),
+                'title' => $this->__('Carousel list', 'rkhelpermodule')
             ];
         }
         if (in_array('image', $allowedObjectTypes)
             && $this->permissionApi->hasPermission($this->getBundleName() . ':Image:', '::', $permLevel)) {
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_image_' . $routeArea . 'view'),
-                'text' => $this->__('Images'),
-                'title' => $this->__('Image list')
+                'text' => $this->__('Images', 'rkhelpermodule'),
+                'title' => $this->__('Image list', 'rkhelpermodule')
             ];
         }
         if (in_array('info', $allowedObjectTypes)
             && $this->permissionApi->hasPermission($this->getBundleName() . ':Info:', '::', $permLevel)) {
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_info_' . $routeArea . 'view'),
-                'text' => $this->__('Infos'),
-                'title' => $this->__('Info list')
+                'text' => $this->__('Infos', 'rkhelpermodule'),
+                'title' => $this->__('Info list', 'rkhelpermodule')
             ];
         }
         if ($routeArea == 'admin' && $this->permissionApi->hasPermission($this->getBundleName() . '::', '::', ACCESS_ADMIN)) {
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_config_config'),
-                'text' => $this->__('Configuration'),
-                'title' => $this->__('Manage settings for this application'),
+                'text' => $this->__('Configuration', 'rkhelpermodule'),
+                'title' => $this->__('Manage settings for this application', 'rkhelpermodule'),
                 'icon' => 'wrench'
             ];
         }

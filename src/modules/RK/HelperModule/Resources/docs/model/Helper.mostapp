@@ -4,7 +4,7 @@ application "Helper" {
     author "Ralf Koester"
     email "ralf@familie-koester.de"
     url "http://k62.de"
-    version "0.7.1"
+    version "0.7.2"
     prefix "helper"
     generatorSettings {
         settingsContainer "Settings"
@@ -223,4 +223,18 @@ application "Helper" {
         editType ACTIVE_NONE_PASSIVE_CHOOSE
         }
     }
+    variables {
+        varContainer "MoreSettings" {
+            vars {
+                intVar "descriptionLengthInfo" {
+                    documentation "the length of the description field of the info page"
+                    value "5000"
+                },
+                boolVar "useLocale" {
+                    documentation "if you want to use multilingual settings"
+                    value "false"
+                }
+            }
+        }
     }
+}

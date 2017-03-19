@@ -28,7 +28,7 @@ use RK\HelperModule\Entity\LinkerEntity;
 class LinkerController extends AbstractLinkerController
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/linkers",
      *        methods = {"GET"}
@@ -47,7 +47,7 @@ class LinkerController extends AbstractLinkerController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/linkers",
      *        methods = {"GET"}
@@ -64,7 +64,7 @@ class LinkerController extends AbstractLinkerController
         return parent::indexAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/linkers/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -89,7 +89,7 @@ class LinkerController extends AbstractLinkerController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/linkers/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -112,7 +112,7 @@ class LinkerController extends AbstractLinkerController
         return parent::viewAction($request, $sort, $sortdir, $pos, $num);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/linker/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -135,7 +135,7 @@ class LinkerController extends AbstractLinkerController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/linker/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -156,7 +156,7 @@ class LinkerController extends AbstractLinkerController
         return parent::displayAction($request, $linker);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/linker/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -179,7 +179,7 @@ class LinkerController extends AbstractLinkerController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/linker/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -200,7 +200,7 @@ class LinkerController extends AbstractLinkerController
         return parent::editAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/linker/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -224,7 +224,7 @@ class LinkerController extends AbstractLinkerController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/linker/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},

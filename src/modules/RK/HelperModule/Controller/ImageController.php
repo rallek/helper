@@ -28,7 +28,7 @@ use RK\HelperModule\Entity\ImageEntity;
 class ImageController extends AbstractImageController
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/images",
      *        methods = {"GET"}
@@ -47,7 +47,7 @@ class ImageController extends AbstractImageController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/images",
      *        methods = {"GET"}
@@ -64,7 +64,7 @@ class ImageController extends AbstractImageController
         return parent::indexAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/images/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -89,7 +89,7 @@ class ImageController extends AbstractImageController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/images/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -112,7 +112,7 @@ class ImageController extends AbstractImageController
         return parent::viewAction($request, $sort, $sortdir, $pos, $num);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/image/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -135,7 +135,7 @@ class ImageController extends AbstractImageController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/image/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -156,7 +156,7 @@ class ImageController extends AbstractImageController
         return parent::displayAction($request, $image);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/image/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -179,7 +179,7 @@ class ImageController extends AbstractImageController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/image/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -200,7 +200,7 @@ class ImageController extends AbstractImageController
         return parent::editAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/image/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -224,7 +224,7 @@ class ImageController extends AbstractImageController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/image/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},

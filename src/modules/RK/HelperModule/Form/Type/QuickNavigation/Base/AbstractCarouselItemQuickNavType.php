@@ -78,7 +78,7 @@ abstract class AbstractCarouselItemQuickNavType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -309,7 +309,7 @@ abstract class AbstractCarouselItemQuickNavType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getBlockPrefix()
     {

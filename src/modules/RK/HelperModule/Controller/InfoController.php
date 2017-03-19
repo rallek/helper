@@ -28,7 +28,7 @@ use RK\HelperModule\Entity\InfoEntity;
 class InfoController extends AbstractInfoController
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/infos",
      *        methods = {"GET"}
@@ -47,7 +47,7 @@ class InfoController extends AbstractInfoController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/infos",
      *        methods = {"GET"}
@@ -64,7 +64,7 @@ class InfoController extends AbstractInfoController
         return parent::indexAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/infos/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -89,7 +89,7 @@ class InfoController extends AbstractInfoController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/infos/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -112,7 +112,7 @@ class InfoController extends AbstractInfoController
         return parent::viewAction($request, $sort, $sortdir, $pos, $num);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/info/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -135,7 +135,7 @@ class InfoController extends AbstractInfoController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/info/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -156,7 +156,7 @@ class InfoController extends AbstractInfoController
         return parent::displayAction($request, $info);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/info/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -179,7 +179,7 @@ class InfoController extends AbstractInfoController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/info/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -200,7 +200,7 @@ class InfoController extends AbstractInfoController
         return parent::editAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/info/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -224,7 +224,7 @@ class InfoController extends AbstractInfoController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/info/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},

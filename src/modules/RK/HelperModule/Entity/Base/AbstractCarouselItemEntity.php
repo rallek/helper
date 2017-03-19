@@ -123,11 +123,11 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      * @ORM\Column(length=255, nullable=true)
      * @Assert\Length(min="0", max="255")
      * @Assert\File(
-        mimeTypes = {"image/*"}
+     *    mimeTypes = {"image/*"}
      * )
      * @Assert\Image(
-        minRatio = 2.9,
-        maxRatio = 3.1
+     *    minRatio = 2.9,
+     *    maxRatio = 3.1
      * )
      * @var string $itemImage
      */
@@ -637,7 +637,6 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
     }
     
     
-    
     /**
      * Returns the formatted title conforming to the display pattern
      * specified for this entity.
@@ -653,7 +652,6 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
     
         return $formattedTitle;
     }
-    
     
     /**
      * Returns a list of possible choices for the workflowState list field.

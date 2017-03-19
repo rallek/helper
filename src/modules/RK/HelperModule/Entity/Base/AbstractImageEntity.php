@@ -99,7 +99,7 @@ abstract class AbstractImageEntity extends EntityAccess
      * @Assert\NotBlank()
      * @Assert\Length(min="0", max="255")
      * @Assert\File(
-        mimeTypes = {"image/*"}
+     *    mimeTypes = {"image/*"}
      * )
      * @Assert\Image(
      * )
@@ -371,7 +371,6 @@ abstract class AbstractImageEntity extends EntityAccess
     
     
     
-    
     /**
      * Returns the formatted title conforming to the display pattern
      * specified for this entity.
@@ -387,7 +386,6 @@ abstract class AbstractImageEntity extends EntityAccess
     
         return $formattedTitle;
     }
-    
     
     /**
      * Returns a list of possible choices for the workflowState list field.

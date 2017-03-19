@@ -24,7 +24,6 @@ use Zikula\Component\FilterUtil\FilterUtil;
 use Zikula\Component\FilterUtil\Config as FilterConfig;
 use Zikula\Component\FilterUtil\PluginManager as FilterPluginManager;
 use Psr\Log\LoggerInterface;
-use ServiceUtil;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\UsersModule\Api\CurrentUserApi;
 use RK\HelperModule\Entity\ImageEntity;
@@ -274,7 +273,7 @@ abstract class AbstractImageRepository extends EntityRepository
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->update('RK\HelperModule\Entity\ImageEntity', 'tbl')
            ->set('tbl.createdBy', $newUserId)
-           ->where('tbl.createdBy= :creator')
+           ->where('tbl.createdBy = :creator')
            ->setParameter('creator', $userId);
         $query = $qb->getQuery();
         $query->execute();
@@ -450,7 +449,7 @@ abstract class AbstractImageRepository extends EntityRepository
     
         $results = $query->getResult();
     
-        return (count($results) > 0) ? $results : null;
+        return count($results) > 0 ? $results : null;
     }
 
     /**
@@ -466,32 +465,6 @@ abstract class AbstractImageRepository extends EntityRepository
         if ($excludeId > 0) {
             $qb->andWhere('tbl.id != :excludeId')
                ->setParameter('excludeId', $excludeId);
-        }
-    
-        return $qb;
-    }
-
-    /**
-     * Adds a filter for the createdBy field.
-     *
-     * @param QueryBuilder $qb Query builder to be enhanced
-     * @param integer      $userId The user identifier used for filtering (optional)
-     *
-     * @return QueryBuilder Enriched query builder instance
-     */
-    public function addCreatorFilter(QueryBuilder $qb, $userId = null)
-    {
-        if (null === $userId) {
-            $currentUserApi = ServiceUtil::get('zikula_users_module.current_user');
-            $userId = $currentUserApi->isLoggedIn() ? $currentUserApi->get('uid') : 1;
-        }
-    
-        if (is_array($userId)) {
-            $qb->andWhere('tbl.createdBy IN (:userIds)')
-               ->setParameter('userIds', $userId);
-        } else {
-            $qb->andWhere('tbl.createdBy = :userId')
-               ->setParameter('userId', $userId);
         }
     
         return $qb;
@@ -683,32 +656,20 @@ abstract class AbstractImageRepository extends EntityRepository
             return $qb;
         }
     
-        $fragment = str_replace('\'', '', \DataUtil::formatForStore($fragment));
-        $fragmentIsNumeric = is_numeric($fragment);
+        $filters = [];
+        $parameters = [];
     
-        $where = '';
-        if (!$fragmentIsNumeric) {
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.imageTitle LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.myImage = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.myDescription LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.copyright LIKE \'%' . $fragment . '%\'';
-        } else {
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.imageTitle LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.myImage = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.myDescription LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.copyright LIKE \'%' . $fragment . '%\'';
-        }
-        $where = '(' . $where . ')';
+        $filters[] = 'tbl.imageTitle LIKE :searchImageTitle';
+        $parameters['searchImageTitle'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.myImage = :searchMyImage';
+        $parameters['searchMyImage'] = $fragment;
+        $filters[] = 'tbl.myDescription LIKE :searchMyDescription';
+        $parameters['searchMyDescription'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.copyright LIKE :searchCopyright';
+        $parameters['searchCopyright'] = '%' . $fragment . '%';
     
-        $qb->andWhere($where);
+        $qb->andWhere('(' . implode(' OR ', $filters) . ')')
+           ->setParameters($parameters);
     
         return $qb;
     }

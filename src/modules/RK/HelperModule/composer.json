@@ -1,6 +1,6 @@
 {
     "name": "rk/helper-module",
-    "version": "0.7.1",
+    "version": "0.7.2",
     "description": "here you can find the helpers for this site e.g. carousel, linker, simple info pages or images",
     "type": "zikula-module",
     "license": "LGPL-3.0+",

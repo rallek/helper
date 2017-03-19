@@ -28,7 +28,7 @@ use RK\HelperModule\Entity\CarouselItemEntity;
 class CarouselItemController extends AbstractCarouselItemController
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/carouselItems",
      *        methods = {"GET"}
@@ -47,7 +47,7 @@ class CarouselItemController extends AbstractCarouselItemController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/carouselItems",
      *        methods = {"GET"}
@@ -64,7 +64,7 @@ class CarouselItemController extends AbstractCarouselItemController
         return parent::indexAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/carouselItem/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -87,7 +87,7 @@ class CarouselItemController extends AbstractCarouselItemController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/carouselItem/edit/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -108,7 +108,7 @@ class CarouselItemController extends AbstractCarouselItemController
         return parent::editAction($request);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/carouselItems/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -133,7 +133,7 @@ class CarouselItemController extends AbstractCarouselItemController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/carouselItems/view/{sort}/{sortdir}/{pos}/{num}.{_format}",
      *        requirements = {"sortdir" = "asc|desc|ASC|DESC", "pos" = "\d+", "num" = "\d+", "_format" = "html"},
@@ -156,7 +156,7 @@ class CarouselItemController extends AbstractCarouselItemController
         return parent::viewAction($request, $sort, $sortdir, $pos, $num);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/carouselItem/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -180,7 +180,7 @@ class CarouselItemController extends AbstractCarouselItemController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/carouselItem/delete/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -202,7 +202,7 @@ class CarouselItemController extends AbstractCarouselItemController
         return parent::deleteAction($request, $carouselItem);
     }
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/admin/carouselItem/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},
@@ -225,7 +225,7 @@ class CarouselItemController extends AbstractCarouselItemController
     }
     
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      *
      * @Route("/carouselItem/{id}.{_format}",
      *        requirements = {"id" = "\d+", "_format" = "html"},

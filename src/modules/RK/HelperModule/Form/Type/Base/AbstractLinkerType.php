@@ -82,7 +82,7 @@ abstract class AbstractLinkerType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -124,8 +124,8 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => ' validate-upload',
                 'title' => $this->__('Enter the linker image of the linker')
             ],
-            'required' => true && $options['mode'] == 'create'
-            ,'entity' => $options['entity'],
+            'required' => true && $options['mode'] == 'create',
+            'entity' => $options['entity'],
             'allowed_extensions' => 'gif, jpeg, jpg, png',
             'allowed_size' => ''
         ]);
@@ -138,8 +138,7 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the linker headline of the linker')
             ],
-            'required' => true
-            ,
+            'required' => true,
         ]);
         
         $builder->add('linkerText', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', [
@@ -150,8 +149,7 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the linker text of the linker')
             ],
-            'required' => true
-            ,
+            'required' => true,
         ]);
         
         $builder->add('theLink', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -167,8 +165,7 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the the link of the linker')
             ],
-            'required' => false
-            ,
+            'required' => false,
         ]);
         
         $builder->add('boostrapSetting', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -184,8 +181,7 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the boostrap setting of the linker')
             ],
-            'required' => true
-            ,
+            'required' => true,
         ]);
         
         $builder->add('linkerLocale', 'Zikula\Bundle\FormExtensionBundle\Form\Type\LocaleType', [
@@ -196,8 +192,8 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Choose the linker locale of the linker')
             ],
-            'required' => false
-            ,'placeholder' => $this->__('All'),
+            'required' => false,
+            'placeholder' => $this->__('All'),
             'choices' => $this->localeApi->getSupportedLocaleNames(),
             'choices_as_values' => true
         ]);
@@ -210,8 +206,8 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => ' validate-digits',
                 'title' => $this->__('Enter the sorting of the linker.') . ' ' . $this->__('Only digits are allowed.')
             ],
-            'required' => true
-            ,'scale' => 0
+            'required' => true,
+            'scale' => 0
         ]);
         
         $builder->add('linkerGroup', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -227,8 +223,7 @@ abstract class AbstractLinkerType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Enter the linker group of the linker')
             ],
-            'required' => false
-            ,
+            'required' => false,
         ]);
     }
 
@@ -325,7 +320,7 @@ abstract class AbstractLinkerType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function getBlockPrefix()
     {
@@ -333,7 +328,7 @@ abstract class AbstractLinkerType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function configureOptions(OptionsResolver $resolver)
     {

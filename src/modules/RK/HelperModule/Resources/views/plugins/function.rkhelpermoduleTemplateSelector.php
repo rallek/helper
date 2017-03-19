@@ -26,9 +26,18 @@ function smarty_function_rkhelpermoduleTemplateSelector($params, $view)
     $dom = ZLanguage::getModuleDomain('RKHelperModule');
     $result = [];
 
-    $result[] = ['text' => __('Only item titles', $dom), 'value' => 'itemlist_display.html.twig'];
-    $result[] = ['text' => __('With description', $dom), 'value' => 'itemlist_display_description.html.twig'];
-    $result[] = ['text' => __('Custom template', $dom), 'value' => 'custom'];
+    $result[] = [
+        'text' => __('Only item titles', $dom),
+        'value' => 'itemlist_display.html.twig'
+    ];
+    $result[] = [
+        'text' => __('With description', $dom),
+        'value' => 'itemlist_display_description.html.twig'
+    ];
+    $result[] = [
+        'text' => __('Custom template', $dom),
+        'value' => 'custom'
+    ];
 
     if (array_key_exists('assign', $params)) {
         $view->assign($params['assign'], $result);

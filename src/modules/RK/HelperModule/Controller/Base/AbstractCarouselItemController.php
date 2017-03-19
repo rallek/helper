@@ -69,7 +69,7 @@ abstract class AbstractCarouselItemController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carouselItem';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_OVERVIEW;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -123,7 +123,7 @@ abstract class AbstractCarouselItemController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carouselItem';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_EDIT;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -191,7 +191,7 @@ abstract class AbstractCarouselItemController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carouselItem';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_READ;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -280,7 +280,7 @@ abstract class AbstractCarouselItemController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carouselItem';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_DELETE;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $logger = $this->get('logger');
@@ -400,12 +400,12 @@ abstract class AbstractCarouselItemController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carouselItem';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_READ;
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         // create identifier for permission check
         $instanceId = $carouselItem->createCompositeIdentifier();
-        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', $instanceId . '::', $permLevel)) {
+        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', $instanceId . '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         

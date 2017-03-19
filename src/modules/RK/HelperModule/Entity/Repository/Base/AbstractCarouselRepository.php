@@ -24,7 +24,6 @@ use Zikula\Component\FilterUtil\FilterUtil;
 use Zikula\Component\FilterUtil\Config as FilterConfig;
 use Zikula\Component\FilterUtil\PluginManager as FilterPluginManager;
 use Psr\Log\LoggerInterface;
-use ServiceUtil;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\UsersModule\Api\CurrentUserApi;
 use RK\HelperModule\Entity\CarouselEntity;
@@ -274,7 +273,7 @@ abstract class AbstractCarouselRepository extends EntityRepository
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->update('RK\HelperModule\Entity\CarouselEntity', 'tbl')
            ->set('tbl.createdBy', $newUserId)
-           ->where('tbl.createdBy= :creator')
+           ->where('tbl.createdBy = :creator')
            ->setParameter('creator', $userId);
         $query = $qb->getQuery();
         $query->execute();
@@ -450,7 +449,7 @@ abstract class AbstractCarouselRepository extends EntityRepository
     
         $results = $query->getResult();
     
-        return (count($results) > 0) ? $results : null;
+        return count($results) > 0 ? $results : null;
     }
 
     /**
@@ -466,32 +465,6 @@ abstract class AbstractCarouselRepository extends EntityRepository
         if ($excludeId > 0) {
             $qb->andWhere('tbl.id != :excludeId')
                ->setParameter('excludeId', $excludeId);
-        }
-    
-        return $qb;
-    }
-
-    /**
-     * Adds a filter for the createdBy field.
-     *
-     * @param QueryBuilder $qb Query builder to be enhanced
-     * @param integer      $userId The user identifier used for filtering (optional)
-     *
-     * @return QueryBuilder Enriched query builder instance
-     */
-    public function addCreatorFilter(QueryBuilder $qb, $userId = null)
-    {
-        if (null === $userId) {
-            $currentUserApi = ServiceUtil::get('zikula_users_module.current_user');
-            $userId = $currentUserApi->isLoggedIn() ? $currentUserApi->get('uid') : 1;
-        }
-    
-        if (is_array($userId)) {
-            $qb->andWhere('tbl.createdBy IN (:userIds)')
-               ->setParameter('userIds', $userId);
-        } else {
-            $qb->andWhere('tbl.createdBy = :userId')
-               ->setParameter('userId', $userId);
         }
     
         return $qb;
@@ -690,34 +663,22 @@ abstract class AbstractCarouselRepository extends EntityRepository
             return $qb;
         }
     
-        $fragment = str_replace('\'', '', \DataUtil::formatForStore($fragment));
-        $fragmentIsNumeric = is_numeric($fragment);
+        $filters = [];
+        $parameters = [];
     
-        $where = '';
-        if (!$fragmentIsNumeric) {
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.carouselName LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.remarks LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.carouselGroup LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.carouselLocale LIKE \'%' . $fragment . '%\'';
-        } else {
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.carouselName LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.remarks LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.slidingTime = \'' . $fragment . '\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.carouselGroup LIKE \'%' . $fragment . '%\'';
-            $where .= ((!empty($where)) ? ' OR ' : '');
-            $where .= 'tbl.carouselLocale LIKE \'%' . $fragment . '%\'';
-        }
-        $where = '(' . $where . ')';
+        $filters[] = 'tbl.carouselName LIKE :searchCarouselName';
+        $parameters['searchCarouselName'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.remarks LIKE :searchRemarks';
+        $parameters['searchRemarks'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.slidingTime = :searchSlidingTime';
+        $parameters['searchSlidingTime'] = $fragment;
+        $filters[] = 'tbl.carouselGroup LIKE :searchCarouselGroup';
+        $parameters['searchCarouselGroup'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.carouselLocale LIKE :searchCarouselLocale';
+        $parameters['searchCarouselLocale'] = '%' . $fragment . '%';
     
-        $qb->andWhere($where);
+        $qb->andWhere('(' . implode(' OR ', $filters) . ')')
+           ->setParameters($parameters);
     
         return $qb;
     }

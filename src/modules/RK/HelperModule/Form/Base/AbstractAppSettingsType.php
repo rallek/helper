@@ -59,12 +59,14 @@ abstract class AbstractAppSettingsType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->addMoreSettingsFields($builder, $options);
         $this->addListViewsFields($builder, $options);
         $this->addImagesFields($builder, $options);
+        $this->addIntegrationFields($builder, $options);
 
         $builder
             ->add('save', 'Symfony\Component\Form\Extension\Core\Type\SubmitType', [
@@ -81,6 +83,46 @@ abstract class AbstractAppSettingsType extends AbstractType
                     'class' => 'btn btn-default',
                     'formnovalidate' => 'formnovalidate'
                 ]
+            ])
+        ;
+    }
+
+    /**
+     * Adds fields for more settings fields.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array                $options The options
+     */
+    public function addMoreSettingsFields(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('descriptionLengthInfo', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
+                'label' => $this->__('Description length info') . ':',
+                'label_attr' => [
+                    'class' => 'tooltips',
+                    'title' => $this->__('the length of the description field of the info page')
+                ],
+                'help' => $this->__('the length of the description field of the info page'),
+                'required' => false,
+                'data' => isset($this->modVars['descriptionLengthInfo']) ? $this->modVars['descriptionLengthInfo'] : '',
+                'empty_data' => intval('5000'),
+                'attr' => [
+                    'maxlength' => 255,
+                    'title' => $this->__('Enter the description length info.') . ' ' . $this->__('Only digits are allowed.')
+                ],'scale' => 0
+            ])
+            ->add('useLocale', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
+                'label' => $this->__('Use locale') . ':',
+                'label_attr' => [
+                    'class' => 'tooltips',
+                    'title' => $this->__('if you want to use multilingual settings')
+                ],
+                'help' => $this->__('if you want to use multilingual settings'),
+                'required' => false,
+                'data' => (bool)(isset($this->modVars['useLocale']) ? $this->modVars['useLocale'] : false),
+                'attr' => [
+                    'title' => $this->__('The use locale option.')
+                ],
             ])
         ;
     }
@@ -182,7 +224,7 @@ abstract class AbstractAppSettingsType extends AbstractType
     {
         $builder
             ->add('enableShrinkingForLinkerLinkerImage', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
-                'label' => $this->__('Enable shrinking for linker linker image') . ':',
+                'label' => $this->__('Enable shrinking') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Whether to enable shrinking huge images to maximum dimensions. Stores downscaled version of the original image.')
@@ -191,12 +233,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'required' => false,
                 'data' => (bool)(isset($this->modVars['enableShrinkingForLinkerLinkerImage']) ? $this->modVars['enableShrinkingForLinkerLinkerImage'] : false),
                 'attr' => [
-                    'title' => $this->__('The enable shrinking for linker linker image option.'),
+                    'title' => $this->__('The enable shrinking option.'),
                     'class' => 'shrink-enabler'
                 ],
             ])
             ->add('shrinkWidthLinkerLinkerImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Shrink width linker linker image') . ':',
+                'label' => $this->__('Shrink width') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('The maximum image width in pixels.')
@@ -207,13 +249,13 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('800'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the shrink width linker linker image.') . ' ' . $this->__('Only digits are allowed.'),
+                    'title' => $this->__('Enter the shrink width.') . ' ' . $this->__('Only digits are allowed.'),
                     'class' => 'shrinkdimension-shrinkwidthlinkerlinkerimage'
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('shrinkHeightLinkerLinkerImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Shrink height linker linker image') . ':',
+                'label' => $this->__('Shrink height') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('The maximum image height in pixels.')
@@ -224,13 +266,13 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('600'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the shrink height linker linker image.') . ' ' . $this->__('Only digits are allowed.'),
+                    'title' => $this->__('Enter the shrink height.') . ' ' . $this->__('Only digits are allowed.'),
                     'class' => 'shrinkdimension-shrinkheightlinkerlinkerimage'
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailModeLinkerLinkerImage', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', [
-                'label' => $this->__('Thumbnail mode linker linker image') . ':',
+                'label' => $this->__('Thumbnail mode') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail mode (inset or outbound).')
@@ -240,7 +282,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'data' => isset($this->modVars['thumbnailModeLinkerLinkerImage']) ? $this->modVars['thumbnailModeLinkerLinkerImage'] : '',
                 'empty_data' => 'inset',
                 'attr' => [
-                    'title' => $this->__('Choose the thumbnail mode linker linker image.')
+                    'title' => $this->__('Choose the thumbnail mode.')
                 ],'choices' => [
                     $this->__('Inset') => 'inset'
                     ,$this->__('Outbound') => 'outbound'
@@ -249,7 +291,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'multiple' => false
             ])
             ->add('thumbnailWidthLinkerLinkerImageView', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width linker linker image view') . ':',
+                'label' => $this->__('Thumbnail width view') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on view pages in pixels.')
@@ -260,12 +302,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('32'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width linker linker image view.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width view.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightLinkerLinkerImageView', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height linker linker image view') . ':',
+                'label' => $this->__('Thumbnail height view') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on view pages in pixels.')
@@ -276,12 +318,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('24'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height linker linker image view.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height view.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailWidthLinkerLinkerImageDisplay', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width linker linker image display') . ':',
+                'label' => $this->__('Thumbnail width display') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on display pages in pixels.')
@@ -292,12 +334,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('240'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width linker linker image display.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width display.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightLinkerLinkerImageDisplay', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height linker linker image display') . ':',
+                'label' => $this->__('Thumbnail height display') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on display pages in pixels.')
@@ -308,12 +350,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('180'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height linker linker image display.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height display.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailWidthLinkerLinkerImageEdit', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width linker linker image edit') . ':',
+                'label' => $this->__('Thumbnail width edit') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on edit pages in pixels.')
@@ -324,12 +366,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('240'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width linker linker image edit.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width edit.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightLinkerLinkerImageEdit', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height linker linker image edit') . ':',
+                'label' => $this->__('Thumbnail height edit') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on edit pages in pixels.')
@@ -340,12 +382,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('180'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height linker linker image edit.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height edit.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('enableShrinkingForCarouselItemItemImage', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
-                'label' => $this->__('Enable shrinking for carousel item item image') . ':',
+                'label' => $this->__('Enable shrinking') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Whether to enable shrinking huge images to maximum dimensions. Stores downscaled version of the original image.')
@@ -354,12 +396,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'required' => false,
                 'data' => (bool)(isset($this->modVars['enableShrinkingForCarouselItemItemImage']) ? $this->modVars['enableShrinkingForCarouselItemItemImage'] : false),
                 'attr' => [
-                    'title' => $this->__('The enable shrinking for carousel item item image option.'),
+                    'title' => $this->__('The enable shrinking option.'),
                     'class' => 'shrink-enabler'
                 ],
             ])
             ->add('shrinkWidthCarouselItemItemImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Shrink width carousel item item image') . ':',
+                'label' => $this->__('Shrink width') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('The maximum image width in pixels.')
@@ -370,13 +412,13 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('800'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the shrink width carousel item item image.') . ' ' . $this->__('Only digits are allowed.'),
+                    'title' => $this->__('Enter the shrink width.') . ' ' . $this->__('Only digits are allowed.'),
                     'class' => 'shrinkdimension-shrinkwidthcarouselitemitemimage'
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('shrinkHeightCarouselItemItemImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Shrink height carousel item item image') . ':',
+                'label' => $this->__('Shrink height') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('The maximum image height in pixels.')
@@ -387,13 +429,13 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('600'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the shrink height carousel item item image.') . ' ' . $this->__('Only digits are allowed.'),
+                    'title' => $this->__('Enter the shrink height.') . ' ' . $this->__('Only digits are allowed.'),
                     'class' => 'shrinkdimension-shrinkheightcarouselitemitemimage'
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailModeCarouselItemItemImage', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', [
-                'label' => $this->__('Thumbnail mode carousel item item image') . ':',
+                'label' => $this->__('Thumbnail mode') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail mode (inset or outbound).')
@@ -403,7 +445,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'data' => isset($this->modVars['thumbnailModeCarouselItemItemImage']) ? $this->modVars['thumbnailModeCarouselItemItemImage'] : '',
                 'empty_data' => 'inset',
                 'attr' => [
-                    'title' => $this->__('Choose the thumbnail mode carousel item item image.')
+                    'title' => $this->__('Choose the thumbnail mode.')
                 ],'choices' => [
                     $this->__('Inset') => 'inset'
                     ,$this->__('Outbound') => 'outbound'
@@ -412,7 +454,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'multiple' => false
             ])
             ->add('thumbnailWidthCarouselItemItemImageView', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width carousel item item image view') . ':',
+                'label' => $this->__('Thumbnail width view') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on view pages in pixels.')
@@ -423,12 +465,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('32'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width carousel item item image view.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width view.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightCarouselItemItemImageView', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height carousel item item image view') . ':',
+                'label' => $this->__('Thumbnail height view') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on view pages in pixels.')
@@ -439,12 +481,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('24'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height carousel item item image view.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height view.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailWidthCarouselItemItemImageDisplay', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width carousel item item image display') . ':',
+                'label' => $this->__('Thumbnail width display') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on display pages in pixels.')
@@ -455,12 +497,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('240'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width carousel item item image display.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width display.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightCarouselItemItemImageDisplay', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height carousel item item image display') . ':',
+                'label' => $this->__('Thumbnail height display') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on display pages in pixels.')
@@ -471,12 +513,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('180'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height carousel item item image display.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height display.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailWidthCarouselItemItemImageEdit', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width carousel item item image edit') . ':',
+                'label' => $this->__('Thumbnail width edit') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on edit pages in pixels.')
@@ -487,12 +529,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('240'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width carousel item item image edit.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width edit.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightCarouselItemItemImageEdit', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height carousel item item image edit') . ':',
+                'label' => $this->__('Thumbnail height edit') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on edit pages in pixels.')
@@ -503,12 +545,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('180'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height carousel item item image edit.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height edit.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('enableShrinkingForImageMyImage', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
-                'label' => $this->__('Enable shrinking for image my image') . ':',
+                'label' => $this->__('Enable shrinking') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Whether to enable shrinking huge images to maximum dimensions. Stores downscaled version of the original image.')
@@ -517,12 +559,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'required' => false,
                 'data' => (bool)(isset($this->modVars['enableShrinkingForImageMyImage']) ? $this->modVars['enableShrinkingForImageMyImage'] : false),
                 'attr' => [
-                    'title' => $this->__('The enable shrinking for image my image option.'),
+                    'title' => $this->__('The enable shrinking option.'),
                     'class' => 'shrink-enabler'
                 ],
             ])
             ->add('shrinkWidthImageMyImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Shrink width image my image') . ':',
+                'label' => $this->__('Shrink width') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('The maximum image width in pixels.')
@@ -533,13 +575,13 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('800'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the shrink width image my image.') . ' ' . $this->__('Only digits are allowed.'),
+                    'title' => $this->__('Enter the shrink width.') . ' ' . $this->__('Only digits are allowed.'),
                     'class' => 'shrinkdimension-shrinkwidthimagemyimage'
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('shrinkHeightImageMyImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Shrink height image my image') . ':',
+                'label' => $this->__('Shrink height') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('The maximum image height in pixels.')
@@ -550,13 +592,13 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('600'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the shrink height image my image.') . ' ' . $this->__('Only digits are allowed.'),
+                    'title' => $this->__('Enter the shrink height.') . ' ' . $this->__('Only digits are allowed.'),
                     'class' => 'shrinkdimension-shrinkheightimagemyimage'
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailModeImageMyImage', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', [
-                'label' => $this->__('Thumbnail mode image my image') . ':',
+                'label' => $this->__('Thumbnail mode') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail mode (inset or outbound).')
@@ -566,7 +608,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'data' => isset($this->modVars['thumbnailModeImageMyImage']) ? $this->modVars['thumbnailModeImageMyImage'] : '',
                 'empty_data' => 'inset',
                 'attr' => [
-                    'title' => $this->__('Choose the thumbnail mode image my image.')
+                    'title' => $this->__('Choose the thumbnail mode.')
                 ],'choices' => [
                     $this->__('Inset') => 'inset'
                     ,$this->__('Outbound') => 'outbound'
@@ -575,7 +617,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'multiple' => false
             ])
             ->add('thumbnailWidthImageMyImageView', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width image my image view') . ':',
+                'label' => $this->__('Thumbnail width view') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on view pages in pixels.')
@@ -586,12 +628,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('32'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width image my image view.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width view.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightImageMyImageView', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height image my image view') . ':',
+                'label' => $this->__('Thumbnail height view') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on view pages in pixels.')
@@ -602,12 +644,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('24'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height image my image view.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height view.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailWidthImageMyImageDisplay', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width image my image display') . ':',
+                'label' => $this->__('Thumbnail width display') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on display pages in pixels.')
@@ -618,12 +660,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('240'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width image my image display.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width display.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightImageMyImageDisplay', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height image my image display') . ':',
+                'label' => $this->__('Thumbnail height display') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on display pages in pixels.')
@@ -634,12 +676,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('180'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height image my image display.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height display.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailWidthImageMyImageEdit', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail width image my image edit') . ':',
+                'label' => $this->__('Thumbnail width edit') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail width on edit pages in pixels.')
@@ -650,12 +692,12 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('240'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail width image my image edit.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail width edit.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
             ->add('thumbnailHeightImageMyImageEdit', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
-                'label' => $this->__('Thumbnail height image my image edit') . ':',
+                'label' => $this->__('Thumbnail height edit') . ':',
                 'label_attr' => [
                     'class' => 'tooltips',
                     'title' => $this->__('Thumbnail height on edit pages in pixels.')
@@ -666,7 +708,7 @@ abstract class AbstractAppSettingsType extends AbstractType
                 'empty_data' => intval('180'),
                 'attr' => [
                     'maxlength' => 4,
-                    'title' => $this->__('Enter the thumbnail height image my image edit.') . ' ' . $this->__('Only digits are allowed.')
+                    'title' => $this->__('Enter the thumbnail height edit.') . ' ' . $this->__('Only digits are allowed.')
                 ],'scale' => 0,
                 'input_group' => ['right' => $this->__('pixels')]
             ])
@@ -674,7 +716,40 @@ abstract class AbstractAppSettingsType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * Adds fields for integration fields.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array                $options The options
+     */
+    public function addIntegrationFields(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('enabledFinderTypes', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', [
+                'label' => $this->__('Enabled finder types') . ':',
+                'label_attr' => [
+                    'class' => 'tooltips',
+                    'title' => $this->__('Which sections are supported in the Finder component (used by Scribite plug-ins).')
+                ],
+                'help' => $this->__('Which sections are supported in the Finder component (used by Scribite plug-ins).'),
+                'required' => false,
+                'data' => isset($this->modVars['enabledFinderTypes']) ? $this->modVars['enabledFinderTypes'] : '',
+                'empty_data' => '',
+                'attr' => [
+                    'title' => $this->__('Choose the enabled finder types.')
+                ],'choices' => [
+                    $this->__('Linker') => 'linker'
+                    ,$this->__('Carousel item') => 'carouselItem'
+                    ,$this->__('Image') => 'image'
+                    ,$this->__('Info') => 'info'
+                ],
+                'choices_as_values' => true,
+                'multiple' => true
+            ])
+        ;
+    }
+
+    /**
+     * @inheritDoc
      */
     public function getBlockPrefix()
     {
