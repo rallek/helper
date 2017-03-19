@@ -1,0 +1,2003 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ralf Köster <ralf@familie-koester.de>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#, fuzzy
+msgid ""
+"\"%bar\" will match \"FOObar\", \"Blubbar\" and so on, but not \"BarFoo\"."
+msgstr ""
+"\"%bar\" wird \"FOObar\", \"Blubbar\" usw. entsprechen, aber nicht \"BarFoo"
+"\"."
+
+msgid "10"
+msgstr "10"
+
+msgid "100"
+msgstr "100"
+
+msgid "15"
+msgstr "15"
+
+msgid "20"
+msgstr "20"
+
+msgid "30"
+msgstr "30"
+
+msgid "5"
+msgstr "5"
+
+msgid "50"
+msgstr "50"
+
+msgid "A filter consists of several statements."
+msgstr "Ein Filter besteht aus mehreren Anweisungen."
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "All"
+msgstr "Alle"
+
+#, fuzzy
+msgid "All additional joined tables can be referenced by \"tblFoo\"."
+msgstr ""
+"Alle zusätzlichen verknüpfte Tabellen können durch \"tblFoo\" refferenziert "
+"werden."
+
+msgid "All except approved"
+msgstr "Alle außer freigegebene"
+
+msgid "All items with a date in July 2016."
+msgstr "Alle Elemente mit einem Datum im Juli 2016."
+
+msgid "All items with a date in year 2016."
+msgstr "Alle Elemente mit einem Datum im Jahr 2016."
+
+msgid "All items with date in the last year."
+msgstr "Alle Elemente mit Datum im letzten Jahr."
+
+msgid "All items with date of today."
+msgstr "Alle Elemente mit Datum von heute."
+
+msgid "All items with date up from 24 hours ago."
+msgstr "Alle Artikel der letzten 24 Stunden."
+
+#, fuzzy
+msgid "Allowed file extensions"
+msgstr "Erlaubte Dateiendungen"
+
+msgid "Allowed file size"
+msgstr "Erlaubte Dateigröße:"
+
+#, fuzzy
+msgid "Also you can use \"%\" as placeholder."
+msgstr "Sie können auch \"%\" als Platzhalter verwenden."
+
+msgid "Amount"
+msgstr "Anzahl"
+
+#, fuzzy
+msgid ""
+"An error occured during creation of the .htaccess file in directory \"%path%"
+"\"."
+msgstr ""
+"Während der Erstellung der .htaccess-Datei im Verzeichnis \"%s\" ist ein "
+"Fehler aufgetreten."
+
+#, fuzzy
+msgid ""
+"An error was encountered while removing stored object workflows for the "
+"%extension% extension."
+msgstr ""
+"Während des Entfernens des gespeicherten Workflow-Objektes für das Modul "
+"%extension% ist ein Fehler aufgetreten."
+
+msgid "Approved"
+msgstr "Genehmigt"
+
+msgid "Ascending"
+msgstr "Abwärts"
+
+msgid "Back to overview"
+msgstr "Zurück zur Übersicht"
+
+msgid "Back to paginated view"
+msgstr "Zurück zur Seitenansicht"
+
+msgid "Backend"
+msgstr "Backend"
+
+msgid "Boostrap setting"
+msgstr "Boostrap Einstellung"
+
+msgid "Bytes"
+msgstr "Bytes"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Carousel"
+msgstr "Karussell"
+
+msgid "Carousel entries per page"
+msgstr "Karussell-Einträge pro Seite"
+
+msgid "Carousel group"
+msgstr "Karussell-Gruppe"
+
+msgid "Carousel item"
+msgstr "Karussell Element"
+
+#, fuzzy
+msgid "Carousel item entries per page"
+msgstr "Karussell-Einträge pro Seite"
+
+msgid "Carousel item list"
+msgstr "Karussell Element Liste"
+
+msgid "Carousel items"
+msgstr "Karussell-Elemente"
+
+msgid "Carousel list"
+msgstr "Karussell-Liste"
+
+msgid "Carousel locale"
+msgstr "Sprache"
+
+msgid "Carousel name"
+msgstr "Karussell Name"
+
+msgid "Carousells"
+msgstr "Karussells"
+
+msgid "Change selection"
+msgstr "Ändere Auswahl"
+
+msgid "Choose action"
+msgstr "Aktion wählen"
+
+msgid "Choose the carousel"
+msgstr "Karussell auswählen"
+
+msgid "Choose the carousel locale of the carousel"
+msgstr "Sprache des Karussells auswählen"
+
+#, fuzzy
+msgid "Choose the info locale of the info"
+msgstr "Wählen Sie das Gebietsschema von Info info"
+
+#, fuzzy
+msgid "Choose the item locale of the carousel item"
+msgstr "Wählen Sie das Element Gebietsschema des Karussell-Elements"
+
+msgid "Choose the linker locale of the linker"
+msgstr "Sprache des Linkers auswählen"
+
+#, fuzzy
+msgid "Choose the thumbnail mode carousel item item image."
+msgstr "Wählen Sie das thumbnail-Modus Karussell Element Element Bild."
+
+#, fuzzy
+msgid "Choose the thumbnail mode image my image."
+msgstr "Wählen Sie das thumbnail-Modus Bild meines Bildes."
+
+#, fuzzy
+msgid "Choose the thumbnail mode linker linker image."
+msgstr "Wählen Sie das thumbnail-Modus Linker Linker Bild."
+
+msgid "Choose the title color of the carousel item"
+msgstr "Titeltextfarbe der Karussellelemente auswählen"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Combining statements"
+msgstr "Kombination von Aussagen"
+
+msgid "Configuration"
+msgstr "Konfiguration"
+
+msgid "Confirmation prompt"
+msgstr "Bestätigungsabfrage"
+
+msgid "Content"
+msgstr "Inhalt"
+
+msgid "Content has been approved and is available online."
+msgstr "Inhalt wurde geprüft und ist online verfügbar."
+
+msgid "Controls"
+msgstr "Steuerung"
+
+msgid "Copyright"
+msgstr "Copyright"
+
+#, fuzzy
+msgid "Create another item after save"
+msgstr "Nach dem speichern einen neuen Eintrag erstellen"
+
+msgid "Create carousel"
+msgstr "Karussell erstellen"
+
+msgid "Create carousel item"
+msgstr "Karussell-Element erstellen"
+
+msgid "Create image"
+msgstr "Bild erstellen"
+
+msgid "Create info"
+msgstr "Infoseite anlegen"
+
+msgid "Create linker"
+msgstr "Linker erstellen"
+
+msgid "Created by %user"
+msgstr "Erstellt von %user"
+
+msgid "Created by %user on %date"
+msgstr "Erstellt von %user am %date"
+
+msgid "Created on %date"
+msgstr "Erstellt am %date"
+
+msgid "Creation"
+msgstr "Erstellung"
+
+msgid "Creation and update"
+msgstr "Erstellung und Aktualisierung"
+
+msgid "Creation date"
+msgstr "Erstellungsdatum"
+
+msgid "Creator"
+msgstr "Ersteller"
+
+msgid "Current file"
+msgstr "Aktuelle Datei"
+
+msgid "Custom template"
+msgstr "Benutzerdefinierte Vorlage"
+
+msgid "Date operators"
+msgstr "Datumsauswahl"
+
+msgid "Dates"
+msgstr "Datum"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Delete carousel"
+msgstr "Karussell löschen"
+
+msgid "Delete carousel item"
+msgstr "Karussell-Element löschen"
+
+msgid "Delete content permanently."
+msgstr "Inhalt dauerhaft löschen."
+
+msgid "Delete existing file"
+msgstr "Vorhandene Datei löschen"
+
+msgid "Delete image"
+msgstr "Bild löschen"
+
+msgid "Delete info"
+msgstr "Infoseite löschen"
+
+msgid "Delete linker"
+msgstr "Linker löschen"
+
+#, fuzzy
+msgid "Delete this carousel"
+msgstr "Möchten Sie wirklich dieses Karousell Element löschen: \"%name%\"?"
+
+msgid "Delete this carousel item"
+msgstr "Dieses Karussell-Element löschen"
+
+msgid "Delete this file ?"
+msgstr "Diese Datei löschen?"
+
+msgid "Delete this image"
+msgstr "Bild löschen"
+
+msgid "Delete this info"
+msgstr "Löschen Sie diese info"
+
+#, fuzzy
+msgid "Delete this linker"
+msgstr "Löschen Sie diese linker"
+
+msgid "Deleted"
+msgstr "Gelöscht"
+
+msgid "Descending"
+msgstr "Absteigend"
+
+msgid "Details"
+msgstr "Details"
+
+#, fuzzy
+msgid "Display list of RKHelperModule objects."
+msgstr "Zeigt die Liste von RKHelperModule-Objekten."
+
+msgid "Display or link a single RKHelperModule object."
+msgstr "Anzeigen oder verlinken eines einzelnen RKHelperModule Objektes."
+
+msgid "Do you really want to delete this carousel item: \"%name%\" ?"
+msgstr "Möchten Sie wirklich dieses Karousell Element löschen: \"%name%\"?"
+
+msgid "Do you really want to delete this carousel: \"%name%\" ?"
+msgstr "Möchten Sie wirklich dieses Karousell löschen: \"%name%\"?"
+
+msgid "Do you really want to delete this image: \"%name%\" ?"
+msgstr "Möchten Sie wirklich dieses Bild löschen: \"%name%\"?"
+
+msgid "Do you really want to delete this info: \"%name%\" ?"
+msgstr "Soll die Infoseite wirklich gelöscht werden: \"%name%\" ?"
+
+msgid "Do you really want to delete this linker: \"%name%\" ?"
+msgstr "Möchten Sie wirklich diesen Linker löschen: \"% Name%\"?"
+
+msgid "Doctrine Exception"
+msgstr "Doctrine Fehler"
+
+#, fuzzy
+msgid "Done! Carousel created."
+msgstr "Fertig! Karussell erstellt."
+
+#, fuzzy
+msgid "Done! Carousel deleted."
+msgstr "Fertig! Karussell gelöscht."
+
+#, fuzzy
+msgid "Done! Carousel item created."
+msgstr "Fertig! Karussell Element erstellt."
+
+#, fuzzy
+msgid "Done! Carousel item deleted."
+msgstr "Fertig! Karussell Element gelöscht."
+
+#, fuzzy
+msgid "Done! Carousel item updated."
+msgstr "Fertig! Karussell Artikel aktualisiert."
+
+#, fuzzy
+msgid "Done! Carousel updated."
+msgstr "Fertig! Karussell aktualisiert."
+
+msgid "Done! Image created."
+msgstr "Fertig! Bild erstellt."
+
+msgid "Done! Image deleted."
+msgstr "Fertig! Bild gelöscht."
+
+msgid "Done! Image updated."
+msgstr "Fertig! Bild aktualisiert."
+
+#, fuzzy
+msgid "Done! Info created."
+msgstr "Fertig! Info erstellt."
+
+#, fuzzy
+msgid "Done! Info deleted."
+msgstr "Fertig! Info gelöscht."
+
+#, fuzzy
+msgid "Done! Info updated."
+msgstr "Fertig! Info aktualisiert."
+
+msgid "Done! Item created."
+msgstr "Erledigt! Element erstellt."
+
+msgid "Done! Item deleted."
+msgstr "Erledigt! Element gelöscht."
+
+msgid "Done! Item updated."
+msgstr "Erledigt! Element aktualisiert."
+
+#, fuzzy
+msgid "Done! Linker created."
+msgstr "Fertig! Linker erstellt."
+
+#, fuzzy
+msgid "Done! Linker deleted."
+msgstr "Fertig! Linker gelöscht."
+
+#, fuzzy
+msgid "Done! Linker updated."
+msgstr "Fertig! Linker aktualisiert."
+
+msgid "Done! Module configuration updated."
+msgstr "Erledigt! Modul Konfiguration aktualisiert."
+
+msgid "Download"
+msgstr "Download"
+
+msgid ""
+"Each statement is a set of field name, operator and value connected by a "
+"colon."
+msgstr ""
+"Jede Aussage ist ein Satz von Feldnamen, Operator und Wert durch einen "
+"Doppelpunkt verbunden."
+
+msgid "Edit"
+msgstr "Bearbeiten"
+
+msgid "Edit carousel"
+msgstr "Karussell bearbeiten"
+
+msgid "Edit carousel item"
+msgstr "Karussell Element bearbeiten"
+
+msgid "Edit image"
+msgstr "Bild bearbeiten"
+
+msgid "Edit info"
+msgstr "Infoseiten bearbeiten"
+
+msgid "Edit linker"
+msgstr "Linker bearbeiten"
+
+msgid "Edit this carousel"
+msgstr "Karussell bearbeiten"
+
+msgid "Edit this carousel item"
+msgstr "Karussell Element bearbeiten"
+
+msgid "Edit this image"
+msgstr "Bild bearbeiten"
+
+msgid "Edit this info"
+msgstr "Diese Info bearbeiten"
+
+msgid "Edit this linker"
+msgstr "Diesen Linker bearbeiten"
+
+#, fuzzy
+msgid ""
+"Either the first name is Peter and the house number of any address is below "
+"100 or the first name is Chris and the house number of any address is below "
+"150."
+msgstr ""
+"Entweder der erste Name ist Peter und die Hausnummer an jede beliebige "
+"Adresse ist unter 100 oder der erste Name ist Chris und die Hausnummer an "
+"jede beliebige Adresse ist unter 150."
+
+#, fuzzy
+msgid "Enable shrinking for carousel item item image"
+msgstr "Aktivieren Sie für Karussell Element Element Bild verkleinern"
+
+#, fuzzy
+msgid "Enable shrinking for image my image"
+msgstr "Aktivieren Sie mein Bild für Bild verkleinern"
+
+#, fuzzy
+msgid "Enable shrinking for linker linker image"
+msgstr "Aktivieren Sie für Linker Linker Bild verkleinern"
+
+#, fuzzy
+msgid "Enable this option to insert images"
+msgstr "Aktivieren Sie diese Option zum Einfügen von Bildern"
+
+msgid "Enter a part of the user name to search"
+msgstr "Zum Suchen geben Sie einen Teil des Benutzernamens ein"
+
+msgid "Enter the boostrap setting of the linker"
+msgstr "Boostrap Einstellung für die Linker"
+
+#, fuzzy
+msgid "Enter the carousel entries per page."
+msgstr "Geben Sie die Karussell-Einträge pro Seite."
+
+#, fuzzy
+msgid "Enter the carousel group of the carousel"
+msgstr "Geben Sie die Karussell-Gruppe des Karussells"
+
+#, fuzzy
+msgid "Enter the carousel item entries per page."
+msgstr "Geben Sie die Karussell-Element-Einträge pro Seite."
+
+#, fuzzy
+msgid "Enter the carousel name of the carousel"
+msgstr "Geben Sie den Namen Karussell des Karussells"
+
+msgid "Enter the copyright of the image"
+msgstr "Das Copyright des Bildes eingeben"
+
+#, fuzzy
+msgid "Enter the image entries per page."
+msgstr "Geben Sie die Bild-Einträge pro Seite."
+
+msgid "Enter the image title of the image"
+msgstr "Titel des Bildes eingeben"
+
+msgid "Enter the info description of the info"
+msgstr "Beschreibung Infoseite"
+
+#, fuzzy
+msgid "Enter the info entries per page."
+msgstr "Geben Sie die Info-Einträge pro Seite."
+
+msgid "Enter the info title of the info"
+msgstr "Titel Infoseite"
+
+#, fuzzy
+msgid "Enter the intem end date of the carousel item"
+msgstr "Geben Sie das Enddatum der Intem des Karussell-Elements"
+
+#, fuzzy
+msgid "Enter the item image of the carousel item"
+msgstr "Karussell Element Name eingeben"
+
+msgid "Enter the item name of the carousel item"
+msgstr "Karussell Element Name eingeben"
+
+#, fuzzy
+msgid "Enter the item start date of the carousel item"
+msgstr "Geben Sie das Startdatum Element des Elements Karussell"
+
+#, fuzzy
+msgid "Enter the link of the carousel item"
+msgstr "Geben Sie den Link des Artikels Karussell"
+
+#, fuzzy
+msgid "Enter the linker entries per page."
+msgstr "Geben Sie die Linker-Einträge pro Seite."
+
+#, fuzzy
+msgid "Enter the linker group of the linker"
+msgstr "Geben Sie die Linker-Gruppe des Linkers"
+
+#, fuzzy
+msgid "Enter the linker headline of the linker"
+msgstr "Geben Sie die Linker-Schlagzeile des Linkers"
+
+#, fuzzy
+msgid "Enter the linker image of the linker"
+msgstr "Geben Sie das Linker Bild des Linkers"
+
+#, fuzzy
+msgid "Enter the linker text of the linker"
+msgstr "Geben Sie den Linker-Text des Linkers"
+
+msgid "Enter the my description of the image"
+msgstr "Beschreibung für das Bild angeben"
+
+#, fuzzy
+msgid "Enter the my image of the image"
+msgstr "Titel des Bildes eingeben"
+
+msgid "Enter the remarks of the carousel"
+msgstr "Karussellbemerkungen eingeben"
+
+#, fuzzy
+msgid "Enter the shrink height carousel item item image."
+msgstr "Geben Sie das schrumpfen Höhe Karussell Element Element Bild."
+
+#, fuzzy
+msgid "Enter the shrink height image my image."
+msgstr "Geben Sie dem schrumpfen Höhe Bild meines Bildes."
+
+#, fuzzy
+msgid "Enter the shrink height linker linker image."
+msgstr "Geben Sie das schrumpfen Höhe Linker Linker Bild."
+
+#, fuzzy
+msgid "Enter the shrink width carousel item item image."
+msgstr "Geben Sie das schrumpfen breite Karussell Element Element Bild."
+
+#, fuzzy
+msgid "Enter the shrink width image my image."
+msgstr "Geben Sie dem schrumpfen breite Bild meines Bildes."
+
+#, fuzzy
+msgid "Enter the shrink width linker linker image."
+msgstr "Geben Sie das schrumpfen breite Linker Linker Bild."
+
+#, fuzzy
+msgid "Enter the single item identifier of the carousel item"
+msgstr "Geben Sie die einzelnen Elementbezeichner des Karussell-Elements"
+
+#, fuzzy
+msgid "Enter the sliding time of the carousel."
+msgstr "Geben Sie die Schiebetür des Karussells."
+
+#, fuzzy
+msgid "Enter the sorting of the linker."
+msgstr "Geben Sie die Sortierung des Linkers."
+
+#, fuzzy
+msgid "Enter the subtitle of the carousel item"
+msgstr "Geben Sie den Untertitel des Karussell-Elements"
+
+#, fuzzy
+msgid "Enter the the link of the linker"
+msgstr "Geben Sie den Link des Linkers"
+
+#, fuzzy
+msgid "Enter the thumbnail height carousel item item image display."
+msgstr ""
+"Geben Sie die Miniaturansicht Höhe Karussell Element Element Bilddarstellung."
+
+#, fuzzy
+msgid "Enter the thumbnail height carousel item item image edit."
+msgstr ""
+"Geben Sie die Miniaturansicht Höhe Karussell Element Element Bild bearbeiten."
+
+#, fuzzy
+msgid "Enter the thumbnail height carousel item item image view."
+msgstr ""
+"Geben Sie die Miniaturansicht Höhe Karussell Element Element Bildansicht."
+
+#, fuzzy
+msgid "Enter the thumbnail height image my image display."
+msgstr "Geben Sie die Miniaturansicht Höhe Bild meiner Bildanzeige."
+
+#, fuzzy
+msgid "Enter the thumbnail height image my image edit."
+msgstr "Geben Sie die Miniaturansicht Höhe Bild mein Bild bearbeiten."
+
+#, fuzzy
+msgid "Enter the thumbnail height image my image view."
+msgstr "Geben Sie die Miniaturansicht Höhe Bild meiner Bildansicht."
+
+#, fuzzy
+msgid "Enter the thumbnail height linker linker image display."
+msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bilddarstellung."
+
+#, fuzzy
+msgid "Enter the thumbnail height linker linker image edit."
+msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bild bearbeiten."
+
+#, fuzzy
+msgid "Enter the thumbnail height linker linker image view."
+msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bildansicht."
+
+#, fuzzy
+msgid "Enter the thumbnail width carousel item item image display."
+msgstr ""
+"Geben Sie die Miniaturansicht breite Karussell Element Element "
+"Bilddarstellung."
+
+#, fuzzy
+msgid "Enter the thumbnail width carousel item item image edit."
+msgstr ""
+"Geben Sie die Miniaturansicht breite Karussell Element Element Bild "
+"bearbeiten."
+
+#, fuzzy
+msgid "Enter the thumbnail width carousel item item image view."
+msgstr ""
+"Geben Sie die Miniaturansicht breite Karussell Element Element Bildansicht."
+
+#, fuzzy
+msgid "Enter the thumbnail width image my image display."
+msgstr "Geben Sie die Miniaturansicht breite Bild meiner Bildanzeige."
+
+#, fuzzy
+msgid "Enter the thumbnail width image my image edit."
+msgstr "Geben Sie die Miniaturansicht breite Bild mein Bild bearbeiten."
+
+#, fuzzy
+msgid "Enter the thumbnail width image my image view."
+msgstr "Geben Sie die Miniaturansicht breite Bild meiner Bildansicht."
+
+#, fuzzy
+msgid "Enter the thumbnail width linker linker image display."
+msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bilddarstellung."
+
+#, fuzzy
+msgid "Enter the thumbnail width linker linker image edit."
+msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bild bearbeiten."
+
+#, fuzzy
+msgid "Enter the thumbnail width linker linker image view."
+msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bildansicht."
+
+#, fuzzy
+msgid "Enter the title of the carousel item"
+msgstr "Geben Sie den Titel des Artikels Karussell"
+
+#, fuzzy
+msgid "Error! Could not determine workflow actions."
+msgstr "Fehler! Kann den zugeordneten Workflow nicht erkennen."
+
+#, fuzzy
+msgid "Error! Could not load the associated workflow."
+msgstr "Fehler! Kann den zugeordneten Workflow nicht laden."
+
+#, fuzzy
+msgid "Error! Could not remove stored workflow. Deletion has been aborted."
+msgstr ""
+"Fehler! Konnte den gespeicherten Workflow nicht entfernen. Löschen wurde "
+"abgebrochen."
+
+#, fuzzy
+msgid "Error! Creation attempt failed."
+msgstr "Fehler! Erstellung fehlgeschlagen."
+
+#, fuzzy
+msgid "Error! Deletion attempt failed."
+msgstr "Fehler! Löschen fehlgeschlagen."
+
+#, fuzzy
+msgid "Error! Invalid identifier received."
+msgstr "Fehler! Ungültiger Bezeichner aufgerufen."
+
+#, fuzzy
+msgid "Error! Invalid object type received."
+msgstr "Fehler! Ungültigen Objekttyp erhalten."
+
+#, fuzzy
+msgid "Error! It is not allowed to delete this carousel item."
+msgstr "Fehler! Es ist nicht erlaubt, diese Datei zu löschen."
+
+#, fuzzy
+msgid "Error! It is not allowed to delete this carousel."
+msgstr "Fehler! Es ist nicht erlaubt, diese Datei zu löschen."
+
+msgid "Error! It is not allowed to delete this image."
+msgstr "Fehler! Es ist nicht erlaubt, dieses Bild zu löschen."
+
+#, fuzzy
+msgid "Error! It is not allowed to delete this info."
+msgstr "Fehler! Es ist nicht erlaubt, diese Datei zu löschen."
+
+#, fuzzy
+msgid "Error! It is not allowed to delete this linker."
+msgstr "Fehler! Es ist nicht erlaubt, diese Datei zu löschen."
+
+#, fuzzy
+msgid ""
+"Error! This file type is not allowed. Please choose another file format."
+msgstr ""
+"Fehler! Dieser Dateityp ist nicht erlaubt. Wähle bitte ein anderes Format."
+
+#, fuzzy
+msgid "Error! This file type seems not to be a valid image."
+msgstr "Fehler! Dieser Dateityp scheint kein gültiges Bild zu sein."
+
+msgid "Error! Update attempt failed."
+msgstr "Fehler! Aktualisierung fehlgeschlagen."
+
+#, fuzzy
+msgid "Error: Invalid editor context given for external controller action."
+msgstr ""
+"Fehler: ungültiger Editor Kontext für externe Controller-Aktion gegeben."
+
+msgid "Error: invalid input."
+msgstr "Fehler: ungültige Eingabe"
+
+msgid "Example"
+msgstr "Beispiel"
+
+msgid "Filter (expert option)"
+msgstr "Filter ( Expertenoption )"
+
+msgid "Filter statements"
+msgstr "Filter Statements"
+
+msgid "Filter syntax explained"
+msgstr "Filtersyntax erklärt"
+
+#, fuzzy
+msgid ""
+"For time periods: Begin of the given period. \"Date:ge:today\" matches all "
+"items with date of today or later."
+msgstr ""
+"Für Zeiträume: Anfang der gegeben Periode. \"Date:ge:today\" betrift alle "
+"Items mit dem Datum von heute oder später."
+
+#, fuzzy
+msgid ""
+"For time periods: Begin of the given period. \"Date:lt:today\" matches all "
+"items with date of yesterday or before."
+msgstr ""
+"Für Zeiträume: Anfang der gegeben Periode. \"Date:lt:today\" betrift alle "
+"Items mit dem Datum von gestern oder früher."
+
+#, fuzzy
+msgid ""
+"For time periods: End of the given period. \"Date:gt:today\" matches all "
+"items with date of tomorrow or later."
+msgstr ""
+"Für Zeiträume: Ende der gegeben Periode. \"Date:gt:today\" betrift alle "
+"Items mit dem Datum von morgen oder später."
+
+#, fuzzy
+msgid ""
+"For time periods: End of the given period. \"Date:le:today\" matches all "
+"items with date of today or before."
+msgstr ""
+"Für Zeiträume: Ende der gegeben Periode. \"Date:le:today\" betrift alle "
+"Items mit dem Datum von heute oder früher."
+
+msgid "Frontend"
+msgstr "Frontend"
+
+msgid "Further properties"
+msgstr "Weitere Eigenschaften"
+
+#, fuzzy
+msgid "Furthermore you can use brackets to group statements."
+msgstr "Desweiteren können Klammern genutzt werden um Aussagen zu gruppieren."
+
+msgid "GB"
+msgstr "GB"
+
+msgid "General syntax"
+msgstr "Allgemeine Syntax"
+
+#, fuzzy
+msgid ""
+"Here we can filter one single item in the block advanced filtering to reuse "
+"an image. Be shure the itemEndDate is valid and not in the past."
+msgstr ""
+"Hier haben wir ein einzelnes Element im Block erweiterte Filter zur "
+"Wiederverwendung eines Bildes zu filtern. Werden Sie, dass Shure die "
+"ItemEndDate gültig und nicht in der Vergangenheit ist."
+
+#, fuzzy
+msgid "Here you can choose a custom creation date"
+msgstr "Hier kann ein benutzerdefiniertes Erstellungsdatum gewählt werden"
+
+#, fuzzy
+msgid "Here you can choose a user which will be set as creator"
+msgstr ""
+"Hier können Sie einen Benutzer wählen, die als Ersteller festgelegt wird"
+
+#, fuzzy
+msgid "Here you can configure parameters for list views."
+msgstr "Hier können Sie Parameter für die Listenansichten konfigurieren."
+
+msgid "ID of carousel"
+msgstr "Karussell ID"
+
+msgid "ID of carousel item"
+msgstr "Karussell Element ID"
+
+#, fuzzy
+msgid "ID of image"
+msgstr "ID of image"
+
+#, fuzzy
+msgid "ID of info"
+msgstr "ID der info"
+
+#, fuzzy
+msgid "ID of linker"
+msgstr "ID der linker"
+
+msgid ""
+"If you change this please save the block once to reload the parameters below."
+msgstr ""
+"Wenn das geändert wird, bitte den Block einmal speichern, um die Parameter "
+"unten neu zu laden."
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "Image entries per page"
+msgstr "Bild Einträge pro Seite"
+
+msgid "Image list"
+msgstr "Bild Liste"
+
+msgid "Image settings for carousel items item image"
+msgstr "Bildeinstellungen für Karussellelemente Elementbild"
+
+msgid "Image settings for images my image"
+msgstr "Bildeinstellungen für meine Bilder"
+
+msgid "Image settings for linkers linker image"
+msgstr "Bildeinstellungen für Linker Bild"
+
+msgid "Image title"
+msgstr "Bildtitel"
+
+msgid "Image with link to the carousel item"
+msgstr "Bild mit Link auf das Karussell-Element"
+
+msgid "Image with link to the image"
+msgstr "Bild mit Link zu dem Bild"
+
+msgid "Image with link to the linker"
+msgstr "Bild mit Link zum Linker"
+
+msgid "Images"
+msgstr "Bilder"
+
+msgid "Info"
+msgstr "Infoseite"
+
+msgid "Info description"
+msgstr "Beschreibung Infoseite"
+
+msgid "Info entries per page"
+msgstr "Info Einträge pro Seite"
+
+msgid "Info list"
+msgstr "Liste Infoseiten"
+
+msgid "Info locale"
+msgstr "Sprache"
+
+msgid "Info title"
+msgstr "Titel Infoseite"
+
+msgid "Infos"
+msgstr "Infoseiten"
+
+msgid "Initial"
+msgstr "Anfang"
+
+msgid "Inset"
+msgstr "Einfügen (inset)"
+
+msgid "Intem end date"
+msgstr "Endedatum"
+
+#, fuzzy
+msgid "Invalid identifier received."
+msgstr "Fehler! Ungültiger Bezeichner erhalten."
+
+#, fuzzy
+msgid "Invalid object type received."
+msgstr "Fehler! Ungültiger Bezeichner erhalten."
+
+#, fuzzy
+msgid "Invalid user identifier received."
+msgstr "Fehler! Ungültiger Benutzer Bezeichner aufgerufen."
+
+#, fuzzy
+msgid ""
+"It is possible to filter the list of retrieved items by specifying arbitrary "
+"filter expressions. This page shows how to create these expressions."
+msgstr ""
+"Es ist möglich, die Liste der gefundenen Elemente zu filtern durch Angabe "
+"frei wählbarer Filterausdrücke. Diese Seite zeigt, wie Sie diese Ausdrücke "
+"erstellen."
+
+msgid "Item image"
+msgstr "Elementbild"
+
+msgid "Item locale"
+msgstr "Sprache"
+
+#, fuzzy
+msgid "Item name"
+msgstr "Positionsname"
+
+msgid "Item start date"
+msgstr "Anfangsadatum"
+
+msgid "KB"
+msgstr "KB"
+
+#, fuzzy
+msgid "Last update"
+msgstr "Letzte Aktualisierung"
+
+#, fuzzy
+msgid "Link"
+msgstr "Link"
+
+msgid "Link external"
+msgstr "Externer Link"
+
+msgid "Link to the carousel"
+msgstr "Link zum Karussell"
+
+#, fuzzy
+msgid "Link to the carousel item"
+msgstr "Link zum Karussell"
+
+#, fuzzy
+msgid "Link to the image"
+msgstr "Link to the image"
+
+#, fuzzy
+msgid "Link to the info"
+msgstr "Link zu"
+
+#, fuzzy
+msgid "Link to the linker"
+msgstr "Link zu den linker"
+
+#, fuzzy
+msgid "Linker"
+msgstr "Linker erstellen"
+
+msgid "Linker entries per page"
+msgstr "Linker-Einträge pro Seite"
+
+msgid "Linker group"
+msgstr "Linker-Gruppe"
+
+msgid "Linker headline"
+msgstr "Linker Schlagzeile"
+
+msgid "Linker image"
+msgstr "Linker Bild"
+
+msgid "Linker list"
+msgstr "Linker Liste"
+
+msgid "Linker locale"
+msgstr "Sprache"
+
+msgid "Linker text"
+msgstr "Linker Text"
+
+msgid "Linkers"
+msgstr "Linker"
+
+#, fuzzy
+msgid "List views"
+msgstr "Listenansichten"
+
+#, fuzzy
+msgid "MB"
+msgstr "MB"
+
+msgid "Manage settings for this application"
+msgstr "Einstellungen für diese Anwendung"
+
+msgid "Manage user"
+msgstr "Benutzer verwalten"
+
+#, fuzzy
+msgid "Moderation"
+msgstr "Moderation"
+
+msgid "My carousel items"
+msgstr "Meine Karussell-Elemente"
+
+msgid "My carousells"
+msgstr "Meine Karussells"
+
+#, fuzzy
+msgid "My description"
+msgstr "Meine Beschreibung"
+
+msgid "My image"
+msgstr "Mein Bild"
+
+msgid "My images"
+msgstr "Meine Bilder"
+
+msgid "My infos"
+msgstr "Meine Infoseiten"
+
+msgid "My linkers"
+msgstr "Meine Linker"
+
+msgid "Newest"
+msgstr "Neueste"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "No carousel items found."
+msgstr "Keine Karussell Elemente gefunden."
+
+msgid "No carousells found."
+msgstr "Keine Karussells gefunden."
+
+#, fuzzy
+msgid "No entries found."
+msgstr "Keine Einträge gefunden."
+
+msgid "No images found."
+msgstr "Kein Bild gefunden."
+
+msgid "No infos found."
+msgstr "Keine Infoseiten gefunden."
+
+msgid "No item selected."
+msgstr "Kein Element ausgewählt."
+
+msgid "No linkers found."
+msgstr "Keine Linker gefunden."
+
+#, fuzzy
+msgid "No results found!"
+msgstr "Keine Ergebnisse gefunden!"
+
+msgid "No such item found."
+msgstr "Der entsprechende Eintrag konnte leider nicht gefunden werden."
+
+#, fuzzy
+msgid "No such item."
+msgstr "Kein solches Element"
+
+#, fuzzy
+msgid "None workflow (no approval)"
+msgstr "Kein Workflow (keine Freigabe)"
+
+msgid "Not set."
+msgstr "Nicht gesetzt."
+
+msgid "OK"
+msgstr "Ok"
+
+msgid "Object type"
+msgstr "Objekttyp"
+
+msgid "Only digits are allowed."
+msgstr "Nur Ziffern sind erlaubt."
+
+msgid "Only images"
+msgstr "Nur Bilder"
+
+msgid "Only item titles"
+msgstr "Nur Titel"
+
+msgid "Open file"
+msgstr "Datei öffnen"
+
+msgid "Open preview page"
+msgstr "Vorschau öffnen"
+
+msgid "Open quick view window"
+msgstr "Fenster für Schnellansicht öffnen"
+
+msgid "Operation cancelled."
+msgstr "Vorgang abgebrochen."
+
+msgid "Operators"
+msgstr "Operatoren"
+
+msgid "Outbound"
+msgstr "abschneiden (outbound)"
+
+msgid "Page size"
+msgstr "Seitengröße"
+
+msgid "Paste as"
+msgstr "Einfügen als"
+
+msgid "Please be carfull with the link. The link is not validated!"
+msgstr ""
+"Bitte vorsichtig sein beim Link eintragen. Der Link wird nicht auf "
+"Funktionsfähigkeit überprüft!"
+
+#, fuzzy
+msgid ""
+"Prepend one of the keywords \"year\", \"month\", \"week\", \"day\", \"hour"
+"\", \"min\" followed by a colon to search for a time period."
+msgstr ""
+"Voranstellen eines der Schlüsselwörter \"Jahr\", \"Monat\", \"Woche\", \"Tag"
+"\", \"Stunde\", \"min\" gefolgt von einem Doppelpunkt, um für einen "
+"bestimmten Zeitraum zu suchen."
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "Pseudo-state for content which has been deleted from the database."
+msgstr "Pseudo-Status für Inhalt, welcher aus der Datenbank gelöscht wurde."
+
+msgid "Pseudo-state for content which is just created and not persisted yet."
+msgstr ""
+"Pseudo-Status für Inhalt, welcher gerade erstellt aber noch nicht "
+"persistiert wurde."
+
+#, fuzzy
+msgid "Quick navigation"
+msgstr "Schnellansicht"
+
+msgid "RKHelperModule detail view"
+msgstr "RKHelperModule Detailansicht"
+
+msgid "RKHelperModule items"
+msgstr "RKHelperModule Einträge"
+
+msgid "RKHelperModule list view"
+msgstr "RKHelperModule Listenansicht"
+
+msgid "Random"
+msgstr "Zufall"
+
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#, fuzzy
+msgid "Remarks"
+msgstr "Karussellbemerkungen eingeben"
+
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgid "Reset to empty value"
+msgstr "Eingabe Löschen"
+
+#, fuzzy
+msgid "Return control"
+msgstr "Nächster Schritt"
+
+msgid "Reuse"
+msgstr "Wiederverwenden"
+
+msgid "Reuse for new carousel"
+msgstr "Wiederverwendung für neues Karussell"
+
+msgid "Reuse for new carousel item"
+msgstr "Wiederverwendung für neues Karussell-Element"
+
+msgid "Reuse for new image"
+msgstr "Wiederverwendung für neues Bild"
+
+msgid "Reuse for new info"
+msgstr "Wiederverwendung für neue Info"
+
+msgid "Reuse for new linker"
+msgstr "Wiederverwendung für neuen Linker"
+
+msgid "Search"
+msgstr "Suchen"
+
+msgid "Search and select carousel item"
+msgstr "Karussell Element suchen und auswählen"
+
+msgid "Search and select image"
+msgstr "Bild suchen und auswählen"
+
+msgid "Search and select info"
+msgstr "Infoseite suchen und auswählen"
+
+msgid "Search and select linker"
+msgstr "Linker suchen und auswählen"
+
+msgid "Search for"
+msgstr "Suche nach"
+
+msgid "Search user"
+msgstr "Benutzer suchen"
+
+#, fuzzy
+msgid "Send private message to %userName%"
+msgstr "Schicke eine private Nachricht an %userName%"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+#, fuzzy
+msgid ""
+"Several statements can be connected by a comma , (AND) or an asterisk * (OR)."
+msgstr ""
+"Mehere Ausdrücke können durch ein Komma , (AND) oder Stern * (OR) verbunden "
+"werden."
+
+msgid "Show all entries"
+msgstr "Zeige alle Einträge"
+
+msgid "Show syntax examples"
+msgstr "Syntaxbeispiele zeigen"
+
+msgid "Shows all items except these which are approved"
+msgstr "Zeigt alle Einträge außer den Freigegebenen"
+
+#, fuzzy
+msgid "Shrink height carousel item item image"
+msgstr "Höhe Karussell Element Element Bild verkleinern"
+
+#, fuzzy
+msgid "Shrink height image my image"
+msgstr "Mein Image Height Bild zu verkleinern"
+
+#, fuzzy
+msgid "Shrink height linker linker image"
+msgstr "Höhe Linker Linker Bild verkleinern"
+
+#, fuzzy
+msgid "Shrink width carousel item item image"
+msgstr "Breite Karussell Element Element Bild verkleinern"
+
+#, fuzzy
+msgid "Shrink width image my image"
+msgstr "Breite Bild mein Bild verkleinern"
+
+#, fuzzy
+msgid "Shrink width linker linker image"
+msgstr "Breite Linker Linker Bild verkleinern"
+
+msgid "Single item identifier"
+msgstr "Einzelner Element Identifier"
+
+msgid "Sliding time"
+msgstr "Sliding Zeit"
+
+#, fuzzy
+msgid ""
+"So in our example we can reference Persons with \"tbl\" and addresses with "
+"\"tblAddresses\"."
+msgstr ""
+"So in our example we can reference Persons with \"tbl\" and addresses with "
+"\"tblAddresses\"."
+
+#, fuzzy
+msgid "Sorry, but an error occured during the %action% action."
+msgstr "Sorry, aber ein Fehler ist bei Aktion %action% aufgetreten."
+
+#, fuzzy
+msgid ""
+"Sorry, but an error occured during the %action% action. Please apply the "
+"changes again!"
+msgstr ""
+"Sorry, aber ein Fehler ist bei Aktion %action% aufgetreten. Bitte diese "
+"Änderungen erneut anwenden!"
+
+#, fuzzy
+msgid ""
+"Sorry, but you can not create the carousel item yet as other items are "
+"required which must be created before!"
+msgstr ""
+"Tut mir leid, aber Sie können die Datei noch nicht erstellen! "
+"Pflichteinträge müssen vorher gemacht werden!"
+
+#, fuzzy
+msgid ""
+"Sorry, but you can not create the carousel yet as other items are required "
+"which must be created before!"
+msgstr ""
+"Tut mir leid, aber Sie können die Datei noch nicht erstellen! "
+"Pflichteinträge müssen vorher gemacht werden!"
+
+#, fuzzy
+msgid ""
+"Sorry, but you can not create the image yet as other items are required "
+"which must be created before!"
+msgstr ""
+"Sorry, but you can not create the image yet as other items are required "
+"which must be created before!"
+
+#, fuzzy
+msgid ""
+"Sorry, but you can not create the info yet as other items are required which "
+"must be created before!"
+msgstr ""
+"Tut mir leid, aber Sie können die Datei noch nicht erstellen! "
+"Pflichteinträge müssen vorher gemacht werden!"
+
+#, fuzzy
+msgid ""
+"Sorry, but you can not create the linker yet as other items are required "
+"which must be created before!"
+msgstr ""
+"Tut mir leid, aber Sie können die Datei noch nicht erstellen! "
+"Pflichteinträge müssen vorher gemacht werden!"
+
+msgid "Sort by"
+msgstr "Sortiere nach"
+
+msgid "Sort by %s"
+msgstr "Sortieren nach %s"
+
+msgid "Sort direction"
+msgstr "Sortierreihenfolge"
+
+msgid "Sorting"
+msgstr "Sortierung"
+
+msgid "Special field types"
+msgstr "Spezielle Feldtypen"
+
+msgid "State"
+msgstr "Status"
+
+msgid "Submit"
+msgstr "Absenden"
+
+#, fuzzy
+msgid "Submit content."
+msgstr "Inhalt bestätigen."
+
+msgid "Subtitle"
+msgstr "Untertitel"
+
+msgid "Switch to administration area."
+msgstr "Wechsel zum Administrationsbereich."
+
+msgid "Switch to user area."
+msgstr "Wechsel zum Nutzerbereich."
+
+msgid "Switch to users administration"
+msgstr "Wechseln Sie in die Benutzerverwaltung"
+
+msgid "Table aliases"
+msgstr "Tabellen Aliase"
+
+msgid "Template"
+msgstr "Vorlage"
+
+msgid "The amount of carousel items shown per page"
+msgstr "Die Anzahl der Karussellelemente pro Seite"
+
+msgid "The amount of carousells shown per page"
+msgstr "Die Anzahl der Karussells pro Seite"
+
+msgid "The amount of images shown per page"
+msgstr "Die Anzahl der Bilder pro Seite"
+
+msgid "The amount of infos shown per page"
+msgstr "Die Anzahl der Infos pro Seite"
+
+msgid "The amount of linkers shown per page"
+msgstr "Die Anzahl der Linker pro Seite"
+
+#, fuzzy
+msgid ""
+"The cache directory \"%directory%\" does not exist. Please create it and "
+"make it writable for the webserver."
+msgstr ""
+"Der Cache-Verzeichnis \"%directory%\" ist nicht vorhanden. Bitte erstellen "
+"Sie es und machen Sie es für den Webserver beschreibbar."
+
+#, fuzzy
+msgid "The enable shrinking for carousel item item image option."
+msgstr "Die schrumpfende für Karussell Element Element Bild Option aktivieren."
+
+#, fuzzy
+msgid "The enable shrinking for image my image option."
+msgstr "Die schrumpfende für Bild meine Bild-Option aktivieren."
+
+#, fuzzy
+msgid "The enable shrinking for linker linker image option."
+msgstr "Die Freigabe für Linker Linkeroption Bild verkleinern."
+
+#, fuzzy
+msgid "The first name equals either Peter or Chris"
+msgstr "Der Vorname entspricht entweder Peter oder Chris"
+
+#, fuzzy
+msgid "The first name is Peter"
+msgstr "Der erste Name ist Peter"
+
+#, fuzzy
+msgid ""
+"The first name is Peter and the house number of any address is below 100."
+msgstr ""
+"The first name is Peter and the house number of any address is below 100."
+
+#, fuzzy
+msgid ""
+"The following filters assume that you have a list of persons whereby each "
+"person can have many addresses."
+msgstr ""
+"The following filters assume that you have a list of persons whereby each "
+"person can have many addresses."
+
+#, fuzzy
+msgid "The house number of any address is lower than 100"
+msgstr "Die Hausnummer von jeder beliebigen Adresse ist niedriger als 100"
+
+msgid ""
+"The items are normally images. If you do not upload an image please be so "
+"kind and make a title and a subtitle"
+msgstr ""
+"Die Elemente sind in der Regel Bilder. Wenn kein Bild hochladen wird, müssen "
+"Titel und Untertitel angelegt werden."
+
+msgid "The link"
+msgstr "Der Link"
+
+#, fuzzy
+msgid ""
+"The main table, that is the entity being the primary subject of the query, "
+"is always known directly. That means, you can prepend \"tbl.\", but you do "
+"not need to."
+msgstr ""
+"The main table, that is the entity being the primary subject of the query, "
+"is always known directly. That means, you can prepend \"tbl.\", but you do "
+"not need to."
+
+msgid "The maximum amount of items to be shown."
+msgstr "Die maximale Anzahl von Elementen, die angezeigt werden."
+
+#, fuzzy
+msgid "The maximum image height in pixels."
+msgstr "Die maximale Bildhöhe in Pixel."
+
+#, fuzzy
+msgid "The maximum image width in pixels."
+msgstr "Die maximale Bildbreite in Pixel."
+
+#, fuzzy
+msgid "The operator defines the condition type (equal, lower than, etc.)."
+msgstr "The operator defines the condition type (equal, lower than, etc.)."
+
+#, fuzzy
+msgid ""
+"The ration of the image must be 3:1. Please format before uploading. The "
+"image will be shrinked to 1800px width. Your image should be not much less "
+"than this."
+msgstr ""
+"Das Verhältnis des Bildes muss 3:1 sein. Bitte formatieren Sie vor dem "
+"hochladen. Das Bild wird auf 1800px breite geschrumpft sein. Ihr Bild sollte "
+"nicht viel weniger als dies."
+
+#, fuzzy
+msgid ""
+"The term \"bar\" will match \"foobarthis\", but not \"foobar\" nor \"barfoo"
+"\"."
+msgstr ""
+"The term \"bar\" will match \"foobarthis\", but not \"foobar\" nor \"barfoo"
+"\"."
+
+#, fuzzy
+msgid ""
+"The term \"foo\" will match \"fOo\", \"AnotherFoo\" and so on, but not "
+"\"FoObar\" or \"FooBlub\"."
+msgstr ""
+"Der Begriff \"Foo\" passt für \"fOo\", \"AnotherFoo\" und so weiter, aber "
+"nicht für \"FoObar\" oder \"FooBlub\"."
+
+#, fuzzy
+msgid ""
+"The term \"foo\" will match \"fOo\", \"FOObar\", \"FooBlub\" and so on, but "
+"not \"AnotherFoo\"."
+msgstr ""
+"Der Begriff \"Foo\" passt für \"fOo\", \"FOObar\", \"FooBlub\" und so "
+"weiter, aber nicht für \"AnotherFoo\"."
+
+msgid "The upload directories at \"%path%\" can be removed manually."
+msgstr "Das Upload-Verzeichnis \"%path%\" kann manuell entfernt werden."
+
+#, fuzzy
+msgid ""
+"The upload directory \"%path%\" does not exist and could not be created. Try "
+"to create it yourself and make sure that this folder is accessible via the "
+"web and writable by the webserver."
+msgstr ""
+"Das Upload-Verzeichnis \"%s\" ist nicht vorhanden und konnte nicht erstellt "
+"werden. Versuchen Sie es selbst und stellen Sie sicher, dass dieser Ordner "
+"über das Web zugänglich und vom Webserver beschreibbar ist."
+
+#, fuzzy
+msgid "The value is scanned case insensitive."
+msgstr "Der Wert wird unabhängig von Groß- bzw. Kleinschreibung abgefragt."
+
+#, fuzzy
+msgid ""
+"Thereby \"Foo\" does not mean the name of the joined entity, but the source "
+"or target alias of the corresponding relationship."
+msgstr ""
+"Dabei bedeutet \"Foo\" nicht der Name der verknüpften Entität, aber die "
+"Quelle oder das Ziel Alias der entsprechenden Beziehung."
+
+msgid ""
+"This entity is for webmaster usage only. Here we can store some images for "
+"graphical usage."
+msgstr ""
+"Hier können Bilder für die Verwendung auf der Homepage gespeichert werden."
+
+#, fuzzy
+msgid ""
+"This field is for filtering in the block settings. So it makes it possible "
+"to have more than one carousel managed."
+msgstr ""
+"Dieses Feld ist für die Filterung in den Einstellungen für den "
+"Zugriffsschutz. Also macht es möglich, mehr als ein Karussell, die es "
+"geschafft haben."
+
+#, fuzzy
+msgid "This function requires JavaScript activated!"
+msgstr "Diese Funktion verlangt aktiviertes Javascript!"
+
+#, fuzzy
+msgid ""
+"This has the advantage that it is possible to join a certain table multiple "
+"times. For example instead of having many addresses for a person one could "
+"also create two relationships for business and home addresses this way."
+msgstr ""
+"Dies hat den Vorteil, dass es möglich ist, eine bestimmte Tabelle mehrfach "
+"zu verknüpfen. Zum Beispiel könnte anstatt viele Adressen für eine Person "
+"auch zwei Beziehungen für Geschäfts- und Privatadressen auf diese Weise "
+"entstehen."
+
+msgid "This is for creating simple translatable pages"
+msgstr "Dies ist für die Erstellung von einfachen übersetzbaren Seiten"
+
+#, fuzzy
+msgid ""
+"This is like a non-existing workflow. Everything is online immediately after "
+"creation."
+msgstr ""
+"Dies ist wie ein nicht existierender Workflow. Alles ist nach dem Erstellen "
+"direkt online."
+
+#, fuzzy
+msgid "Thumbnail height carousel item item image display"
+msgstr "Miniaturansicht Höhe Karussell Element Element Bildanzeige"
+
+#, fuzzy
+msgid "Thumbnail height carousel item item image edit"
+msgstr "Miniaturansicht Höhe Karussell Element Element Bild bearbeiten"
+
+#, fuzzy
+msgid "Thumbnail height carousel item item image view"
+msgstr "Miniaturansicht Höhe Karussell Element Element Bildansicht"
+
+#, fuzzy
+msgid "Thumbnail height image my image display"
+msgstr "Miniaturansicht Höhe Bild meiner Bildanzeige"
+
+#, fuzzy
+msgid "Thumbnail height image my image edit"
+msgstr "Miniaturansicht Höhe Bild mein Bild bearbeiten"
+
+#, fuzzy
+msgid "Thumbnail height image my image view"
+msgstr "Miniaturansicht Höhe Bild meiner Bildansicht"
+
+#, fuzzy
+msgid "Thumbnail height linker linker image display"
+msgstr "Miniaturansicht Höhe Linker Linker Bildanzeige"
+
+#, fuzzy
+msgid "Thumbnail height linker linker image edit"
+msgstr "Miniaturansicht Höhe Linker Linker Bild bearbeiten"
+
+#, fuzzy
+msgid "Thumbnail height linker linker image view"
+msgstr "Miniaturansicht Höhe Linker Linker Bildansicht"
+
+#, fuzzy
+msgid "Thumbnail height on display pages in pixels."
+msgstr "Thumbnail height on display pages in pixels."
+
+#, fuzzy
+msgid "Thumbnail height on edit pages in pixels."
+msgstr "Thumbnail height on edit pages in pixels."
+
+#, fuzzy
+msgid "Thumbnail height on view pages in pixels."
+msgstr "Thumbnail height on view pages in pixels."
+
+#, fuzzy
+msgid "Thumbnail mode (inset or outbound)."
+msgstr "Thumbnail mode (inset or outbound)."
+
+#, fuzzy
+msgid "Thumbnail mode carousel item item image"
+msgstr "Thumbnail-Modus Karussell Element Artikelbild"
+
+#, fuzzy
+msgid "Thumbnail mode image my image"
+msgstr "Thumbnail-Modus Bild mein Bild"
+
+#, fuzzy
+msgid "Thumbnail mode linker linker image"
+msgstr "Thumbnail-Modus Linker Linker Bild"
+
+#, fuzzy
+msgid "Thumbnail width carousel item item image display"
+msgstr "Miniaturansicht breite Karussell Element Element Bildanzeige"
+
+#, fuzzy
+msgid "Thumbnail width carousel item item image edit"
+msgstr "Miniaturansicht breite Karussell Element Element Bild bearbeiten"
+
+#, fuzzy
+msgid "Thumbnail width carousel item item image view"
+msgstr "Miniaturansicht breite Karussell Element Element Bildansicht"
+
+#, fuzzy
+msgid "Thumbnail width image my image display"
+msgstr "Miniaturansicht breite Bild meiner Bildanzeige"
+
+#, fuzzy
+msgid "Thumbnail width image my image edit"
+msgstr "Miniaturansicht breite Bild mein Bild bearbeiten"
+
+#, fuzzy
+msgid "Thumbnail width image my image view"
+msgstr "Miniaturansicht breite Bild meiner Bildansicht"
+
+#, fuzzy
+msgid "Thumbnail width linker linker image display"
+msgstr "Miniaturansicht breite Linker Linker Bildanzeige"
+
+#, fuzzy
+msgid "Thumbnail width linker linker image edit"
+msgstr "Miniaturansicht breite Linker Linker Bild bearbeiten"
+
+#, fuzzy
+msgid "Thumbnail width linker linker image view"
+msgstr "Miniaturansicht breite Linker Linker Bildansicht"
+
+#, fuzzy
+msgid "Thumbnail width on display pages in pixels."
+msgstr "Thumbnail width on display pages in pixels."
+
+#, fuzzy
+msgid "Thumbnail width on edit pages in pixels."
+msgstr "Thumbnail width on edit pages in pixels."
+
+#, fuzzy
+msgid "Thumbnail width on view pages in pixels."
+msgstr "Thumbnail width on view pages in pixels."
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Title color"
+msgstr "Titeltextfarbe auswählen"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+#, fuzzy
+msgid "Update configuration"
+msgstr "Update-Konfiguration"
+
+msgid "Update content."
+msgstr "Aktualisiere Inhalt."
+
+msgid "Update date"
+msgstr "Aktualisierungsdatum"
+
+msgid "Updated by %user"
+msgstr "Aktualisiert von %user"
+
+msgid "Updated by %user on %date"
+msgstr "Aktualisiert von %user am %date"
+
+msgid "Updated on %date"
+msgstr "Aktualisiert am %date"
+
+msgid "Updater"
+msgstr "Aktualisieren"
+
+msgid "View detail page"
+msgstr "Zeige Detailseite"
+
+#, fuzzy
+msgid ""
+"Warning! The upload directory at \"%path%\" exists but is not writable by "
+"the webserver."
+msgstr ""
+"Warnung! Das Upload-Verzeichnis \"%s\" besteht, ist allerdings nicht vom "
+"Webserver beschreibbar."
+
+msgid "Welcome to the carousel item section of the Helper application."
+msgstr "Willkommen im Karussell Elemente Abschnitt des Helpermoduls."
+
+msgid "Welcome to the carousel section of the Helper application."
+msgstr "Willkommen im Karussell Abschnitt des Helpermoduls."
+
+msgid "Welcome to the image section of the Helper application."
+msgstr "Willkommen im Bilder Abschnitt des Helpermoduls."
+
+msgid "Welcome to the info section of the Helper application."
+msgstr "Willkommen im Abschnitt der Infoseiten des Helpermoduls."
+
+msgid "Welcome to the linker section of the Helper application."
+msgstr "Willkommen im Linker Abschnitt des Helpermoduls."
+
+#, fuzzy
+msgid ""
+"When filtering for dates you can use convenient extensions and even time "
+"periods."
+msgstr ""
+"Beim Filtern nach Datum können Sie bequeme Erweiterungen und sogar Zeiträume "
+"benutzen."
+
+#, fuzzy
+msgid ""
+"Whether to enable shrinking huge images to maximum dimensions. Stores "
+"downscaled version of the original image."
+msgstr ""
+"Whether to enable shrinking huge images to maximum dimensions. Stores "
+"downscaled version of the original image."
+
+#, fuzzy
+msgid "With description"
+msgstr "Mit Beschreibung"
+
+msgid "With selected carousel items"
+msgstr "Mit ausgewählten Karussell Elementen"
+
+msgid "With selected carousells"
+msgstr "Mit ausgewählten Karussells"
+
+msgid "With selected images"
+msgstr "Mit ausgewählten Bildern"
+
+msgid "With selected infos"
+msgstr "Mit ausgewählten Infoseiten"
+
+msgid "With selected linkers"
+msgstr "Mit ausgewählten Linkern"
+
+msgid "Yes"
+msgstr "Ja"
+
+#, fuzzy
+msgid ""
+"You can use relative time information according to the GNU Date Input "
+"Formats syntax."
+msgstr ""
+"Es können relative Zeitinformation gemäß dem Format der GNU Datum "
+"Eingabeformate verwendet werden."
+
+#, fuzzy
+msgid "You must be carefull with the link settings. It is not validated!"
+msgstr ""
+"Hier sollte man vorsichtig mit den Link Einstellungen. Es wird nicht "
+"überprüft!"
+
+#, fuzzy
+msgid ""
+"a field to be used for block filtering. We may want to filter the same "
+"string here. Please do not use spaces an scpecial characters."
+msgstr ""
+"ein Feld für das Filtern von Block verwendet werden. Wir möchten hier die "
+"gleiche Zeichenfolge zu filtern. Bitte verwenden Sie keine Leerzeichen ein "
+"Scpecial Zeichen."
+
+msgid "carousel items"
+msgstr "Karussell Elemente"
+
+msgid "carousells"
+msgstr "Karussells"
+
+#, fuzzy
+msgid "check if controlls should be shown"
+msgstr "Überprüfen Sie, ob Kontrollen angezeigt werden sollen"
+
+msgid "controls ?"
+msgstr "Steuerung?"
+
+#, fuzzy
+msgid "if this is selected the link will open another window or tab"
+msgstr ""
+"Wenn diese Option ausgewählt, wird der Link öffnet sich ein weiteres Fenster "
+"oder Tab"
+
+#, fuzzy
+msgid "if you do not enter a date the date of today will be used"
+msgstr ""
+"Wenn Sie kein Datum eingeben, wird das Datum von heute verwendet werden"
+
+msgid "images"
+msgstr "Bilder"
+
+msgid "infos"
+msgstr "Infoseiten"
+
+#, fuzzy
+msgid "is Empty or NULL."
+msgstr "ist leer oder NULL."
+
+#, fuzzy
+msgid "is any middle coincidence."
+msgstr "is any middle coincidence."
+
+#, fuzzy
+msgid "is equal."
+msgstr "ist gleich."
+
+#, fuzzy
+msgid "is greater or equal than."
+msgstr "ist größer oder gleich als."
+
+#, fuzzy
+msgid "is greater than."
+msgstr "ist größer als."
+
+#, fuzzy
+msgid "is like."
+msgstr "Ist wie."
+
+#, fuzzy
+msgid "is lower or equal than."
+msgstr "ist niedriger oder gleich als."
+
+#, fuzzy
+msgid "is lower than."
+msgstr "ist kleiner als."
+
+#, fuzzy
+msgid "is not empty and not NULL."
+msgstr "ist nicht leer und nicht NULL."
+
+#, fuzzy
+msgid "is not equal."
+msgstr "ist ungleich"
+
+msgid "link external ?"
+msgstr "Externer Link?"
+
+msgid "linkers"
+msgstr "Linker"
+
+#, fuzzy
+msgid "make a note for which usecase you create this carousel"
+msgstr ""
+"Notieren Sie sich für welchen Anwendungsfall dieses Karussell erstellen"
+
+msgid "pixels"
+msgstr "Pixel"
+
+msgid "please note if the image do have a specific reason"
+msgstr "Bitte notiere hier den Zweck des Bildes"
+
+#, fuzzy
+msgid "rkhelpermodule. Carousel items Display Hooks"
+msgstr "Rkhelpermodule. Karussell Artikel Anzeige Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Carousel items Filter Hooks"
+msgstr "Rkhelpermodule. Karussell Artikel Filter Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Carousells Display Hooks"
+msgstr "Rkhelpermodule. Karussells Display Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Carousells Filter Hooks"
+msgstr "Rkhelpermodule. Karussells Filter Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Images Display Hooks"
+msgstr "Rkhelpermodule. Bilder Anzeige Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Images Filter Hooks"
+msgstr "Rkhelpermodule. Bilder-Filter-Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Infos Display Hooks"
+msgstr "Rkhelpermodule. Infos Anzeige Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Infos Filter Hooks"
+msgstr "Rkhelpermodule. Infos Filter Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Linkers Display Hooks"
+msgstr "Rkhelpermodule. Linker anzeigen Haken"
+
+#, fuzzy
+msgid "rkhelpermodule. Linkers Filter Hooks"
+msgstr "Rkhelpermodule. Linker Filtern Haken"
+
+#, fuzzy
+msgid "see the definitions at the bootstrap documentation"
+msgstr "Siehe die Definitionen in der bootstrap Dokumentation"
+
+#, fuzzy
+msgid "select white first. If this do not fit try a grey or black."
+msgstr ""
+"Wählen Sie zunächst weiß. Wenn dies nicht passen, versuchen Sie ein grau "
+"oder schwarz."
+
+#, fuzzy
+msgid ""
+"the item name will not be shown. it is just for notification in the backend"
+msgstr ""
+"der Elementname wird nicht angezeigt. Es ist nur für Benachrichtigung im "
+"backend"
+
+msgid ""
+"with this entity you are able to manage the home info fields. Bootstrap is "
+"mandatory!"
+msgstr ""
+"Mit dieser Entität können die Felder der Infoseiten gemanaged werden. "
+"Bootstrap ist obligatorisch!"
