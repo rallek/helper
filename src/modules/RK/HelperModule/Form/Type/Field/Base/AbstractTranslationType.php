@@ -37,7 +37,7 @@ abstract class AbstractTranslationType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -45,7 +45,7 @@ abstract class AbstractTranslationType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -71,7 +71,7 @@ abstract class AbstractTranslationType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {

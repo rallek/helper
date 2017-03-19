@@ -54,7 +54,7 @@ abstract class AbstractInfoFinderType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -200,7 +200,7 @@ abstract class AbstractInfoFinderType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
@@ -208,7 +208,7 @@ abstract class AbstractInfoFinderType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

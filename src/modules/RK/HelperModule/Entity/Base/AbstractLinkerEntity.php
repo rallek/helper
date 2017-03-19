@@ -91,11 +91,11 @@ abstract class AbstractLinkerEntity extends EntityAccess
      * @Assert\NotBlank()
      * @Assert\Length(min="0", max="255")
      * @Assert\File(
-     *    mimeTypes = {"image/*"}
+        mimeTypes = {"image/*"}
      * )
      * @Assert\Image(
-     *    allowSquare = false,
-     *    allowPortrait = false
+        allowSquare = false,
+        allowPortrait = false
      * )
      * @var string $linkerImage
      */
@@ -500,6 +500,7 @@ abstract class AbstractLinkerEntity extends EntityAccess
     
     
     
+    
     /**
      * Returns the formatted title conforming to the display pattern
      * specified for this entity.
@@ -515,6 +516,7 @@ abstract class AbstractLinkerEntity extends EntityAccess
     
         return $formattedTitle;
     }
+    
     
     /**
      * Returns a list of possible choices for the workflowState list field.

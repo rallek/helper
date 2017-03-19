@@ -38,8 +38,8 @@ abstract class AbstractExternalController extends AbstractController
     {
         $controllerHelper = $this->get('rk_helper_module.controller_helper');
         $contextArgs = ['controller' => 'external', 'action' => 'display'];
-        if (!in_array($objectType, $controllerHelper->getObjectTypes('controllerAction', $contextArgs))) {
-            $objectType = $controllerHelper->getDefaultObjectType('controllerAction', $contextArgs);
+        if (!in_array($objectType, $controllerHelper->getObjectTypes('controller', $contextArgs))) {
+            $objectType = $controllerHelper->getDefaultObjectType('controllerType', $contextArgs);
         }
         
         $component = 'RKHelperModule:' . ucfirst($objectType) . ':';
@@ -104,9 +104,10 @@ abstract class AbstractExternalController extends AbstractController
         $cssAssetBag = $this->get('zikula_core.common.theme.assets_css');
         $cssAssetBag->add($assetHelper->resolve('@RKHelperModule:css/style.css'));
         
-        $activatedObjectTypes = $this->getVar('enabledFinderTypes', []);
-        if (!in_array($objectType, $activatedObjectTypes)) {
-            throw new AccessDeniedException();
+        $controllerHelper = $this->get('rk_helper_module.controller_helper');
+        $contextArgs = ['controller' => 'external', 'action' => 'finder'];
+        if (!in_array($objectType, $controllerHelper->getObjectTypes('controller', $contextArgs))) {
+            $objectType = $controllerHelper->getDefaultObjectType('controllerType', $contextArgs);
         }
         
         if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', ACCESS_COMMENT)) {

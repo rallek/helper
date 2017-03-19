@@ -69,7 +69,7 @@ abstract class AbstractLinkerQuickNavType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -241,7 +241,7 @@ abstract class AbstractLinkerQuickNavType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {

@@ -25,40 +25,13 @@ class AbstractFilterInfoEvent extends Event
      */
     protected $info;
 
-    /**
-     * @var array Entity change set for preUpdate events.
-     */
-    protected $entityChangeSet = [];
-
-    /**
-     * FilterInfoEvent constructor.
-     *
-     * @param InfoEntity $info Processed entity
-     * @param array $entityChangeSet Change set for preUpdate events
-     */
-    public function __construct(InfoEntity $info, $entityChangeSet = [])
+    public function __construct(InfoEntity $info)
     {
         $this->info = $info;
-        $this->entityChangeSet = $entityChangeSet;
     }
 
-    /**
-     * Returns the entity.
-     *
-     * @return InfoEntity
-     */
     public function getInfo()
     {
         return $this->info;
-    }
-
-    /**
-     * Returns the change set.
-     *
-     * @return array
-     */
-    public function getEntityChangeSet()
-    {
-        return $this->entityChangeSet;
     }
 }

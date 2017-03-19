@@ -74,7 +74,7 @@ abstract class AbstractImageType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -118,7 +118,8 @@ abstract class AbstractImageType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the image title of the image')
             ],
-            'required' => true,
+            'required' => true
+            ,
         ]);
         
         $builder->add('myImage', 'RK\HelperModule\Form\Type\Field\UploadType', [
@@ -127,8 +128,8 @@ abstract class AbstractImageType extends AbstractType
                 'class' => ' validate-upload',
                 'title' => $this->__('Enter the my image of the image')
             ],
-            'required' => true && $options['mode'] == 'create',
-            'entity' => $options['entity'],
+            'required' => true && $options['mode'] == 'create'
+            ,'entity' => $options['entity'],
             'allowed_extensions' => 'gif, jpeg, jpg, png',
             'allowed_size' => ''
         ]);
@@ -146,7 +147,8 @@ abstract class AbstractImageType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the my description of the image')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('copyright', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -157,7 +159,8 @@ abstract class AbstractImageType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the copyright of the image')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
     }
 
@@ -254,7 +257,7 @@ abstract class AbstractImageType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
@@ -262,7 +265,7 @@ abstract class AbstractImageType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -21,7 +21,7 @@ use Zikula\Core\Event\GenericEvent;
 class UsersListener extends AbstractUsersListener
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
@@ -29,7 +29,7 @@ class UsersListener extends AbstractUsersListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configUpdated(GenericEvent $event)
     {

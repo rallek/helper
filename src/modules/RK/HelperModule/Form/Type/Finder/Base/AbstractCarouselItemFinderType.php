@@ -54,7 +54,7 @@ abstract class AbstractCarouselItemFinderType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -231,7 +231,7 @@ abstract class AbstractCarouselItemFinderType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
@@ -239,7 +239,7 @@ abstract class AbstractCarouselItemFinderType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

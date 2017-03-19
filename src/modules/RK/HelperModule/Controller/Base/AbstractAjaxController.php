@@ -128,7 +128,7 @@ abstract class AbstractAjaxController extends AbstractController
         foreach ($entities as $item) {
             $itemId = '';
             foreach ($idFields as $idField) {
-                $itemId .= (!empty($itemId) ? '_' : '') . $item[$idField];
+                $itemId .= ((!empty($itemId)) ? '_' : '') . $item[$idField];
             }
             if (!$this->hasPermission($component, $itemId . '::', ACCESS_READ)) {
                 continue;

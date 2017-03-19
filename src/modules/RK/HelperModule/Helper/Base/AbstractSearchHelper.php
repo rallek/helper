@@ -18,8 +18,6 @@ use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use Zikula\Common\Translator\TranslatorInterface;
-use Zikula\Common\Translator\TranslatorTrait;
 use Zikula\Core\RouteUrl;
 use Zikula\PermissionsModule\Api\PermissionApi;
 use Zikula\SearchModule\Entity\SearchResultEntity;
@@ -32,8 +30,6 @@ use RK\HelperModule\Helper\ControllerHelper;
  */
 abstract class AbstractSearchHelper implements SearchableInterface
 {
-    use TranslatorTrait;
-    
     /**
      * @var PermissionApi
      */
@@ -67,7 +63,6 @@ abstract class AbstractSearchHelper implements SearchableInterface
     /**
      * SearchHelper constructor.
      *
-     * @param TranslatorInterface $translator   Translator service instance
      * @param PermissionApi    $permissionApi   PermissionApi service instance
      * @param EngineInterface  $templateEngine  Template engine service instance
      * @param SessionInterface $session         Session service instance
@@ -76,14 +71,12 @@ abstract class AbstractSearchHelper implements SearchableInterface
      * @param ControllerHelper $controllerHelper ControllerHelper service instance
      */
     public function __construct(
-        TranslatorInterface $translator,
         PermissionApi $permissionApi,
         EngineInterface $templateEngine,
         SessionInterface $session,
         RequestStack $requestStack,
         HelperFactory $entityFactory,
         ControllerHelper $controllerHelper) {
-        $this->setTranslator($translator);
         $this->permissionApi = $permissionApi;
         $this->templateEngine = $templateEngine;
         $this->session = $session;
@@ -93,17 +86,7 @@ abstract class AbstractSearchHelper implements SearchableInterface
     }
     
     /**
-     * Sets the translator.
-     *
-     * @param TranslatorInterface $translator Translator service instance
-     */
-    public function setTranslator(/*TranslatorInterface */$translator)
-    {
-        $this->translator = $translator;
-    }
-    
-    /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getOptions($active, $modVars = null)
     {
@@ -113,17 +96,16 @@ abstract class AbstractSearchHelper implements SearchableInterface
     
         $templateParameters = [];
     
-        $searchTypes = $this->getSearchTypes();
-    
-        foreach ($searchTypes as $searchType => $typeInfo) {
-            $templateParameters['active_' . $searchType] = true;
+        $searchTypes = ['linker', 'carouselItem', 'carousel', 'image', 'info'];
+        foreach ($searchTypes as $searchType) {
+            $templateParameters['active_' . $searchType] = !isset($args['rKHelperModuleSearchTypes']) || in_array($searchType, $args['rKHelperModuleSearchTypes']);
         }
     
         return $this->templateEngine->renderResponse('@RKHelperModule/Search/options.html.twig', $templateParameters)->getContent();
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getResults(array $words, $searchType = 'AND', $modVars = null)
     {
@@ -144,7 +126,13 @@ abstract class AbstractSearchHelper implements SearchableInterface
             }
         }
     
+        $allowedTypes = $this->controllerHelper->getObjectTypes('helper', ['helper' => 'search', 'action' => 'getResults']);
+    
         foreach ($searchTypes as $objectType) {
+            if (!in_array($objectType, $allowedTypes)) {
+                continue;
+            }
+    
             $whereArray = [];
             $languageField = null;
             switch ($objectType) {
@@ -249,49 +237,7 @@ abstract class AbstractSearchHelper implements SearchableInterface
     }
     
     /**
-     * Returns list of supported search types.
-     *
-     * @return array
-     */
-    protected function getSearchTypes()
-    {
-        $searchTypes = [
-            'rKHelperModuleLinkers' => [
-                'value' => 'linker',
-                'label' => $this->__('Linkers')
-            ],
-            'rKHelperModuleCarouselItems' => [
-                'value' => 'carouselItem',
-                'label' => $this->__('Carousel items')
-            ],
-            'rKHelperModuleCarousells' => [
-                'value' => 'carousel',
-                'label' => $this->__('Carousells')
-            ],
-            'rKHelperModuleImages' => [
-                'value' => 'image',
-                'label' => $this->__('Images')
-            ],
-            'rKHelperModuleInfos' => [
-                'value' => 'info',
-                'label' => $this->__('Infos')
-            ]
-        ];
-    
-        $allowedTypes = $this->controllerHelper->getObjectTypes('helper', ['helper' => 'search', 'action' => 'getSearchTypes']);
-        $allowedSearchTypes = [];
-        foreach ($searchTypes as $searchType => $typeInfo) {
-            if (!in_array($typeInfo['value'], $allowedTypes)) {
-                continue;
-            }
-            $allowedSearchTypes[$searchType] = $typeInfo;
-        }
-    
-        return $allowedSearchTypes;
-    }
-    
-    /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getErrors()
     {

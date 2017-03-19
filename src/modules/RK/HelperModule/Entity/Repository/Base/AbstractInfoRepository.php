@@ -271,7 +271,7 @@ abstract class AbstractInfoRepository extends EntityRepository
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->update('RK\HelperModule\Entity\InfoEntity', 'tbl')
            ->set('tbl.createdBy', $newUserId)
-           ->where('tbl.createdBy = :creator')
+           ->where('tbl.createdBy= :creator')
            ->setParameter('creator', $userId);
         $query = $qb->getQuery();
         $query->execute();
@@ -447,7 +447,7 @@ abstract class AbstractInfoRepository extends EntityRepository
     
         $results = $query->getResult();
     
-        return count($results) > 0 ? $results : null;
+        return (count($results) > 0) ? $results : null;
     }
 
     /**
@@ -463,6 +463,32 @@ abstract class AbstractInfoRepository extends EntityRepository
         if ($excludeId > 0) {
             $qb->andWhere('tbl.id != :excludeId')
                ->setParameter('excludeId', $excludeId);
+        }
+    
+        return $qb;
+    }
+
+    /**
+     * Adds a filter for the createdBy field.
+     *
+     * @param QueryBuilder $qb Query builder to be enhanced
+     * @param integer      $userId The user identifier used for filtering (optional)
+     *
+     * @return QueryBuilder Enriched query builder instance
+     */
+    public function addCreatorFilter(QueryBuilder $qb, $userId = null)
+    {
+        if (null === $userId) {
+            $currentUserApi = ServiceUtil::get('zikula_users_module.current_user');
+            $userId = $currentUserApi->isLoggedIn() ? $currentUserApi->get('uid') : 1;
+        }
+    
+        if (is_array($userId)) {
+            $qb->andWhere('tbl.createdBy IN (:userIds)')
+               ->setParameter('userIds', $userId);
+        } else {
+            $qb->andWhere('tbl.createdBy = :userId')
+               ->setParameter('userId', $userId);
         }
     
         return $qb;
@@ -654,18 +680,28 @@ abstract class AbstractInfoRepository extends EntityRepository
             return $qb;
         }
     
-        $filters = [];
-        $parameters = [];
+        $fragment = str_replace('\'', '', \DataUtil::formatForStore($fragment));
+        $fragmentIsNumeric = is_numeric($fragment);
     
-        $filters[] = 'tbl.infoTitle LIKE :searchInfoTitle';
-        $parameters['searchInfoTitle'] = '%' . $fragment . '%';
-        $filters[] = 'tbl.infoDescription LIKE :searchInfoDescription';
-        $parameters['searchInfoDescription'] = '%' . $fragment . '%';
-        $filters[] = 'tbl.infoLocale LIKE :searchInfoLocale';
-        $parameters['searchInfoLocale'] = '%' . $fragment . '%';
+        $where = '';
+        if (!$fragmentIsNumeric) {
+            $where .= ((!empty($where)) ? ' OR ' : '');
+            $where .= 'tbl.infoTitle LIKE \'%' . $fragment . '%\'';
+            $where .= ((!empty($where)) ? ' OR ' : '');
+            $where .= 'tbl.infoDescription LIKE \'%' . $fragment . '%\'';
+            $where .= ((!empty($where)) ? ' OR ' : '');
+            $where .= 'tbl.infoLocale LIKE \'%' . $fragment . '%\'';
+        } else {
+            $where .= ((!empty($where)) ? ' OR ' : '');
+            $where .= 'tbl.infoTitle LIKE \'%' . $fragment . '%\'';
+            $where .= ((!empty($where)) ? ' OR ' : '');
+            $where .= 'tbl.infoDescription LIKE \'%' . $fragment . '%\'';
+            $where .= ((!empty($where)) ? ' OR ' : '');
+            $where .= 'tbl.infoLocale LIKE \'%' . $fragment . '%\'';
+        }
+        $where = '(' . $where . ')';
     
-        $qb->andWhere('(' . implode(' OR ', $filters) . ')')
-           ->setParameters($parameters);
+        $qb->andWhere($where);
     
         return $qb;
     }

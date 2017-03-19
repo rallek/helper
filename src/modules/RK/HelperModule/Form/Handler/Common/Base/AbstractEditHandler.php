@@ -568,11 +568,6 @@ abstract class AbstractEditHandler
     {
         $translationsEnabled = $this->featureActivationHelper->isEnabled(FeatureActivationHelper::TRANSLATIONS, $this->objectType);
         $this->templateParameters['translationsEnabled'] = $translationsEnabled;
-    
-        $supportedLanguages = $this->translatableHelper->getSupportedLanguages($this->objectType);
-        // assign list of installed languages for translatable extension
-        $this->templateParameters['supportedLanguages'] = $supportedLanguages;
-    
         if (!$translationsEnabled) {
             return;
         }
@@ -581,7 +576,8 @@ abstract class AbstractEditHandler
             $this->templateParameters['translationsEnabled'] = false;
     
             return;
-        }
+    	}
+        $supportedLanguages = $this->translatableHelper->getSupportedLanguages($this->objectType);
         if (count($supportedLanguages) < 2) {
             $this->templateParameters['translationsEnabled'] = false;
     
@@ -605,6 +601,9 @@ abstract class AbstractEditHandler
         foreach ($translations as $language => $translationData) {
             $this->templateParameters[$this->objectTypeLower . $language] = $translationData;
         }
+    
+        // assign list of installed languages for translatable extension
+        $this->templateParameters['supportedLanguages'] = $supportedLanguages;
     }
 
     /**

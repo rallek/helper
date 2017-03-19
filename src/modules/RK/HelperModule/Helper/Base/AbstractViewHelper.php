@@ -12,15 +12,13 @@
 
 namespace RK\HelperModule\Helper\Base;
 
-use Symfony\Bundle\TwigBundle\Loader\FilesystemLoader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
-use Twig_Environment;
+use Symfony\Component\Templating\EngineInterface;
 use Zikula\Core\Response\PlainResponse;
 use Zikula\ExtensionsModule\Api\VariableApi;
 use Zikula\PermissionsModule\Api\PermissionApi;
-use Zikula\ThemeModule\Engine\ParameterBag;
 use RK\HelperModule\Helper\ControllerHelper;
 
 /**
@@ -29,14 +27,9 @@ use RK\HelperModule\Helper\ControllerHelper;
 abstract class AbstractViewHelper
 {
     /**
-     * @var Twig_Environment
+     * @var EngineInterface
      */
-    protected $twig;
-
-    /**
-     * @var FilesystemLoader
-     */
-    protected $twigLoader;
+    protected $templating;
 
     /**
      * @var Request
@@ -54,11 +47,6 @@ abstract class AbstractViewHelper
     protected $variableApi;
 
     /**
-     * @var ParameterBag
-     */
-    protected $pageVars;
-
-    /**
      * @var ControllerHelper
      */
     protected $controllerHelper;
@@ -66,31 +54,20 @@ abstract class AbstractViewHelper
     /**
      * ViewHelper constructor.
      *
-     * @param Twig_Environment $twig             Twig service instance
-     * @param FilesystemLoader $twigLoader       Twig loader service instance
+     * @param EngineInterface  $templating       EngineInterface service instance
      * @param RequestStack     $requestStack     RequestStack service instance
      * @param PermissionApi    $permissionApi    PermissionApi service instance
      * @param VariableApi      $variableApi      VariableApi service instance
-     * @param ParameterBag     $pageVars         ParameterBag for theme page variables
      * @param ControllerHelper $controllerHelper ControllerHelper service instance
      *
      * @return void
      */
-    public function __construct(
-        Twig_Environment $twig,
-        FilesystemLoader $twigLoader,
-        RequestStack $requestStack,
-        PermissionApi $permissionApi,
-        VariableApi $variableApi,
-        ParameterBag $pageVars,
-        ControllerHelper $controllerHelper)
+    public function __construct(EngineInterface $templating, RequestStack $requestStack, PermissionApi $permissionApi, VariableApi $variableApi, ControllerHelper $controllerHelper)
     {
-        $this->twig = $twig;
-        $this->twigLoader = $twigLoader;
+        $this->templating = $templating;
         $this->request = $requestStack->getCurrentRequest();
         $this->permissionApi = $permissionApi;
         $this->variableApi = $variableApi;
-        $this->pageVars = $pageVars;
         $this->controllerHelper = $controllerHelper;
     }
 
@@ -115,7 +92,7 @@ abstract class AbstractViewHelper
         if (!empty($tpl)) {
             // check if custom template exists
             $customTemplate = $template . ucfirst($tpl);
-            if ($this->twigLoader->exists($customTemplate . $templateExtension)) {
+            if ($this->templating->exists($customTemplate . $templateExtension)) {
                 $template = $customTemplate;
             }
         }
@@ -154,7 +131,7 @@ abstract class AbstractViewHelper
             $raw = true;
         }
     
-        $output = $this->twig->render($template, $templateParameters);
+        $output = $this->templating->render($template, $templateParameters);
         $response = null;
         if (true === $raw) {
             // standalone output
@@ -177,7 +154,7 @@ abstract class AbstractViewHelper
      * @param string $type Current controller (name of currently treated entity)
      * @param string $func Current function (index, view, ...)
      *
-     * @return string Template extension
+     * @return array List of allowed template extensions
      */
     protected function determineExtension($type, $func)
     {
@@ -235,7 +212,7 @@ abstract class AbstractViewHelper
     protected function processPdf(array $templateParameters = [], $template)
     {
         // first the content, to set page vars
-        $output = $this->twig->render($template, $templateParameters);
+        $output = $this->templating->render($template, $templateParameters);
     
         // make local images absolute
         $output = str_replace('img src="/', 'img src="' . $this->request->server->get('DOCUMENT_ROOT') . '/', $output);
@@ -244,15 +221,15 @@ abstract class AbstractViewHelper
         //$output = utf8_decode($output);
     
         // then the surrounding
-        $output = $this->twig->render('@RKHelperModule/includePdfHeader.html.twig') . $output . '</body></html>';
+        $output = $this->templating->render('includePdfHeader.html.twig') . $output . '</body></html>';
+    
+        $siteName = $this->variableApi->getSystemVar('sitename');
     
         // create name of the pdf output file
-        $siteName = $this->variableApi->getSystemVar('sitename');
-        $pageTitle = $this->controllerHelper->formatPermalink($this->themePageVars->get('title', ''));
         $fileTitle = $this->controllerHelper->formatPermalink($siteName)
                    . '-'
-                   . ($pageTitle != '' ? $pageTitle . '-' : '')
-                   . date('Ymd') . '.pdf';
+                   . $this->controllerHelper->formatPermalink(\PageUtil::getVar('title'))
+                   . '-' . date('Ymd') . '.pdf';
     
         /*
         if (true === $this->request->query->getBoolean('dbg', false)) {
@@ -271,6 +248,6 @@ abstract class AbstractViewHelper
         // stream output to browser
         $pdf->stream($fileTitle);
     
-        return new Response();
+        return new Response(); 
     }
 }

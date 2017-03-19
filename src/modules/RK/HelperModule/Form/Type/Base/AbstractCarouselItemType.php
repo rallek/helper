@@ -83,7 +83,7 @@ abstract class AbstractCarouselItemType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -133,7 +133,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the item name of the carousel item')
             ],
-            'required' => true,
+            'required' => true
+            ,
         ]);
         
         $builder->add('title', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -144,7 +145,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the title of the carousel item')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('subtitle', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -155,7 +157,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the subtitle of the carousel item')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('link', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -171,7 +174,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the link of the carousel item')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('itemImage', 'RK\HelperModule\Form\Type\Field\UploadType', [
@@ -185,8 +189,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => ' validate-upload',
                 'title' => $this->__('Enter the item image of the carousel item')
             ],
-            'required' => false && $options['mode'] == 'create',
-            'entity' => $options['entity'],
+            'required' => false && $options['mode'] == 'create'
+            ,'entity' => $options['entity'],
             'allowed_extensions' => 'gif, jpeg, jpg, png',
             'allowed_size' => ''
         ]);
@@ -204,7 +208,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => ' validate-nospace validate-htmlcolour rkhelpermoduleColourPicker',
                 'title' => $this->__('Choose the title color of the carousel item')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('itemStartDate', 'Symfony\Component\Form\Extension\Core\Type\DateType', [
@@ -219,21 +224,20 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => ' validate-daterange-carouselitem',
                 'title' => $this->__('Enter the item start date of the carousel item')
             ],
-            'required' => false,
-            'empty_data' => '',
+            'required' => false
+            ,'empty_data' => '',
             'widget' => 'single_text'
         ]);
         
         $builder->add('intemEndDate', 'Symfony\Component\Form\Extension\Core\Type\DateType', [
             'label' => $this->__('Intem end date') . ':',
-            'help' => $this->__('Note: this value must be in the future.'),
             'empty_data' => '2099-12-31',
             'attr' => [
                 'class' => ' validate-date-future validate-daterange-carouselitem',
                 'title' => $this->__('Enter the intem end date of the carousel item')
             ],
-            'required' => true,
-            'empty_data' => '2099-12-31',
+            'required' => true
+            ,'empty_data' => '2099-12-31',
             'widget' => 'single_text'
         ]);
         
@@ -250,7 +254,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => 'validate-unique',
                 'title' => $this->__('Enter the single item identifier of the carousel item')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('linkExternal', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
@@ -264,7 +269,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => '',
                 'title' => $this->__('link external ?')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('itemLocale', 'Zikula\Bundle\FormExtensionBundle\Form\Type\LocaleType', [
@@ -275,8 +281,8 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Choose the item locale of the carousel item')
             ],
-            'required' => false,
-            'placeholder' => $this->__('All'),
+            'required' => false
+            ,'placeholder' => $this->__('All'),
             'choices' => $this->localeApi->getSupportedLocaleNames(),
             'choices_as_values' => true
         ]);
@@ -300,8 +306,6 @@ abstract class AbstractCarouselItemType extends AbstractType
             'multiple' => false,
             'expanded' => false,
             'query_builder' => $queryBuilder,
-            'placeholder' => $this->__('Please choose an option'),
-            'required' => false,
             'label' => $this->__('Carousel'),
             'attr' => [
                 'title' => $this->__('Choose the carousel')
@@ -402,7 +406,7 @@ abstract class AbstractCarouselItemType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
@@ -410,7 +414,7 @@ abstract class AbstractCarouselItemType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

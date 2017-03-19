@@ -29,7 +29,7 @@ use Symfony\Component\HttpFoundation\Response;
 class KernelListener extends AbstractKernelListener
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
@@ -37,7 +37,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onRequest(GetResponseEvent $event)
     {
@@ -72,7 +72,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onController(FilterControllerEvent $event)
     {
@@ -119,7 +119,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onView(GetResponseForControllerResultEvent $event)
     {
@@ -154,7 +154,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onResponse(FilterResponseEvent $event)
     {
@@ -188,7 +188,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onFinishRequest(FinishRequestEvent $event)
     {
@@ -215,7 +215,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onTerminate(PostResponseEvent $event)
     {
@@ -242,7 +242,7 @@ class KernelListener extends AbstractKernelListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function onException(GetResponseForExceptionEvent $event)
     {

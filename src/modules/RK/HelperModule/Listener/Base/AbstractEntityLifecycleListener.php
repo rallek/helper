@@ -219,7 +219,7 @@ abstract class AbstractEntityLifecycleListener implements EventSubscriber, Conta
      *
      * @see http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/events.html#preupdate
      *
-     * @param PreUpdateEventArgs $args Event arguments
+     * @param LifecycleEventArgs $args Event arguments
      */
     public function preUpdate(PreUpdateEventArgs $args)
     {
@@ -243,7 +243,7 @@ abstract class AbstractEntityLifecycleListener implements EventSubscriber, Conta
         
         // create the filter event and dispatch it
         $filterEventClass = '\\RK\\HelperModule\\Event\\Filter' . ucfirst($entity->get_objectType()) . 'Event';
-        $event = new $filterEventClass($entity, $args->getEntityChangeSet());
+        $event = new $filterEventClass($entity);
         $this->container->get('event_dispatcher')->dispatch(constant('\\RK\\HelperModule\\HelperEvents::' . strtoupper($entity->get_objectType()) . '_PRE_UPDATE'), $event);
         if ($event->isPropagationStopped()) {
             return false;

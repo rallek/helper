@@ -13,9 +13,7 @@
 namespace RK\HelperModule\Form\Type\Field\Base;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType as SymfonyDateTimeType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
@@ -25,30 +23,7 @@ use Symfony\Component\Form\FormView;
 abstract class AbstractDateTimeType extends AbstractType
 {
     /**
-     * @inheritDoc
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        parent::buildForm($builder, $options);
-
-        if ($options['html5'] && 'single_text' === $options['widget'] && SymfonyDateTimeType::HTML5_FORMAT === $options['format']) {
-            $builder->addViewTransformer(new CallbackTransformer(
-                function ($output) {
-                    if (substr($output, -1) == 'Z') {
-                        return substr($output, 0, -1);
-                    }
-
-                    return substr($output, 0, -6);
-                },
-                function ($input) {
-                    return $input . 'Z';
-                }
-            ));
-        }
-    }
-
-    /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
@@ -64,7 +39,7 @@ abstract class AbstractDateTimeType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getParent()
     {
@@ -72,7 +47,7 @@ abstract class AbstractDateTimeType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {

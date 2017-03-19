@@ -23,7 +23,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 abstract class AbstractColourType extends AbstractType
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -38,7 +38,7 @@ abstract class AbstractColourType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getParent()
     {
@@ -46,7 +46,7 @@ abstract class AbstractColourType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {

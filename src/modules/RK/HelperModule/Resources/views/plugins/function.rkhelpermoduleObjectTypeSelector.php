@@ -26,26 +26,11 @@ function smarty_function_rkhelpermoduleObjectTypeSelector($params, $view)
     $dom = ZLanguage::getModuleDomain('RKHelperModule');
     $result = [];
 
-    $result[] = [
-        'text' => __('Linkers', $dom),
-        'value' => 'linker'
-    ];
-    $result[] = [
-        'text' => __('Carousel items', $dom),
-        'value' => 'carouselItem'
-    ];
-    $result[] = [
-        'text' => __('Carousells', $dom),
-        'value' => 'carousel'
-    ];
-    $result[] = [
-        'text' => __('Images', $dom),
-        'value' => 'image'
-    ];
-    $result[] = [
-        'text' => __('Infos', $dom),
-        'value' => 'info'
-    ];
+    $result[] = ['text' => __('Linkers', $dom), 'value' => 'linker'];
+    $result[] = ['text' => __('Carousel items', $dom), 'value' => 'carouselItem'];
+    $result[] = ['text' => __('Carousells', $dom), 'value' => 'carousel'];
+    $result[] = ['text' => __('Images', $dom), 'value' => 'image'];
+    $result[] = ['text' => __('Infos', $dom), 'value' => 'info'];
 
     if (array_key_exists('assign', $params)) {
         $view->assign($params['assign'], $result);

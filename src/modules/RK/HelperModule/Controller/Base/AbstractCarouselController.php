@@ -69,7 +69,7 @@ abstract class AbstractCarouselController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carousel';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_OVERVIEW;
-        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -127,7 +127,7 @@ abstract class AbstractCarouselController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carousel';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_READ;
-        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -207,7 +207,7 @@ abstract class AbstractCarouselController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carousel';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_EDIT;
-        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $templateParameters = [
@@ -275,7 +275,7 @@ abstract class AbstractCarouselController extends AbstractController
         // parameter specifying which type of objects we are treating
         $objectType = 'carousel';
         $permLevel = $isAdmin ? ACCESS_ADMIN : ACCESS_DELETE;
-        if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', $permLevel)) {
+        if (!$this->hasPermission($this->name . ':' . ucfirst($objectType) . ':', '::', $permLevel)) {
             throw new AccessDeniedException();
         }
         $logger = $this->get('logger');

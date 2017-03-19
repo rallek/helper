@@ -79,7 +79,7 @@ abstract class AbstractCarouselType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -106,7 +106,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the carousel name of the carousel')
             ],
-            'required' => true,
+            'required' => true
+            ,
         ]);
         
         $builder->add('remarks', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -122,7 +123,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the remarks of the carousel')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('slidingTime', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
@@ -133,8 +135,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => ' validate-digits',
                 'title' => $this->__('Enter the sliding time of the carousel.') . ' ' . $this->__('Only digits are allowed.')
             ],
-            'required' => true,
-            'scale' => 0
+            'required' => true
+            ,'scale' => 0
         ]);
         
         $builder->add('controls', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
@@ -148,7 +150,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => '',
                 'title' => $this->__('controls ?')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('carouselGroup', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
@@ -164,7 +167,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Enter the carousel group of the carousel')
             ],
-            'required' => false,
+            'required' => false
+            ,
         ]);
         
         $builder->add('carouselLocale', 'Zikula\Bundle\FormExtensionBundle\Form\Type\LocaleType', [
@@ -175,8 +179,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Choose the carousel locale of the carousel')
             ],
-            'required' => true,
-            'choices' => $this->localeApi->getSupportedLocaleNames(),
+            'required' => true
+            ,'choices' => $this->localeApi->getSupportedLocaleNames(),
             'choices_as_values' => true
         ]);
     }
@@ -274,7 +278,7 @@ abstract class AbstractCarouselType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
@@ -282,7 +286,7 @@ abstract class AbstractCarouselType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

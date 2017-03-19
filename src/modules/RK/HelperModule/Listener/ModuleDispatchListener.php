@@ -21,7 +21,7 @@ use Zikula\Core\Event\GenericEvent;
 class ModuleDispatchListener extends AbstractModuleDispatchListener
 {
     /**
-     * @inheritDoc
+     * Makes our handlers known to the event system.
      */
     public static function getSubscribedEvents()
     {
@@ -29,13 +29,123 @@ class ModuleDispatchListener extends AbstractModuleDispatchListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
+     */
+    public function postLoadGeneric(GenericEvent $event)
+    {
+        parent::postLoadGeneric($event);
+    
+        // you can access general data available in the event
+        
+        // the event name
+        // echo 'Event: ' . $event->getName();
+        
+        // type of current request: MASTER_REQUEST or SUB_REQUEST
+        // if a listener should only be active for the master request,
+        // be sure to check that at the beginning of your method
+        // if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
+        //     // don't do anything if it's not the master request
+        //     return;
+        // }
+        
+        // kernel instance handling the current request
+        // $kernel = $event->getKernel();
+        
+        // the currently handled request
+        // $request = $event->getRequest();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function preExecute(GenericEvent $event)
+    {
+        parent::preExecute($event);
+    
+        // you can access general data available in the event
+        
+        // the event name
+        // echo 'Event: ' . $event->getName();
+        
+        // type of current request: MASTER_REQUEST or SUB_REQUEST
+        // if a listener should only be active for the master request,
+        // be sure to check that at the beginning of your method
+        // if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
+        //     // don't do anything if it's not the master request
+        //     return;
+        // }
+        
+        // kernel instance handling the current request
+        // $kernel = $event->getKernel();
+        
+        // the currently handled request
+        // $request = $event->getRequest();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function postExecute(GenericEvent $event)
+    {
+        parent::postExecute($event);
+    
+        // you can access general data available in the event
+        
+        // the event name
+        // echo 'Event: ' . $event->getName();
+        
+        // type of current request: MASTER_REQUEST or SUB_REQUEST
+        // if a listener should only be active for the master request,
+        // be sure to check that at the beginning of your method
+        // if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
+        //     // don't do anything if it's not the master request
+        //     return;
+        // }
+        
+        // kernel instance handling the current request
+        // $kernel = $event->getKernel();
+        
+        // the currently handled request
+        // $request = $event->getRequest();
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function customClassname(GenericEvent $event)
+    {
+        parent::customClassName($event);
+    
+        // you can access general data available in the event
+        
+        // the event name
+        // echo 'Event: ' . $event->getName();
+        
+        // type of current request: MASTER_REQUEST or SUB_REQUEST
+        // if a listener should only be active for the master request,
+        // be sure to check that at the beginning of your method
+        // if ($event->getRequestType() !== HttpKernelInterface::MASTER_REQUEST) {
+        //     // don't do anything if it's not the master request
+        //     return;
+        // }
+        
+        // kernel instance handling the current request
+        // $kernel = $event->getKernel();
+        
+        // the currently handled request
+        // $request = $event->getRequest();
+    }
+    
+    /**
+     * {@inheritdoc}
      */
     public function serviceLinks(GenericEvent $event)
     {
-        parent::serviceLinks($event);
+        parent::customClassName($event);
     
-        // Inject router and translator services and format data like this:
+        // Format data like so:
+        // $router = \ServiceUtil::get('router');
+        // $translator = \ServiceUtil::get('translator.default');
         // $event->data[] = [
         //     'url' => $router->generate('rkhelpermodule_user_index'),
         //     'text' => $translator->__('Link text')

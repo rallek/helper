@@ -25,7 +25,7 @@ use Symfony\Component\Form\FormInterface;
 abstract class AbstractTranslationListener implements EventSubscriberInterface
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {

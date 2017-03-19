@@ -95,7 +95,7 @@ abstract class AbstractInfoType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -122,7 +122,8 @@ abstract class AbstractInfoType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the info title of the info')
             ],
-            'required' => true,
+            'required' => true
+            ,
         ]);
         
         $builder->add('infoDescription', 'Symfony\Component\Form\Extension\Core\Type\TextareaType', [
@@ -133,7 +134,8 @@ abstract class AbstractInfoType extends AbstractType
                 'class' => '',
                 'title' => $this->__('Enter the info description of the info')
             ],
-            'required' => true,
+            'required' => true
+            ,
         ]);
         
         if ($this->variableApi->getSystemVar('multilingual') && $this->featureActivationHelper->isEnabled(FeatureActivationHelper::TRANSLATIONS, 'info')) {
@@ -163,8 +165,8 @@ abstract class AbstractInfoType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Choose the info locale of the info')
             ],
-            'required' => false,
-            'placeholder' => $this->__('All'),
+            'required' => false
+            ,'placeholder' => $this->__('All'),
             'choices' => $this->localeApi->getSupportedLocaleNames(),
             'choices_as_values' => true
         ]);
@@ -263,7 +265,7 @@ abstract class AbstractInfoType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
@@ -271,7 +273,7 @@ abstract class AbstractInfoType extends AbstractType
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -21,7 +21,7 @@ use Zikula\Core\Event\GenericEvent;
 class UserLogoutListener extends AbstractUserLogoutListener
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
@@ -29,7 +29,7 @@ class UserLogoutListener extends AbstractUserLogoutListener
     }
     
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function succeeded(GenericEvent $event)
     {

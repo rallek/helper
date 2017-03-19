@@ -33,7 +33,7 @@ abstract class AbstractDummySigner implements SignerInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function sign($path, array $runtimeConfig = null)
     {
@@ -47,7 +47,7 @@ abstract class AbstractDummySigner implements SignerInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function check($hash, $path, array $runtimeConfig = null)
     {

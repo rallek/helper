@@ -25,40 +25,13 @@ class AbstractFilterLinkerEvent extends Event
      */
     protected $linker;
 
-    /**
-     * @var array Entity change set for preUpdate events.
-     */
-    protected $entityChangeSet = [];
-
-    /**
-     * FilterLinkerEvent constructor.
-     *
-     * @param LinkerEntity $linker Processed entity
-     * @param array $entityChangeSet Change set for preUpdate events
-     */
-    public function __construct(LinkerEntity $linker, $entityChangeSet = [])
+    public function __construct(LinkerEntity $linker)
     {
         $this->linker = $linker;
-        $this->entityChangeSet = $entityChangeSet;
     }
 
-    /**
-     * Returns the entity.
-     *
-     * @return LinkerEntity
-     */
     public function getLinker()
     {
         return $this->linker;
-    }
-
-    /**
-     * Returns the change set.
-     *
-     * @return array
-     */
-    public function getEntityChangeSet()
-    {
-        return $this->entityChangeSet;
     }
 }

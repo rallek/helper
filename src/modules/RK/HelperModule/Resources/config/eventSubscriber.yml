@@ -7,6 +7,11 @@ services:
         tags:
             - { name: doctrine.event_subscriber }
     
+    rk_helper_module.core_listener:
+        class: RK\HelperModule\Listener\CoreListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
     rk_helper_module.kernel_listener:
         class: RK\HelperModule\Listener\KernelListener
         tags:
@@ -27,8 +32,18 @@ services:
         tags:
             - { name: kernel.event_subscriber }
     
+    rk_helper_module.page_listener:
+        class: RK\HelperModule\Listener\PageListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
     rk_helper_module.theme_listener:
         class: RK\HelperModule\Listener\ThemeListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    rk_helper_module.view_listener:
+        class: RK\HelperModule\Listener\ViewListener
         tags:
             - { name: kernel.event_subscriber }
     

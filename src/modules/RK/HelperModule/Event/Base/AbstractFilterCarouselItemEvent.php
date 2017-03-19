@@ -25,40 +25,13 @@ class AbstractFilterCarouselItemEvent extends Event
      */
     protected $carouselItem;
 
-    /**
-     * @var array Entity change set for preUpdate events.
-     */
-    protected $entityChangeSet = [];
-
-    /**
-     * FilterCarouselItemEvent constructor.
-     *
-     * @param CarouselItemEntity $carouselItem Processed entity
-     * @param array $entityChangeSet Change set for preUpdate events
-     */
-    public function __construct(CarouselItemEntity $carouselItem, $entityChangeSet = [])
+    public function __construct(CarouselItemEntity $carouselItem)
     {
         $this->carouselItem = $carouselItem;
-        $this->entityChangeSet = $entityChangeSet;
     }
 
-    /**
-     * Returns the entity.
-     *
-     * @return CarouselItemEntity
-     */
     public function getCarouselItem()
     {
         return $this->carouselItem;
-    }
-
-    /**
-     * Returns the change set.
-     *
-     * @return array
-     */
-    public function getEntityChangeSet()
-    {
-        return $this->entityChangeSet;
     }
 }
