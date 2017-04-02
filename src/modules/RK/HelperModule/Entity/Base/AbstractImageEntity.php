@@ -109,9 +109,9 @@ abstract class AbstractImageEntity extends EntityAccess
     
     /**
      * please note if the image do have a specific reason
-     * @ORM\Column(type="text", length=2000)
+     * @ORM\Column(type="text", length=20000)
      * @Assert\NotNull()
-     * @Assert\Length(min="0", max="2000")
+     * @Assert\Length(min="0", max="20000")
      * @var text $myDescription
      */
     protected $myDescription = '';

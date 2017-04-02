@@ -80,9 +80,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     
     /**
      * @Gedmo\Translatable
-     * @ORM\Column(type="text", length=2000)
+     * @ORM\Column(type="text", length=90000)
      * @Assert\NotBlank()
-     * @Assert\Length(min="0", max="2000")
+     * @Assert\Length(min="0", max="90000")
      * @var text $infoDescription
      */
     protected $infoDescription = '';

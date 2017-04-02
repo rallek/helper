@@ -119,10 +119,45 @@ abstract class AbstractAppSettingsType extends AbstractType
                 ],
                 'help' => $this->__('if you want to use multilingual settings'),
                 'required' => false,
-                'data' => (bool)(isset($this->modVars['useLocale']) ? $this->modVars['useLocale'] : false),
+                'data' => (bool)(isset($this->modVars['useLocale']) ? $this->modVars['useLocale'] : true),
                 'attr' => [
                     'title' => $this->__('The use locale option.')
                 ],
+            ])
+            ->add('descriptionLengthImage', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
+                'label' => $this->__('Description length image') . ':',
+                'required' => false,
+                'data' => isset($this->modVars['descriptionLengthImage']) ? $this->modVars['descriptionLengthImage'] : '',
+                'empty_data' => intval('1000'),
+                'attr' => [
+                    'maxlength' => 255,
+                    'title' => $this->__('Enter the description length image.') . ' ' . $this->__('Only digits are allowed.')
+                ],'scale' => 0
+            ])
+            ->add('descriptionLengthInfoList', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
+                'label' => $this->__('Description length info list') . ':',
+                'label_attr' => [
+                    'class' => 'tooltips',
+                    'title' => $this->__('the length of the description field of the info page in a list')
+                ],
+                'help' => $this->__('the length of the description field of the info page in a list'),
+                'required' => false,
+                'data' => isset($this->modVars['descriptionLengthInfoList']) ? $this->modVars['descriptionLengthInfoList'] : '',
+                'empty_data' => intval('250'),
+                'attr' => [
+                    'maxlength' => 255,
+                    'title' => $this->__('Enter the description length info list.') . ' ' . $this->__('Only digits are allowed.')
+                ],'scale' => 0
+            ])
+            ->add('descriptionLengthImageList', 'Symfony\Component\Form\Extension\Core\Type\IntegerType', [
+                'label' => $this->__('Description length image list') . ':',
+                'required' => false,
+                'data' => isset($this->modVars['descriptionLengthImageList']) ? $this->modVars['descriptionLengthImageList'] : '',
+                'empty_data' => intval('250'),
+                'attr' => [
+                    'maxlength' => 255,
+                    'title' => $this->__('Enter the description length image list.') . ' ' . $this->__('Only digits are allowed.')
+                ],'scale' => 0
             ])
         ;
     }

@@ -129,7 +129,7 @@ abstract class AbstractInfoType extends AbstractType
             'label' => $this->__('Info description') . ':',
             'empty_data' => '',
             'attr' => [
-                'maxlength' => 2000,
+                'maxlength' => 90000,
                 'class' => '',
                 'title' => $this->__('Enter the info description of the info')
             ],

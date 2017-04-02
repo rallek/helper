@@ -142,7 +142,7 @@ abstract class AbstractImageType extends AbstractType
             'help' => $this->__('please note if the image do have a specific reason'),
             'empty_data' => '',
             'attr' => [
-                'maxlength' => 2000,
+                'maxlength' => 20000,
                 'class' => '',
                 'title' => $this->__('Enter the my description of the image')
             ],

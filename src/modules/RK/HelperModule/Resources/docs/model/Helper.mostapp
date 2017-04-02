@@ -4,7 +4,7 @@ application "Helper" {
     author "Ralf Koester"
     email "ralf@familie-koester.de"
     url "http://k62.de"
-    version "0.7.2"
+    version "0.7.3"
     prefix "helper"
     generatorSettings {
         settingsContainer "Settings"
@@ -30,6 +30,7 @@ application "Helper" {
     versionAllGeneratedFiles false
         generateTests false
         writeModelToDocs true
+    markFiles "HelperModuleInstaller.php"
     }
     entities {
         
@@ -178,6 +179,7 @@ application "Helper" {
                 text "myDescription" {
                     documentation "please note if the image do have a specific reason"
                     mandatory false
+                length 20000
                 }
             ,
                 string "copyright" {
@@ -200,7 +202,9 @@ application "Helper" {
             fields {
                 string "infoTitle" translatable,
                 text "infoDescription" translatable
-            ,
+            {
+                    length 90000
+                },
                 string "infoLocale" locale {
                     mandatory false
                 }
@@ -232,7 +236,18 @@ application "Helper" {
                 },
                 boolVar "useLocale" {
                     documentation "if you want to use multilingual settings"
-                    value "false"
+                    value "true"
+                }
+            ,
+                intVar "descriptionLengthImage" {
+                    value "1000"
+                },
+                intVar "descriptionLengthInfoList" {
+                    documentation "the length of the description field of the info page in a list"
+                    value "250"
+                },
+                intVar "descriptionLengthImageList" {
+                    value "250"
                 }
             }
         }

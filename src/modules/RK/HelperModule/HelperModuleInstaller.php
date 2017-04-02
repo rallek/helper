@@ -20,4 +20,20 @@ use RK\HelperModule\Base\AbstractHelperModuleInstaller;
 class HelperModuleInstaller extends AbstractHelperModuleInstaller
 {
     // feel free to extend the installer here
+	
+	public function upgrade($oldVersion)
+    {
+		
+		case '0.7.2':
+			$this->setVar('descriptionLengthImage', '1000');
+			$this->setVar('descriptionLengthInfoList', '250');
+			$this->setVar('descriptionLengthImageList', '250');
+    
+    
+        // update successful
+        return true;
+    }
+	
+	
+	
 }

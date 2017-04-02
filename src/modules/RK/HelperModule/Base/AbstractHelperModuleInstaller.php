@@ -57,7 +57,10 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     
         // set up all our vars with initial values
         $this->setVar('descriptionLengthInfo', '5000');
-        $this->setVar('useLocale', false);
+        $this->setVar('useLocale', true);
+        $this->setVar('descriptionLengthImage', '1000');
+        $this->setVar('descriptionLengthInfoList', '250');
+        $this->setVar('descriptionLengthImageList', '250');
         $this->setVar('linkerEntriesPerPage', '10');
         $this->setVar('carouselItemEntriesPerPage', '10');
         $this->setVar('carouselEntriesPerPage', '10');
