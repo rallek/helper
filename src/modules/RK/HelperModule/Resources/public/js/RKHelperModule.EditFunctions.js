@@ -63,7 +63,7 @@ function rKHelperResetUploadField(fieldName)
 function rKHelperInitUploadField(fieldName)
 {
     jQuery('#' + fieldName + 'ResetVal').click( function (event) {
-        event.stopPropagation();
+        event.preventDefault();
         rKHelperResetUploadField(fieldName);
     }).removeClass('hidden');
 }
@@ -83,7 +83,7 @@ function rKHelperResetDateField(fieldName)
 function rKHelperInitDateField(fieldName)
 {
     jQuery('#' + fieldName + 'ResetVal').click( function (event) {
-        event.stopPropagation();
+        event.preventDefault();
         rKHelperResetDateField(fieldName);
     }).removeClass('hidden');
 }

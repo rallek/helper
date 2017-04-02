@@ -28,7 +28,6 @@ use RK\HelperModule\Entity\Factory\HelperFactory;
 use RK\HelperModule\Helper\FeatureActivationHelper;
 use RK\HelperModule\Helper\ImageHelper;
 use RK\HelperModule\Helper\ModelHelper;
-use RK\HelperModule\Helper\SelectionHelper;
 
 /**
  * Helper base class for controller layer methods.
@@ -73,11 +72,6 @@ abstract class AbstractControllerHelper
     protected $modelHelper;
 
     /**
-     * @var SelectionHelper
-     */
-    protected $selectionHelper;
-
-    /**
      * @var ImageHelper
      */
     protected $imageHelper;
@@ -98,7 +92,6 @@ abstract class AbstractControllerHelper
      * @param VariableApi         $variableApi     VariableApi service instance
      * @param HelperFactory $entityFactory HelperFactory service instance
      * @param ModelHelper         $modelHelper     ModelHelper service instance
-     * @param SelectionHelper     $selectionHelper SelectionHelper service instance
      * @param ImageHelper         $imageHelper     ImageHelper service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
@@ -111,12 +104,9 @@ abstract class AbstractControllerHelper
         VariableApi $variableApi,
         HelperFactory $entityFactory,
         ModelHelper $modelHelper,
-        SelectionHelper $selectionHelper,
-        ImageHelper $imageHelper
-        ,
+        ImageHelper $imageHelper,
         FeatureActivationHelper $featureActivationHelper
-        )
-    {
+    ) {
         $this->setTranslator($translator);
         $this->request = $requestStack->getCurrentRequest();
         $this->session = $session;
@@ -125,7 +115,6 @@ abstract class AbstractControllerHelper
         $this->variableApi = $variableApi;
         $this->entityFactory = $entityFactory;
         $this->modelHelper = $modelHelper;
-        $this->selectionHelper = $selectionHelper;
         $this->imageHelper = $imageHelper;
         $this->featureActivationHelper = $featureActivationHelper;
     }
@@ -199,7 +188,7 @@ abstract class AbstractControllerHelper
         $routeParams = $request->get('_route_params', []);
         foreach ($idFields as $idField) {
             $defaultValue = isset($args[$idField]) && is_numeric($args[$idField]) ? $args[$idField] : 0;
-            if ($this->selectionHelper->hasCompositeKeys($objectType)) {
+            if ($this->entityFactory->hasCompositeKeys($objectType)) {
                 // composite key may be alphanumeric
                 if (array_key_exists($idField, $routeParams)) {
                     $id = !empty($routeParams[$idField]) ? $routeParams[$idField] : $defaultValue;
@@ -301,6 +290,7 @@ abstract class AbstractControllerHelper
         $repository->setRequest($request);
     
         // parameter for used sorting field
+        $sort = $request->query->get('sort', '');
         if (empty($sort) || !in_array($sort, $repository->getAllowedSortingFields())) {
             $sort = $repository->getDefaultSortingField();
             $request->query->set('sort', $sort);
@@ -382,13 +372,13 @@ abstract class AbstractControllerHelper
         $where = '';
         if ($showAllEntries == 1) {
             // retrieve item list without pagination
-            $entities = $this->selectionHelper->getEntities($objectType, [], $where, $sort . ' ' . $sortdir);
+            $entities = $repository->selectWhere($where, $sort . ' ' . $sortdir);
         } else {
             // the current offset which is used to calculate the pagination
             $currentPage = $request->query->getInt('pos', 1);
     
             // retrieve item list with pagination
-            list($entities, $objectCount) = $this->selectionHelper->getEntitiesPaginated($objectType, $where, $sort . ' ' . $sortdir, $currentPage, $resultsPerPage);
+            list($entities, $objectCount) = $repository->selectWherePaginated($where, $sort . ' ' . $sortdir, $currentPage, $resultsPerPage);
     
             $templateParameters['currentPage'] = $currentPage;
             $templateParameters['pager'] = [

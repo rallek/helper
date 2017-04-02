@@ -6,11 +6,6 @@ services:
         tags:
             - { name: form.type }
     
-    rk_helper_module.form.type.field.datetime:
-        class: RK\HelperModule\Form\Type\Field\DateTimeType
-        tags:
-            - { name: form.type }
-    
     rk_helper_module.form.type.field.translation:
         class: RK\HelperModule\Form\Type\Field\TranslationType
         tags:

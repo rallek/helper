@@ -49,8 +49,8 @@ abstract class AbstractWorkflowHelper
      */
     public function __construct(
         TranslatorInterface $translator,
-        ListEntriesHelper $listEntriesHelper)
-    {
+        ListEntriesHelper $listEntriesHelper
+    ) {
         $this->name = 'RKHelperModule';
         $this->translator = $translator;
         $this->listEntriesHelper = $listEntriesHelper;

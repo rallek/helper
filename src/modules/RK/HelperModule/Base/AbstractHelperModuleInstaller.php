@@ -100,7 +100,6 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     
         // install subscriber hooks
         $this->hookApi->installSubscriberHooks($this->bundle->getMetaData());
-        
     
         // initialisation successful
         return true;
@@ -379,7 +378,6 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     
         // uninstall subscriber hooks
         $this->hookApi->uninstallSubscriberHooks($this->bundle->getMetaData());
-        
     
         // remove all module vars
         $this->delVars();

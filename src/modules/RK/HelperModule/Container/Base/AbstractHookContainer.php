@@ -13,7 +13,6 @@
 namespace RK\HelperModule\Container\Base;
 
 use Zikula\Bundle\HookBundle\AbstractHookContainer as ZikulaHookContainer;
-
 use Zikula\Bundle\HookBundle\Bundle\SubscriberBundle;
 
 /**
@@ -142,7 +141,6 @@ abstract class AbstractHookContainer extends ZikulaHookContainer
         // A filter applied to the given area.
         $bundle->addEvent('filter', 'rkhelpermodule.filter_hooks.infos.filter');
         $this->registerHookSubscriberBundle($bundle);
-        
         
         
     }

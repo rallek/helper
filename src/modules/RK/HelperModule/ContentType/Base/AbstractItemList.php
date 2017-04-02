@@ -243,8 +243,8 @@ abstract class AbstractItemList extends \Content_AbstractContentType implements 
     
         $sortParam = '';
         if ($this->sorting == 'newest') {
-            $selectionHelper = $this->container->get('rk_helper_module.selection_helper');
-            $idFields = $selectionHelper->getIdFields($this->objectType);
+            $entityFactory = $this->container->get('rk_helper_module.entity_factory');
+            $idFields = $entityFactory->getIdFields($this->objectType);
             if (count($idFields) == 1) {
                 $sortParam = $idFields[0] . ' DESC';
             } else {

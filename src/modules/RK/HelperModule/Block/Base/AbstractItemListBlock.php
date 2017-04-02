@@ -129,8 +129,8 @@ abstract class AbstractItemListBlock extends AbstractBlockHandler
     
         $sortParam = '';
         if ($properties['sorting'] == 'newest') {
-            $selectionHelper = $this->get('rk_helper_module.selection_helper');
-            $idFields = $selectionHelper->getIdFields($properties['objectType']);
+            $entityFactory = $this->get('rk_helper_module.entity_factory');
+            $idFields = $entityFactory->getIdFields($properties['objectType']);
             if (count($idFields) == 1) {
                 $sortParam = $idFields[0] . ' DESC';
             } else {

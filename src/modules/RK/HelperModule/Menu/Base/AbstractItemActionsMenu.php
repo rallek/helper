@@ -76,7 +76,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($routeArea == 'admin') {
                 $menu->addChild($this->__('Preview'), [
                     'route' => $routePrefix . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-search-plus');
                 $menu[$this->__('Preview')]->setLinkAttribute('target', '_blank');
                 $menu[$this->__('Preview')]->setLinkAttribute('title', $this->__('Open preview page'));
@@ -84,14 +84,14 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($context != 'display') {
                 $menu->addChild($this->__('Details'), [
                     'route' => $routePrefix . $routeArea . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-eye');
                 $menu[$this->__('Details')]->setLinkAttribute('title', str_replace('"', '', $entity->getTitleFromDisplayPattern()));
             }
             if ($permissionApi->hasPermission($component, $instance, ACCESS_EDIT)) {
                 $menu->addChild($this->__('Edit'), [
                     'route' => $routePrefix . $routeArea . 'edit',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-pencil-square-o');
                 $menu[$this->__('Edit')]->setLinkAttribute('title', $this->__('Edit this linker'));
                 $menu->addChild($this->__('Reuse'), [
@@ -103,7 +103,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($permissionApi->hasPermission($component, $instance, ACCESS_DELETE)) {
                 $menu->addChild($this->__('Delete'), [
                     'route' => $routePrefix . $routeArea . 'delete',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-trash-o');
                 $menu[$this->__('Delete')]->setLinkAttribute('title', $this->__('Delete this linker'));
             }
@@ -124,7 +124,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($routeArea == 'admin') {
                 $menu->addChild($this->__('Preview'), [
                     'route' => $routePrefix . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-search-plus');
                 $menu[$this->__('Preview')]->setLinkAttribute('target', '_blank');
                 $menu[$this->__('Preview')]->setLinkAttribute('title', $this->__('Open preview page'));
@@ -132,14 +132,14 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($context != 'display') {
                 $menu->addChild($this->__('Details'), [
                     'route' => $routePrefix . $routeArea . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-eye');
                 $menu[$this->__('Details')]->setLinkAttribute('title', str_replace('"', '', $entity->getTitleFromDisplayPattern()));
             }
             if ($permissionApi->hasPermission($component, $instance, ACCESS_EDIT)) {
                 $menu->addChild($this->__('Edit'), [
                     'route' => $routePrefix . $routeArea . 'edit',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-pencil-square-o');
                 $menu[$this->__('Edit')]->setLinkAttribute('title', $this->__('Edit this carousel item'));
                 $menu->addChild($this->__('Reuse'), [
@@ -151,7 +151,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($permissionApi->hasPermission($component, $instance, ACCESS_DELETE)) {
                 $menu->addChild($this->__('Delete'), [
                     'route' => $routePrefix . $routeArea . 'delete',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-trash-o');
                 $menu[$this->__('Delete')]->setLinkAttribute('title', $this->__('Delete this carousel item'));
             }
@@ -172,7 +172,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($permissionApi->hasPermission($component, $instance, ACCESS_EDIT)) {
                 $menu->addChild($this->__('Edit'), [
                     'route' => $routePrefix . $routeArea . 'edit',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-pencil-square-o');
                 $menu[$this->__('Edit')]->setLinkAttribute('title', $this->__('Edit this carousel'));
                 $menu->addChild($this->__('Reuse'), [
@@ -184,7 +184,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($permissionApi->hasPermission($component, $instance, ACCESS_DELETE)) {
                 $menu->addChild($this->__('Delete'), [
                     'route' => $routePrefix . $routeArea . 'delete',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-trash-o');
                 $menu[$this->__('Delete')]->setLinkAttribute('title', $this->__('Delete this carousel'));
             }
@@ -211,7 +211,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($routeArea == 'admin') {
                 $menu->addChild($this->__('Preview'), [
                     'route' => $routePrefix . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-search-plus');
                 $menu[$this->__('Preview')]->setLinkAttribute('target', '_blank');
                 $menu[$this->__('Preview')]->setLinkAttribute('title', $this->__('Open preview page'));
@@ -219,14 +219,14 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($context != 'display') {
                 $menu->addChild($this->__('Details'), [
                     'route' => $routePrefix . $routeArea . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-eye');
                 $menu[$this->__('Details')]->setLinkAttribute('title', str_replace('"', '', $entity->getTitleFromDisplayPattern()));
             }
             if ($permissionApi->hasPermission($component, $instance, ACCESS_EDIT)) {
                 $menu->addChild($this->__('Edit'), [
                     'route' => $routePrefix . $routeArea . 'edit',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-pencil-square-o');
                 $menu[$this->__('Edit')]->setLinkAttribute('title', $this->__('Edit this image'));
                 $menu->addChild($this->__('Reuse'), [
@@ -238,7 +238,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($permissionApi->hasPermission($component, $instance, ACCESS_DELETE)) {
                 $menu->addChild($this->__('Delete'), [
                     'route' => $routePrefix . $routeArea . 'delete',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-trash-o');
                 $menu[$this->__('Delete')]->setLinkAttribute('title', $this->__('Delete this image'));
             }
@@ -259,7 +259,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($routeArea == 'admin') {
                 $menu->addChild($this->__('Preview'), [
                     'route' => $routePrefix . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-search-plus');
                 $menu[$this->__('Preview')]->setLinkAttribute('target', '_blank');
                 $menu[$this->__('Preview')]->setLinkAttribute('title', $this->__('Open preview page'));
@@ -267,14 +267,14 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($context != 'display') {
                 $menu->addChild($this->__('Details'), [
                     'route' => $routePrefix . $routeArea . 'display',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-eye');
                 $menu[$this->__('Details')]->setLinkAttribute('title', str_replace('"', '', $entity->getTitleFromDisplayPattern()));
             }
             if ($permissionApi->hasPermission($component, $instance, ACCESS_EDIT)) {
                 $menu->addChild($this->__('Edit'), [
                     'route' => $routePrefix . $routeArea . 'edit',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-pencil-square-o');
                 $menu[$this->__('Edit')]->setLinkAttribute('title', $this->__('Edit this info'));
                 $menu->addChild($this->__('Reuse'), [
@@ -286,7 +286,7 @@ class AbstractItemActionsMenu implements ContainerAwareInterface
             if ($permissionApi->hasPermission($component, $instance, ACCESS_DELETE)) {
                 $menu->addChild($this->__('Delete'), [
                     'route' => $routePrefix . $routeArea . 'delete',
-                    'routeParameters' => ['id' => $entity['id']]
+                    'routeParameters' => $entity->createUrlArgs()
                 ])->setAttribute('icon', 'fa fa-trash-o');
                 $menu[$this->__('Delete')]->setLinkAttribute('title', $this->__('Delete this info'));
             }

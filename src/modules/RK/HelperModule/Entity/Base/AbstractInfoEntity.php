@@ -16,12 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
 use Symfony\Component\Validator\Constraints as Assert;
+use Zikula\Core\Doctrine\EntityAccess;
 use RK\HelperModule\Traits\EntityWorkflowTrait;
 use RK\HelperModule\Traits\StandardFieldsTrait;
-
-use RuntimeException;
-use ServiceUtil;
-use Zikula\Core\Doctrine\EntityAccess;
+use RK\HelperModule\Validator\Constraints as HelperAssert;
 
 /**
  * Entity class that defines the entity structure and behaviours.
@@ -52,12 +50,6 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     protected $_objectType = 'info';
     
     /**
-     * @Assert\Type(type="bool")
-     * @var boolean Option to bypass validation if needed
-     */
-    protected $_bypassValidation = false;
-    
-    /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer", unique=true)
@@ -72,7 +64,7 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      * the current workflow state
      * @ORM\Column(length=20)
      * @Assert\NotBlank()
-     * @Assert\Choice(callback="getWorkflowStateAllowedValues", multiple=false)
+     * @HelperAssert\ListEntry(entityName="info", propertyName="workflowState", multiple=false)
      * @var string $workflowState
      */
     protected $workflowState = 'initial';
@@ -123,8 +115,6 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      * Will not be called by Doctrine and can therefore be used
      * for own implementation purposes. It is also possible to add
      * arbitrary arguments as with every other class method.
-     *
-     * @param TODO
      */
     public function __construct()
     {
@@ -151,28 +141,6 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     public function set_objectType($_objectType)
     {
         $this->_objectType = $_objectType;
-    }
-    
-    /**
-     * Returns the _bypass validation.
-     *
-     * @return boolean
-     */
-    public function get_bypassValidation()
-    {
-        return $this->_bypassValidation;
-    }
-    
-    /**
-     * Sets the _bypass validation.
-     *
-     * @param boolean $_bypassValidation
-     *
-     * @return void
-     */
-    public function set_bypassValidation($_bypassValidation)
-    {
-        $this->_bypassValidation = $_bypassValidation;
     }
     
     
@@ -318,58 +286,10 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function getTitleFromDisplayPattern()
     {
-        $listHelper = ServiceUtil::get('rk_helper_module.listentries_helper');
-    
         $formattedTitle = ''
                 . $this->getInfoTitle();
     
         return $formattedTitle;
-    }
-    
-    /**
-     * Returns a list of possible choices for the workflowState list field.
-     * This method is used for validation.
-     *
-     * @return array List of allowed choices
-     */
-    public static function getWorkflowStateAllowedValues()
-    {
-        $container = ServiceUtil::get('service_container');
-        $helper = $container->get('rk_helper_module.listentries_helper');
-        $listEntries = $helper->getWorkflowStateEntriesForInfo();
-    
-        $allowedValues = ['initial'];
-        foreach ($listEntries as $entry) {
-            $allowedValues[] = $entry['value'];
-        }
-    
-        return $allowedValues;
-    }
-    
-    /**
-     * Start validation and raise exception if invalid data is found.
-     *
-     * @return boolean Whether everything is valid or not
-     */
-    public function validate()
-    {
-        if (true === $this->_bypassValidation) {
-            return true;
-        }
-    
-        $validator = ServiceUtil::get('validator');
-        $errors = $validator->validate($this);
-    
-        if (count($errors) > 0) {
-            $flashBag = ServiceUtil::get('session')->getFlashBag();
-            foreach ($errors as $error) {
-                $flashBag->add('error', $error->getMessage());
-            }
-    
-            return false;
-        }
-    
-        return true;
     }
     
     /**

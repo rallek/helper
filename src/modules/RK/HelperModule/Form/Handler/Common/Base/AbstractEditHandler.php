@@ -35,7 +35,6 @@ use RK\HelperModule\Helper\FeatureActivationHelper;
 use RK\HelperModule\Helper\ControllerHelper;
 use RK\HelperModule\Helper\HookHelper;
 use RK\HelperModule\Helper\ModelHelper;
-use RK\HelperModule\Helper\SelectionHelper;
 use RK\HelperModule\Helper\TranslatableHelper;
 use RK\HelperModule\Helper\WorkflowHelper;
 
@@ -217,11 +216,6 @@ abstract class AbstractEditHandler
     protected $modelHelper;
 
     /**
-     * @var SelectionHelper
-     */
-    protected $selectionHelper;
-
-    /**
      * @var WorkflowHelper
      */
     protected $workflowHelper;
@@ -272,7 +266,6 @@ abstract class AbstractEditHandler
      * @param HelperFactory $entityFactory HelperFactory service instance
      * @param ControllerHelper          $controllerHelper ControllerHelper service instance
      * @param ModelHelper               $modelHelper      ModelHelper service instance
-     * @param SelectionHelper           $selectionHelper  SelectionHelper service instance
      * @param WorkflowHelper            $workflowHelper   WorkflowHelper service instance
      * @param HookHelper                $hookHelper       HookHelper service instance
      * @param TranslatableHelper        $translatableHelper TranslatableHelper service instance
@@ -291,12 +284,11 @@ abstract class AbstractEditHandler
         HelperFactory $entityFactory,
         ControllerHelper $controllerHelper,
         ModelHelper $modelHelper,
-        SelectionHelper $selectionHelper,
         WorkflowHelper $workflowHelper,
         HookHelper $hookHelper,
         TranslatableHelper $translatableHelper,
-        FeatureActivationHelper $featureActivationHelper)
-    {
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->kernel = $kernel;
         $this->setTranslator($translator);
         $this->formFactory = $formFactory;
@@ -309,7 +301,6 @@ abstract class AbstractEditHandler
         $this->entityFactory = $entityFactory;
         $this->controllerHelper = $controllerHelper;
         $this->modelHelper = $modelHelper;
-        $this->selectionHelper = $selectionHelper;
         $this->workflowHelper = $workflowHelper;
         $this->hookHelper = $hookHelper;
         $this->translatableHelper = $translatableHelper;
@@ -341,7 +332,7 @@ abstract class AbstractEditHandler
     {
         $this->templateParameters = $templateParameters;
     
-        $this->idPrefix = $this->request->query->getAlnum('idp', '');
+        $this->idPrefix = $this->request->query->get('idp', '');
     
         // initialise redirect goal
         $this->returnTo = $this->request->query->get('returnTo', null);
@@ -362,7 +353,7 @@ abstract class AbstractEditHandler
     
         $this->permissionComponent = 'RKHelperModule:' . $this->objectTypeCapital . ':';
     
-        $this->idFields = $this->selectionHelper->getIdFields($this->objectType);
+        $this->idFields = $this->entityFactory->getIdFields($this->objectType);
     
         // retrieve identifier of the object we wish to view
         $this->idValues = $this->controllerHelper->retrieveIdentifier($this->request, [], $this->objectType, $this->idFields);
@@ -512,7 +503,7 @@ abstract class AbstractEditHandler
      */
     protected function initEntityForEditing()
     {
-        $entity = $this->selectionHelper->getEntity($this->objectType, $this->idValues);
+        $entity = $this->entityFactory->getRepository($this->objectType)->selectById($this->idValues);
         if (null === $entity) {
             return null;
         }
@@ -545,7 +536,7 @@ abstract class AbstractEditHandler
                     $i++;
                 }
                 // reuse existing entity
-                $entityT = $this->selectionHelper->getEntity($this->objectType, $templateIdValues);
+                $entityT = $this->entityFactory->getRepository($this->objectType)->selectById($templateIdValues);
                 if (null === $entityT) {
                     return null;
                 }

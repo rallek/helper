@@ -90,7 +90,7 @@ abstract class AbstractEntityLifecycleListener implements EventSubscriber, Conta
         $workflowHelper->normaliseWorkflowData($entity);
         $workflow = $entity['__WORKFLOW__'];
         if ($workflow['id'] > 0) {
-            $entityManager = $this->container->get('doctrine.orm.default_entity_manager'); // @todo maybe $args->getObjectManager()
+            $entityManager = $this->container->get('doctrine.orm.default_entity_manager');
             $result = true;
             try {
                 $workflow = $entityManager->find('Zikula\Core\Doctrine\Entity\WorkflowEntity', $workflow['id']);

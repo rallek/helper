@@ -86,8 +86,8 @@ abstract class AbstractUploadHelper
         LoggerInterface $logger,
         CurrentUserApi $currentUserApi,
         VariableApi $variableApi,
-        $dataDirectory)
-    {
+        $dataDirectory
+    ) {
         $this->setTranslator($translator);
         $this->session = $session;
         $this->logger = $logger;

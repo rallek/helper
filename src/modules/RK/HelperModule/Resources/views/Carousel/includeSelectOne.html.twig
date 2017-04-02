@@ -2,9 +2,6 @@
 {% if displayMode is not defined or displayMode is empty %}
     {% set displayMode = 'choices' %}
 {% endif %}
-{% if allowEditing is not defined or allowEditing is empty %}
-    {% set allowEditing = false %}
-{% endif %}
 {% if panel|default(false) == true %}
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -19,19 +16,14 @@
     {% if displayMode == 'choices' %}
         {{ form_row(attribute(form, alias)) }}
     {% elseif displayMode == 'autocomplete' %}
-        {% set createUrl = allowEditing ? path('rkhelpermodule_carousel_' ~ routeArea ~ 'edit') : '' %}
-            {{ form_row(attribute(form, alias)) }}
-            <div class="rkhelpermodule-relation-leftside">
-                {% if attribute(linkingItem, alias) is defined %}
-                    {{ include(
-                        'Carousel/includeSelectItemListOne.html.twig',
-                        { item: attribute(linkingItem, alias) }
-                    ) }}
-                {% else %}
-                    {{ include('Carousel/includeSelectItemListOne.html.twig') }}
-                {% endif %}
-            </div>
-            <br style="clear: both" />
+        {{ form_row(attribute(form, alias)) }}
+        <div class="rkhelpermodule-relation-leftside">
+            {{ include(
+                '@RKHelperModule/Carousel/includeSelectItemListOne.html.twig',
+                attribute(linkingItem, alias) is defined ? { item: attribute(linkingItem, alias) } : {}
+            ) }}
+        </div>
+        <br style="clear: both" />
     {% endif %}
 {% if panel|default(false) == true %}
             </div>

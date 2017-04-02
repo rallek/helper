@@ -19,12 +19,12 @@ use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use InvalidArgumentException;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Zikula\Component\FilterUtil\FilterUtil;
 use Zikula\Component\FilterUtil\Config as FilterConfig;
 use Zikula\Component\FilterUtil\PluginManager as FilterPluginManager;
 use Zikula\Component\FilterUtil\Plugin\DatePlugin as DateFilter;
-use Psr\Log\LoggerInterface;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\UsersModule\Api\CurrentUserApi;
 use RK\HelperModule\Entity\CarouselItemEntity;
@@ -558,7 +558,6 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
         $qb = $this->genericBaseQuery($where, $orderBy, $useJoins, $slimMode);
     
         $page = $currentPage;
-        
         $query = $this->getSelectWherePaginatedQuery($qb, $page, $resultsPerPage);
     
         return $this->retrieveCollectionResult($query, $orderBy, true);
@@ -744,11 +743,10 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      * @param boolean $useJoins Whether to include joining related objects (optional) (default=true)
      *
      * @return QueryBuilder Created query builder instance
-     * @TODO fix usage of joins; please remove the first line and test
      */
     protected function getCountQuery($where = '', $useJoins = true)
     {
-        $useJoins = false;
+        $useJoins = false; // joins usage needs to be fixed; please remove the first line and test
     
         $selection = 'COUNT(tbl.id) AS numCarouselItems';
         if (true === $useJoins) {
@@ -866,9 +864,8 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      */
     protected function genericBaseQueryAddWhere(QueryBuilder $qb, $where = '')
     {
-        if (!empty($where)) {
+        if (!empty($where) || null !== $this->getRequest()) {
             // Use FilterUtil to support generic filtering.
-            //$qb->where($where);
     
             // Create filter configuration.
             $filterConfig = new FilterConfig($qb);
@@ -890,19 +887,16 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
                 []
             );
     
-            // Request object to obtain the filter string (only needed if the filter is set via GET or it reads values from GET).
-            // We do this not per default (for now) to prevent problems with explicite filters set by blocks or content types.
-            // TODO readd automatic request processing (basically replacing applyDefaultFilters() and addCommonViewFilters()).
-            $request = null;
-    
             // Name of filter variable(s) (filterX).
             $filterKey = 'filter';
     
             // initialise FilterUtil and assign both query builder and configuration
-            $filterUtil = new FilterUtil($filterPluginManager, $request, $filterKey);
+            $filterUtil = new FilterUtil($filterPluginManager, $this->getRequest(), $filterKey);
     
             // set our given filter
-            $filterUtil->setFilter($where);
+            if (!empty($where)) {
+                $filterUtil->setFilter($where);
+            }
     
             // you could add explicit filters at this point, something like
             // $filterUtil->addFilter('foo:eq:something,bar:gt:100');

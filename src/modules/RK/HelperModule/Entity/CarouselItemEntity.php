@@ -13,14 +13,8 @@
 namespace RK\HelperModule\Entity;
 
 use RK\HelperModule\Entity\Base\AbstractCarouselItemEntity as BaseEntity;
-
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use RK\HelperModule\Traits\EntityWorkflowTrait;
-use RK\HelperModule\Traits\StandardFieldsTrait;
 
 /**
  * Entity class that defines the entity structure and behaviours.

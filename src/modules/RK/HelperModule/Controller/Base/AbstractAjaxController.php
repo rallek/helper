@@ -41,13 +41,7 @@ abstract class AbstractAjaxController extends AbstractController
             return true;
         }
         
-        $fragment = '';
-        if ($request->isMethod('POST') && $request->request->has('fragment')) {
-            $fragment = $request->request->get('fragment', '');
-        } elseif ($request->isMethod('GET') && $request->query->has('fragment')) {
-            $fragment = $request->query->get('fragment', '');
-        }
-        
+        $fragment = $request->query->get('fragment', '');
         $userRepository = $this->get('zikula_users_module.user_repository');
         $limit = 50;
         $filter = [
@@ -97,8 +91,6 @@ abstract class AbstractAjaxController extends AbstractController
         
         $repository = $this->get('rk_helper_module.entity_factory')->getRepository($objectType);
         $repository->setRequest($request);
-        $selectionHelper = $this->get('rk_helper_module.selection_helper');
-        $idFields = $selectionHelper->getIdFields($objectType);
         
         $descriptionField = $repository->getDescriptionFieldName();
         
@@ -126,10 +118,7 @@ abstract class AbstractAjaxController extends AbstractController
         $slimItems = [];
         $component = 'RKHelperModule:' . ucfirst($objectType) . ':';
         foreach ($entities as $item) {
-            $itemId = '';
-            foreach ($idFields as $idField) {
-                $itemId .= (!empty($itemId) ? '_' : '') . $item[$idField];
-            }
+            $itemId = $item->createCompositeIdentifier();
             if (!$this->hasPermission($component, $itemId . '::', ACCESS_READ)) {
                 continue;
             }

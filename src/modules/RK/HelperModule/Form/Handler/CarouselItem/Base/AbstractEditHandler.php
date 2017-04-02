@@ -78,7 +78,7 @@ abstract class AbstractEditHandler extends EditHandler
         // editable relation, we store the id and assign it now to show it in UI
         $this->relationPresets['carousel'] = $this->request->get('carousel', '');
         if (!empty($this->relationPresets['carousel'])) {
-            $relObj = $this->selectionHelper->getEntity('carousel', $this->relationPresets['carousel']);
+            $relObj = $this->entityFactory->getRepository('carousel')->selectById($this->relationPresets['carousel']);
             if (null !== $relObj) {
                 $relObj->addCarouselItems($entity);
             }
@@ -156,7 +156,6 @@ abstract class AbstractEditHandler extends EditHandler
         $objectIsPersisted = $args['commandName'] != 'delete' && !($this->templateParameters['mode'] == 'create' && $args['commandName'] == 'cancel');
     
         if (null !== $this->returnTo) {
-            
             $isDisplayOrEditPage = substr($this->returnTo, -7) == 'display' || substr($this->returnTo, -4) == 'edit';
             if (!$isDisplayOrEditPage || $objectIsPersisted) {
                 // return to referer

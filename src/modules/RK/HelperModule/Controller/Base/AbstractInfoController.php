@@ -466,16 +466,16 @@ abstract class AbstractInfoController extends AbstractController
         
         $action = strtolower($action);
         
-        $selectionHelper = $this->get('rk_helper_module.selection_helper');
+        $repository = $this->get('rk_helper_module.entity_factory')->getRepository($objectType);
         $workflowHelper = $this->get('rk_helper_module.workflow_helper');
         $hookHelper = $this->get('rk_helper_module.hook_helper');
         $logger = $this->get('logger');
         $userName = $this->get('zikula_users_module.current_user')->get('uname');
         
         // process each item
-        foreach ($items as $itemid) {
+        foreach ($items as $itemId) {
             // check if item exists, and get record instance
-            $entity = $selectionHelper->getEntity($objectType, $itemid, false);
+            $entity = $repository->selectById($itemId, false);
             if (null === $entity) {
                 continue;
             }
@@ -498,14 +498,11 @@ abstract class AbstractInfoController extends AbstractController
         
             $success = false;
             try {
-                if ($action != 'delete' && !$entity->validate()) {
-                    continue;
-                }
                 // execute the workflow action
                 $success = $workflowHelper->executeAction($entity, $action);
             } catch(\Exception $e) {
                 $this->addFlash('error', $this->__f('Sorry, but an error occured during the %action% action.', ['%action%' => $action]) . '  ' . $e->getMessage());
-                $logger->error('{app}: User {user} tried to execute the {action} workflow action for the {entity} with id {id}, but failed. Error details: {errorMessage}.', ['app' => 'RKHelperModule', 'user' => $userName, 'action' => $action, 'entity' => 'info', 'id' => $itemid, 'errorMessage' => $e->getMessage()]);
+                $logger->error('{app}: User {user} tried to execute the {action} workflow action for the {entity} with id {id}, but failed. Error details: {errorMessage}.', ['app' => 'RKHelperModule', 'user' => $userName, 'action' => $action, 'entity' => 'info', 'id' => $itemId, 'errorMessage' => $e->getMessage()]);
             }
         
             if (!$success) {
@@ -514,10 +511,10 @@ abstract class AbstractInfoController extends AbstractController
         
             if ($action == 'delete') {
                 $this->addFlash('status', $this->__('Done! Item deleted.'));
-                $logger->notice('{app}: User {user} deleted the {entity} with id {id}.', ['app' => 'RKHelperModule', 'user' => $userName, 'entity' => 'info', 'id' => $itemid]);
+                $logger->notice('{app}: User {user} deleted the {entity} with id {id}.', ['app' => 'RKHelperModule', 'user' => $userName, 'entity' => 'info', 'id' => $itemId]);
             } else {
                 $this->addFlash('status', $this->__('Done! Item updated.'));
-                $logger->notice('{app}: User {user} executed the {action} workflow action for the {entity} with id {id}.', ['app' => 'RKHelperModule', 'user' => $userName, 'action' => $action, 'entity' => 'info', 'id' => $itemid]);
+                $logger->notice('{app}: User {user} executed the {action} workflow action for the {entity} with id {id}.', ['app' => 'RKHelperModule', 'user' => $userName, 'action' => $action, 'entity' => 'info', 'id' => $itemId]);
             }
         
             // Let any hooks know that we have updated or deleted an item

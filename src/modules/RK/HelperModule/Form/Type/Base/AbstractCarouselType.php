@@ -205,7 +205,7 @@ abstract class AbstractCarouselType extends AbstractType
             'required' => false,
             'help' => $this->__('Here you can choose a user which will be set as creator')
         ]);
-        $builder->add('moderationSpecificCreationDate', 'RK\HelperModule\Form\Type\Field\DateTimeType', [
+        $builder->add('moderationSpecificCreationDate', 'Symfony\Component\Form\Extension\Core\Type\DateTimeType', [
             'mapped' => false,
             'label' => $this->__('Creation date') . ':',
             'attr' => [
@@ -214,7 +214,9 @@ abstract class AbstractCarouselType extends AbstractType
             ],
             'empty_data' => '',
             'required' => false,
-            'widget' => 'single_text',
+            'with_seconds' => true,
+            'date_widget' => 'single_text',
+            'time_widget' => 'single_text',
             'help' => $this->__('Here you can choose a custom creation date')
         ]);
     }

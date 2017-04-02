@@ -13,13 +13,8 @@
 namespace RK\HelperModule\Entity;
 
 use RK\HelperModule\Entity\Base\AbstractInfoEntity as BaseEntity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Gedmo\Translatable\Translatable;
-use Symfony\Component\Validator\Constraints as Assert;
-use RK\HelperModule\Traits\EntityWorkflowTrait;
-use RK\HelperModule\Traits\StandardFieldsTrait;
 
 /**
  * Entity class that defines the entity structure and behaviours.

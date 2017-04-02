@@ -36,7 +36,7 @@
 
 {{ include(
     '@RKHelperModule/Carousel/includeSelectOne.html.twig',
-    { group: 'carouselitem', alias: 'carousel', aliasReverse: 'carouselItems', mandatory: false, idPrefix: 'helperCarouselItem_Carousel', linkingItem: carouselitem, displayMode: 'choices', allowEditing: false }
+    { group: 'carouselitem', alias: 'carousel', aliasReverse: 'carouselItems', mandatory: false, idPrefix: 'helperCarouselItem_Carousel', linkingItem: carouselitem, displayMode: 'choices' }
 ) }}
 {% if mode != 'create' %}
     {{ include('@RKHelperModule/Helper/includeStandardFieldsEdit.html.twig', { obj: carouselitem }) }}
@@ -88,11 +88,10 @@
     {{ parent() }}
 
     {% set editImage = '<span class="fa fa-pencil-square-o"></span>' %}
-    {% set deleteImage = '<span class="fa fa-trash-o"></span>' %}
+    {% set removeImage = '<span class="fa fa-trash-o"></span>' %}
     
     <script type="text/javascript">
     /* <![CDATA[ */
-        
         
         ( function($) {
             $(document).ready(function() {
