@@ -6,7 +6,13 @@
    Note this step is optional as the install process can create these folders, too.
 4. Make the directory `/userdata/RKHelperModule/` writable including all sub folders.
 
-For questions and other remarks visit our homepage http://k62.de.
+# Usage of the Linker Entity
 
-Ralf Koester (ralf@familie-koester.de)
-http://k62.de
+tbd
+
+# Usage of the Carousel Entity
+
+tbd
+
+
+
