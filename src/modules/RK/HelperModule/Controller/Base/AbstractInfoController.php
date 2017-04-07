@@ -140,6 +140,7 @@ abstract class AbstractInfoController extends AbstractController
         $sortdir = strtolower($sortdir);
         $request->query->set('sort', $sort);
         $request->query->set('sortdir', $sortdir);
+        $request->query->set('pos', $pos);
         
         $sortableColumns = new SortableColumns($this->get('router'), 'rkhelpermodule_info_' . ($isAdmin ? 'admin' : '') . 'view', 'sort', 'sortdir');
         

@@ -32,6 +32,9 @@
                 <li>
                     <a id="imagesImageMyImageTab" href="#tabImagesImageMyImage" role="tab" data-toggle="tab" aria-controls="tabImagesImageMyImage">{{ __('Images my image') }}</a>
                 </li>
+                <li>
+                    <a id="imagesInfoTitleImageTab" href="#tabImagesInfoTitleImage" role="tab" data-toggle="tab" aria-controls="tabImagesInfoTitleImage">{{ __('Infos title image') }}</a>
+                </li>
                 </ul>
             </li>
             {% set tabTitle = __('Integration') %}
@@ -50,10 +53,10 @@
                         <p class="alert alert-info">{{ __('Here you can manage all basic settings for this application.') }}</p>
                     
                         {{ form_row(form.descriptionLengthInfo) }}
-                        {{ form_row(form.useLocale) }}
-                        {{ form_row(form.descriptionLengthImage) }}
                         {{ form_row(form.descriptionLengthInfoList) }}
+                        {{ form_row(form.descriptionLengthImage) }}
                         {{ form_row(form.descriptionLengthImageList) }}
+                        {{ form_row(form.useLocale) }}
                     </fieldset>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab2" aria-labelledby="vars2Tab">
@@ -125,6 +128,25 @@
                         {{ form_row(form.thumbnailHeightImageMyImageDisplay) }}
                         {{ form_row(form.thumbnailWidthImageMyImageEdit) }}
                         {{ form_row(form.thumbnailHeightImageMyImageEdit) }}
+                    </fieldset>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tabImagesInfoTitleImage" aria-labelledby="imagesInfoTitleImageTab">
+                    {% set tabTitle = __('Image settings for infos title image') %}
+                    <fieldset>
+                        <legend>{{ tabTitle }}</legend>
+                
+                        {{ form_row(form.enableShrinkingForInfoTitleImage) }}
+                        <div id="shrinkDetailsInfoTitleImage">
+                        {{ form_row(form.shrinkWidthInfoTitleImage) }}
+                        {{ form_row(form.shrinkHeightInfoTitleImage) }}
+                        </div>
+                        {{ form_row(form.thumbnailModeInfoTitleImage) }}
+                        {{ form_row(form.thumbnailWidthInfoTitleImageView) }}
+                        {{ form_row(form.thumbnailHeightInfoTitleImageView) }}
+                        {{ form_row(form.thumbnailWidthInfoTitleImageDisplay) }}
+                        {{ form_row(form.thumbnailHeightInfoTitleImageDisplay) }}
+                        {{ form_row(form.thumbnailWidthInfoTitleImageEdit) }}
+                        {{ form_row(form.thumbnailHeightInfoTitleImageEdit) }}
                     </fieldset>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tab4" aria-labelledby="vars4Tab">

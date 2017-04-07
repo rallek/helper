@@ -60,6 +60,8 @@
 {% endif %}
 <fieldset>
     <legend>{{ __('Further properties') }}</legend>
+    {{ form_row(form.titleImage) }}
+    {{ form_row(form.copyright) }}
     {{ form_row(form.infoLocale) }}
 </fieldset>
 
@@ -125,6 +127,7 @@
                     rKHelperInitUserField('rkhelpermodule_info_moderationSpecificCreator', 'getCommonUsersList');
                 {% endif %}
                 rKHelperInitEditForm('{{ mode }}', '{% if mode != 'create' %}{{ info.id }}{% endif %}');
+                rKHelperInitUploadField('rkhelpermodule_info_titleImage_titleImage');
             });
         })(jQuery);
     /* ]]> */

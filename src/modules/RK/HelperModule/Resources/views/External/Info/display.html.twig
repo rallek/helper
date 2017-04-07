@@ -1,4 +1,7 @@
 {# Purpose of this template: Display one certain info within an external context #}
+{{ pageAddAsset('javascript', asset('magnific-popup/jquery.magnific-popup.min.js')) }}
+{{ pageAddAsset('stylesheet', asset('magnific-popup/magnific-popup.css')) }}
+{{ pageAddAsset('javascript', zasset('@RKHelperModule:js/RKHelperModule.js')) }}
 <div id="info{$info.id}" class="rkhelpermodule-external-info">
 {% if displayMode == 'link' %}
     <p class="rkhelpermodule-external-link">
@@ -19,7 +22,16 @@
 {% if displayMode == 'link' %}
 {% elseif displayMode == 'embed' %}
     <div class="rkhelpermodule-external-snippet">
-        &nbsp;
+        {% if info.titleImage is not empty and info.titleImageMeta|default %}
+                    <a href="{{ info.titleImageUrl }}" title="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}"{% if info.titleImageMeta.isImage %} class="image-link"{% endif %}>
+        {% if info.titleImageMeta.isImage %}
+            {% set thumbOptions = attribute(thumbRuntimeOptions, 'infoTitleImage') %}
+            <img src="{{ info.titleImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+        {% else %}
+            {{ __('Download') }} ({{ info.titleImageMeta.size|rkhelpermodule_fileSize(info.titleImage.getPathname(), false, false) }})
+        {% endif %}
+        </a>
+        {% else %}&nbsp;{% endif %}
     </div>
 
     {# you can distinguish the context like this: #}

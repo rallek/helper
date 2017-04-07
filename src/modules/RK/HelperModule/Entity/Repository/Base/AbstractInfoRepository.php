@@ -144,7 +144,7 @@ abstract class AbstractInfoRepository extends EntityRepository
      */
     public function getPreviewFieldName()
     {
-        $fieldName = '';
+        $fieldName = 'titleImage';
     
         return $fieldName;
     }
@@ -187,6 +187,10 @@ abstract class AbstractInfoRepository extends EntityRepository
             }
     
             // initialise Imagine runtime options
+            $objectType = 'info';
+            $thumbRuntimeOptions = [];
+            $thumbRuntimeOptions[$objectType . 'TitleImage'] = $imageHelper->getRuntimeOptions($objectType, 'titleImage', $context, $args);
+            $templateParameters['thumbRuntimeOptions'] = $thumbRuntimeOptions;
             if (in_array($args['action'], ['display', 'view'])) {
                 // use separate preset for images in related items
                 $templateParameters['relationThumbRuntimeOptions'] = $imageHelper->getCustomRuntimeOptions('', '', 'RKHelperModule_relateditem', $context, $args);
@@ -518,8 +522,6 @@ abstract class AbstractInfoRepository extends EntityRepository
      */
     public function getSelectWherePaginatedQuery(QueryBuilder $qb, $currentPage = 1, $resultsPerPage = 25)
     {
-        $qb = $this->addCommonViewFilters($qb);
-    
         $query = $this->getQueryFromBuilder($qb);
         $offset = ($currentPage-1) * $resultsPerPage;
     
@@ -543,7 +545,7 @@ abstract class AbstractInfoRepository extends EntityRepository
      */
     public function selectWherePaginated($where = '', $orderBy = '', $currentPage = 1, $resultsPerPage = 25, $useJoins = true, $slimMode = false)
     {
-        $qb = $this->genericBaseQuery($where, $orderBy, $useJoins, $slimMode);
+        $qb = $this->getListQueryBuilder($where, $orderBy, $useJoins, $slimMode);
     
         $page = $currentPage;
         $query = $this->getSelectWherePaginatedQuery($qb, $page, $resultsPerPage);
@@ -627,7 +629,7 @@ abstract class AbstractInfoRepository extends EntityRepository
      */
     public function selectSearch($fragment = '', $exclude = [], $orderBy = '', $currentPage = 1, $resultsPerPage = 25, $useJoins = true)
     {
-        $qb = $this->genericBaseQuery('', $orderBy, $useJoins);
+        $qb = $this->getListQueryBuilder('', $orderBy, $useJoins);
         if (count($exclude) > 0) {
             $qb = $this->addExclusion($qb, $exclude);
         }
@@ -658,6 +660,10 @@ abstract class AbstractInfoRepository extends EntityRepository
     
         $filters[] = 'tbl.infoTitle LIKE :searchInfoTitle';
         $parameters['searchInfoTitle'] = '%' . $fragment . '%';
+        $filters[] = 'tbl.titleImage = :searchTitleImage';
+        $parameters['searchTitleImage'] = $fragment;
+        $filters[] = 'tbl.copyright LIKE :searchCopyright';
+        $parameters['searchCopyright'] = '%' . $fragment . '%';
         $filters[] = 'tbl.infoDescription LIKE :searchInfoDescription';
         $parameters['searchInfoDescription'] = '%' . $fragment . '%';
         $filters[] = 'tbl.infoLocale LIKE :searchInfoLocale';

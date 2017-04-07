@@ -68,6 +68,7 @@ abstract class AbstractInfoFinderType extends AbstractType
             ])
         ;
 
+        $this->addImageFields($builder, $options);
         $this->addPasteAsField($builder, $options);
         $this->addSortingFields($builder, $options);
         $this->addAmountField($builder, $options);
@@ -93,6 +94,25 @@ abstract class AbstractInfoFinderType extends AbstractType
     }
 
     /**
+     * Adds fields for image insertion options.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array                $options The options
+     */
+    public function addImageFields(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('onlyImages', 'Symfony\Component\Form\Extension\Core\Type\CheckboxType', [
+            'label' => $this->__('Only images'),
+            'empty_data' => false,
+            'help' => $this->__('Enable this option to insert images'),
+            'required' => false
+        ]);
+        $builder->add('imageField', 'Symfony\Component\Form\Extension\Core\Type\HiddenType', [
+            'data' => 'titleImage'
+        ]);
+    }
+
+    /**
      * Adds a "paste as" field.
      *
      * @param FormBuilderInterface $builder The form builder
@@ -106,7 +126,11 @@ abstract class AbstractInfoFinderType extends AbstractType
             'choices' => [
                 $this->__('Relative link to the info') => 1,
                 $this->__('Absolute url to the info') => 2,
-                $this->__('ID of info') => 3
+                $this->__('ID of info') => 3,
+                $this->__('Relative link to the image') => 6,
+                $this->__('Image') => 7,
+                $this->__('Image with relative link to the info') => 8,
+                $this->__('Image with absolute url to the info') => 9
             ],
             'choices_as_values' => true,
             'multiple' => false,

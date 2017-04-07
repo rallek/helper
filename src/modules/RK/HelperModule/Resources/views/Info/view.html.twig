@@ -23,6 +23,7 @@
                 {% endif %}
                 <col id="cItemActions" />
                 <col id="cInfoTitle" />
+                <col id="cTitleImage" />
                 <col id="cInfoDescription" />
                 <col id="cInfoLocale" />
             </colgroup>
@@ -36,6 +37,9 @@
                 <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted">{{ __('Actions') }}</th>
                 <th id="hInfoTitle" scope="col" class="text-left">
                     <a href="{{ sort.infoTitle.url }}" title="{{ __f('Sort by %s', {'%s': 'info title'}) }}" class="{{ sort.infoTitle.class }}">{{ __('Info title') }}</a>
+                </th>
+                <th id="hTitleImage" scope="col" class="text-left z-order-unsorted">
+                    {{ __('Title image') }}
                 </th>
                 <th id="hInfoDescription" scope="col" class="text-left">
                     <a href="{{ sort.infoDescription.url }}" title="{{ __f('Sort by %s', {'%s': 'info description'}) }}" class="{{ sort.infoDescription.class }}">{{ __('Info description') }}</a>
@@ -64,6 +68,18 @@
                 <td headers="hInfoTitle" class="text-left">
                     {{ info.infoTitle }}
                 </td>
+                <td headers="hTitleImage" class="text-left">
+                    {% if info.titleImage is not empty and info.titleImageMeta|default %}
+                                <a href="{{ info.titleImageUrl }}" title="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}"{% if info.titleImageMeta.isImage %} class="image-link"{% endif %}>
+                    {% if info.titleImageMeta.isImage %}
+                        {% set thumbOptions = attribute(thumbRuntimeOptions, 'infoTitleImage') %}
+                        <img src="{{ info.titleImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+                    {% else %}
+                        {{ __('Download') }} ({{ info.titleImageMeta.size|rkhelpermodule_fileSize(info.titleImage.getPathname(), false, false) }})
+                    {% endif %}
+                    </a>
+                    {% else %}&nbsp;{% endif %}
+                </td>
                 <td headers="hInfoDescription" class="text-left">
                     {{ info.infoDescription|safeHtml }}
                 </td>
@@ -73,7 +89,7 @@
             </tr>
         {% else %}
             <tr class="z-{{ routeArea == 'admin' ? 'admin' : 'data' }}tableempty">
-                <td class="text-left" colspan="{% if routeArea == 'admin' %}5{% else %}4{% endif %}">
+                <td class="text-left" colspan="{% if routeArea == 'admin' %}6{% else %}5{% endif %}">
             {{ __('No infos found.') }}
               </td>
             </tr>

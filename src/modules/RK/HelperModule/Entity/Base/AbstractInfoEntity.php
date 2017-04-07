@@ -15,6 +15,7 @@ namespace RK\HelperModule\Entity\Base;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Translatable\Translatable;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Zikula\Core\Doctrine\EntityAccess;
 use RK\HelperModule\Traits\EntityWorkflowTrait;
@@ -77,6 +78,47 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      * @var string $infoTitle
      */
     protected $infoTitle = '';
+    
+    /**
+     * Title image meta data array.
+     *
+     * @ORM\Column(type="array")
+     * @Assert\Type(type="array")
+     * @var array $titleImageMeta
+     */
+    protected $titleImageMeta = [];
+    
+    /**
+     * @ORM\Column(length=255, nullable=true)
+     * @Assert\Length(min="0", max="255")
+     * @Assert\File(
+     *    mimeTypes = {"image/*"}
+     * )
+     * @Assert\Image(
+     *    minRatio = 2.95,
+     *    maxRatio = 3.05,
+     *    allowSquare = false,
+     *    allowPortrait = false
+     * )
+     * @var string $titleImage
+     */
+    protected $titleImage = null;
+    
+    /**
+     * Full title image path as url.
+     *
+     * @Assert\Type(type="string")
+     * @var string $titleImageUrl
+     */
+    protected $titleImageUrl = '';
+    
+    /**
+     * @ORM\Column(length=255)
+     * @Assert\NotNull()
+     * @Assert\Length(min="0", max="255")
+     * @var string $copyright
+     */
+    protected $copyright = '';
     
     /**
      * @Gedmo\Translatable
@@ -208,6 +250,94 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     public function setInfoTitle($infoTitle)
     {
         $this->infoTitle = isset($infoTitle) ? $infoTitle : '';
+    }
+    
+    /**
+     * Returns the title image.
+     *
+     * @return string
+     */
+    public function getTitleImage()
+    {
+        return $this->titleImage;
+    }
+    
+    /**
+     * Sets the title image.
+     *
+     * @param string $titleImage
+     *
+     * @return void
+     */
+    public function setTitleImage($titleImage)
+    {
+        $this->titleImage = $titleImage;
+    }
+    
+    /**
+     * Returns the title image url.
+     *
+     * @return string
+     */
+    public function getTitleImageUrl()
+    {
+        return $this->titleImageUrl;
+    }
+    
+    /**
+     * Sets the title image url.
+     *
+     * @param string $titleImageUrl
+     *
+     * @return void
+     */
+    public function setTitleImageUrl($titleImageUrl)
+    {
+        $this->titleImageUrl = $titleImageUrl;
+    }
+    
+    /**
+     * Returns the title image meta.
+     *
+     * @return array
+     */
+    public function getTitleImageMeta()
+    {
+        return $this->titleImageMeta;
+    }
+    
+    /**
+     * Sets the title image meta.
+     *
+     * @param array $titleImageMeta
+     *
+     * @return void
+     */
+    public function setTitleImageMeta($titleImageMeta = [])
+    {
+        $this->titleImageMeta = $titleImageMeta;
+    }
+    
+    /**
+     * Returns the copyright.
+     *
+     * @return string
+     */
+    public function getCopyright()
+    {
+        return $this->copyright;
+    }
+    
+    /**
+     * Sets the copyright.
+     *
+     * @param string $copyright
+     *
+     * @return void
+     */
+    public function setCopyright($copyright)
+    {
+        $this->copyright = isset($copyright) ? $copyright : '';
     }
     
     /**
@@ -399,6 +529,11 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
     
         // reset workflow
         $this->resetWorkflow();
+    
+        // reset upload fields
+        $this->setTitleImage(null);
+        $this->setTitleImageMeta([]);
+        $this->setTitleImageUrl('');
     
         $this->setCreatedBy(null);
         $this->setCreatedDate(null);

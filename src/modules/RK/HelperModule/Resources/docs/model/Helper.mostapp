@@ -30,7 +30,7 @@ application "Helper" {
     versionAllGeneratedFiles false
         generateTests false
         writeModelToDocs true
-    markFiles "HelperModuleInstaller.php"
+    markFiles "HelperModuleInstaller.php, Resources/docs/install.md"
     }
     entities {
         
@@ -201,6 +201,18 @@ application "Helper" {
             displayPattern "#infoTitle#"
             fields {
                 string "infoTitle" translatable,
+                upload "titleImage" {
+                    mandatory false
+                    displayType VIEW_DISPLAY
+                    minRatio 2.95
+                    maxRatio 3.05
+                    allowSquare false
+                    allowPortrait false
+                },
+                string "copyright" {
+                    mandatory false
+                    displayType DISPLAY
+                },
                 text "infoDescription" translatable
             {
                     length 90000
@@ -234,20 +246,19 @@ application "Helper" {
                     documentation "the length of the description field of the info page"
                     value "5000"
                 },
-                boolVar "useLocale" {
-                    documentation "if you want to use multilingual settings"
-                    value "true"
-                }
-            ,
-                intVar "descriptionLengthImage" {
-                    value "1000"
-                },
                 intVar "descriptionLengthInfoList" {
                     documentation "the length of the description field of the info page in a list"
                     value "250"
                 },
+                intVar "descriptionLengthImage" {
+                    value "1000"
+                },
                 intVar "descriptionLengthImageList" {
                     value "250"
+                },
+                boolVar "useLocale" {
+                    documentation "if you want to use multilingual settings"
+                    value "true"
                 }
             }
         }

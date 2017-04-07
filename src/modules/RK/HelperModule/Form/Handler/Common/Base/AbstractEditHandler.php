@@ -486,6 +486,10 @@ abstract class AbstractEditHandler
     protected function createCompositeIdentifier()
     {
         $itemId = '';
+        if ($this->templateParameters['mode'] == 'create') {
+            return $itemId;
+        }
+    
         foreach ($this->idFields as $idField) {
             if (!empty($itemId)) {
                 $itemId .= '_';

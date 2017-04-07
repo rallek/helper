@@ -95,7 +95,7 @@ abstract class AbstractUploadHelper
         $this->variableApi = $variableApi;
         $this->dataDirectory = $dataDirectory;
 
-        $this->allowedObjectTypes = ['linker', 'carouselItem', 'image'];
+        $this->allowedObjectTypes = ['linker', 'carouselItem', 'image', 'info'];
         $this->imageFileTypes = ['gif', 'jpeg', 'jpg', 'png', 'swf'];
         $this->forbiddenFileTypes = ['cgi', 'pl', 'asp', 'phtml', 'php', 'php3', 'php4', 'php5', 'exe', 'com', 'bat', 'jsp', 'cfm', 'shtml'];
     }
@@ -329,6 +329,9 @@ abstract class AbstractUploadHelper
             case 'image':
                 $allowedExtensions = ['gif', 'jpeg', 'jpg', 'png'];
                     break;
+            case 'info':
+                $allowedExtensions = ['gif', 'jpeg', 'jpg', 'png'];
+                    break;
         }
     
         if (count($allowedExtensions) > 0) {
@@ -371,6 +374,9 @@ abstract class AbstractUploadHelper
                 $namingScheme = 0;
                     break;
             case 'image':
+                $namingScheme = 0;
+                    break;
+            case 'info':
                 $namingScheme = 0;
                     break;
         }
@@ -474,6 +480,9 @@ abstract class AbstractUploadHelper
             case 'image':
                 $basePath .= 'images/myimage/';
                 break;
+            case 'info':
+                $basePath .= 'infos/titleimage/';
+                break;
             default:
                 throw new Exception($this->__('Error! Invalid object type received.'));
         }
@@ -534,6 +543,8 @@ abstract class AbstractUploadHelper
         $result &= $this->checkAndCreateUploadFolder('carouselItem', 'itemImage', 'gif, jpeg, jpg, png');
     
         $result &= $this->checkAndCreateUploadFolder('image', 'myImage', 'gif, jpeg, jpg, png');
+    
+        $result &= $this->checkAndCreateUploadFolder('info', 'titleImage', 'gif, jpeg, jpg, png');
     
         return $result;
     }

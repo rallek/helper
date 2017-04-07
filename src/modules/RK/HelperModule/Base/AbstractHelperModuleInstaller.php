@@ -57,10 +57,10 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     
         // set up all our vars with initial values
         $this->setVar('descriptionLengthInfo', '5000');
-        $this->setVar('useLocale', true);
-        $this->setVar('descriptionLengthImage', '1000');
         $this->setVar('descriptionLengthInfoList', '250');
+        $this->setVar('descriptionLengthImage', '1000');
         $this->setVar('descriptionLengthImageList', '250');
+        $this->setVar('useLocale', true);
         $this->setVar('linkerEntriesPerPage', '10');
         $this->setVar('carouselItemEntriesPerPage', '10');
         $this->setVar('carouselEntriesPerPage', '10');
@@ -96,6 +96,16 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
         $this->setVar('thumbnailHeightImageMyImageDisplay', '180');
         $this->setVar('thumbnailWidthImageMyImageEdit', '240');
         $this->setVar('thumbnailHeightImageMyImageEdit', '180');
+        $this->setVar('enableShrinkingForInfoTitleImage', false);
+        $this->setVar('shrinkWidthInfoTitleImage', '800');
+        $this->setVar('shrinkHeightInfoTitleImage', '600');
+        $this->setVar('thumbnailModeInfoTitleImage',  'inset' );
+        $this->setVar('thumbnailWidthInfoTitleImageView', '32');
+        $this->setVar('thumbnailHeightInfoTitleImageView', '24');
+        $this->setVar('thumbnailWidthInfoTitleImageDisplay', '240');
+        $this->setVar('thumbnailHeightInfoTitleImageDisplay', '180');
+        $this->setVar('thumbnailWidthInfoTitleImageEdit', '240');
+        $this->setVar('thumbnailHeightInfoTitleImageEdit', '180');
         $this->setVar('enabledFinderTypes', [ 'linker' ,  'carouselItem' ,  'image' ,  'info' ]);
     
         // create the default data

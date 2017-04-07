@@ -164,6 +164,11 @@ abstract class AbstractTranslatableHelper
         $currentLanguage = $this->getCurrentLanguage();
         foreach ($supportedLanguages as $language) {
             if ($language == $currentLanguage) {
+                foreach ($fields as $fieldName) {
+                    if (null === $entity[$fieldName]) {
+                        $entity[$fieldName] = '';
+                    }
+                }
                 // skip current language as this is not treated as translation on controller level
                 continue;
             }

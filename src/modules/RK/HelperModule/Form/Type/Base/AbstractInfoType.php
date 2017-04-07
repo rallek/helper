@@ -13,8 +13,11 @@
 namespace RK\HelperModule\Form\Type\Base;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\Common\Translator\TranslatorTrait;
@@ -103,6 +106,23 @@ abstract class AbstractInfoType extends AbstractType
         $this->addModerationFields($builder, $options);
         $this->addReturnControlField($builder, $options);
         $this->addSubmitButtons($builder, $options);
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $entity = $event->getData();
+            foreach (['titleImage'] as $uploadFieldName) {
+                $entity[$uploadFieldName] = [
+                    $uploadFieldName => $entity[$uploadFieldName] instanceof File ? $entity[$uploadFieldName]->getPathname() : null
+                ];
+            }
+        });
+        $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
+            $entity = $event->getData();
+            foreach (['titleImage'] as $uploadFieldName) {
+                if (is_array($entity[$uploadFieldName])) {
+                    $entity[$uploadFieldName] = $entity[$uploadFieldName][$uploadFieldName];
+                }
+            }
+        });
     }
 
     /**
@@ -154,6 +174,29 @@ abstract class AbstractInfoType extends AbstractType
                 }
             }
         }
+        
+        $builder->add('titleImage', 'RK\HelperModule\Form\Type\Field\UploadType', [
+            'label' => $this->__('Title image') . ':',
+            'attr' => [
+                'class' => ' validate-upload',
+                'title' => $this->__('Enter the title image of the info')
+            ],
+            'required' => false && $options['mode'] == 'create',
+            'entity' => $options['entity'],
+            'allowed_extensions' => 'gif, jpeg, jpg, png',
+            'allowed_size' => ''
+        ]);
+        
+        $builder->add('copyright', 'Symfony\Component\Form\Extension\Core\Type\TextType', [
+            'label' => $this->__('Copyright') . ':',
+            'empty_data' => '',
+            'attr' => [
+                'maxlength' => 255,
+                'class' => '',
+                'title' => $this->__('Enter the copyright of the info')
+            ],
+            'required' => false,
+        ]);
         
         $builder->add('infoLocale', 'Zikula\Bundle\FormExtensionBundle\Form\Type\LocaleType', [
             'label' => $this->__('Info locale') . ':',
@@ -285,13 +328,14 @@ abstract class AbstractInfoType extends AbstractType
                     return $this->entityFactory->createInfo();
                 },
                 'error_mapping' => [
+                    'titleImage' => 'titleImage.titleImage',
                 ],
                 'mode' => 'create',
                 'actions' => [],
                 'has_moderate_permission' => false,
                 'translations' => [],
             ])
-            ->setRequired(['mode', 'actions'])
+            ->setRequired(['entity', 'mode', 'actions'])
             ->setAllowedTypes([
                 'mode' => 'string',
                 'actions' => 'array',

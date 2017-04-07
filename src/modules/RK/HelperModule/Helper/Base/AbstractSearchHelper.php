@@ -186,6 +186,8 @@ abstract class AbstractSearchHelper implements SearchableInterface
                 case 'info':
                     $whereArray[] = 'tbl.workflowState';
                     $whereArray[] = 'tbl.infoTitle';
+                    $whereArray[] = 'tbl.titleImage';
+                    $whereArray[] = 'tbl.copyright';
                     $whereArray[] = 'tbl.infoDescription';
                     $whereArray[] = 'tbl.infoLocale';
                     break;
