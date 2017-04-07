@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 1.8.12\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #, fuzzy
@@ -43,6 +43,27 @@ msgstr "50"
 msgid "A filter consists of several statements."
 msgstr "Ein Filter besteht aus mehreren Anweisungen."
 
+#, fuzzy
+#| msgid "Link to the carousel"
+msgid "Absolute url to the carousel"
+msgstr "Link zum Karussell"
+
+#, fuzzy
+msgid "Absolute url to the carousel item"
+msgstr "Link zum Karussell"
+
+#, fuzzy
+msgid "Absolute url to the image"
+msgstr "Link to the image"
+
+#, fuzzy
+msgid "Absolute url to the info"
+msgstr "Link zu"
+
+#, fuzzy
+msgid "Absolute url to the linker"
+msgstr "Link zu den linker"
+
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -52,7 +73,7 @@ msgstr "Alle"
 #, fuzzy
 msgid "All additional joined tables can be referenced by \"tblFoo\"."
 msgstr ""
-"Alle zusätzlichen verknüpfte Tabellen können durch \"tblFoo\" refferenziert "
+"Alle zusätzlichen verknüpften Tabellen können durch \"tblFoo\" referenziert "
 "werden."
 
 msgid "All except approved"
@@ -73,7 +94,6 @@ msgstr "Alle Elemente mit Datum von heute."
 msgid "All items with date up from 24 hours ago."
 msgstr "Alle Artikel der letzten 24 Stunden."
 
-#, fuzzy
 msgid "Allowed file extensions"
 msgstr "Erlaubte Dateiendungen"
 
@@ -92,7 +112,7 @@ msgid ""
 "An error occured during creation of the .htaccess file in directory \"%path%"
 "\"."
 msgstr ""
-"Während der Erstellung der .htaccess-Datei im Verzeichnis \"%s\" ist ein "
+"Während der Erstellung der .htaccess-Datei im Verzeichnis \"%path%\" ist ein "
 "Fehler aufgetreten."
 
 #, fuzzy
@@ -149,6 +169,11 @@ msgstr "Karussell Element Liste"
 msgid "Carousel items"
 msgstr "Karussell-Elemente"
 
+#, fuzzy
+#| msgid "Carousel item list"
+msgid "Carousel items item image"
+msgstr "Karussell Element Liste"
+
 msgid "Carousel list"
 msgstr "Karussell-Liste"
 
@@ -174,6 +199,10 @@ msgid "Choose the carousel locale of the carousel"
 msgstr "Sprache des Karussells auswählen"
 
 #, fuzzy
+msgid "Choose the enabled finder types."
+msgstr "Die aktivierten Finter-Typen auswählen."
+
+#, fuzzy
 msgid "Choose the info locale of the info"
 msgstr "Wählen Sie das Gebietsschema von Info info"
 
@@ -185,16 +214,8 @@ msgid "Choose the linker locale of the linker"
 msgstr "Sprache des Linkers auswählen"
 
 #, fuzzy
-msgid "Choose the thumbnail mode carousel item item image."
-msgstr "Wählen Sie das thumbnail-Modus Karussell Element Element Bild."
-
-#, fuzzy
-msgid "Choose the thumbnail mode image my image."
-msgstr "Wählen Sie das thumbnail-Modus Bild meines Bildes."
-
-#, fuzzy
-msgid "Choose the thumbnail mode linker linker image."
-msgstr "Wählen Sie das thumbnail-Modus Linker Linker Bild."
+msgid "Choose the thumbnail mode."
+msgstr "Thumbnail Modus auswählen."
 
 msgid "Choose the title color of the carousel item"
 msgstr "Titeltextfarbe der Karussellelemente auswählen"
@@ -223,9 +244,8 @@ msgstr "Steuerung"
 msgid "Copyright"
 msgstr "Copyright"
 
-#, fuzzy
 msgid "Create another item after save"
-msgstr "Nach dem speichern einen neuen Eintrag erstellen"
+msgstr "Nach dem Speichern einen neuen Eintrag hinzufügen"
 
 msgid "Create carousel"
 msgstr "Karussell erstellen"
@@ -304,7 +324,7 @@ msgstr "Linker löschen"
 
 #, fuzzy
 msgid "Delete this carousel"
-msgstr "Möchten Sie wirklich dieses Karousell Element löschen: \"%name%\"?"
+msgstr "Dieses Karussell-Element löschen"
 
 msgid "Delete this carousel item"
 msgstr "Dieses Karussell-Element löschen"
@@ -327,6 +347,20 @@ msgstr "Gelöscht"
 
 msgid "Descending"
 msgstr "Absteigend"
+
+#, fuzzy
+#| msgid "Enter the my description of the image"
+msgid "Description length image"
+msgstr "Beschreibung für das Bild angeben"
+
+msgid "Description length image list"
+msgstr ""
+
+msgid "Description length info"
+msgstr ""
+
+msgid "Description length info list"
+msgstr ""
 
 msgid "Details"
 msgstr "Details"
@@ -479,20 +513,17 @@ msgstr ""
 "jede beliebige Adresse ist unter 150."
 
 #, fuzzy
-msgid "Enable shrinking for carousel item item image"
-msgstr "Aktivieren Sie für Karussell Element Element Bild verkleinern"
-
-#, fuzzy
-msgid "Enable shrinking for image my image"
-msgstr "Aktivieren Sie mein Bild für Bild verkleinern"
-
-#, fuzzy
-msgid "Enable shrinking for linker linker image"
-msgstr "Aktivieren Sie für Linker Linker Bild verkleinern"
+msgid "Enable shrinking"
+msgstr "Bildverkleinerung einschalten"
 
 #, fuzzy
 msgid "Enable this option to insert images"
-msgstr "Aktivieren Sie diese Option zum Einfügen von Bildern"
+msgstr "Diese Option aktivieren um Bilder einzufügen"
+
+#, fuzzy
+#| msgid "Special field types"
+msgid "Enabled finder types"
+msgstr "Aktivierte Finder-Typen"
 
 msgid "Enter a part of the user name to search"
 msgstr "Zum Suchen geben Sie einen Teil des Benutzernamens ein"
@@ -518,6 +549,31 @@ msgstr "Geben Sie den Namen Karussell des Karussells"
 
 msgid "Enter the copyright of the image"
 msgstr "Das Copyright des Bildes eingeben"
+
+#, fuzzy
+#| msgid "Enter the copyright of the image"
+msgid "Enter the copyright of the info"
+msgstr "Das Copyright des Bildes eingeben"
+
+#, fuzzy
+#| msgid "Enter the my description of the image"
+msgid "Enter the description length image list."
+msgstr "Beschreibung für das Bild angeben"
+
+#, fuzzy
+#| msgid "Enter the my description of the image"
+msgid "Enter the description length image."
+msgstr "Beschreibung für das Bild angeben"
+
+#, fuzzy
+#| msgid "Enter the info description of the info"
+msgid "Enter the description length info list."
+msgstr "Beschreibung Infoseite"
+
+#, fuzzy
+#| msgid "Enter the info description of the info"
+msgid "Enter the description length info."
+msgstr "Beschreibung Infoseite"
 
 #, fuzzy
 msgid "Enter the image entries per page."
@@ -586,28 +642,12 @@ msgid "Enter the remarks of the carousel"
 msgstr "Karussellbemerkungen eingeben"
 
 #, fuzzy
-msgid "Enter the shrink height carousel item item image."
-msgstr "Geben Sie das schrumpfen Höhe Karussell Element Element Bild."
+msgid "Enter the shrink height."
+msgstr "Pixel für die reduzierte Bildhöhe."
 
 #, fuzzy
-msgid "Enter the shrink height image my image."
-msgstr "Geben Sie dem schrumpfen Höhe Bild meines Bildes."
-
-#, fuzzy
-msgid "Enter the shrink height linker linker image."
-msgstr "Geben Sie das schrumpfen Höhe Linker Linker Bild."
-
-#, fuzzy
-msgid "Enter the shrink width carousel item item image."
-msgstr "Geben Sie das schrumpfen breite Karussell Element Element Bild."
-
-#, fuzzy
-msgid "Enter the shrink width image my image."
-msgstr "Geben Sie dem schrumpfen breite Bild meines Bildes."
-
-#, fuzzy
-msgid "Enter the shrink width linker linker image."
-msgstr "Geben Sie das schrumpfen breite Linker Linker Bild."
+msgid "Enter the shrink width."
+msgstr "Pixel für die reduzierte Bildbreite."
 
 #, fuzzy
 msgid "Enter the single item identifier of the carousel item"
@@ -630,84 +670,33 @@ msgid "Enter the the link of the linker"
 msgstr "Geben Sie den Link des Linkers"
 
 #, fuzzy
-msgid "Enter the thumbnail height carousel item item image display."
-msgstr ""
-"Geben Sie die Miniaturansicht Höhe Karussell Element Element Bilddarstellung."
+msgid "Enter the thumbnail height display."
+msgstr "Thumbnail Höhe Display Ansicht eintragen."
 
 #, fuzzy
-msgid "Enter the thumbnail height carousel item item image edit."
-msgstr ""
-"Geben Sie die Miniaturansicht Höhe Karussell Element Element Bild bearbeiten."
+msgid "Enter the thumbnail height edit."
+msgstr "Thumbnail Höhe Bearbeitungsansicht eintragen."
 
 #, fuzzy
-msgid "Enter the thumbnail height carousel item item image view."
-msgstr ""
-"Geben Sie die Miniaturansicht Höhe Karussell Element Element Bildansicht."
+msgid "Enter the thumbnail height view."
+msgstr "Thumbnail Höhe Listenansicht eintragen."
 
 #, fuzzy
-msgid "Enter the thumbnail height image my image display."
-msgstr "Geben Sie die Miniaturansicht Höhe Bild meiner Bildanzeige."
+msgid "Enter the thumbnail width display."
+msgstr "Thumbnail Breite Display Ansicht eintragen."
 
 #, fuzzy
-msgid "Enter the thumbnail height image my image edit."
-msgstr "Geben Sie die Miniaturansicht Höhe Bild mein Bild bearbeiten."
+msgid "Enter the thumbnail width edit."
+msgstr "Thumbnail Breite Bearbeitungsansicht eintragen."
 
 #, fuzzy
-msgid "Enter the thumbnail height image my image view."
-msgstr "Geben Sie die Miniaturansicht Höhe Bild meiner Bildansicht."
+msgid "Enter the thumbnail width view."
+msgstr "Thumbnail Breite Listenansicht eintragen."
 
 #, fuzzy
-msgid "Enter the thumbnail height linker linker image display."
-msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bilddarstellung."
-
-#, fuzzy
-msgid "Enter the thumbnail height linker linker image edit."
-msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bild bearbeiten."
-
-#, fuzzy
-msgid "Enter the thumbnail height linker linker image view."
-msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bildansicht."
-
-#, fuzzy
-msgid "Enter the thumbnail width carousel item item image display."
-msgstr ""
-"Geben Sie die Miniaturansicht breite Karussell Element Element "
-"Bilddarstellung."
-
-#, fuzzy
-msgid "Enter the thumbnail width carousel item item image edit."
-msgstr ""
-"Geben Sie die Miniaturansicht breite Karussell Element Element Bild "
-"bearbeiten."
-
-#, fuzzy
-msgid "Enter the thumbnail width carousel item item image view."
-msgstr ""
-"Geben Sie die Miniaturansicht breite Karussell Element Element Bildansicht."
-
-#, fuzzy
-msgid "Enter the thumbnail width image my image display."
-msgstr "Geben Sie die Miniaturansicht breite Bild meiner Bildanzeige."
-
-#, fuzzy
-msgid "Enter the thumbnail width image my image edit."
-msgstr "Geben Sie die Miniaturansicht breite Bild mein Bild bearbeiten."
-
-#, fuzzy
-msgid "Enter the thumbnail width image my image view."
-msgstr "Geben Sie die Miniaturansicht breite Bild meiner Bildansicht."
-
-#, fuzzy
-msgid "Enter the thumbnail width linker linker image display."
-msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bilddarstellung."
-
-#, fuzzy
-msgid "Enter the thumbnail width linker linker image edit."
-msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bild bearbeiten."
-
-#, fuzzy
-msgid "Enter the thumbnail width linker linker image view."
-msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bildansicht."
+#| msgid "Enter the info title of the info"
+msgid "Enter the title image of the info"
+msgstr "Titel Infoseite"
 
 #, fuzzy
 msgid "Enter the title of the carousel item"
@@ -783,8 +772,15 @@ msgstr ""
 msgid "Error: invalid input."
 msgstr "Fehler: ungültige Eingabe"
 
+msgid "Errors"
+msgstr ""
+
 msgid "Example"
 msgstr "Beispiel"
+
+#, fuzzy
+msgid "Filter"
+msgstr "Filter"
 
 msgid "Filter (expert option)"
 msgstr "Filter ( Expertenoption )"
@@ -843,14 +839,13 @@ msgstr "GB"
 msgid "General syntax"
 msgstr "Allgemeine Syntax"
 
-#, fuzzy
 msgid ""
 "Here we can filter one single item in the block advanced filtering to reuse "
 "an image. Be shure the itemEndDate is valid and not in the past."
 msgstr ""
-"Hier haben wir ein einzelnes Element im Block erweiterte Filter zur "
-"Wiederverwendung eines Bildes zu filtern. Werden Sie, dass Shure die "
-"ItemEndDate gültig und nicht in der Vergangenheit ist."
+"Mit diesem Eintrag können wir in der Erweiterten Block Filterung von Zikula "
+"das Bild wiederverwenden. Dabei muss sichergestellt sein, dass das Ende "
+"Datum in der Zukunft liegt und nicht in der Vergangenheit."
 
 #, fuzzy
 msgid "Here you can choose a custom creation date"
@@ -864,6 +859,11 @@ msgstr ""
 #, fuzzy
 msgid "Here you can configure parameters for list views."
 msgstr "Hier können Sie Parameter für die Listenansichten konfigurieren."
+
+#, fuzzy
+#| msgid "Manage settings for this application"
+msgid "Here you can manage all basic settings for this application."
+msgstr "Hier kannst Du die Grundeinstellungen für dieses Modul verwalten."
 
 msgid "ID of carousel"
 msgstr "Karussell ID"
@@ -904,23 +904,64 @@ msgstr "Bildeinstellungen für Karussellelemente Elementbild"
 msgid "Image settings for images my image"
 msgstr "Bildeinstellungen für meine Bilder"
 
+#, fuzzy
+#| msgid "Image settings for linkers linker image"
+msgid "Image settings for infos title image"
+msgstr "Bildeinstellungen für Linker Bild"
+
 msgid "Image settings for linkers linker image"
 msgstr "Bildeinstellungen für Linker Bild"
 
 msgid "Image title"
 msgstr "Bildtitel"
 
-msgid "Image with link to the carousel item"
+#, fuzzy
+#| msgid "Image with link to the carousel item"
+msgid "Image with absolute url to the carousel item"
 msgstr "Bild mit Link auf das Karussell-Element"
 
-msgid "Image with link to the image"
+#, fuzzy
+#| msgid "Image with link to the image"
+msgid "Image with absolute url to the image"
 msgstr "Bild mit Link zu dem Bild"
 
-msgid "Image with link to the linker"
+#, fuzzy
+#| msgid "Image with link to the linker"
+msgid "Image with absolute url to the info"
+msgstr "Bild mit Link zum Linker"
+
+#, fuzzy
+#| msgid "Image with link to the linker"
+msgid "Image with absolute url to the linker"
+msgstr "Bild mit Link zum Linker"
+
+#, fuzzy
+#| msgid "Image with link to the carousel item"
+msgid "Image with relative link to the carousel item"
+msgstr "Bild mit Link auf das Karussell-Element"
+
+#, fuzzy
+#| msgid "Image with link to the image"
+msgid "Image with relative link to the image"
+msgstr "Bild mit Link zu dem Bild"
+
+#, fuzzy
+#| msgid "Image with link to the linker"
+msgid "Image with relative link to the info"
+msgstr "Bild mit Link zum Linker"
+
+#, fuzzy
+#| msgid "Image with link to the linker"
+msgid "Image with relative link to the linker"
 msgstr "Bild mit Link zum Linker"
 
 msgid "Images"
 msgstr "Bilder"
+
+#, fuzzy
+#| msgid "Item image"
+msgid "Images my image"
+msgstr "Elementbild"
 
 msgid "Info"
 msgstr "Infoseite"
@@ -943,11 +984,21 @@ msgstr "Titel Infoseite"
 msgid "Infos"
 msgstr "Infoseiten"
 
+#, fuzzy
+#| msgid "Info title"
+msgid "Infos title image"
+msgstr "Titel Infoseite"
+
 msgid "Initial"
 msgstr "Anfang"
 
 msgid "Inset"
 msgstr "Einfügen (inset)"
+
+#, fuzzy
+#| msgid "Configuration"
+msgid "Integration"
+msgstr "Integration"
 
 msgid "Intem end date"
 msgstr "Endedatum"
@@ -958,7 +1009,7 @@ msgstr "Fehler! Ungültiger Bezeichner erhalten."
 
 #, fuzzy
 msgid "Invalid object type received."
-msgstr "Fehler! Ungültiger Bezeichner erhalten."
+msgstr "Fehler! Ungültigen Objekttyp erhalten."
 
 #, fuzzy
 msgid "Invalid user identifier received."
@@ -979,9 +1030,8 @@ msgstr "Elementbild"
 msgid "Item locale"
 msgstr "Sprache"
 
-#, fuzzy
 msgid "Item name"
-msgstr "Positionsname"
+msgstr "Elementname"
 
 msgid "Item start date"
 msgstr "Anfangsadatum"
@@ -999,25 +1049,6 @@ msgstr "Link"
 
 msgid "Link external"
 msgstr "Externer Link"
-
-msgid "Link to the carousel"
-msgstr "Link zum Karussell"
-
-#, fuzzy
-msgid "Link to the carousel item"
-msgstr "Link zum Karussell"
-
-#, fuzzy
-msgid "Link to the image"
-msgstr "Link to the image"
-
-#, fuzzy
-msgid "Link to the info"
-msgstr "Link zu"
-
-#, fuzzy
-msgid "Link to the linker"
-msgstr "Link zu den linker"
 
 #, fuzzy
 msgid "Linker"
@@ -1048,6 +1079,11 @@ msgid "Linkers"
 msgstr "Linker"
 
 #, fuzzy
+#| msgid "Linker image"
+msgid "Linkers linker image"
+msgstr "Linker Bild"
+
+#, fuzzy
 msgid "List views"
 msgstr "Listenansichten"
 
@@ -1064,6 +1100,11 @@ msgstr "Benutzer verwalten"
 #, fuzzy
 msgid "Moderation"
 msgstr "Moderation"
+
+#, fuzzy
+#| msgid "Boostrap setting"
+msgid "More settings"
+msgstr "Boostrap Einstellung"
 
 msgid "My carousel items"
 msgstr "Meine Karussell-Elemente"
@@ -1133,6 +1174,9 @@ msgstr "Kein Workflow (keine Freigabe)"
 msgid "Not set."
 msgstr "Nicht gesetzt."
 
+msgid "Note: this value must be in the future."
+msgstr "Bitte wähle einen Wert in der Zukunft."
+
 msgid "OK"
 msgstr "Ok"
 
@@ -1177,6 +1221,9 @@ msgstr ""
 "Bitte vorsichtig sein beim Link eintragen. Der Link wird nicht auf "
 "Funktionsfähigkeit überprüft!"
 
+msgid "Please choose an option"
+msgstr "Bitte Option wählen"
+
 #, fuzzy
 msgid ""
 "Prepend one of the keywords \"year\", \"month\", \"week\", \"day\", \"hour"
@@ -1199,7 +1246,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Quick navigation"
-msgstr "Schnellansicht"
+msgstr "Schnellnavigation"
 
 msgid "RKHelperModule detail view"
 msgstr "RKHelperModule Detailansicht"
@@ -1217,8 +1264,28 @@ msgid "Read more"
 msgstr "Weiterlesen"
 
 #, fuzzy
+#| msgid "Link to the carousel"
+msgid "Relative link to the carousel"
+msgstr "Link zum Karussell"
+
+#, fuzzy
+msgid "Relative link to the carousel item"
+msgstr "Link zum Karussell"
+
+#, fuzzy
+msgid "Relative link to the image"
+msgstr "Relativer Link zum Bild"
+
+#, fuzzy
+msgid "Relative link to the info"
+msgstr "Link zu"
+
+#, fuzzy
+msgid "Relative link to the linker"
+msgstr "Link zu den linker"
+
 msgid "Remarks"
-msgstr "Karussellbemerkungen eingeben"
+msgstr "Bemerkung"
 
 msgid "Reset"
 msgstr "Zurücksetzen"
@@ -1226,7 +1293,6 @@ msgstr "Zurücksetzen"
 msgid "Reset to empty value"
 msgstr "Eingabe Löschen"
 
-#, fuzzy
 msgid "Return control"
 msgstr "Nächster Schritt"
 
@@ -1293,28 +1359,12 @@ msgid "Shows all items except these which are approved"
 msgstr "Zeigt alle Einträge außer den Freigegebenen"
 
 #, fuzzy
-msgid "Shrink height carousel item item image"
-msgstr "Höhe Karussell Element Element Bild verkleinern"
+msgid "Shrink height"
+msgstr "Bildhöhe"
 
 #, fuzzy
-msgid "Shrink height image my image"
-msgstr "Mein Image Height Bild zu verkleinern"
-
-#, fuzzy
-msgid "Shrink height linker linker image"
-msgstr "Höhe Linker Linker Bild verkleinern"
-
-#, fuzzy
-msgid "Shrink width carousel item item image"
-msgstr "Breite Karussell Element Element Bild verkleinern"
-
-#, fuzzy
-msgid "Shrink width image my image"
-msgstr "Breite Bild mein Bild verkleinern"
-
-#, fuzzy
-msgid "Shrink width linker linker image"
-msgstr "Breite Linker Linker Bild verkleinern"
+msgid "Shrink width"
+msgstr "Bildbreite"
 
 msgid "Single item identifier"
 msgstr "Einzelner Element Identifier"
@@ -1327,8 +1377,8 @@ msgid ""
 "So in our example we can reference Persons with \"tbl\" and addresses with "
 "\"tblAddresses\"."
 msgstr ""
-"So in our example we can reference Persons with \"tbl\" and addresses with "
-"\"tblAddresses\"."
+"Also in unserem Beispiel können wir Personen mit \"tbl\" und Adressen mit "
+"\"tblAddresses\" refferenzieren."
 
 #, fuzzy
 msgid "Sorry, but an error occured during the %action% action."
@@ -1339,7 +1389,7 @@ msgid ""
 "Sorry, but an error occured during the %action% action. Please apply the "
 "changes again!"
 msgstr ""
-"Sorry, aber ein Fehler ist bei Aktion %action% aufgetreten. Bitte diese "
+"Sorry, aber ein Fehler ist bei Aktion %action% aufgetreten. Bitte die "
 "Änderungen erneut anwenden!"
 
 #, fuzzy
@@ -1449,16 +1499,8 @@ msgstr ""
 "Sie es und machen Sie es für den Webserver beschreibbar."
 
 #, fuzzy
-msgid "The enable shrinking for carousel item item image option."
-msgstr "Die schrumpfende für Karussell Element Element Bild Option aktivieren."
-
-#, fuzzy
-msgid "The enable shrinking for image my image option."
-msgstr "Die schrumpfende für Bild meine Bild-Option aktivieren."
-
-#, fuzzy
-msgid "The enable shrinking for linker linker image option."
-msgstr "Die Freigabe für Linker Linkeroption Bild verkleinern."
+msgid "The enable shrinking option."
+msgstr "Die Option zur Bildverkleinerung für Seiten Bilder."
 
 #, fuzzy
 msgid "The first name equals either Peter or Chris"
@@ -1472,15 +1514,16 @@ msgstr "Der erste Name ist Peter"
 msgid ""
 "The first name is Peter and the house number of any address is below 100."
 msgstr ""
-"The first name is Peter and the house number of any address is below 100."
+"Der erste Name ist Peter und die Hausnummer von jeder beliebigen Adresse "
+"liegt unter 100."
 
 #, fuzzy
 msgid ""
 "The following filters assume that you have a list of persons whereby each "
 "person can have many addresses."
 msgstr ""
-"The following filters assume that you have a list of persons whereby each "
-"person can have many addresses."
+"Folgende Filter geht davon aus, dass Sie eine Liste von Personen haben, "
+"wobei jede Person viele Adressen haben kann."
 
 #, fuzzy
 msgid "The house number of any address is lower than 100"
@@ -1502,9 +1545,9 @@ msgid ""
 "is always known directly. That means, you can prepend \"tbl.\", but you do "
 "not need to."
 msgstr ""
-"The main table, that is the entity being the primary subject of the query, "
-"is always known directly. That means, you can prepend \"tbl.\", but you do "
-"not need to."
+"Die Haupt-Tabelle, das ist die Entität, die der primäre Gegenstand der "
+"Abfrage ist, ist immer direkt bekannt. Das heißt, Sie können \"tbl.\" "
+"voranstellen, aber Sie müssen es nicht."
 
 msgid "The maximum amount of items to be shown."
 msgstr "Die maximale Anzahl von Elementen, die angezeigt werden."
@@ -1519,24 +1562,23 @@ msgstr "Die maximale Bildbreite in Pixel."
 
 #, fuzzy
 msgid "The operator defines the condition type (equal, lower than, etc.)."
-msgstr "The operator defines the condition type (equal, lower than, etc.)."
+msgstr ""
+"Der Operator definiert die Konditionsart (gleich, niedriger als, etc..)."
 
-#, fuzzy
 msgid ""
 "The ration of the image must be 3:1. Please format before uploading. The "
 "image will be shrinked to 1800px width. Your image should be not much less "
 "than this."
 msgstr ""
-"Das Verhältnis des Bildes muss 3:1 sein. Bitte formatieren Sie vor dem "
-"hochladen. Das Bild wird auf 1800px breite geschrumpft sein. Ihr Bild sollte "
-"nicht viel weniger als dies."
+"Das Verhältnis des Bildes muss 3:1 sein. Bitte formatieren Sie das Bild vor "
+"dem Hochladen entsprechend."
 
 #, fuzzy
 msgid ""
 "The term \"bar\" will match \"foobarthis\", but not \"foobar\" nor \"barfoo"
 "\"."
 msgstr ""
-"The term \"bar\" will match \"foobarthis\", but not \"foobar\" nor \"barfoo"
+"\"bar\" wird \"foobarthis\" entsprechen, aber nicht \"foobar\" oder \"barfoo"
 "\"."
 
 #, fuzzy
@@ -1544,7 +1586,7 @@ msgid ""
 "The term \"foo\" will match \"fOo\", \"AnotherFoo\" and so on, but not "
 "\"FoObar\" or \"FooBlub\"."
 msgstr ""
-"Der Begriff \"Foo\" passt für \"fOo\", \"AnotherFoo\" und so weiter, aber "
+"Der Begriff \"foo\" passt für \"fOo\", \"AnotherFoo\" und so weiter, aber "
 "nicht für \"FoObar\" oder \"FooBlub\"."
 
 #, fuzzy
@@ -1552,7 +1594,7 @@ msgid ""
 "The term \"foo\" will match \"fOo\", \"FOObar\", \"FooBlub\" and so on, but "
 "not \"AnotherFoo\"."
 msgstr ""
-"Der Begriff \"Foo\" passt für \"fOo\", \"FOObar\", \"FooBlub\" und so "
+"Der Begriff \"foo\" passt für \"fOo\", \"FOObar\", \"FooBlub\" und so "
 "weiter, aber nicht für \"AnotherFoo\"."
 
 msgid "The upload directories at \"%path%\" can be removed manually."
@@ -1564,9 +1606,15 @@ msgid ""
 "to create it yourself and make sure that this folder is accessible via the "
 "web and writable by the webserver."
 msgstr ""
-"Das Upload-Verzeichnis \"%s\" ist nicht vorhanden und konnte nicht erstellt "
-"werden. Versuchen Sie es selbst und stellen Sie sicher, dass dieser Ordner "
-"über das Web zugänglich und vom Webserver beschreibbar ist."
+"Das Upload-Verzeichnis \"%path%\" ist nicht vorhanden und konnte nicht "
+"erstellt werden. Versuchen Sie es selbst und stellen Sie sicher, dass dieser "
+"Ordner über das Web zugänglich und vom Webserver beschreibbar ist."
+
+msgid "The use locale option."
+msgstr ""
+
+msgid "The value \"%value%\" is not allowed for the \"%property%\" property."
+msgstr ""
 
 #, fuzzy
 msgid "The value is scanned case insensitive."
@@ -1580,20 +1628,22 @@ msgstr ""
 "Dabei bedeutet \"Foo\" nicht der Name der verknüpften Entität, aber die "
 "Quelle oder das Ziel Alias der entsprechenden Beziehung."
 
+#, fuzzy
+msgid "These options allow you to configure integration aspects."
+msgstr "Diese Optionen erlauben Integrationsaspekte zu konfigurieren."
+
 msgid ""
 "This entity is for webmaster usage only. Here we can store some images for "
 "graphical usage."
 msgstr ""
 "Hier können Bilder für die Verwendung auf der Homepage gespeichert werden."
 
-#, fuzzy
 msgid ""
 "This field is for filtering in the block settings. So it makes it possible "
 "to have more than one carousel managed."
 msgstr ""
-"Dieses Feld ist für die Filterung in den Einstellungen für den "
-"Zugriffsschutz. Also macht es möglich, mehr als ein Karussell, die es "
-"geschafft haben."
+"Dieses Feld ist für die Blockeinstellung. Damit ist es möglich, mehr als ein "
+"Karussell auf einer Seite darzustellen."
 
 #, fuzzy
 msgid "This function requires JavaScript activated!"
@@ -1622,122 +1672,71 @@ msgstr ""
 "direkt online."
 
 #, fuzzy
-msgid "Thumbnail height carousel item item image display"
-msgstr "Miniaturansicht Höhe Karussell Element Element Bildanzeige"
+msgid "Thumbnail height display"
+msgstr "Thumbnail Höhe Display Ansicht"
 
 #, fuzzy
-msgid "Thumbnail height carousel item item image edit"
-msgstr "Miniaturansicht Höhe Karussell Element Element Bild bearbeiten"
-
-#, fuzzy
-msgid "Thumbnail height carousel item item image view"
-msgstr "Miniaturansicht Höhe Karussell Element Element Bildansicht"
-
-#, fuzzy
-msgid "Thumbnail height image my image display"
-msgstr "Miniaturansicht Höhe Bild meiner Bildanzeige"
-
-#, fuzzy
-msgid "Thumbnail height image my image edit"
-msgstr "Miniaturansicht Höhe Bild mein Bild bearbeiten"
-
-#, fuzzy
-msgid "Thumbnail height image my image view"
-msgstr "Miniaturansicht Höhe Bild meiner Bildansicht"
-
-#, fuzzy
-msgid "Thumbnail height linker linker image display"
-msgstr "Miniaturansicht Höhe Linker Linker Bildanzeige"
-
-#, fuzzy
-msgid "Thumbnail height linker linker image edit"
-msgstr "Miniaturansicht Höhe Linker Linker Bild bearbeiten"
-
-#, fuzzy
-msgid "Thumbnail height linker linker image view"
-msgstr "Miniaturansicht Höhe Linker Linker Bildansicht"
+msgid "Thumbnail height edit"
+msgstr "Thumbnail Höhe Bearbeitungsansicht"
 
 #, fuzzy
 msgid "Thumbnail height on display pages in pixels."
-msgstr "Thumbnail height on display pages in pixels."
+msgstr "Thumbnail Höhe auf Display Seiten in Pixel."
 
 #, fuzzy
 msgid "Thumbnail height on edit pages in pixels."
-msgstr "Thumbnail height on edit pages in pixels."
+msgstr "Thumbnail Höhe auf Edit Seiten in Pixel."
 
 #, fuzzy
 msgid "Thumbnail height on view pages in pixels."
-msgstr "Thumbnail height on view pages in pixels."
+msgstr "Thumbnail Höhe auf View Seiten in Pixel."
+
+#, fuzzy
+msgid "Thumbnail height view"
+msgstr "Thumbnail Höhe Listenansicht"
+
+#, fuzzy
+msgid "Thumbnail mode"
+msgstr "Thumbnail Modus"
 
 #, fuzzy
 msgid "Thumbnail mode (inset or outbound)."
-msgstr "Thumbnail mode (inset or outbound)."
+msgstr "Thumbnail Modus (inset oder outbound)."
 
 #, fuzzy
-msgid "Thumbnail mode carousel item item image"
-msgstr "Thumbnail-Modus Karussell Element Artikelbild"
+msgid "Thumbnail width display"
+msgstr "Thumbnail Breite Display Ansicht"
 
 #, fuzzy
-msgid "Thumbnail mode image my image"
-msgstr "Thumbnail-Modus Bild mein Bild"
-
-#, fuzzy
-msgid "Thumbnail mode linker linker image"
-msgstr "Thumbnail-Modus Linker Linker Bild"
-
-#, fuzzy
-msgid "Thumbnail width carousel item item image display"
-msgstr "Miniaturansicht breite Karussell Element Element Bildanzeige"
-
-#, fuzzy
-msgid "Thumbnail width carousel item item image edit"
-msgstr "Miniaturansicht breite Karussell Element Element Bild bearbeiten"
-
-#, fuzzy
-msgid "Thumbnail width carousel item item image view"
-msgstr "Miniaturansicht breite Karussell Element Element Bildansicht"
-
-#, fuzzy
-msgid "Thumbnail width image my image display"
-msgstr "Miniaturansicht breite Bild meiner Bildanzeige"
-
-#, fuzzy
-msgid "Thumbnail width image my image edit"
-msgstr "Miniaturansicht breite Bild mein Bild bearbeiten"
-
-#, fuzzy
-msgid "Thumbnail width image my image view"
-msgstr "Miniaturansicht breite Bild meiner Bildansicht"
-
-#, fuzzy
-msgid "Thumbnail width linker linker image display"
-msgstr "Miniaturansicht breite Linker Linker Bildanzeige"
-
-#, fuzzy
-msgid "Thumbnail width linker linker image edit"
-msgstr "Miniaturansicht breite Linker Linker Bild bearbeiten"
-
-#, fuzzy
-msgid "Thumbnail width linker linker image view"
-msgstr "Miniaturansicht breite Linker Linker Bildansicht"
+msgid "Thumbnail width edit"
+msgstr "Thumbnail Breite Bearbeitungsansicht"
 
 #, fuzzy
 msgid "Thumbnail width on display pages in pixels."
-msgstr "Thumbnail width on display pages in pixels."
+msgstr "Thumbnail Breite auf Display Seiten in Pixel."
 
 #, fuzzy
 msgid "Thumbnail width on edit pages in pixels."
-msgstr "Thumbnail width on edit pages in pixels."
+msgstr "Thumbnail Breite auf Edit Seiten in Pixel."
 
 #, fuzzy
 msgid "Thumbnail width on view pages in pixels."
-msgstr "Thumbnail width on view pages in pixels."
+msgstr "Thumbnail Breite auf View Seiten in Pixel."
+
+#, fuzzy
+msgid "Thumbnail width view"
+msgstr "Thumbnail Breite Listenansicht"
 
 msgid "Title"
 msgstr "Titel"
 
 msgid "Title color"
 msgstr "Titeltextfarbe auswählen"
+
+#, fuzzy
+#| msgid "Edit image"
+msgid "Title image"
+msgstr "Titelbild"
 
 msgid "Update"
 msgstr "Aktualisieren"
@@ -1764,6 +1763,11 @@ msgstr "Aktualisiert am %date"
 msgid "Updater"
 msgstr "Aktualisieren"
 
+#, fuzzy
+#| msgid "Item locale"
+msgid "Use locale"
+msgstr "Sprache"
+
 msgid "View detail page"
 msgstr "Zeige Detailseite"
 
@@ -1772,7 +1776,7 @@ msgid ""
 "Warning! The upload directory at \"%path%\" exists but is not writable by "
 "the webserver."
 msgstr ""
-"Warnung! Das Upload-Verzeichnis \"%s\" besteht, ist allerdings nicht vom "
+"Warnung! Das Upload-Verzeichnis \"%path%\" besteht, ist allerdings nicht vom "
 "Webserver beschreibbar."
 
 msgid "Welcome to the carousel item section of the Helper application."
@@ -1803,8 +1807,16 @@ msgid ""
 "Whether to enable shrinking huge images to maximum dimensions. Stores "
 "downscaled version of the original image."
 msgstr ""
-"Whether to enable shrinking huge images to maximum dimensions. Stores "
-"downscaled version of the original image."
+"Auswählen, um große Bilder auf angegebene Dimensionen zu verkleinern. "
+"Speichert herunterskalierte Version des Originalbildes."
+
+#, fuzzy
+msgid ""
+"Which sections are supported in the Finder component (used by Scribite plug-"
+"ins)."
+msgstr ""
+"Weche Sektionen in der Finder-Komponente genutzt werden sollen (genutzt "
+"durch Scribite Plugins)."
 
 #, fuzzy
 msgid "With description"
@@ -1857,23 +1869,23 @@ msgstr "Karussell Elemente"
 msgid "carousells"
 msgstr "Karussells"
 
-#, fuzzy
 msgid "check if controlls should be shown"
-msgstr "Überprüfen Sie, ob Kontrollen angezeigt werden sollen"
+msgstr "Ankreuzen, wenn die Steuerelemente angezeigt werden sollen."
 
 msgid "controls ?"
 msgstr "Steuerung?"
 
-#, fuzzy
 msgid "if this is selected the link will open another window or tab"
 msgstr ""
-"Wenn diese Option ausgewählt, wird der Link öffnet sich ein weiteres Fenster "
-"oder Tab"
+"Wenn diese Option ausgewählt ist, wird der Link in einem neuen Fenster oder "
+"Tab geöffnet"
 
-#, fuzzy
 msgid "if you do not enter a date the date of today will be used"
 msgstr ""
-"Wenn Sie kein Datum eingeben, wird das Datum von heute verwendet werden"
+"Wenn Sie kein Datum eingeben, wird das Datum von heute verwendet werden."
+
+msgid "if you want to use multilingual settings"
+msgstr ""
 
 msgid "images"
 msgstr "Bilder"
@@ -1895,7 +1907,7 @@ msgstr "ist gleich."
 
 #, fuzzy
 msgid "is greater or equal than."
-msgstr "ist größer oder gleich als."
+msgstr "ist größer oder gleich wie."
 
 #, fuzzy
 msgid "is greater than."
@@ -1907,11 +1919,11 @@ msgstr "Ist wie."
 
 #, fuzzy
 msgid "is lower or equal than."
-msgstr "ist niedriger oder gleich als."
+msgstr "ist kleiner oder gleich wie."
 
 #, fuzzy
 msgid "is lower than."
-msgstr "ist kleiner als."
+msgstr "ist niedriger als."
 
 #, fuzzy
 msgid "is not empty and not NULL."
@@ -1927,10 +1939,9 @@ msgstr "Externer Link?"
 msgid "linkers"
 msgstr "Linker"
 
-#, fuzzy
 msgid "make a note for which usecase you create this carousel"
 msgstr ""
-"Notieren Sie sich für welchen Anwendungsfall dieses Karussell erstellen"
+"Notieren Sie sich, für welchen Anwendungsfall dieses Karussell erstellt wurde"
 
 msgid "pixels"
 msgstr "Pixel"
@@ -1980,20 +1991,27 @@ msgstr "Rkhelpermodule. Linker Filtern Haken"
 
 #, fuzzy
 msgid "see the definitions at the bootstrap documentation"
-msgstr "Siehe die Definitionen in der bootstrap Dokumentation"
+msgstr "Bitte die Boostrap Dokumentation beachten."
 
-#, fuzzy
 msgid "select white first. If this do not fit try a grey or black."
 msgstr ""
-"Wählen Sie zunächst weiß. Wenn dies nicht passen, versuchen Sie ein grau "
-"oder schwarz."
+"Wählen Sie zunächst weiß. Wenn dies nicht passen sollte, versuchen Sie ein "
+"grau oder schwarz."
 
-#, fuzzy
 msgid ""
 "the item name will not be shown. it is just for notification in the backend"
 msgstr ""
-"der Elementname wird nicht angezeigt. Es ist nur für Benachrichtigung im "
-"backend"
+"Der Elementname wird nicht angezeigt. Es ist nur für Information im Backend."
+
+#, fuzzy
+#| msgid "Enter the info description of the info"
+msgid "the length of the description field of the info page"
+msgstr "Beschreibung Infoseite"
+
+#, fuzzy
+#| msgid "Enter the info description of the info"
+msgid "the length of the description field of the info page in a list"
+msgstr "Beschreibung Infoseite"
 
 msgid ""
 "with this entity you are able to manage the home info fields. Bootstrap is "
@@ -2001,3 +2019,175 @@ msgid ""
 msgstr ""
 "Mit dieser Entität können die Felder der Infoseiten gemanaged werden. "
 "Bootstrap ist obligatorisch!"
+
+#, fuzzy
+#~ msgid "Choose the thumbnail mode carousel item item image."
+#~ msgstr "Wählen Sie das thumbnail-Modus Karussell Element Element Bild."
+
+#, fuzzy
+#~ msgid "Choose the thumbnail mode linker linker image."
+#~ msgstr "Wählen Sie das thumbnail-Modus Linker Linker Bild."
+
+#, fuzzy
+#~ msgid "Enable shrinking for carousel item item image"
+#~ msgstr "Aktivieren Sie für Karussell Element Element Bild verkleinern"
+
+#, fuzzy
+#~ msgid "Enable shrinking for linker linker image"
+#~ msgstr "Aktivieren Sie für Linker Linker Bild verkleinern"
+
+#, fuzzy
+#~ msgid "Enter the shrink height carousel item item image."
+#~ msgstr "Geben Sie das schrumpfen Höhe Karussell Element Element Bild."
+
+#, fuzzy
+#~ msgid "Enter the shrink height linker linker image."
+#~ msgstr "Geben Sie das schrumpfen Höhe Linker Linker Bild."
+
+#, fuzzy
+#~ msgid "Enter the shrink width carousel item item image."
+#~ msgstr "Geben Sie das schrumpfen breite Karussell Element Element Bild."
+
+#, fuzzy
+#~ msgid "Enter the shrink width linker linker image."
+#~ msgstr "Geben Sie das schrumpfen breite Linker Linker Bild."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail height carousel item item image display."
+#~ msgstr ""
+#~ "Geben Sie die Miniaturansicht Höhe Karussell Element Element "
+#~ "Bilddarstellung."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail height carousel item item image edit."
+#~ msgstr ""
+#~ "Geben Sie die Miniaturansicht Höhe Karussell Element Element Bild "
+#~ "bearbeiten."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail height carousel item item image view."
+#~ msgstr ""
+#~ "Geben Sie die Miniaturansicht Höhe Karussell Element Element Bildansicht."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail height linker linker image display."
+#~ msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bilddarstellung."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail height linker linker image edit."
+#~ msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bild bearbeiten."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail height linker linker image view."
+#~ msgstr "Geben Sie die Miniaturansicht Höhe Linker Linker Bildansicht."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail width carousel item item image display."
+#~ msgstr ""
+#~ "Geben Sie die Miniaturansicht breite Karussell Element Element "
+#~ "Bilddarstellung."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail width carousel item item image edit."
+#~ msgstr ""
+#~ "Geben Sie die Miniaturansicht breite Karussell Element Element Bild "
+#~ "bearbeiten."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail width carousel item item image view."
+#~ msgstr ""
+#~ "Geben Sie die Miniaturansicht breite Karussell Element Element "
+#~ "Bildansicht."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail width linker linker image display."
+#~ msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bilddarstellung."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail width linker linker image edit."
+#~ msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bild bearbeiten."
+
+#, fuzzy
+#~ msgid "Enter the thumbnail width linker linker image view."
+#~ msgstr "Geben Sie die Miniaturansicht breite Linker Linker Bildansicht."
+
+#, fuzzy
+#~ msgid "Shrink height carousel item item image"
+#~ msgstr "Höhe Karussell Element Element Bild verkleinern"
+
+#, fuzzy
+#~ msgid "Shrink height linker linker image"
+#~ msgstr "Höhe Linker Linker Bild verkleinern"
+
+#, fuzzy
+#~ msgid "Shrink width carousel item item image"
+#~ msgstr "Breite Karussell Element Element Bild verkleinern"
+
+#, fuzzy
+#~ msgid "Shrink width linker linker image"
+#~ msgstr "Breite Linker Linker Bild verkleinern"
+
+#, fuzzy
+#~ msgid "The enable shrinking for carousel item item image option."
+#~ msgstr ""
+#~ "Die schrumpfende für Karussell Element Element Bild Option aktivieren."
+
+#, fuzzy
+#~ msgid "The enable shrinking for linker linker image option."
+#~ msgstr "Die Freigabe für Linker Linkeroption Bild verkleinern."
+
+#, fuzzy
+#~ msgid "Thumbnail height carousel item item image display"
+#~ msgstr "Miniaturansicht Höhe Karussell Element Element Bildanzeige"
+
+#, fuzzy
+#~ msgid "Thumbnail height carousel item item image edit"
+#~ msgstr "Miniaturansicht Höhe Karussell Element Element Bild bearbeiten"
+
+#, fuzzy
+#~ msgid "Thumbnail height carousel item item image view"
+#~ msgstr "Miniaturansicht Höhe Karussell Element Element Bildansicht"
+
+#, fuzzy
+#~ msgid "Thumbnail height linker linker image display"
+#~ msgstr "Miniaturansicht Höhe Linker Linker Bildanzeige"
+
+#, fuzzy
+#~ msgid "Thumbnail height linker linker image edit"
+#~ msgstr "Miniaturansicht Höhe Linker Linker Bild bearbeiten"
+
+#, fuzzy
+#~ msgid "Thumbnail height linker linker image view"
+#~ msgstr "Miniaturansicht Höhe Linker Linker Bildansicht"
+
+#, fuzzy
+#~ msgid "Thumbnail mode carousel item item image"
+#~ msgstr "Thumbnail-Modus Karussell Element Artikelbild"
+
+#, fuzzy
+#~ msgid "Thumbnail mode linker linker image"
+#~ msgstr "Thumbnail-Modus Linker Linker Bild"
+
+#, fuzzy
+#~ msgid "Thumbnail width carousel item item image display"
+#~ msgstr "Miniaturansicht breite Karussell Element Element Bildanzeige"
+
+#, fuzzy
+#~ msgid "Thumbnail width carousel item item image edit"
+#~ msgstr "Miniaturansicht breite Karussell Element Element Bild bearbeiten"
+
+#, fuzzy
+#~ msgid "Thumbnail width carousel item item image view"
+#~ msgstr "Miniaturansicht breite Karussell Element Element Bildansicht"
+
+#, fuzzy
+#~ msgid "Thumbnail width linker linker image display"
+#~ msgstr "Miniaturansicht breite Linker Linker Bildanzeige"
+
+#, fuzzy
+#~ msgid "Thumbnail width linker linker image edit"
+#~ msgstr "Miniaturansicht breite Linker Linker Bild bearbeiten"
+
+#, fuzzy
+#~ msgid "Thumbnail width linker linker image view"
+#~ msgstr "Miniaturansicht breite Linker Linker Bildansicht"
