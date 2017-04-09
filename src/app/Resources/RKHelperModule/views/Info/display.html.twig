@@ -1,0 +1,77 @@
+{# purpose of this template: infos display view #}
+{% set baseTemplate = app.request.query.getBoolean('raw', false) ? 'raw' : (routeArea == 'admin' ? 'adminBase' : 'base') %}
+{% extends 'RKHelperModule::' ~ baseTemplate ~ '.html.twig' %}
+{% block pageTitle %}{{ info.getTitleFromDisplayPattern()|default(__('Info')) }}{% endblock %}
+{% block titleImage %}
+	{% if getModVar('RKHelperModule', 'titleImage') == false %}
+        {% if info.titleImage is not empty %}
+           <div class="row"> 
+		   <div class="col-md-12">
+		   <div class="white-space image-text">
+				{% if info.titleImage is not empty and info.titleImageMeta|default %}
+							<a href="{{ info.titleImageUrl }}" title="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}"{% if info.titleImageMeta.isImage %} class="image-link"{% endif %}>
+				{% if info.titleImageMeta.isImage %}
+					{% set thumbOptions = attribute(thumbRuntimeOptions, 'infoTitleImage') %}
+					
+					<img src="{{ info.titleImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+
+				{% else %}
+					{{ __('Download') }} ({{ info.titleImageMeta.size|rkshowroommodule_fileSize(info.titleImage.getPathname(), false, false) }})
+				{% endif %}
+				</a>
+				{% if info.copyright is not empty %}
+					<span class="small copyright white"><i class="fa fa-copyright" aria-hidden="true"></i> {{ info.copyright }}</span>
+					
+				{% endif %}			
+				{% else %}&nbsp;{% endif %}
+				<span class="title-md white hidden-xs hidden-sm"> {{ info.infoTitle }}</span>
+				<span class="title-sm white hidden-xs hidden-md hidden-lg"> {{ info.infoTitle }}</span>
+				<span class="title-xs white hidden-sm hidden-md hidden-lg"> {{ info.infoTitle }}</span>
+			</div>
+			</div>
+            </div>
+        {% endif %}
+	{% endif %}
+{% endblock %}
+{% block title %}
+{% if hasPermission('RKHelperModule::', '::', 'ACCESS_EDIT') %}
+    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], { entity: info, area: routeArea, context: 'display' }) %}
+    <div class="dropdown">
+        <a id="itemActions{{ info.id }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
+        {{ knp_menu_render(itemActions, { template: 'ZikulaMenuModule:Override:actions.html.twig' }) }}
+    </div>
+	{% endif %}
+{% endblock %}
+{% block admin_page_icon 'eye' %}
+{% block content %}
+    {% set isQuickView = app.request.query.getBoolean('raw', false) %}
+	<div class="white-space">
+		<div class="rkhelpermodule-info rkhelpermodule-display">
+
+
+		<dl>
+
+
+
+			{% if info.infoDescription is not empty %}
+				
+				<dd>{{ info.infoDescription|safeHtml }}</dd>
+			{% endif %}
+
+			
+		</dl>
+		{{ include('@RKHelperModule/Helper/includeStandardFieldsDisplay.html.twig', { obj: info }) }}
+
+		{% if not isQuickView %}
+			{# include display hooks #}
+			{{ block('display_hooks') }}
+		{% endif %}
+		</div>
+	</div>
+{% endblock %}
+{% block display_hooks %}
+    {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.infos.display_view', id=info.id, urlObject=currentUrlObject) %}
+    {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        {{ hook }}
+    {% endfor %}
+{% endblock %}

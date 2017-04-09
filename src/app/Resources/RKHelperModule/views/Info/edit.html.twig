@@ -20,6 +20,7 @@
 {{ form_start(form, {attr: {id: 'infoEditForm', class: 'rkhelper-edit-form'}}) }}
 {{ form_errors(form) }}
 {% if translationsEnabled == true %}
+<div class="zikula-bootstrap-tab-container">
     <ul class="{{ form.vars.id|lower }}-translation-locales nav nav-tabs">
         {% for language in supportedLanguages %}
             <li{% if language == app.request.locale %} class="active"{% endif %}>
@@ -49,6 +50,7 @@
             </div>
         {% endfor %}
     </div>
+</div>
 {% else %}
     {% set language = app.request.locale %}
     <fieldset>
@@ -60,6 +62,8 @@
 {% endif %}
 <fieldset>
     <legend>{{ __('Further properties') }}</legend>
+    {{ form_row(form.titleImage) }}
+    {{ form_row(form.copyright) }}
     {{ form_row(form.infoLocale) }}
 </fieldset>
 
@@ -113,7 +117,7 @@
     {{ parent() }}
 
     {% set editImage = '<span class="fa fa-pencil-square-o"></span>' %}
-    {% set deleteImage = '<span class="fa fa-trash-o"></span>' %}
+    {% set removeImage = '<span class="fa fa-trash-o"></span>' %}
     
     <script type="text/javascript">
     /* <![CDATA[ */

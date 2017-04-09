@@ -1,0 +1,21 @@
+{# purpose of this template: reusable display of standard fields #}
+{% if (obj.createdBy|default and obj.createdBy.getUid() > 0) or (obj.updatedBy|default and obj.updatedBy.getUid() > 0) %}
+
+   
+    {% if obj.createdBy|default and obj.createdBy.getUid() > 0 %}
+        <small>{{ __('Creation') }}: 
+        {% set profileLink = obj.createdBy.getUid()|profileLinkByUserId() %}
+        
+        {{ __f('Created by %user on %date', {'%user': profileLink, '%date': obj.createdDate|localizeddate('medium', 'short')})|raw }}{% if currentUser.loggedIn %}{% set sendMessageUrl = obj.createdBy.getUid()|messageSendLink(urlOnly=true) %}{% if sendMessageUrl != '#' %}<a href="{{ sendMessageUrl }}" title="{{ __f('Send private message to %userName%', { '%userName%': obj.createdBy.getUname() }) }}"><i class="fa fa-envelope-o"></i></a>{% endif %}{% endif %}</small>
+    {% endif %}
+    {% if obj.updatedBy|default and obj.updatedBy.getUid() > 0 %}
+        <small>, {{ __('Last update') }}: 
+        {% set profileLink = obj.updatedBy.getUid()|profileLinkByUserId() %}
+        
+        {{ __f('Updated by %user on %date', {'%user': profileLink, '%date': obj.updatedDate|localizeddate('medium', 'short')})|raw }}{% if currentUser.loggedIn %}{% set sendMessageUrl = obj.updatedBy.getUid()|messageSendLink(urlOnly=true) %}{% if sendMessageUrl != '#' %}<a href="{{ sendMessageUrl }}" title="{{ __f('Send private message to %userName%', { '%userName%': obj.updatedBy.getUname() }) }}"><i class="fa fa-envelope-o"></i></a>{% endif %}{% endif %}</small>
+    {% endif %}
+   
+    {% if panel|default(false) == true %}
+
+    {% endif %}
+{% endif %}
