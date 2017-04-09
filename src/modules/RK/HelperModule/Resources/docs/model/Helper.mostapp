@@ -4,7 +4,7 @@ application "Helper" {
     author "Ralf Koester"
     email "ralf@familie-koester.de"
     url "http://k62.de"
-    version "0.7.4"
+    version "1.0.0"
     prefix "helper"
     generatorSettings {
         settingsContainer "Settings"

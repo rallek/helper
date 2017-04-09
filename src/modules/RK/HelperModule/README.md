@@ -1,4 +1,4 @@
-# r k\Helper 0.7.4
+# r k\Helper 1.0.0
 
 here you can find the helpers for this site e.g. carousel, linker, simple info pages or images
 
