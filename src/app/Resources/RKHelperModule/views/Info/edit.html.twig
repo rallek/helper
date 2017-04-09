@@ -19,7 +19,15 @@
 ] %}
 {{ form_start(form, {attr: {id: 'infoEditForm', class: 'rkhelper-edit-form'}}) }}
 {{ form_errors(form) }}
-{% if translationsEnabled == true %}
+
+
+{% if getModVar('RKHelperModule', 'useLocale') == true %}
+	{% set translationsActive = translationsEnabled %}
+{% else %}
+	{% set translationsActive = false %}
+{% endif %}
+
+{% if translationsActive == true %}
 <div class="zikula-bootstrap-tab-container">
     <ul class="{{ form.vars.id|lower }}-translation-locales nav nav-tabs">
         {% for language in supportedLanguages %}
