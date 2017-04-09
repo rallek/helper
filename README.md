@@ -1,2 +1,10 @@
-# helper
-In this module I collect my helping tool for sites made with Zikula.org. It is created with Modulestudio.de.
+# Helper
+
+here you can find the helpers for this site e.g. carousel, linker, simple info pages or images
+
+This module is intended for being used with Zikula 1.4.6 and later.
+
+For questions and other remarks visit our homepage http://k62.de.
+
+Ralf Koester (ralf@familie-koester.de)
+http://k62.de
