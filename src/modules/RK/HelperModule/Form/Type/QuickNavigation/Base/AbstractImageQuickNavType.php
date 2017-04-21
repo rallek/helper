@@ -43,8 +43,11 @@ abstract class AbstractImageQuickNavType extends AbstractType
      * @param ListEntriesHelper   $listHelper   ListEntriesHelper service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, ListEntriesHelper $listHelper, FeatureActivationHelper $featureActivationHelper)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        ListEntriesHelper $listHelper,
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->setTranslator($translator);
         $this->listHelper = $listHelper;
         $this->featureActivationHelper = $featureActivationHelper;

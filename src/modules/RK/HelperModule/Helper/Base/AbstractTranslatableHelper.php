@@ -60,8 +60,13 @@ abstract class AbstractTranslatableHelper
      * @param LocaleApi           $localeApi    LocaleApi service instance
      * @param HelperFactory $entityFactory HelperFactory service instance
      */
-    public function __construct(TranslatorInterface $translator, RequestStack $requestStack, VariableApi $variableApi, LocaleApi $localeApi, HelperFactory $entityFactory)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        RequestStack $requestStack,
+        VariableApi $variableApi,
+        LocaleApi $localeApi,
+        HelperFactory $entityFactory
+    ) {
         $this->translator = $translator;
         $this->request = $requestStack->getCurrentRequest();
         $this->variableApi = $variableApi;

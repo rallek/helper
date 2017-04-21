@@ -136,8 +136,7 @@ abstract class AbstractEditHandler extends EditHandler
         $routePrefix = 'rkhelpermodule_' . $this->objectTypeLower . '_' . $routeArea;
     
         // redirect to the list of images
-        $viewArgs = [];
-        $url = $this->router->generate($routePrefix . 'view', $viewArgs);
+        $url = $this->router->generate($routePrefix . 'view');
     
         return $url;
     }
@@ -257,8 +256,8 @@ abstract class AbstractEditHandler extends EditHandler
             return $this->repeatReturnUrl;
         }
     
-        if ($this->request->getSession()->has('rkhelpermoduleReferer')) {
-            $this->request->getSession()->del('rkhelpermoduleReferer');
+        if ($this->request->getSession()->has('rkhelpermodule' . $this->objectTypeCapital . 'Referer')) {
+            $this->request->getSession()->del('rkhelpermodule' . $this->objectTypeCapital . 'Referer');
         }
     
         // normal usage, compute return url from given redirect code

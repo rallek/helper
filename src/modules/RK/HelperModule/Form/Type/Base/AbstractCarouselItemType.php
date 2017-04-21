@@ -60,11 +60,16 @@ abstract class AbstractCarouselItemType extends AbstractType
      * @param TranslatorInterface $translator    Translator service instance
      * @param HelperFactory        $entityFactory Entity factory service instance
      * @param ListEntriesHelper   $listHelper    ListEntriesHelper service instance
-     * @param LocaleApi           $localeApi     LocaleApi service instance
+     * @param LocaleApi            $localeApi     LocaleApi service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, HelperFactory $entityFactory, ListEntriesHelper $listHelper, LocaleApi $localeApi, FeatureActivationHelper $featureActivationHelper)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        HelperFactory $entityFactory,
+        ListEntriesHelper $listHelper,
+        LocaleApi $localeApi,
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->setTranslator($translator);
         $this->entityFactory = $entityFactory;
         $this->listHelper = $listHelper;
@@ -220,7 +225,7 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'title' => $this->__('Enter the item start date of the carousel item')
             ],
             'required' => false,
-            'empty_data' => '',
+            'empty_data' => null,
             'widget' => 'single_text'
         ]);
         

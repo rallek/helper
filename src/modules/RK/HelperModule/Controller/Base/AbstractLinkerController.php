@@ -77,9 +77,6 @@ abstract class AbstractLinkerController extends AbstractController
         ];
         
         return $this->redirectToRoute('rkhelpermodule_linker_' . $templateParameters['routeArea'] . 'view');
-        
-        // return index template
-        return $this->render('@RKHelperModule/Linker/index.html.twig', $templateParameters);
     }
     /**
      * This action provides an item list overview in the admin area.

@@ -1,6 +1,10 @@
 services:
-    # Entity factory class
+    # Entity factory
     rk_helper_module.entity_factory:
         class: RK\HelperModule\Entity\Factory\HelperFactory
         arguments:
             - "@doctrine.orm.default_entity_manager"
+            - "@rk_helper_module.entity_initialiser"
+    # Entity initialiser
+    rk_helper_module.entity_initialiser:
+        class: RK\HelperModule\Entity\Factory\EntityInitialiser

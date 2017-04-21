@@ -303,8 +303,7 @@ abstract class AbstractWorkflowHelper
     
         $where = 'tbl.workflowState:eq:' . $state;
         $parameters = ['workflowState' => $state];
-        $useJoins = false;
     
-        return $repository->selectCount($where, $useJoins, $parameters);
+        return $repository->selectCount($where, false, $parameters);
     }
 }

@@ -336,17 +336,17 @@ abstract class AbstractEditHandler
     
         // initialise redirect goal
         $this->returnTo = $this->request->query->get('returnTo', null);
-        if (null === $this->returnTo) {
-            // default to referer
-            if ($this->request->getSession()->has('rkhelpermoduleReferer')) {
-                $this->returnTo = $this->request->getSession()->get('rkhelpermoduleReferer');
-            } elseif ($this->request->headers->has('rkhelpermoduleReferer')) {
-                $this->returnTo = $this->request->headers->get('rkhelpermoduleReferer');
-                $this->request->getSession()->set('rkhelpermoduleReferer', $this->returnTo);
-            } elseif ($this->request->server->has('HTTP_REFERER')) {
-                $this->returnTo = $this->request->server->get('HTTP_REFERER');
-                $this->request->getSession()->set('rkhelpermoduleReferer', $this->returnTo);
+        // default to referer
+        $refererSessionVar = 'rkhelpermodule' . $this->objectTypeCapital . 'Referer';
+        if (null === $this->returnTo && $this->request->headers->has('referer')) {
+            $currentReferer = $this->request->headers->get('referer');
+            if ($currentReferer != $this->request->getUri()) {
+                $this->returnTo = $currentReferer;
+                $this->request->getSession()->set($refererSessionVar, $this->returnTo);
             }
+        }
+        if (null === $this->returnTo && $this->request->getSession()->has($refererSessionVar)) {
+            $this->returnTo = $this->request->getSession()->get($refererSessionVar);
         }
         // store current uri for repeated creations
         $this->repeatReturnUrl = $this->request->getSchemeAndHttpHost() . $this->request->getBasePath() . $this->request->getPathInfo();
@@ -355,8 +355,8 @@ abstract class AbstractEditHandler
     
         $this->idFields = $this->entityFactory->getIdFields($this->objectType);
     
-        // retrieve identifier of the object we wish to view
-        $this->idValues = $this->controllerHelper->retrieveIdentifier($this->request, [], $this->objectType, $this->idFields);
+        // retrieve identifier of the object we wish to edit
+        $this->idValues = $this->controllerHelper->retrieveIdentifier($this->request, [], $this->objectType);
         $hasIdentifier = $this->controllerHelper->isValidIdentifier($this->idValues);
     
         $entity = null;

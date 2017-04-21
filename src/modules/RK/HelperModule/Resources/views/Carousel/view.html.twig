@@ -34,7 +34,7 @@
                         <input type="checkbox" class="rkhelper-mass-toggle" />
                     </th>
                 {% endif %}
-                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted">{{ __('Actions') }}</th>
+                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted z-w02">{{ __('Actions') }}</th>
                 <th id="hCarouselName" scope="col" class="text-left">
                     <a href="{{ sort.carouselName.url }}" title="{{ __f('Sort by %s', {'%s': 'carousel name'}) }}" class="{{ sort.carouselName.class }}">{{ __('Carousel name') }}</a>
                 </th>
@@ -60,7 +60,7 @@
         {% for carousel in items %}
             <tr>
                 {% if routeArea == 'admin' %}
-                    <td headers="hSelect" class="fixed-column text-center">
+                    <td headers="hSelect" class="fixed-column text-center z-w02">
                         <input type="checkbox" name="items[]" value="{{ carousel.id }}" class="rkhelper-toggle-checkbox" />
                     </td>
                 {% endif %}

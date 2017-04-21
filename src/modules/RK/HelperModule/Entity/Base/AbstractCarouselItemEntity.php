@@ -211,8 +211,6 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function __construct()
     {
-        $this->itemStartDate = \DateTime::createFromFormat('Y-m-d', date('Y-m-d'));
-        $this->intemEndDate = \DateTime::createFromFormat('Y-m-d', '2099-12-31');
         $this->initWorkflow();
     }
     

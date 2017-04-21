@@ -50,8 +50,12 @@ abstract class AbstractLinkerQuickNavType extends AbstractType
      * @param LocaleApi           $localeApi    LocaleApi service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, ListEntriesHelper $listHelper, LocaleApi $localeApi, FeatureActivationHelper $featureActivationHelper)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        ListEntriesHelper $listHelper,
+        LocaleApi $localeApi,
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->setTranslator($translator);
         $this->listHelper = $listHelper;
         $this->localeApi = $localeApi;

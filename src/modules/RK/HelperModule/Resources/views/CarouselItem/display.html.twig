@@ -16,7 +16,6 @@
     {% set isQuickView = app.request.query.getBoolean('raw', false) %}
     <div class="rkhelpermodule-carouselitem rkhelpermodule-display">
 
-
     <dl>
         {% if carouselItem.itemName is not empty %}
             <dt>{{ __('Item name') }}</dt>
@@ -89,17 +88,16 @@
         {% endif %}
         
     </dl>
+
     {{ include('@RKHelperModule/Helper/includeStandardFieldsDisplay.html.twig', { obj: carouselItem }) }}
 
-    {% if not isQuickView %}
-        {# include display hooks #}
-        {{ block('display_hooks') }}
-    {% endif %}
+    {{ block('display_hooks') }}
 </div>
 {% endblock %}
 {% block display_hooks %}
     {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.carouselitems.display_view', id=carouselItem.id, urlObject=currentUrlObject) %}
     {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        <h4>{{ providerArea }}</h4>
         {{ hook }}
     {% endfor %}
 {% endblock %}

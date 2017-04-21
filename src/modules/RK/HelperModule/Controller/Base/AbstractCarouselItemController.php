@@ -77,9 +77,6 @@ abstract class AbstractCarouselItemController extends AbstractController
         ];
         
         return $this->redirectToRoute('rkhelpermodule_carouselitem_' . $templateParameters['routeArea'] . 'view');
-        
-        // return index template
-        return $this->render('@RKHelperModule/CarouselItem/index.html.twig', $templateParameters);
     }
     /**
      * This action provides a handling of edit requests in the admin area.

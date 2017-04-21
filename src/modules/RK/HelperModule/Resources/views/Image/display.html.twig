@@ -16,7 +16,6 @@
     {% set isQuickView = app.request.query.getBoolean('raw', false) %}
     <div class="rkhelpermodule-image rkhelpermodule-display">
 
-
     <dl>
         {% if image.imageTitle is not empty %}
             <dt>{{ __('Image title') }}</dt>
@@ -46,17 +45,16 @@
         {% endif %}
         
     </dl>
+
     {{ include('@RKHelperModule/Helper/includeStandardFieldsDisplay.html.twig', { obj: image }) }}
 
-    {% if not isQuickView %}
-        {# include display hooks #}
-        {{ block('display_hooks') }}
-    {% endif %}
+    {{ block('display_hooks') }}
 </div>
 {% endblock %}
 {% block display_hooks %}
     {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.images.display_view', id=image.id, urlObject=currentUrlObject) %}
     {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        <h4>{{ providerArea }}</h4>
         {{ hook }}
     {% endfor %}
 {% endblock %}

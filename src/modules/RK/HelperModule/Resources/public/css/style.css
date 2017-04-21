@@ -50,8 +50,8 @@ div.rkhelpermodule-relation-rightside {
     width: 65%;
 }
 
-/* hide legends if panels are used as both contain the same labels */
-div.helper-edit .panel legend {
+/* hide legends if tabs are used as both contain the same labels */
+div.helper-edit .tab-pane legend {
     display: none;
 }
 

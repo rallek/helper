@@ -38,7 +38,7 @@
                         <input type="checkbox" class="rkhelper-mass-toggle" />
                     </th>
                 {% endif %}
-                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted">{{ __('Actions') }}</th>
+                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted z-w02">{{ __('Actions') }}</th>
                 <th id="hLinkerImage" scope="col" class="text-left">
                     <a href="{{ sort.linkerImage.url }}" title="{{ __f('Sort by %s', {'%s': 'linker image'}) }}" class="{{ sort.linkerImage.class }}">{{ __('Linker image') }}</a>
                 </th>
@@ -70,7 +70,7 @@
         {% for linker in items %}
             <tr>
                 {% if routeArea == 'admin' %}
-                    <td headers="hSelect" class="fixed-column text-center">
+                    <td headers="hSelect" class="fixed-column text-center z-w02">
                         <input type="checkbox" name="items[]" value="{{ linker.id }}" class="rkhelper-toggle-checkbox" />
                     </td>
                 {% endif %}
@@ -97,7 +97,7 @@
                     {{ linker.linkerHeadline }}
                 </td>
                 <td headers="hLinkerText" class="text-left">
-                    {{ linker.linkerText|safeHtml }}
+                    {{ linker.linkerText|safeHtml|truncate(50) }}
                 </td>
                 <td headers="hTheLink" class="text-left">
                     {{ linker.theLink }}

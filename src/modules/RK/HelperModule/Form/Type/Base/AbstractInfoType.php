@@ -73,11 +73,18 @@ abstract class AbstractInfoType extends AbstractType
      * @param VariableApi         $variableApi VariableApi service instance
      * @param TranslatableHelper  $translatableHelper TranslatableHelper service instance
      * @param ListEntriesHelper   $listHelper     ListEntriesHelper service instance
-     * @param LocaleApi           $localeApi      LocaleApi service instance
+     * @param LocaleApi            $localeApi      LocaleApi service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, HelperFactory $entityFactory, VariableApi $variableApi, TranslatableHelper $translatableHelper, ListEntriesHelper $listHelper, LocaleApi $localeApi, FeatureActivationHelper $featureActivationHelper)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        HelperFactory $entityFactory,
+        VariableApi $variableApi,
+        TranslatableHelper $translatableHelper,
+        ListEntriesHelper $listHelper,
+        LocaleApi $localeApi,
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->setTranslator($translator);
         $this->entityFactory = $entityFactory;
         $this->variableApi = $variableApi;

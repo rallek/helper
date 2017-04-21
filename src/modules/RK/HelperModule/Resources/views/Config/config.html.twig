@@ -12,7 +12,7 @@
         <div class="zikula-bootstrap-tab-container">
             <ul class="nav nav-tabs">
             {% set tabTitle = __('More settings') %}
-            <li class="active" role="presentation">
+            <li role="presentation" class="active">
                 <a id="vars1Tab" href="#tab1" title="{{ tabTitle|e('html_attr') }}" role="tab" data-toggle="tab">{{ tabTitle }}</a>
             </li>
             {% set tabTitle = __('List views') %}
@@ -20,8 +20,8 @@
                 <a id="vars2Tab" href="#tab2" title="{{ tabTitle|e('html_attr') }}" role="tab" data-toggle="tab">{{ tabTitle }}</a>
             </li>
             {% set tabTitle = __('Images') %}
-            <li class=" dropdown" role="presentation">
-                <a id="imagesTabDrop" class="dropdown-toggle" href="#" data-toggle="dropdown" aria-controls="imagesTabDropSections" aria-expanded="false">{{ tabTitle }}<span class="caret"></span></a>
+            <li role="presentation" class=" dropdown">
+                <a id="imagesTabDrop" class="dropdown-toggle" href="#" data-toggle="dropdown" aria-controls="imagesTabDropSections" aria-expanded="false" title="{{ tabTitle|e('html_attr') }}">{{ tabTitle }}<span class="caret"></span></a>
                 <ul id="imagesTabDropSections" class="dropdown-menu" aria-labelledby="imagesTabDrop">
                 <li>
                     <a id="imagesLinkerLinkerImageTab" href="#tabImagesLinkerLinkerImage" role="tab" data-toggle="tab" aria-controls="tabImagesLinkerLinkerImage">{{ __('Linkers linker image') }}</a>

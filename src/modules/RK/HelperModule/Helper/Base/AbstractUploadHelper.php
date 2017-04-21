@@ -12,6 +12,7 @@
 
 namespace RK\HelperModule\Helper\Base;
 
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -34,6 +35,11 @@ abstract class AbstractUploadHelper
      * @var SessionInterface
      */
     protected $session;
+
+    /**
+     * @var CacheManager
+     */
+    protected $thumbCacheManager;
 
     /**
      * @var LoggerInterface
@@ -73,16 +79,18 @@ abstract class AbstractUploadHelper
     /**
      * UploadHelper constructor.
      *
-     * @param TranslatorInterface $translator     Translator service instance
-     * @param SessionInterface    $session        Session service instance
-     * @param LoggerInterface     $logger         Logger service instance
-     * @param CurrentUserApi      $currentUserApi CurrentUserApi service instance
-     * @param VariableApi         $variableApi    VariableApi service instance
-     * @param String              $dataDirectory  The data directory name
+     * @param TranslatorInterface $translator        Translator service instance
+     * @param SessionInterface    $session           Session service instance
+     * @param CacheManager        $thumbCacheManager Imagine thumb cache manager
+     * @param LoggerInterface     $logger            Logger service instance
+     * @param CurrentUserApi      $currentUserApi    CurrentUserApi service instance
+     * @param VariableApi         $variableApi       VariableApi service instance
+     * @param String              $dataDirectory     The data directory name
      */
     public function __construct(
         TranslatorInterface $translator,
         SessionInterface $session,
+        CacheManager $thumbCacheManager,
         LoggerInterface $logger,
         CurrentUserApi $currentUserApi,
         VariableApi $variableApi,
@@ -90,6 +98,7 @@ abstract class AbstractUploadHelper
     ) {
         $this->setTranslator($translator);
         $this->session = $session;
+        $this->thumbCacheManager = $thumbCacheManager;
         $this->logger = $logger;
         $this->currentUserApi = $currentUserApi;
         $this->variableApi = $variableApi;
@@ -190,16 +199,13 @@ abstract class AbstractUploadHelper
                 $imgInfo = getimagesize($destinationFilePath);
                 if ($imgInfo[0] > $maxWidth || $imgInfo[1] > $maxHeight) {
                     // resize to allowed maximum size
-                    $thumbManager = \ServiceUtil::get('systemplugin.imagine.manager');
-                    $preset = new \SystemPlugin_Imagine_Preset('RKHelperModule_Shrinker', [
-                        'width' => $maxWidth,
-                        'height' => $maxHeight,
+                    $thumbConfig = [
+                        'size' => [$maxWidth, $maxHeight],
                         'mode' => 'inset'
-                    ]);
-                    $thumbManager->setPreset($preset);
+                    ];
     
                     // create thumbnail image
-                    $thumbFilePath = $thumbManager->getThumb($destinationFilePath, $maxWidth, $maxHeight);
+                    $thumbFilePath = $this->thumbCacheManager->getBrowserPath($destinationFilePath, 'zkroot', $thumbConfig);
     
                     // remove original image
                     unlink($destinationFilePath);

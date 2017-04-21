@@ -179,7 +179,7 @@ abstract class AbstractItemListBlock extends AbstractBlockHandler
         }
     
         return [
-            'objectType' => $objectType
+            'object_type' => $objectType
         ];
     }
     

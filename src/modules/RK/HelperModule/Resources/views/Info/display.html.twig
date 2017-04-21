@@ -16,7 +16,6 @@
     {% set isQuickView = app.request.query.getBoolean('raw', false) %}
     <div class="rkhelpermodule-info rkhelpermodule-display">
 
-
     <dl>
         {% if info.infoTitle is not empty %}
             <dt>{{ __('Info title') }}</dt>
@@ -50,17 +49,16 @@
         {% endif %}
         
     </dl>
+
     {{ include('@RKHelperModule/Helper/includeStandardFieldsDisplay.html.twig', { obj: info }) }}
 
-    {% if not isQuickView %}
-        {# include display hooks #}
-        {{ block('display_hooks') }}
-    {% endif %}
+    {{ block('display_hooks') }}
 </div>
 {% endblock %}
 {% block display_hooks %}
     {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.infos.display_view', id=info.id, urlObject=currentUrlObject) %}
     {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        <h4>{{ providerArea }}</h4>
         {{ hook }}
     {% endfor %}
 {% endblock %}

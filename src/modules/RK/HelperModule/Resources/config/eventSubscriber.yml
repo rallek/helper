@@ -1,5 +1,5 @@
 services:
-    # Event subscriber and listener classes
+    # Event subscribers and listeners
     rk_helper_module.entity_lifecycle_listener:
         class: RK\HelperModule\Listener\EntityLifecycleListener
         arguments:

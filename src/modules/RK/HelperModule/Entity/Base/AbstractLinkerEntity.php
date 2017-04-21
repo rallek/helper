@@ -175,7 +175,6 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function __construct()
     {
-        $this->sorting = 1;
         $this->initWorkflow();
     }
     

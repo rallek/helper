@@ -47,9 +47,10 @@ abstract class AbstractExternalController extends AbstractController
             return '';
         }
         
-        $repository = $this->get('rk_helper_module.entity_factory')->getRepository($objectType);
+        $entityFactory = $this->get('rk_helper_module.entity_factory');
+        $repository = $entityFactory->getRepository($objectType);
         $repository->setRequest($this->get('request_stack')->getCurrentRequest());
-        $idValues = ['id' => $id];
+        $idValues = $controllerHelper->retrieveIdentifier($request, [], $objectType);
         
         $hasIdentifier = $controllerHelper->isValidIdentifier($idValues);
         if (!$hasIdentifier) {

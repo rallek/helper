@@ -12,12 +12,12 @@
 
 namespace RK\HelperModule\Entity\Factory;
 
-use RK\HelperModule\Entity\Factory\Base\AbstractHelperFactory;
+use RK\HelperModule\Entity\Factory\Base\AbstractEntityInitialiser;
 
 /**
- * Factory class used to create entities and receive entity repositories.
+ * Entity initialiser class used to dynamically apply default values to newly created entities.
  */
-class HelperFactory extends AbstractHelperFactory
+class EntityInitialiser extends AbstractEntityInitialiser
 {
-    // feel free to customise the factory
+    // feel free to customise the initialiser
 }

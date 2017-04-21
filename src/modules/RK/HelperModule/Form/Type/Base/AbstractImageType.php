@@ -55,8 +55,12 @@ abstract class AbstractImageType extends AbstractType
      * @param ListEntriesHelper   $listHelper    ListEntriesHelper service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, HelperFactory $entityFactory, ListEntriesHelper $listHelper, FeatureActivationHelper $featureActivationHelper)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        HelperFactory $entityFactory,
+        ListEntriesHelper $listHelper,
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->setTranslator($translator);
         $this->entityFactory = $entityFactory;
         $this->listHelper = $listHelper;

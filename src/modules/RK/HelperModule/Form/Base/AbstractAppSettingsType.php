@@ -38,11 +38,13 @@ abstract class AbstractAppSettingsType extends AbstractType
     /**
      * AppSettingsType constructor.
      *
-     * @param TranslatorInterface $translator  Translator service instance
-     * @param VariableApi         $variableApi VariableApi service instance
+     * @param TranslatorInterface  $translator  Translator service instance
+     * @param VariableApi          $variableApi VariableApi service instance
      */
-    public function __construct(TranslatorInterface $translator, VariableApi $variableApi)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        VariableApi $variableApi
+    ) {
         $this->setTranslator($translator);
         $this->variableApi = $variableApi;
         $this->modVars = $this->variableApi->getAll('RKHelperModule');

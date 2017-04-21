@@ -16,7 +16,6 @@
     {% set isQuickView = app.request.query.getBoolean('raw', false) %}
     <div class="rkhelpermodule-linker rkhelpermodule-display">
 
-
     <dl>
         {% if linker.linkerImage is not empty %}
             <dt>{{ __('Linker image') }}</dt>
@@ -62,17 +61,16 @@
         {% endif %}
         
     </dl>
+
     {{ include('@RKHelperModule/Helper/includeStandardFieldsDisplay.html.twig', { obj: linker }) }}
 
-    {% if not isQuickView %}
-        {# include display hooks #}
-        {{ block('display_hooks') }}
-    {% endif %}
+    {{ block('display_hooks') }}
 </div>
 {% endblock %}
 {% block display_hooks %}
     {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.linkers.display_view', id=linker.id, urlObject=currentUrlObject) %}
     {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+        <h4>{{ providerArea }}</h4>
         {{ hook }}
     {% endfor %}
 {% endblock %}

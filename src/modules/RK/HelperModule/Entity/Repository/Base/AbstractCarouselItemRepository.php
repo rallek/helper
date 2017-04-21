@@ -126,9 +126,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      */
     public function getTitleFieldName()
     {
-        $fieldName = 'itemName';
-    
-        return $fieldName;
+        return 'itemName';
     }
     
     /**
@@ -138,9 +136,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      */
     public function getDescriptionFieldName()
     {
-        $fieldName = 'title';
-    
-        return $fieldName;
+        return 'title';
     }
     
     /**
@@ -150,9 +146,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      */
     public function getPreviewFieldName()
     {
-        $fieldName = 'itemImage';
-    
-        return $fieldName;
+        return 'itemImage';
     }
     
     /**
@@ -197,7 +191,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
             $thumbRuntimeOptions = [];
             $thumbRuntimeOptions[$objectType . 'ItemImage'] = $imageHelper->getRuntimeOptions($objectType, 'itemImage', $context, $args);
             $templateParameters['thumbRuntimeOptions'] = $thumbRuntimeOptions;
-            if (in_array($args['action'], ['display', 'view'])) {
+            if (in_array($args['action'], ['display', 'edit', 'view'])) {
                 // use separate preset for images in related items
                 $templateParameters['relationThumbRuntimeOptions'] = $imageHelper->getCustomRuntimeOptions('', '', 'RKHelperModule_relateditem', $context, $args);
             }
@@ -465,16 +459,16 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
     /**
      * Adds where clauses excluding desired identifiers from selection.
      *
-     * @param QueryBuilder $qb        Query builder to be enhanced
-     * @param integer      $excludeId The id to be excluded from selection
+     * @param QueryBuilder $qb           Query builder to be enhanced
+     * @param array        $excludesions Array of ids to be excluded from selection
      *
      * @return QueryBuilder Enriched query builder instance
      */
-    protected function addExclusion(QueryBuilder $qb, $excludeId)
+    protected function addExclusion(QueryBuilder $qb, array $exclusions = [])
     {
-        if ($excludeId > 0) {
-            $qb->andWhere('tbl.id != :excludeId')
-               ->setParameter('excludeId', $excludeId);
+        if (count($exclusions) > 0) {
+            $qb->andWhere('tbl.id NOT IN (:excludedIdentifiers)')
+               ->setParameter('excludedIdentifiers', $exclusions);
         }
     
         return $qb;
@@ -554,9 +548,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
     public function selectWherePaginated($where = '', $orderBy = '', $currentPage = 1, $resultsPerPage = 25, $useJoins = true, $slimMode = false)
     {
         $qb = $this->getListQueryBuilder($where, $orderBy, $useJoins, $slimMode);
-    
-        $page = $currentPage;
-        $query = $this->getSelectWherePaginatedQuery($qb, $page, $resultsPerPage);
+        $query = $this->getSelectWherePaginatedQuery($qb, $currentPage, $resultsPerPage);
     
         return $this->retrieveCollectionResult($query, $orderBy, true);
     }
@@ -700,8 +692,11 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
         $filters[] = 'tbl.itemLocale LIKE :searchItemLocale';
         $parameters['searchItemLocale'] = '%' . $fragment . '%';
     
-        $qb->andWhere('(' . implode(' OR ', $filters) . ')')
-           ->setParameters($parameters);
+        $qb->andWhere('(' . implode(' OR ', $filters) . ')');
+    
+        foreach ($parameters as $parameterName => $parameterValue) {
+            $qb->setParameter($parameterName, $parameterValue);
+        }
     
         return $qb;
     }
@@ -738,14 +733,12 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      * Returns query builder instance for a count query.
      *
      * @param string  $where    The where clause to use when retrieving the object count (optional) (default='')
-     * @param boolean $useJoins Whether to include joining related objects (optional) (default=true)
+     * @param boolean $useJoins Whether to include joining related objects (optional) (default=false)
      *
      * @return QueryBuilder Created query builder instance
      */
-    protected function getCountQuery($where = '', $useJoins = true)
+    protected function getCountQuery($where = '', $useJoins = false)
     {
-        $useJoins = false; // joins usage needs to be fixed; please remove the first line and test
-    
         $selection = 'COUNT(tbl.id) AS numCarouselItems';
         if (true === $useJoins) {
             $selection .= $this->addJoinsToSelection();
@@ -768,12 +761,12 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
      * Selects entity count with a given where clause.
      *
      * @param string  $where      The where clause to use when retrieving the object count (optional) (default='')
-     * @param boolean $useJoins   Whether to include joining related objects (optional) (default=true)
+     * @param boolean $useJoins   Whether to include joining related objects (optional) (default=false)
      * @param array   $parameters List of determined filter options
      *
      * @return integer amount of affected records
      */
-    public function selectCount($where = '', $useJoins = true, $parameters = [])
+    public function selectCount($where = '', $useJoins = false, $parameters = [])
     {
         $qb = $this->getCountQuery($where, $useJoins);
     
@@ -788,9 +781,9 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
     /**
      * Checks for unique values.
      *
-     * @param string $fieldName  The name of the property to be checked
-     * @param string $fieldValue The value of the property to be checked
-     * @param int    $excludeId  Id of carousel items to exclude (optional)
+     * @param string  $fieldName  The name of the property to be checked
+     * @param string  $fieldValue The value of the property to be checked
+     * @param integer $excludeId  Id of carousel items to exclude (optional)
      *
      * @return boolean result of this check, true if the given carousel item does not already exist
      */
@@ -800,7 +793,7 @@ abstract class AbstractCarouselItemRepository extends EntityRepository
         $qb->andWhere('tbl.' . $fieldName . ' = :' . $fieldName)
            ->setParameter($fieldName, $fieldValue);
     
-        $qb = $this->addExclusion($qb, $excludeId);
+        $qb = $this->addExclusion($qb, [$excludeId]);
     
         $query = $qb->getQuery();
     

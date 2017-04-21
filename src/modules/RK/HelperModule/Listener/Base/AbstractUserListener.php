@@ -14,7 +14,6 @@ namespace RK\HelperModule\Listener\Base;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Zikula\Common\Translator\TranslatorInterface;
 use Zikula\Core\Event\GenericEvent;
 use Zikula\UsersModule\Api\CurrentUserApi;
@@ -56,8 +55,12 @@ abstract class AbstractUserListener implements EventSubscriberInterface
      *
      * @return void
      */
-    public function __construct(TranslatorInterface $translator, HelperFactory $entityFactory, CurrentUserApi $currentUserApi, LoggerInterface $logger)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        HelperFactory $entityFactory,
+        CurrentUserApi $currentUserApi,
+        LoggerInterface $logger
+    ) {
         $this->translator = $translator;
         $this->entityFactory = $entityFactory;
         $this->currentUserApi = $currentUserApi;

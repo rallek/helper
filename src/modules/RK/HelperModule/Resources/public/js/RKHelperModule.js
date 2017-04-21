@@ -6,7 +6,7 @@ function rKHelperCapitaliseFirstLetter(string)
 }
 
 /**
- * Initialise the quick navigation panel in list views.
+ * Initialise the quick navigation form in list views.
  */
 function rKHelperInitQuickNavigation()
 {
@@ -70,18 +70,24 @@ function rKHelperInitMassToggle()
  */
 function rKHelperInitFixedColumns()
 {
-    var originalTable, fixedColumnsTable;
-
     jQuery('.table.fixed-columns').remove();
     jQuery('.table').each(function() {
+        var originalTable, fixedColumnsTable, fixedTableWidth;
+
         originalTable = jQuery(this);
+        fixedTableWidth = 0;
         if (originalTable.find('.fixed-column').length > 0) {
             fixedColumnsTable = originalTable.clone().insertBefore(originalTable).addClass('fixed-columns');
             originalTable.find('.dropdown').addClass('hidden');
             fixedColumnsTable.find('.dropdown').removeClass('hidden');
-            fixedColumnsTable.css('left', originalTable.parent().offset().left);
+            fixedColumnsTable.css('left', originalTable.parent().position().left);
 
             fixedColumnsTable.find('th, td').not('.fixed-column').remove();
+            fixedColumnsTable.find('th').each(function (i, elem) {
+                jQuery(this).css('width', originalTable.find('th').eq(i).css('width'));
+                fixedTableWidth += originalTable.find('th').eq(i).width();
+            });
+            fixedColumnsTable.css('width', fixedTableWidth + 'px');
 
             fixedColumnsTable.find('tr').each(function (i, elem) {
                 jQuery(this).height(originalTable.find('tr:eq(' + i + ')').height());
@@ -139,8 +145,8 @@ function rKHelperInitInlineWindow(containerElem)
     // define name of window
     newWindowId = containerElem.attr('id') + 'Dialog';
 
-    containerElem.unbind('click').click(function(e) {
-        e.preventDefault();
+    containerElem.unbind('click').click(function(event) {
+        event.preventDefault();
 
         // check if window exists already
         if (jQuery('#' + newWindowId).length < 1) {

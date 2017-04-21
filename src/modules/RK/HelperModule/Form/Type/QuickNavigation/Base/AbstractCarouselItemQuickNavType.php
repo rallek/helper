@@ -58,8 +58,13 @@ abstract class AbstractCarouselItemQuickNavType extends AbstractType
      * @param LocaleApi           $localeApi    LocaleApi service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
-    public function __construct(TranslatorInterface $translator, RequestStack $requestStack, ListEntriesHelper $listHelper, LocaleApi $localeApi, FeatureActivationHelper $featureActivationHelper)
-    {
+    public function __construct(
+        TranslatorInterface $translator,
+        RequestStack $requestStack,
+        ListEntriesHelper $listHelper,
+        LocaleApi $localeApi,
+        FeatureActivationHelper $featureActivationHelper
+    ) {
         $this->setTranslator($translator);
         $this->request = $requestStack->getCurrentRequest();
         $this->listHelper = $listHelper;

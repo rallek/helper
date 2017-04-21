@@ -15,11 +15,10 @@ namespace RK\HelperModule\Entity\Factory\Base;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityRepository;
 use InvalidArgumentException;
+use RK\HelperModule\Entity\Factory\EntityInitialiser;
 
 /**
  * Factory class used to create entities and receive entity repositories.
- *
- * This is the base factory class.
  */
 abstract class AbstractHelperFactory
 {
@@ -29,13 +28,20 @@ abstract class AbstractHelperFactory
     protected $objectManager;
 
     /**
+     * @var EntityInitialiser The entity initialiser for dynamical application of default values
+     */
+    protected $entityInitialiser;
+
+    /**
      * HelperFactory constructor.
      *
-     * @param ObjectManager $objectManager The object manager to be used for determining the repositories
+     * @param ObjectManager     $objectManager     The object manager to be used for determining the repositories
+     * @param EntityInitialiser $entityInitialiser The entity initialiser for dynamical application of default values
      */
-    public function __construct(ObjectManager $objectManager)
+    public function __construct(ObjectManager $objectManager, EntityInitialiser $entityInitialiser)
     {
         $this->objectManager = $objectManager;
+        $this->entityInitialiser = $entityInitialiser;
     }
 
     /**
@@ -61,7 +67,11 @@ abstract class AbstractHelperFactory
     {
         $entityClass = 'RK\\HelperModule\\Entity\\LinkerEntity';
 
-        return new $entityClass();
+        $entity = new $entityClass();
+
+        $this->entityInitialiser->initLinker($entity);
+
+        return $entity;
     }
 
     /**
@@ -73,7 +83,11 @@ abstract class AbstractHelperFactory
     {
         $entityClass = 'RK\\HelperModule\\Entity\\CarouselItemEntity';
 
-        return new $entityClass();
+        $entity = new $entityClass();
+
+        $this->entityInitialiser->initCarouselItem($entity);
+
+        return $entity;
     }
 
     /**
@@ -85,7 +99,11 @@ abstract class AbstractHelperFactory
     {
         $entityClass = 'RK\\HelperModule\\Entity\\CarouselEntity';
 
-        return new $entityClass();
+        $entity = new $entityClass();
+
+        $this->entityInitialiser->initCarousel($entity);
+
+        return $entity;
     }
 
     /**
@@ -97,7 +115,11 @@ abstract class AbstractHelperFactory
     {
         $entityClass = 'RK\\HelperModule\\Entity\\ImageEntity';
 
-        return new $entityClass();
+        $entity = new $entityClass();
+
+        $this->entityInitialiser->initImage($entity);
+
+        return $entity;
     }
 
     /**
@@ -109,7 +131,11 @@ abstract class AbstractHelperFactory
     {
         $entityClass = 'RK\\HelperModule\\Entity\\InfoEntity';
 
-        return new $entityClass();
+        $entity = new $entityClass();
+
+        $this->entityInitialiser->initInfo($entity);
+
+        return $entity;
     }
 
     /**
@@ -169,6 +195,29 @@ abstract class AbstractHelperFactory
     public function setObjectManager($objectManager)
     {
         $this->objectManager = $objectManager;
+    }
+    
+
+    /**
+     * Returns the entity initialiser.
+     *
+     * @return EntityInitialiser
+     */
+    public function getEntityInitialiser()
+    {
+        return $this->entityInitialiser;
+    }
+    
+    /**
+     * Sets the entity initialiser.
+     *
+     * @param EntityInitialiser $entityInitialiser
+     *
+     * @return void
+     */
+    public function setEntityInitialiser($entityInitialiser)
+    {
+        $this->entityInitialiser = $entityInitialiser;
     }
     
 }

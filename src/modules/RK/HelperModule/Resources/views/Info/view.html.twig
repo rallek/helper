@@ -34,7 +34,7 @@
                         <input type="checkbox" class="rkhelper-mass-toggle" />
                     </th>
                 {% endif %}
-                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted">{{ __('Actions') }}</th>
+                <th id="hItemActions" scope="col" class="{% if items|length > 0 %}fixed-column {% endif %}z-order-unsorted z-w02">{{ __('Actions') }}</th>
                 <th id="hInfoTitle" scope="col" class="text-left">
                     <a href="{{ sort.infoTitle.url }}" title="{{ __f('Sort by %s', {'%s': 'info title'}) }}" class="{{ sort.infoTitle.class }}">{{ __('Info title') }}</a>
                 </th>
@@ -54,7 +54,7 @@
         {% for info in items %}
             <tr>
                 {% if routeArea == 'admin' %}
-                    <td headers="hSelect" class="fixed-column text-center">
+                    <td headers="hSelect" class="fixed-column text-center z-w02">
                         <input type="checkbox" name="items[]" value="{{ info.id }}" class="rkhelper-toggle-checkbox" />
                     </td>
                 {% endif %}
@@ -81,7 +81,7 @@
                     {% else %}&nbsp;{% endif %}
                 </td>
                 <td headers="hInfoDescription" class="text-left">
-                    {{ info.infoDescription|safeHtml }}
+                    {{ info.infoDescription|safeHtml|truncate(50) }}
                 </td>
                 <td headers="hInfoLocale" class="text-left">
                     {{ info.infoLocale|languageName }}
