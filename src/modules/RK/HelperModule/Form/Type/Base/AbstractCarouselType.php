@@ -180,7 +180,8 @@ abstract class AbstractCarouselType extends AbstractType
                 'class' => ' validate-nospace',
                 'title' => $this->__('Choose the carousel locale of the carousel')
             ],
-            'required' => true,
+            'required' => false,
+            'placeholder' => $this->__('All'),
             'choices' => $this->localeApi->getSupportedLocaleNames(),
             'choices_as_values' => true
         ]);

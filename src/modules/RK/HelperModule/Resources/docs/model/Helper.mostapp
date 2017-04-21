@@ -4,7 +4,7 @@ application "Helper" {
     author "Ralf Koester"
     email "ralf@familie-koester.de"
     url "http://k62.de"
-    version "1.0.0"
+    version "1.0.1"
     prefix "helper"
     generatorSettings {
         settingsContainer "Settings"
@@ -161,6 +161,9 @@ application "Helper" {
                 }
             ,
                 string "carouselLocale" locale
+            {
+                    mandatory false
+                }
             }
             actions {
                 mainAction "Index",
