@@ -194,7 +194,9 @@ abstract class AbstractHelperFactory
      */
     public function setObjectManager($objectManager)
     {
-        $this->objectManager = $objectManager;
+        if ($this->objectManager != $objectManager) {
+            $this->objectManager = $objectManager;
+        }
     }
     
 
@@ -217,7 +219,9 @@ abstract class AbstractHelperFactory
      */
     public function setEntityInitialiser($entityInitialiser)
     {
-        $this->entityInitialiser = $entityInitialiser;
+        if ($this->entityInitialiser != $entityInitialiser) {
+            $this->entityInitialiser = $entityInitialiser;
+        }
     }
     
 }

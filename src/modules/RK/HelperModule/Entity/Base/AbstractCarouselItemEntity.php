@@ -233,7 +233,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function set_objectType($_objectType)
     {
-        $this->_objectType = $_objectType;
+        if ($this->_objectType != $_objectType) {
+            $this->_objectType = $_objectType;
+        }
     }
     
     
@@ -256,7 +258,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setId($id)
     {
-        $this->id = intval($id);
+        if (intval($this->id) !== intval($id)) {
+            $this->id = intval($id);
+        }
     }
     
     /**
@@ -278,7 +282,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setWorkflowState($workflowState)
     {
-        $this->workflowState = isset($workflowState) ? $workflowState : '';
+        if ($this->workflowState !== $workflowState) {
+            $this->workflowState = isset($workflowState) ? $workflowState : '';
+        }
     }
     
     /**
@@ -300,7 +306,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setItemName($itemName)
     {
-        $this->itemName = isset($itemName) ? $itemName : '';
+        if ($this->itemName !== $itemName) {
+            $this->itemName = isset($itemName) ? $itemName : '';
+        }
     }
     
     /**
@@ -322,7 +330,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setTitle($title)
     {
-        $this->title = isset($title) ? $title : '';
+        if ($this->title !== $title) {
+            $this->title = isset($title) ? $title : '';
+        }
     }
     
     /**
@@ -344,7 +354,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setSubtitle($subtitle)
     {
-        $this->subtitle = isset($subtitle) ? $subtitle : '';
+        if ($this->subtitle !== $subtitle) {
+            $this->subtitle = isset($subtitle) ? $subtitle : '';
+        }
     }
     
     /**
@@ -366,7 +378,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setLink($link)
     {
-        $this->link = isset($link) ? $link : '';
+        if ($this->link !== $link) {
+            $this->link = isset($link) ? $link : '';
+        }
     }
     
     /**
@@ -388,7 +402,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setItemImage($itemImage)
     {
-        $this->itemImage = $itemImage;
+        if ($this->itemImage !== $itemImage) {
+            $this->itemImage = $itemImage;
+        }
     }
     
     /**
@@ -410,7 +426,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setItemImageUrl($itemImageUrl)
     {
-        $this->itemImageUrl = $itemImageUrl;
+        if ($this->itemImageUrl !== $itemImageUrl) {
+            $this->itemImageUrl = $itemImageUrl;
+        }
     }
     
     /**
@@ -432,7 +450,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setItemImageMeta($itemImageMeta = [])
     {
-        $this->itemImageMeta = $itemImageMeta;
+        if ($this->itemImageMeta !== $itemImageMeta) {
+            $this->itemImageMeta = $itemImageMeta;
+        }
     }
     
     /**
@@ -454,7 +474,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setTitleColor($titleColor)
     {
-        $this->titleColor = isset($titleColor) ? $titleColor : '';
+        if ($this->titleColor !== $titleColor) {
+            $this->titleColor = isset($titleColor) ? $titleColor : '';
+        }
     }
     
     /**
@@ -476,12 +498,14 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setItemStartDate($itemStartDate)
     {
-        if (is_object($itemStartDate) && $itemStartDate instanceOf \DateTime) {
-            $this->itemStartDate = $itemStartDate;
-        } elseif (null === $itemStartDate || empty($itemStartDate)) {
-            $this->itemStartDate = null;
-        } else {
-            $this->itemStartDate = new \DateTime($itemStartDate);
+        if ($this->itemStartDate !== $itemStartDate) {
+            if (is_object($itemStartDate) && $itemStartDate instanceOf \DateTime) {
+                $this->itemStartDate = $itemStartDate;
+            } elseif (null === $itemStartDate || empty($itemStartDate)) {
+                $this->itemStartDate = null;
+            } else {
+                $this->itemStartDate = new \DateTime($itemStartDate);
+            }
         }
     }
     
@@ -504,10 +528,12 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setIntemEndDate($intemEndDate)
     {
-        if (is_object($intemEndDate) && $intemEndDate instanceOf \DateTime) {
-            $this->intemEndDate = $intemEndDate;
-        } else {
-            $this->intemEndDate = new \DateTime($intemEndDate);
+        if ($this->intemEndDate !== $intemEndDate) {
+            if (is_object($intemEndDate) && $intemEndDate instanceOf \DateTime) {
+                $this->intemEndDate = $intemEndDate;
+            } else {
+                $this->intemEndDate = new \DateTime($intemEndDate);
+            }
         }
     }
     
@@ -530,7 +556,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setSingleItemIdentifier($singleItemIdentifier)
     {
-        $this->singleItemIdentifier = isset($singleItemIdentifier) ? $singleItemIdentifier : '';
+        if ($this->singleItemIdentifier !== $singleItemIdentifier) {
+            $this->singleItemIdentifier = isset($singleItemIdentifier) ? $singleItemIdentifier : '';
+        }
     }
     
     /**
@@ -552,8 +580,8 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setLinkExternal($linkExternal)
     {
-        if ($linkExternal !== $this->linkExternal) {
-            $this->linkExternal = (bool)$linkExternal;
+        if (boolval($this->linkExternal) !== boolval($linkExternal)) {
+            $this->linkExternal = boolval($linkExternal);
         }
     }
     
@@ -576,7 +604,9 @@ abstract class AbstractCarouselItemEntity extends EntityAccess
      */
     public function setItemLocale($itemLocale)
     {
-        $this->itemLocale = isset($itemLocale) ? $itemLocale : '';
+        if ($this->itemLocale !== $itemLocale) {
+            $this->itemLocale = isset($itemLocale) ? $itemLocale : '';
+        }
     }
     
     

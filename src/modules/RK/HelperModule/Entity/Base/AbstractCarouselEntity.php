@@ -165,7 +165,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function set_objectType($_objectType)
     {
-        $this->_objectType = $_objectType;
+        if ($this->_objectType != $_objectType) {
+            $this->_objectType = $_objectType;
+        }
     }
     
     
@@ -188,7 +190,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setId($id)
     {
-        $this->id = intval($id);
+        if (intval($this->id) !== intval($id)) {
+            $this->id = intval($id);
+        }
     }
     
     /**
@@ -210,7 +214,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setWorkflowState($workflowState)
     {
-        $this->workflowState = isset($workflowState) ? $workflowState : '';
+        if ($this->workflowState !== $workflowState) {
+            $this->workflowState = isset($workflowState) ? $workflowState : '';
+        }
     }
     
     /**
@@ -232,7 +238,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setCarouselName($carouselName)
     {
-        $this->carouselName = isset($carouselName) ? $carouselName : '';
+        if ($this->carouselName !== $carouselName) {
+            $this->carouselName = isset($carouselName) ? $carouselName : '';
+        }
     }
     
     /**
@@ -254,7 +262,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setRemarks($remarks)
     {
-        $this->remarks = isset($remarks) ? $remarks : '';
+        if ($this->remarks !== $remarks) {
+            $this->remarks = isset($remarks) ? $remarks : '';
+        }
     }
     
     /**
@@ -276,7 +286,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setSlidingTime($slidingTime)
     {
-        $this->slidingTime = intval($slidingTime);
+        if (intval($this->slidingTime) !== intval($slidingTime)) {
+            $this->slidingTime = intval($slidingTime);
+        }
     }
     
     /**
@@ -298,8 +310,8 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setControls($controls)
     {
-        if ($controls !== $this->controls) {
-            $this->controls = (bool)$controls;
+        if (boolval($this->controls) !== boolval($controls)) {
+            $this->controls = boolval($controls);
         }
     }
     
@@ -322,7 +334,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setCarouselGroup($carouselGroup)
     {
-        $this->carouselGroup = isset($carouselGroup) ? $carouselGroup : '';
+        if ($this->carouselGroup !== $carouselGroup) {
+            $this->carouselGroup = isset($carouselGroup) ? $carouselGroup : '';
+        }
     }
     
     /**
@@ -344,7 +358,9 @@ abstract class AbstractCarouselEntity extends EntityAccess
      */
     public function setCarouselLocale($carouselLocale)
     {
-        $this->carouselLocale = isset($carouselLocale) ? $carouselLocale : '';
+        if ($this->carouselLocale !== $carouselLocale) {
+            $this->carouselLocale = isset($carouselLocale) ? $carouselLocale : '';
+        }
     }
     
     

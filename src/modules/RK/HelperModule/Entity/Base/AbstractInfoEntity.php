@@ -182,7 +182,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function set_objectType($_objectType)
     {
-        $this->_objectType = $_objectType;
+        if ($this->_objectType != $_objectType) {
+            $this->_objectType = $_objectType;
+        }
     }
     
     
@@ -205,7 +207,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setId($id)
     {
-        $this->id = intval($id);
+        if (intval($this->id) !== intval($id)) {
+            $this->id = intval($id);
+        }
     }
     
     /**
@@ -227,7 +231,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setWorkflowState($workflowState)
     {
-        $this->workflowState = isset($workflowState) ? $workflowState : '';
+        if ($this->workflowState !== $workflowState) {
+            $this->workflowState = isset($workflowState) ? $workflowState : '';
+        }
     }
     
     /**
@@ -249,7 +255,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setInfoTitle($infoTitle)
     {
-        $this->infoTitle = isset($infoTitle) ? $infoTitle : '';
+        if ($this->infoTitle !== $infoTitle) {
+            $this->infoTitle = isset($infoTitle) ? $infoTitle : '';
+        }
     }
     
     /**
@@ -271,7 +279,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setTitleImage($titleImage)
     {
-        $this->titleImage = $titleImage;
+        if ($this->titleImage !== $titleImage) {
+            $this->titleImage = $titleImage;
+        }
     }
     
     /**
@@ -293,7 +303,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setTitleImageUrl($titleImageUrl)
     {
-        $this->titleImageUrl = $titleImageUrl;
+        if ($this->titleImageUrl !== $titleImageUrl) {
+            $this->titleImageUrl = $titleImageUrl;
+        }
     }
     
     /**
@@ -315,7 +327,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setTitleImageMeta($titleImageMeta = [])
     {
-        $this->titleImageMeta = $titleImageMeta;
+        if ($this->titleImageMeta !== $titleImageMeta) {
+            $this->titleImageMeta = $titleImageMeta;
+        }
     }
     
     /**
@@ -337,7 +351,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setCopyright($copyright)
     {
-        $this->copyright = isset($copyright) ? $copyright : '';
+        if ($this->copyright !== $copyright) {
+            $this->copyright = isset($copyright) ? $copyright : '';
+        }
     }
     
     /**
@@ -359,7 +375,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setInfoDescription($infoDescription)
     {
-        $this->infoDescription = isset($infoDescription) ? $infoDescription : '';
+        if ($this->infoDescription !== $infoDescription) {
+            $this->infoDescription = isset($infoDescription) ? $infoDescription : '';
+        }
     }
     
     /**
@@ -381,7 +399,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setInfoLocale($infoLocale)
     {
-        $this->infoLocale = isset($infoLocale) ? $infoLocale : '';
+        if ($this->infoLocale !== $infoLocale) {
+            $this->infoLocale = isset($infoLocale) ? $infoLocale : '';
+        }
     }
     
     /**
@@ -403,7 +423,9 @@ abstract class AbstractInfoEntity extends EntityAccess implements Translatable
      */
     public function setLocale($locale)
     {
-        $this->locale = $locale;
+        if ($this->locale != $locale) {
+            $this->locale = $locale;
+        }
     }
     
     

@@ -197,7 +197,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function set_objectType($_objectType)
     {
-        $this->_objectType = $_objectType;
+        if ($this->_objectType != $_objectType) {
+            $this->_objectType = $_objectType;
+        }
     }
     
     
@@ -220,7 +222,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setId($id)
     {
-        $this->id = intval($id);
+        if (intval($this->id) !== intval($id)) {
+            $this->id = intval($id);
+        }
     }
     
     /**
@@ -242,7 +246,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setWorkflowState($workflowState)
     {
-        $this->workflowState = isset($workflowState) ? $workflowState : '';
+        if ($this->workflowState !== $workflowState) {
+            $this->workflowState = isset($workflowState) ? $workflowState : '';
+        }
     }
     
     /**
@@ -264,7 +270,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerImage($linkerImage)
     {
-        $this->linkerImage = isset($linkerImage) ? $linkerImage : '';
+        if ($this->linkerImage !== $linkerImage) {
+            $this->linkerImage = isset($linkerImage) ? $linkerImage : '';
+        }
     }
     
     /**
@@ -286,7 +294,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerImageUrl($linkerImageUrl)
     {
-        $this->linkerImageUrl = isset($linkerImageUrl) ? $linkerImageUrl : '';
+        if ($this->linkerImageUrl !== $linkerImageUrl) {
+            $this->linkerImageUrl = isset($linkerImageUrl) ? $linkerImageUrl : '';
+        }
     }
     
     /**
@@ -308,7 +318,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerImageMeta($linkerImageMeta = [])
     {
-        $this->linkerImageMeta = isset($linkerImageMeta) ? $linkerImageMeta : '';
+        if ($this->linkerImageMeta !== $linkerImageMeta) {
+            $this->linkerImageMeta = isset($linkerImageMeta) ? $linkerImageMeta : '';
+        }
     }
     
     /**
@@ -330,7 +342,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerHeadline($linkerHeadline)
     {
-        $this->linkerHeadline = isset($linkerHeadline) ? $linkerHeadline : '';
+        if ($this->linkerHeadline !== $linkerHeadline) {
+            $this->linkerHeadline = isset($linkerHeadline) ? $linkerHeadline : '';
+        }
     }
     
     /**
@@ -352,7 +366,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerText($linkerText)
     {
-        $this->linkerText = isset($linkerText) ? $linkerText : '';
+        if ($this->linkerText !== $linkerText) {
+            $this->linkerText = isset($linkerText) ? $linkerText : '';
+        }
     }
     
     /**
@@ -374,7 +390,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setTheLink($theLink)
     {
-        $this->theLink = isset($theLink) ? $theLink : '';
+        if ($this->theLink !== $theLink) {
+            $this->theLink = isset($theLink) ? $theLink : '';
+        }
     }
     
     /**
@@ -396,7 +414,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setBoostrapSetting($boostrapSetting)
     {
-        $this->boostrapSetting = isset($boostrapSetting) ? $boostrapSetting : '';
+        if ($this->boostrapSetting !== $boostrapSetting) {
+            $this->boostrapSetting = isset($boostrapSetting) ? $boostrapSetting : '';
+        }
     }
     
     /**
@@ -418,7 +438,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerLocale($linkerLocale)
     {
-        $this->linkerLocale = isset($linkerLocale) ? $linkerLocale : '';
+        if ($this->linkerLocale !== $linkerLocale) {
+            $this->linkerLocale = isset($linkerLocale) ? $linkerLocale : '';
+        }
     }
     
     /**
@@ -440,7 +462,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setSorting($sorting)
     {
-        $this->sorting = intval($sorting);
+        if (intval($this->sorting) !== intval($sorting)) {
+            $this->sorting = intval($sorting);
+        }
     }
     
     /**
@@ -462,7 +486,9 @@ abstract class AbstractLinkerEntity extends EntityAccess
      */
     public function setLinkerGroup($linkerGroup)
     {
-        $this->linkerGroup = $linkerGroup;
+        if ($this->linkerGroup !== $linkerGroup) {
+            $this->linkerGroup = $linkerGroup;
+        }
     }
     
     

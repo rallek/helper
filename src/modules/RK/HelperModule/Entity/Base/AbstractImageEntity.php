@@ -157,7 +157,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function set_objectType($_objectType)
     {
-        $this->_objectType = $_objectType;
+        if ($this->_objectType != $_objectType) {
+            $this->_objectType = $_objectType;
+        }
     }
     
     
@@ -180,7 +182,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setId($id)
     {
-        $this->id = intval($id);
+        if (intval($this->id) !== intval($id)) {
+            $this->id = intval($id);
+        }
     }
     
     /**
@@ -202,7 +206,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setWorkflowState($workflowState)
     {
-        $this->workflowState = isset($workflowState) ? $workflowState : '';
+        if ($this->workflowState !== $workflowState) {
+            $this->workflowState = isset($workflowState) ? $workflowState : '';
+        }
     }
     
     /**
@@ -224,7 +230,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setImageTitle($imageTitle)
     {
-        $this->imageTitle = isset($imageTitle) ? $imageTitle : '';
+        if ($this->imageTitle !== $imageTitle) {
+            $this->imageTitle = isset($imageTitle) ? $imageTitle : '';
+        }
     }
     
     /**
@@ -246,7 +254,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setMyImage($myImage)
     {
-        $this->myImage = isset($myImage) ? $myImage : '';
+        if ($this->myImage !== $myImage) {
+            $this->myImage = isset($myImage) ? $myImage : '';
+        }
     }
     
     /**
@@ -268,7 +278,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setMyImageUrl($myImageUrl)
     {
-        $this->myImageUrl = isset($myImageUrl) ? $myImageUrl : '';
+        if ($this->myImageUrl !== $myImageUrl) {
+            $this->myImageUrl = isset($myImageUrl) ? $myImageUrl : '';
+        }
     }
     
     /**
@@ -290,7 +302,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setMyImageMeta($myImageMeta = [])
     {
-        $this->myImageMeta = isset($myImageMeta) ? $myImageMeta : '';
+        if ($this->myImageMeta !== $myImageMeta) {
+            $this->myImageMeta = isset($myImageMeta) ? $myImageMeta : '';
+        }
     }
     
     /**
@@ -312,7 +326,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setMyDescription($myDescription)
     {
-        $this->myDescription = isset($myDescription) ? $myDescription : '';
+        if ($this->myDescription !== $myDescription) {
+            $this->myDescription = isset($myDescription) ? $myDescription : '';
+        }
     }
     
     /**
@@ -334,7 +350,9 @@ abstract class AbstractImageEntity extends EntityAccess
      */
     public function setCopyright($copyright)
     {
-        $this->copyright = isset($copyright) ? $copyright : '';
+        if ($this->copyright !== $copyright) {
+            $this->copyright = isset($copyright) ? $copyright : '';
+        }
     }
     
     

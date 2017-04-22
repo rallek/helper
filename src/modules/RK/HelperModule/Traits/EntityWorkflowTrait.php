@@ -44,7 +44,9 @@ trait EntityWorkflowTrait
      */
     public function set__WORKFLOW__($__WORKFLOW__ = [])
     {
-        $this->__WORKFLOW__ = $__WORKFLOW__;
+        if ($this->__WORKFLOW__ != $__WORKFLOW__) {
+            $this->__WORKFLOW__ = $__WORKFLOW__;
+        }
     }
     
     /**

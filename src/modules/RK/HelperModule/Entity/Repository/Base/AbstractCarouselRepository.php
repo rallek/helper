@@ -88,7 +88,9 @@ abstract class AbstractCarouselRepository extends EntityRepository
      */
     public function setDefaultSortingField($defaultSortingField)
     {
-        $this->defaultSortingField = $defaultSortingField;
+        if ($this->defaultSortingField != $defaultSortingField) {
+            $this->defaultSortingField = $defaultSortingField;
+        }
     }
     
     /**
@@ -110,7 +112,9 @@ abstract class AbstractCarouselRepository extends EntityRepository
      */
     public function setRequest($request)
     {
-        $this->request = $request;
+        if ($this->request != $request) {
+            $this->request = $request;
+        }
     }
     
 
