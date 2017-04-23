@@ -108,6 +108,7 @@ application "Helper" {
             ,
                 date "itemStartDate" nullable startDate {
                     documentation "if you do not enter a date the date of today will be used"
+                    defaultValue "now"
                     mandatory false
                 },
                 date "intemEndDate" future endDate {

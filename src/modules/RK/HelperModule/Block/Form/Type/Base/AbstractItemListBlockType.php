@@ -196,7 +196,7 @@ abstract class AbstractItemListBlockType extends AbstractType
             ])
             ->setRequired(['object_type'])
             ->setAllowedTypes([
-                'objectType' => 'string'
+                'object_type' => 'string'
             ])
         ;
     }

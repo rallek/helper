@@ -219,7 +219,7 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'title' => $this->__('if you do not enter a date the date of today will be used')
             ],
             'help' => $this->__('if you do not enter a date the date of today will be used'),
-            'empty_data' => '',
+            'empty_data' => 'now',
             'attr' => [
                 'class' => ' validate-daterange-carouselitem',
                 'title' => $this->__('Enter the item start date of the carousel item')
