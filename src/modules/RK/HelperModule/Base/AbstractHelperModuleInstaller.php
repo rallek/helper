@@ -436,6 +436,7 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
         $entityManager = $this->container->get('doctrine.orm.default_entity_manager');
         $logger = $this->container->get('logger');
         $request = $this->container->get('request_stack')->getCurrentRequest();
+        $adminUser = $this->container->get('zikula_users_module.user_repository')->find(2);
         
         $entityClass = 'RK\HelperModule\Entity\LinkerEntity';
         $entityManager->getRepository($entityClass)->truncateTable($logger);

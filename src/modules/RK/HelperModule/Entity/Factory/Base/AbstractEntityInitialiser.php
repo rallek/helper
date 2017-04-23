@@ -44,7 +44,7 @@ abstract class AbstractEntityInitialiser
      */
     public function initCarouselItem(CarouselItemEntity $entity)
     {
-        $entity->setItemStartDate(\DateTime::createFromFormat('Y-m-d'));
+        $entity->setItemStartDate(\DateTime::createFromFormat('Y-m-d', date('Y-m-d')));
         $entity->setIntemEndDate(new \DateTime('2099-12-31'));
         return $entity;
     }
