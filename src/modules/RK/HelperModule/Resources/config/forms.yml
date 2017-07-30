@@ -16,6 +16,7 @@ services:
         arguments:
             - "@translator.default"
             - "@request_stack"
+            - "@rk_helper_module.entity_display_helper"
             - "@rk_helper_module.listentries_helper"
             - "@zikula_settings_module.locale_api"
             - "@rk_helper_module.feature_activation_helper"
@@ -115,6 +116,8 @@ services:
         arguments:
             - "@translator.default"
             - "@rk_helper_module.entity_factory"
+            - "@rk_helper_module.collection_filter_helper"
+            - "@rk_helper_module.entity_display_helper"
             - "@rk_helper_module.listentries_helper"
             - "@zikula_settings_module.locale_api"
             - "@rk_helper_module.feature_activation_helper"
@@ -150,6 +153,8 @@ services:
         arguments:
             - "@translator.default"
             - "@rk_helper_module.entity_factory"
+            - "@rk_helper_module.collection_filter_helper"
+            - "@rk_helper_module.entity_display_helper"
             - "@rk_helper_module.listentries_helper"
             - "@zikula_settings_module.locale_api"
             - "@rk_helper_module.feature_activation_helper"
@@ -227,13 +232,6 @@ services:
         tags:
             - { name: form.type }
     
-    rk_helper_module.form.type.deleteentity:
-        class: RK\HelperModule\Form\DeleteEntityType
-        arguments:
-            - "@translator.default"
-        tags:
-            - { name: form.type }
-    
     rk_helper_module.form.type.block.itemlist:
         class: RK\HelperModule\Block\Form\Type\ItemListBlockType
         arguments:
@@ -257,14 +255,6 @@ services:
         tags:
             - { name: form.type }
     
-    rk_helper_module.form.type.carouselfinder:
-        class: RK\HelperModule\Form\Type\Finder\CarouselFinderType
-        arguments:
-            - "@translator.default"
-            - "@rk_helper_module.feature_activation_helper"
-        tags:
-            - { name: form.type }
-    
     rk_helper_module.form.type.imagefinder:
         class: RK\HelperModule\Form\Type\Finder\ImageFinderType
         arguments:
@@ -281,10 +271,10 @@ services:
         tags:
             - { name: form.type }
     
-    rk_helper_module.form.type.appsettings:
-        class: RK\HelperModule\Form\AppSettingsType
+    rk_helper_module.form.type.config:
+        class: RK\HelperModule\Form\Type\ConfigType
         arguments:
             - "@translator.default"
-            - "@zikula_extensions_module.api.variable"
+            - "@=service('zikula_extensions_module.api.variable').getAll('RKHelperModule')"
         tags:
             - { name: form.type }

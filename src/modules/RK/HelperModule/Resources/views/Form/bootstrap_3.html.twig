@@ -4,13 +4,8 @@
 {%- block date_widget -%}
     {{- parent() -}}
     {%- if not required -%}
-        <span class="help-block"><a id="{{ id }}ResetVal" href="javascript:void(0);" class="hidden">{{ __('Reset to empty value') }}</a></span>
+        <em class="help-block small"><a id="{{ id }}ResetVal" href="javascript:void(0);" class="hidden">{{ __('Reset to empty value') }}</a></em>
     {%- endif -%}
-{%- endblock -%}
-
-{%- block rkhelpermodule_field_colour_widget -%}
-    {%- set type = type|default('color') -%}
-    {{ block('form_widget_simple') }}
 {%- endblock -%}
 
 {%- block rkhelpermodule_field_translation_row -%}
@@ -21,20 +16,20 @@
 {% block rkhelpermodule_field_upload_row %}
     {% spaceless %}
     {{ form_row(attribute(form, field_name)) }}
-    <div class="col-sm-9 col-sm-offset-3">
+    <div class="col-sm-9 col-sm-offset-3" style="margin-top: -20px; padding-left: 8px">
         {% if not required %}
-            <span class="help-block"><a id="{{ id }}_{{ field_name }}ResetVal" href="javascript:void(0);" class="hidden">{{ __('Reset to empty value') }}</a></span>
+            <em class="help-block small"><a id="{{ id }}_{{ field_name }}ResetVal" href="javascript:void(0);" class="hidden">{{ __('Reset to empty value') }}</a></em>
         {% endif %}
-        <span class="help-block">{{ __('Allowed file extensions') }}: <span id="{{ id }}_{{ field_name }}FileExtensions">{{ allowed_extensions|default('') }}</span></span>
+        <em class="help-block small">{{ __('Allowed file extensions') }}: <span id="{{ id }}_{{ field_name }}FileExtensions">{{ allowed_extensions|default('') }}</span></em>
         {% if allowed_size|default %}
-            <span class="help-block">{{ __('Allowed file size') }}: {{ allowed_size }}</span>
+            <em class="help-block small">{{ __('Allowed file size') }}: {{ allowed_size }}</em>
         {% endif %}
         {% if file_path|default %}
             <span class="help-block">
                 {{ __('Current file') }}:
                 <a href="{{ file_url }}" title="{{ __('Open file') }}"{% if file_meta.isImage %} class="image-link"{% endif %}>
                 {% if file_meta.isImage %}
-                    <img src="{{ file_path|imagine_filter('zkroot', thumb_runtime_options) }}" alt="{{ formatted_entity_title|e('html_attr') }}" width="{{ thumb_runtime_options.thumbnail.size[0] }}" height="{{ thumb_runtime_options.thumbnail.size[1] }}" class="img-thumbnail" />
+                    <img src="{{ file_path|imagine_filter('zkroot', thumb_runtime_options) }}" alt="{{ edited_entity|rkhelpermodule_formattedTitle|e('html_attr') }}" width="{{ thumb_runtime_options.thumbnail.size[0] }}" height="{{ thumb_runtime_options.thumbnail.size[1] }}" class="img-thumbnail" />
                 {% else %}
                     {{ __('Download') }} ({{ file_meta.size|rkhelpermodule_fileSize(file_path, false, false) }})
                 {% endif %}
@@ -46,23 +41,4 @@
         {% endif %}
     </div>
     {% endspaceless %}
-{% endblock %}
-
-{% block rkhelpermodule_field_user_widget %}
-    <div id="{{ id }}LiveSearch" class="rkhelpermodule-livesearch-user rkhelpermodule-autocomplete-user hidden">
-        <i class="fa fa-search" title="{{ __('Search user') }}"></i>
-        <noscript><p>{{ __('This function requires JavaScript activated!') }}</p></noscript>
-        <input type="hidden" {{ block('widget_attributes') }} value="{{ value }}" />
-        <input type="text" id="{{ id }}Selector" name="{{ id }}Selector" autocomplete="off" value="{{ user_name|e('html_attr') }}" title="{{ __('Enter a part of the user name to search') }}" class="user-selector typeahead" />
-        <i class="fa fa-refresh fa-spin hidden" id="{{ id }}Indicator"></i>
-        <span id="{{ id }}NoResultsHint" class="hidden">{{ __('No results found!') }}</span>
-    </div>
-    {% if value and not inline_usage %}
-        <span class="help-block avatar">
-            {{ rkhelpermodule_userAvatar(uid=value, rating='g') }}
-        </span>
-        {% if hasPermission('ZikulaUsersModule::', '::', 'ACCESS_ADMIN') %}
-            <span class="help-block"><a href="{{ path('zikulausersmodule_useradministration_modify', { 'user': value }) }}" title="{{ __('Switch to users administration') }}">{{ __('Manage user') }}</a></span>
-        {% endif %}
-    {% endif %}
 {% endblock %}

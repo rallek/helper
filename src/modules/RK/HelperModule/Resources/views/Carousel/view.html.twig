@@ -1,13 +1,13 @@
 {# purpose of this template: carousells list view #}
 {% extends routeArea == 'admin' ? 'RKHelperModule::adminBase.html.twig' : 'RKHelperModule::base.html.twig' %}
-{% block title own ? __('My carousells') : __('Carousel list') %}
+{% block title own ? __('My carousells') : __('Carousells list') %}
 {% block admin_page_icon 'list-alt' %}
 {% block content %}
 <div class="rkhelpermodule-carousel rkhelpermodule-view">
 
     {{ block('page_nav_links') }}
 
-    {{ include('@RKHelperModule/Carousel/viewQuickNav.html.twig', { workflowStateFilter: false }) }}{# see template file for available options #}
+    {{ include('@RKHelperModule/Carousel/viewQuickNav.html.twig', {workflowStateFilter: false}) }}{# see template file for available options #}
 
     {% if routeArea == 'admin' %}
     <form action="{{ path('rkhelpermodule_carousel_' ~ routeArea ~ 'handleselectedentries') }}" method="post" id="carousellsViewForm" class="form-horizontal" role="form">
@@ -61,14 +61,14 @@
             <tr>
                 {% if routeArea == 'admin' %}
                     <td headers="hSelect" class="fixed-column text-center z-w02">
-                        <input type="checkbox" name="items[]" value="{{ carousel.id }}" class="rkhelper-toggle-checkbox" />
+                        <input type="checkbox" name="items[]" value="{{ carousel.getKey() }}" class="rkhelper-toggle-checkbox" />
                     </td>
                 {% endif %}
-                <td id="itemActions{{ carousel.id }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
-                    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], { entity: carousel, area: routeArea, context: 'view' }) %}
+                <td id="itemActions{{ carousel.getKey() }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
+                    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], {entity: carousel, area: routeArea, context: 'view'}) %}
                     <div class="dropdown">
-                        <a id="itemActions{{ carousel.id }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
-                        {{ knp_menu_render(itemActions, { template: 'ZikulaMenuModule:Override:actions.html.twig' }) }}
+                        <a id="itemActions{{ carousel.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
+                        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
                     </div>
                 </td>
                 <td headers="hCarouselName" class="text-left">
@@ -106,8 +106,8 @@
         </table>
         </div>
         
-        {% if showAllEntries != 1 and pager|default %}
-            {{ pager({ rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'rkhelpermodule_carousel_' ~ routeArea ~ 'view'}) }}
+        {% if all != 1 and pager|default %}
+            {{ pager({rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'rkhelpermodule_carousel_' ~ routeArea ~ 'view'}) }}
         {% endif %}
     {% if routeArea == 'admin' %}
             <fieldset>
@@ -137,12 +137,12 @@
                 <a href="{{ path('rkhelpermodule_carousel_' ~ routeArea ~ 'edit') }}" title="{{ createTitle|e('html_attr') }}" class="fa fa-plus">{{ createTitle }}</a>
             {% endif %}
         {% endif %}
-        {% if showAllEntries == 1 %}
+        {% if all == 1 %}
             {% set linkTitle = __('Back to paginated view') %}
             <a href="{{ path('rkhelpermodule_carousel_' ~ routeArea ~ 'view') }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
         {% else %}
             {% set linkTitle = __('Show all entries') %}
-            <a href="{{ path('rkhelpermodule_carousel_' ~ routeArea ~ 'view', { all: 1 }) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
+            <a href="{{ path('rkhelpermodule_carousel_' ~ routeArea ~ 'view', {all: 1}) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
         {% endif %}
     </p>
 {% endblock %}

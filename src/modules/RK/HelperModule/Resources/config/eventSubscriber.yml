@@ -4,6 +4,8 @@ services:
         class: RK\HelperModule\Listener\EntityLifecycleListener
         arguments:
             - "@service_container"
+            - "@event_dispatcher"
+            - "@logger"
         tags:
             - { name: doctrine.event_subscriber }
     
@@ -69,6 +71,13 @@ services:
     
     rk_helper_module.thirdparty_listener:
         class: RK\HelperModule\Listener\ThirdPartyListener
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    rk_helper_module.workflow_events_listener:
+        class: RK\HelperModule\Listener\WorkflowEventsListener
+        arguments:
+            - "@zikula_permissions_module.api.permission"
         tags:
             - { name: kernel.event_subscriber }
     

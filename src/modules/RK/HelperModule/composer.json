@@ -1,6 +1,6 @@
 {
     "name": "rk/helper-module",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "here you can find the helpers for this site e.g. carousel, linker, simple info pages or images",
     "type": "zikula-module",
     "license": "LGPL-3.0+",
@@ -16,20 +16,19 @@
         "psr-4": { "RK\\HelperModule\\": "" }
     },
     "require": {
-        "php": ">=5.4.1"
+        "php": ">=5.5.9"
     },
     "suggest": {
     },
     "extra": {
         "zikula": {
-            "core-compatibility": ">=1.4.6 <3.0",
+            "core-compatibility": ">=1.5.0 <3.0",
             "class": "RK\\HelperModule\\RKHelperModule",
             "displayname": "Helper",
             "url": "helper",
             "capabilities": {
                 "user": {"route": "rkhelpermodule_linker_index"},
-                "admin": {"route": "rkhelpermodule_linker_adminindex"},
-                "hook_subscriber": {"class": "RK\\HelperModule\\Container\\HookContainer"}
+                "admin": {"route": "rkhelpermodule_linker_adminindex"}
             },
             "securityschema": {
                 "RKHelperModule::": "::",

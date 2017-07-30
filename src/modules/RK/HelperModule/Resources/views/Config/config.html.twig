@@ -41,6 +41,10 @@
             <li role="presentation">
                 <a id="vars4Tab" href="#tab4" title="{{ tabTitle|e('html_attr') }}" role="tab" data-toggle="tab">{{ tabTitle }}</a>
             </li>
+            {% set tabTitle = __('Workflows') %}
+            <li role="presentation">
+                <a id="workflowsTab" href="#tabWorkflows" title="{{ tabTitle|e('html_attr') }}" role="tab" data-toggle="tab">{{ tabTitle }}</a>
+            </li>
             </ul>
 
             {{ form_errors(form) }}
@@ -71,6 +75,7 @@
                         {{ form_row(form.carouselEntriesPerPage) }}
                         {{ form_row(form.imageEntriesPerPage) }}
                         {{ form_row(form.infoEntriesPerPage) }}
+                        {{ form_row(form.filterDataByLocale) }}
                     </fieldset>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="tabImagesLinkerLinkerImage" aria-labelledby="imagesLinkerLinkerImageTab">
@@ -157,6 +162,25 @@
                         <p class="alert alert-info">{{ __('These options allow you to configure integration aspects.')|nl2br }}</p>
                     
                         {{ form_row(form.enabledFinderTypes) }}
+                    </fieldset>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tabWorkflows" aria-labelledby="workflowsTab">
+                    {% set tabTitle = __('Workflows') %}
+                    <fieldset>
+                        <legend>{{ tabTitle }}</legend>
+                
+                        <p class="alert alert-info">{{ __('Here you can inspect and amend the existing workflows.') }}</p>
+                
+                        <h4>{{ __('Linkers') }}</h4>
+                        <p><a href="{{ path('zikula_workflow_editor_index', {workflow: 'rkhelpermodule_none'}) }}" title="{{ __('Edit workflow for linkers') }}" target="_blank"><i class="fa fa-cubes"></i> {{ __('Edit linkers workflow') }}</a>
+                        <h4>{{ __('Carousel items') }}</h4>
+                        <p><a href="{{ path('zikula_workflow_editor_index', {workflow: 'rkhelpermodule_none'}) }}" title="{{ __('Edit workflow for carousel items') }}" target="_blank"><i class="fa fa-cubes"></i> {{ __('Edit carousel items workflow') }}</a>
+                        <h4>{{ __('Carousells') }}</h4>
+                        <p><a href="{{ path('zikula_workflow_editor_index', {workflow: 'rkhelpermodule_none'}) }}" title="{{ __('Edit workflow for carousells') }}" target="_blank"><i class="fa fa-cubes"></i> {{ __('Edit carousells workflow') }}</a>
+                        <h4>{{ __('Images') }}</h4>
+                        <p><a href="{{ path('zikula_workflow_editor_index', {workflow: 'rkhelpermodule_none'}) }}" title="{{ __('Edit workflow for images') }}" target="_blank"><i class="fa fa-cubes"></i> {{ __('Edit images workflow') }}</a>
+                        <h4>{{ __('Infos') }}</h4>
+                        <p><a href="{{ path('zikula_workflow_editor_index', {workflow: 'rkhelpermodule_none'}) }}" title="{{ __('Edit workflow for infos') }}" target="_blank"><i class="fa fa-cubes"></i> {{ __('Edit infos workflow') }}</a>
                     </fieldset>
                 </div>
             </div>

@@ -1,0 +1,106 @@
+services:
+    rk_helper_module.hook_subscriber.filter_hooks.linkers:
+        class: RK\HelperModule\HookSubscriber\LinkerFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.filter_hooks.linkers' }
+
+    rk_helper_module.hook_subscriber.form_aware_hook.linkers:
+        class: RK\HelperModule\HookSubscriber\LinkerFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.form_aware_hook.linkers' }
+
+    rk_helper_module.hook_subscriber.ui_hooks.linkers:
+        class: RK\HelperModule\HookSubscriber\LinkerUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.ui_hooks.linkers' }
+
+    rk_helper_module.hook_subscriber.filter_hooks.carouselitems:
+        class: RK\HelperModule\HookSubscriber\CarouselItemFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.filter_hooks.carouselitems' }
+
+    rk_helper_module.hook_subscriber.form_aware_hook.carouselitems:
+        class: RK\HelperModule\HookSubscriber\CarouselItemFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.form_aware_hook.carouselitems' }
+
+    rk_helper_module.hook_subscriber.ui_hooks.carouselitems:
+        class: RK\HelperModule\HookSubscriber\CarouselItemUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.ui_hooks.carouselitems' }
+
+    rk_helper_module.hook_subscriber.filter_hooks.carousells:
+        class: RK\HelperModule\HookSubscriber\CarouselFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.filter_hooks.carousells' }
+
+    rk_helper_module.hook_subscriber.form_aware_hook.carousells:
+        class: RK\HelperModule\HookSubscriber\CarouselFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.form_aware_hook.carousells' }
+
+    rk_helper_module.hook_subscriber.ui_hooks.carousells:
+        class: RK\HelperModule\HookSubscriber\CarouselUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.ui_hooks.carousells' }
+
+    rk_helper_module.hook_subscriber.filter_hooks.images:
+        class: RK\HelperModule\HookSubscriber\ImageFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.filter_hooks.images' }
+
+    rk_helper_module.hook_subscriber.form_aware_hook.images:
+        class: RK\HelperModule\HookSubscriber\ImageFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.form_aware_hook.images' }
+
+    rk_helper_module.hook_subscriber.ui_hooks.images:
+        class: RK\HelperModule\HookSubscriber\ImageUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.ui_hooks.images' }
+
+    rk_helper_module.hook_subscriber.filter_hooks.infos:
+        class: RK\HelperModule\HookSubscriber\InfoFilterHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.filter_hooks.infos' }
+
+    rk_helper_module.hook_subscriber.form_aware_hook.infos:
+        class: RK\HelperModule\HookSubscriber\InfoFormAwareHookSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.form_aware_hook.infos' }
+
+    rk_helper_module.hook_subscriber.ui_hooks.infos:
+        class: RK\HelperModule\HookSubscriber\InfoUiHooksSubscriber
+        arguments:
+            - "@translator.default"
+        tags:
+            - { name: zikula.hook_subscriber, areaName: 'subscriber.rkhelpermodule.ui_hooks.infos' }
+

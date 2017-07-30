@@ -6,7 +6,6 @@
     {{ parent() }}
     {{ pageAddAsset('javascript', zasset('@RKHelperModule:js/RKHelperModule.Validation.js'), 98) }}
     {{ pageAddAsset('javascript', zasset('@RKHelperModule:js/RKHelperModule.EditFunctions.js'), 99) }}
-    {{ pageAddAsset('javascript', asset('typeahead/typeahead.bundle.min.js')) }}
 {% endblock %}
 {% block title mode == 'create' ? __('Create carousel item') : __('Edit carousel item') %}
 {% block admin_page_icon mode == 'create' ? 'plus' : 'pencil-square-o' %}
@@ -35,21 +34,18 @@
         
         {{ include(
             '@RKHelperModule/Carousel/includeSelectOne.html.twig',
-            { group: 'carouselitem', alias: 'carousel', aliasReverse: 'carouselItems', mandatory: false, idPrefix: 'helperCarouselItem_Carousel', linkingItem: carouselitem, displayMode: 'choices' }
+            {group: 'carouselitem', alias: 'carousel', aliasReverse: 'carouselItems', mandatory: false, idPrefix: 'helperCarouselItem_Carousel', linkingItem: carouselitem, displayMode: 'choices'}
         ) }}
         {% if mode != 'create' %}
-            {{ include('@RKHelperModule/Helper/includeStandardFieldsEdit.html.twig', { obj: carouselitem }) }}
+            {{ include('@RKHelperModule/Helper/includeStandardFieldsEdit.html.twig', {obj: carouselitem}) }}
         {% endif %}
         
-        {% set hookId = mode != 'create' ? carouselitem.id : null %}
-        {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.carouselitems.form_edit', id=hookId) %}
-        {% if hooks is iterable and hooks|length > 0 %}
-            {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
-                <fieldset>
-                    <legend>{{ providerArea }}</legend>
-                    {{ hook }}
-                </fieldset>
-            {% endfor %}
+        {% if formHookTemplates|length > 0 %}
+            <fieldset>
+                {% for hookTemplate in formHookTemplates %}
+                    {{ include(hookTemplate.0, hookTemplate.1, ignore_missing = true) }}
+                {% endfor %}
+            </fieldset>
         {% endif %}
         
         {% if form.moderationSpecificCreator is defined %}
@@ -81,27 +77,39 @@
             </div>
         </div>
         {{ form_end(form) }}
+        {% set hookId = mode != 'create' ? carouselitem.id : null %}
+        {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.carouselitems.form_edit', id=hookId) %}
+        {% if hooks is iterable and hooks|length > 0 %}
+            <h3>{{ __('Hooks') }}</h3>
+            {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
+                <h4>{{ providerArea }}</h4>
+                {{ hook }}
+            {% endfor %}
+        {% endif %}
+        
     </div>
 {% endblock %}
 {% block footer %}
     {{ parent() }}
     {% set editImage = '<span class="fa fa-pencil-square-o"></span>' %}
     {% set removeImage = '<span class="fa fa-trash-o"></span>' %}
-    
-    <script type="text/javascript">
-    /* <![CDATA[ */
-        
-        ( function($) {
-            $(document).ready(function() {
-                // initialise auto completion for user fields
-                {% if form.moderationSpecificCreator is defined %}
-                    rKHelperInitUserField('rkhelpermodule_carouselitem_moderationSpecificCreator', 'getCommonUsersList');
-                {% endif %}
-                rKHelperInitEditForm('{{ mode }}', '{% if mode != 'create' %}{{ carouselitem.id }}{% endif %}');
-                rKHelperInitUploadField('rkhelpermodule_carouselitem_itemImage_itemImage');
-                rKHelperInitDateField('rkhelpermodule_carouselitem_itemStartDate');
-            });
-        })(jQuery);
-    /* ]]> */
-    </script>
+    {% set formInitScript %}
+        <script type="text/javascript">
+        /* <![CDATA[ */
+            
+            ( function($) {
+                $(document).ready(function() {
+                    // initialise auto completion for user fields
+                    {% if form.moderationSpecificCreator is defined %}
+                        initUserLiveSearch('rkhelpermodule_carouselitem_moderationSpecificCreator');
+                    {% endif %}
+                    rKHelperInitEditForm('{{ mode }}', '{% if mode != 'create' %}{{ carouselitem.id }}{% endif %}');
+                    rKHelperInitUploadField('rkhelpermodule_carouselitem_itemImage_itemImage');
+                    rKHelperInitDateField('rkhelpermodule_carouselitem_itemStartDate');
+                });
+            })(jQuery);
+        /* ]]> */
+        </script>
+    {% endset %}
+    {{ pageAddAsset('footer', formInitScript) }}
 {% endblock %}

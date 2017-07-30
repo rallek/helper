@@ -65,27 +65,31 @@ var lastCarouselItemSingleItemIdentifier = '';
  */
 function rKHelperUniqueCheck(ucOt, val, elem, ucEx)
 {
+    var result, params;
+
     if (elem.val() == window['last' + rKHelperCapitaliseFirstLetter(ucOt) + rKHelperCapitaliseFirstLetter(elem.attr('id')) ]) {
         return true;
     }
 
     window['last' + rKHelperCapitaliseFirstLetter(ucOt) + rKHelperCapitaliseFirstLetter(elem.attr('id')) ] = elem.val();
 
-    var result = true;
+    result = true;
+    params = {
+        ot: ucOt,
+        fn: encodeURIComponent(elem.attr('id')),
+        v: encodeURIComponent(val),
+        ex: ucEx
+    };
 
     jQuery.ajax({
-        type: 'POST',
         url: Routing.generate('rkhelpermodule_ajax_checkforduplicate'),
-        data: {
-            ot: ucOt,
-            fn: encodeURIComponent(elem.attr('id')),
-            v: encodeURIComponent(val),
-            ex: ucEx
-        },
-        async: false
-    }).done(function(res) {
-        if (null == res.data || true === res.data.isDuplicate) {
-            result = false;
+        datatype: 'json',
+        async: false,
+        data: params,
+        success: function(data) {
+            if (null == data || true === data.isDuplicate) {
+                result = false;
+            }
         }
     });
 
@@ -98,14 +102,6 @@ function rKHelperValidateNoSpace(val)
     valStr = new String(val);
 
     return (valStr.indexOf(' ') === -1);
-}
-
-function rKHelperValidateHtmlColour(val)
-{
-    var valStr;
-    valStr = new String(val);
-
-    return valStr === '' || (/^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(valStr));
 }
 
 function rKHelperValidateUploadExtension(val, elem)
@@ -155,13 +151,6 @@ function rKHelperExecuteCustomValidationConstraints(objectType, currentEntityId)
     jQuery('.validate-nospace').each( function() {
         if (!rKHelperValidateNoSpace(jQuery(this).val())) {
             document.getElementById(jQuery(this).attr('id')).setCustomValidity(Translator.__('This value must not contain spaces.'));
-        } else {
-            document.getElementById(jQuery(this).attr('id')).setCustomValidity('');
-        }
-    });
-    jQuery('.validate-htmlcolour').each( function() {
-        if (!rKHelperValidateHtmlColour(jQuery(this).val())) {
-            document.getElementById(jQuery(this).attr('id')).setCustomValidity(Translator.__('Please select a valid html colour code.'));
         } else {
             document.getElementById(jQuery(this).attr('id')).setCustomValidity('');
         }

@@ -1,6 +1,6 @@
 {# purpose of this template: carousel items list view #}
 {% extends routeArea == 'admin' ? 'RKHelperModule::adminBase.html.twig' : 'RKHelperModule::base.html.twig' %}
-{% block title own ? __('My carousel items') : __('Carousel item list') %}
+{% block title own ? __('My carousel items') : __('Carousel items list') %}
 {% block admin_page_icon 'list-alt' %}
 {% block content %}
 <div class="rkhelpermodule-carouselitem rkhelpermodule-view">
@@ -9,7 +9,7 @@
 
     {{ block('page_nav_links') }}
 
-    {{ include('@RKHelperModule/CarouselItem/viewQuickNav.html.twig', { workflowStateFilter: false }) }}{# see template file for available options #}
+    {{ include('@RKHelperModule/CarouselItem/viewQuickNav.html.twig', {workflowStateFilter: false}) }}{# see template file for available options #}
 
     {% if routeArea == 'admin' %}
     <form action="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'handleselectedentries') }}" method="post" id="carouselItemsViewForm" class="form-horizontal" role="form">
@@ -87,21 +87,21 @@
             <tr>
                 {% if routeArea == 'admin' %}
                     <td headers="hSelect" class="fixed-column text-center z-w02">
-                        <input type="checkbox" name="items[]" value="{{ carouselItem.id }}" class="rkhelper-toggle-checkbox" />
+                        <input type="checkbox" name="items[]" value="{{ carouselItem.getKey() }}" class="rkhelper-toggle-checkbox" />
                     </td>
                 {% endif %}
-                <td id="itemActions{{ carouselItem.id }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
-                    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], { entity: carouselItem, area: routeArea, context: 'view' }) %}
+                <td id="itemActions{{ carouselItem.getKey() }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
+                    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], {entity: carouselItem, area: routeArea, context: 'view'}) %}
                     <div class="dropdown">
-                        <a id="itemActions{{ carouselItem.id }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
-                        {{ knp_menu_render(itemActions, { template: 'ZikulaMenuModule:Override:actions.html.twig' }) }}
+                        <a id="itemActions{{ carouselItem.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
+                        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
                     </div>
                 </td>
                 <td headers="hItemName" class="text-left">
                     {{ carouselItem.itemName }}
                 </td>
                 <td headers="hTitle" class="text-left">
-                    <a href="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'display', { 'id': carouselItem.id }) }}" title="{{ __('View detail page')|e('html_attr') }}">{{ carouselItem.title|notifyFilters('rkhelpermodule.filterhook.carouselitems') }}</a>
+                    <a href="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'display', {'id': carouselItem.getId()}) }}" title="{{ __('View detail page')|e('html_attr') }}">{{ carouselItem.title|notifyFilters('rkhelpermodule.filterhook.carouselitems')|safeHtml }}</a>
                 </td>
                 <td headers="hSubtitle" class="text-left">
                     {{ carouselItem.subtitle }}
@@ -111,10 +111,10 @@
                 </td>
                 <td headers="hItemImage" class="text-left">
                     {% if carouselItem.itemImage is not empty and carouselItem.itemImageMeta|default %}
-                                <a href="{{ carouselItem.itemImageUrl }}" title="{{ carouselItem.getTitleFromDisplayPattern()|e('html_attr') }}"{% if carouselItem.itemImageMeta.isImage %} class="image-link"{% endif %}>
+                                <a href="{{ carouselItem.itemImageUrl }}" title="{{ carouselItem|rkhelpermodule_formattedTitle|e('html_attr') }}"{% if carouselItem.itemImageMeta.isImage %} class="image-link"{% endif %}>
                     {% if carouselItem.itemImageMeta.isImage %}
                         {% set thumbOptions = attribute(thumbRuntimeOptions, 'carouselItemItemImage') %}
-                        <img src="{{ carouselItem.itemImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ carouselItem.getTitleFromDisplayPattern()|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+                        <img src="{{ carouselItem.itemImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ carouselItem|rkhelpermodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
                     {% else %}
                         {{ __('Download') }} ({{ carouselItem.itemImageMeta.size|rkhelpermodule_fileSize(carouselItem.itemImage.getPathname(), false, false) }})
                     {% endif %}
@@ -145,7 +145,7 @@
                 </td>
                 <td headers="hCarousel" class="text-left">
                     {% if carouselItem.carousel|default %}
-                          {{ carouselItem.carousel.getTitleFromDisplayPattern() }}
+                          {{ carouselItem.carousel|rkhelpermodule_formattedTitle }}
                     {% else %}
                         {{ __('Not set.') }}
                     {% endif %}
@@ -163,8 +163,8 @@
         </table>
         </div>
         
-        {% if showAllEntries != 1 and pager|default %}
-            {{ pager({ rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'rkhelpermodule_carouselitem_' ~ routeArea ~ 'view'}) }}
+        {% if all != 1 and pager|default %}
+            {{ pager({rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'rkhelpermodule_carouselitem_' ~ routeArea ~ 'view'}) }}
         {% endif %}
     {% if routeArea == 'admin' %}
             <fieldset>
@@ -194,12 +194,12 @@
                 <a href="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'edit') }}" title="{{ createTitle|e('html_attr') }}" class="fa fa-plus">{{ createTitle }}</a>
             {% endif %}
         {% endif %}
-        {% if showAllEntries == 1 %}
+        {% if all == 1 %}
             {% set linkTitle = __('Back to paginated view') %}
             <a href="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'view') }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
         {% else %}
             {% set linkTitle = __('Show all entries') %}
-            <a href="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'view', { all: 1 }) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
+            <a href="{{ path('rkhelpermodule_carouselitem_' ~ routeArea ~ 'view', {all: 1}) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
         {% endif %}
     </p>
 {% endblock %}

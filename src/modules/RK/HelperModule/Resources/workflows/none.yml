@@ -1,0 +1,28 @@
+workflow:
+    workflows:
+        rkhelpermodule_none:
+            type: state_machine
+            marking_store:
+                type: single_state
+                arguments:
+                    - workflowState
+            supports:
+                - RK\HelperModule\Entity\LinkerEntity
+                - RK\HelperModule\Entity\CarouselItemEntity
+                - RK\HelperModule\Entity\CarouselEntity
+                - RK\HelperModule\Entity\ImageEntity
+                - RK\HelperModule\Entity\InfoEntity
+            places:
+                - initial
+                - approved
+                - deleted
+            transitions:
+                submit:
+                    from: initial
+                    to: approved
+                updateapproved:
+                    from: approved
+                    to: approved
+                delete:
+                    from: approved
+                    to: deleted

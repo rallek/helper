@@ -1,6 +1,6 @@
 {# purpose of this template: linkers list view #}
 {% extends routeArea == 'admin' ? 'RKHelperModule::adminBase.html.twig' : 'RKHelperModule::base.html.twig' %}
-{% block title own ? __('My linkers') : __('Linker list') %}
+{% block title own ? __('My linkers') : __('Linkers list') %}
 {% block admin_page_icon 'list-alt' %}
 {% block content %}
 <div class="rkhelpermodule-linker rkhelpermodule-view">
@@ -9,7 +9,7 @@
 
     {{ block('page_nav_links') }}
 
-    {{ include('@RKHelperModule/Linker/viewQuickNav.html.twig', { workflowStateFilter: false }) }}{# see template file for available options #}
+    {{ include('@RKHelperModule/Linker/viewQuickNav.html.twig', {workflowStateFilter: false}) }}{# see template file for available options #}
 
     {% if routeArea == 'admin' %}
     <form action="{{ path('rkhelpermodule_linker_' ~ routeArea ~ 'handleselectedentries') }}" method="post" id="linkersViewForm" class="form-horizontal" role="form">
@@ -71,22 +71,22 @@
             <tr>
                 {% if routeArea == 'admin' %}
                     <td headers="hSelect" class="fixed-column text-center z-w02">
-                        <input type="checkbox" name="items[]" value="{{ linker.id }}" class="rkhelper-toggle-checkbox" />
+                        <input type="checkbox" name="items[]" value="{{ linker.getKey() }}" class="rkhelper-toggle-checkbox" />
                     </td>
                 {% endif %}
-                <td id="itemActions{{ linker.id }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
-                    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], { entity: linker, area: routeArea, context: 'view' }) %}
+                <td id="itemActions{{ linker.getKey() }}" headers="hItemActions" class="fixed-column actions nowrap z-w02">
+                    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], {entity: linker, area: routeArea, context: 'view'}) %}
                     <div class="dropdown">
-                        <a id="itemActions{{ linker.id }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
-                        {{ knp_menu_render(itemActions, { template: 'ZikulaMenuModule:Override:actions.html.twig' }) }}
+                        <a id="itemActions{{ linker.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> <span class="caret"></span></a>
+                        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
                     </div>
                 </td>
                 <td headers="hLinkerImage" class="text-left">
                     {% if linker.linkerImageMeta|default %}
-                    <a href="{{ linker.linkerImageUrl }}" title="{{ linker.getTitleFromDisplayPattern()|e('html_attr') }}"{% if linker.linkerImageMeta.isImage %} class="image-link"{% endif %}>
+                    <a href="{{ linker.linkerImageUrl }}" title="{{ linker|rkhelpermodule_formattedTitle|e('html_attr') }}"{% if linker.linkerImageMeta.isImage %} class="image-link"{% endif %}>
                     {% if linker.linkerImageMeta.isImage %}
                         {% set thumbOptions = attribute(thumbRuntimeOptions, 'linkerLinkerImage') %}
-                        <img src="{{ linker.linkerImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ linker.getTitleFromDisplayPattern()|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+                        <img src="{{ linker.linkerImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ linker|rkhelpermodule_formattedTitle|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
                     {% else %}
                         {{ __('Download') }} ({{ linker.linkerImageMeta.size|rkhelpermodule_fileSize(linker.linkerImage.getPathname(), false, false) }})
                     {% endif %}
@@ -127,8 +127,8 @@
         </table>
         </div>
         
-        {% if showAllEntries != 1 and pager|default %}
-            {{ pager({ rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'rkhelpermodule_linker_' ~ routeArea ~ 'view'}) }}
+        {% if all != 1 and pager|default %}
+            {{ pager({rowcount: pager.amountOfItems, limit: pager.itemsPerPage, display: 'page', route: 'rkhelpermodule_linker_' ~ routeArea ~ 'view'}) }}
         {% endif %}
     {% if routeArea == 'admin' %}
             <fieldset>
@@ -158,12 +158,12 @@
                 <a href="{{ path('rkhelpermodule_linker_' ~ routeArea ~ 'edit') }}" title="{{ createTitle|e('html_attr') }}" class="fa fa-plus">{{ createTitle }}</a>
             {% endif %}
         {% endif %}
-        {% if showAllEntries == 1 %}
+        {% if all == 1 %}
             {% set linkTitle = __('Back to paginated view') %}
             <a href="{{ path('rkhelpermodule_linker_' ~ routeArea ~ 'view') }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
         {% else %}
             {% set linkTitle = __('Show all entries') %}
-            <a href="{{ path('rkhelpermodule_linker_' ~ routeArea ~ 'view', { all: 1 }) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
+            <a href="{{ path('rkhelpermodule_linker_' ~ routeArea ~ 'view', {all: 1}) }}" title="{{ linkTitle|e('html_attr') }}" class="fa fa-table">{{ linkTitle }}</a>
         {% endif %}
     </p>
 {% endblock %}

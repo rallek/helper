@@ -1,5 +1,6 @@
 {* Purpose of this template: Display a popup selector for Forms and Content integration *}
 {assign var='baseID' value='info'}
+<div id="itemSelectorInfo" class="hidden" data-base-id="{$baseID}" data-selected-id="{$selectedId|default:0}"></div>
 <div class="row">
     <div class="col-sm-8">
         <div class="form-group">
@@ -7,7 +8,7 @@
             <div class="col-sm-9">
                 <select id="{$baseID}Id" name="id" class="form-control">
                     {foreach item='info' from=$items}
-                        <option value="{$info.id}"{if $selectedId eq $info.id} selected="selected"{/if}>{$info->getTitleFromDisplayPattern()}</option>
+                        <option value="{$info->getKey()}"{if $selectedId eq $info->getKey()} selected="selected"{/if}>{$info->getInfoTitle()}</option>
                     {foreachelse}
                         <option value="0">{gt text='No entries found.'}</option>
                     {/foreach}
@@ -47,18 +48,8 @@
     <div class="col-sm-4">
         <div id="{$baseID}Preview" style="border: 1px dotted #a3a3a3; padding: .2em .5em">
             <p><strong>{gt text='Info information'}</strong></p>
-            {img id='ajax_indicator' modname='core' set='ajax' src='indicator_circle.gif' alt='' class='hidden'}
+            {img id='ajaxIndicator' modname='core' set='ajax' src='indicator_circle.gif' alt='' class='hidden'}
             <div id="{$baseID}PreviewContainer">&nbsp;</div>
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-/* <![CDATA[ */
-    ( function($) {
-        $(document).ready(function() {
-            rKHelperModule.itemSelector.onLoad('{{$baseID}}', {{$selectedId|default:0}});
-        });
-    })(jQuery);
-/* ]]> */
-</script>

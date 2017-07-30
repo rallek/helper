@@ -1,18 +1,33 @@
 services:
     # Helper services
+    rk_helper_module.collection_filter_helper:
+        class: RK\HelperModule\Helper\CollectionFilterHelper
+        arguments:
+            - "@request_stack"
+            - "@zikula_users_module.current_user"
+            - "@=service('zikula_extensions_module.api.variable').get('RKHelperModule', 'showOnlyOwnEntries', false)"
+            - "@=service('zikula_extensions_module.api.variable').get('RKHelperModule', 'filterDataByLocale', false)"
+    
     rk_helper_module.controller_helper:
         class: RK\HelperModule\Helper\ControllerHelper
         arguments:
             - "@translator.default"
             - "@request_stack"
-            - "@session"
             - "@logger"
             - "@form.factory"
             - "@zikula_extensions_module.api.variable"
             - "@rk_helper_module.entity_factory"
+            - "@rk_helper_module.collection_filter_helper"
             - "@rk_helper_module.model_helper"
             - "@rk_helper_module.image_helper"
             - "@rk_helper_module.feature_activation_helper"
+    
+    rk_helper_module.entity_display_helper:
+        class: RK\HelperModule\Helper\EntityDisplayHelper
+        arguments:
+            - "@translator.default"
+            - "@request_stack"
+            - "@rk_helper_module.listentries_helper"
     
     rk_helper_module.feature_activation_helper:
         class: RK\HelperModule\Helper\FeatureActivationHelper
@@ -44,11 +59,11 @@ services:
         arguments:
             - "@translator.default"
             - "@zikula_permissions_module.api.permission"
-            - "@templating.engine.twig"
             - "@session"
             - "@request_stack"
             - "@rk_helper_module.entity_factory"
             - "@rk_helper_module.controller_helper"
+            - "@rk_helper_module.entity_display_helper"
         tags:
             - { name: zikula.searchable_module, bundleName: RKHelperModule }
     
@@ -66,10 +81,9 @@ services:
         arguments:
             - "@translator.default"
             - "@session"
-            - "@liip_imagine.cache.manager"
             - "@logger"
             - "@zikula_users_module.current_user"
-            - "@zikula_extensions_module.api.variable"
+            - "@=service('zikula_extensions_module.api.variable').getAll('RKHelperModule')"
             - "%datadir%"
     
     rk_helper_module.view_helper:
@@ -87,4 +101,9 @@ services:
         class: RK\HelperModule\Helper\WorkflowHelper
         arguments:
             - "@translator.default"
+            - "@workflow.registry"
+            - "@logger"
+            - "@zikula_permissions_module.api.permission"
+            - "@zikula_users_module.current_user"
+            - "@rk_helper_module.entity_factory"
             - "@rk_helper_module.listentries_helper"

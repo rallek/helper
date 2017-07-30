@@ -1,4 +1,4 @@
 {# Purpose of this template: Display carousells within an external context #}
 {% for carousel in items %}
-    <h3>{{ carousel.getTitleFromDisplayPattern() }}</h3>
+    <h3>{{ carousel|rkhelpermodule_formattedTitle }}</h3>
 {% endfor %}

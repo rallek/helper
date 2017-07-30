@@ -1,7 +1,7 @@
 {# Purpose of this template: Display carousells within an external context #}
 <dl>
     {% for carousel in items %}
-        <dt>{{ carousel.getTitleFromDisplayPattern() }}</dt>
+        <dt>{{ carousel|rkhelpermodule_formattedTitle }}</dt>
         {% if carousel.carouselName %}
             <dd>{{ carousel.carouselName|striptags|truncate(200, true, '&hellip;') }}</dd>
         {% endif %}
