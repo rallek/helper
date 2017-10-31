@@ -15,7 +15,7 @@ namespace RK\HelperModule\Form\Handler\Info;
 use RK\HelperModule\Form\Handler\Info\Base\AbstractEditHandler;
 
 /**
- * This handler class handles the page events of the Form called by the rKHelperModule_info_edit() function.
+ * This handler class handles the page events of editing forms.
  * It aims on the info object type.
  */
 class EditHandler extends AbstractEditHandler

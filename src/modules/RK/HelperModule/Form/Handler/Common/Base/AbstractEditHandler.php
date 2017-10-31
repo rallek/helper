@@ -255,7 +255,7 @@ abstract class AbstractEditHandler
      * @param RequestStack              $requestStack     RequestStack service instance
      * @param RouterInterface           $router           Router service instance
      * @param LoggerInterface           $logger           Logger service instance
-     * @param PermissionApiInterface             $permissionApi    PermissionApi service instance
+     * @param PermissionApiInterface    $permissionApi    PermissionApi service instance
      * @param VariableApiInterface      $variableApi      VariableApi service instance
      * @param CurrentUserApiInterface   $currentUserApi   CurrentUserApi service instance
      * @param EntityFactory             $entityFactory    EntityFactory service instance
@@ -326,6 +326,7 @@ abstract class AbstractEditHandler
     public function processForm(array $templateParameters)
     {
         $this->templateParameters = $templateParameters;
+        $this->templateParameters['inlineUsage'] = $this->request->query->getBoolean('raw', false);
     
         $this->idPrefix = $this->request->query->get('idp', '');
     
@@ -376,14 +377,15 @@ abstract class AbstractEditHandler
             if (null !== $entity) {
                 if (true === $this->hasPageLockSupport && $this->kernel->isBundle('ZikulaPageLockModule') && null !== $this->lockingApi) {
                     // try to guarantee that only one person at a time can be editing this entity
-                    $lockName = 'RKHelperModule' . $this->objectTypeCapital . $this->entityRef->getKey();
+                    $lockName = 'RKHelperModule' . $this->objectTypeCapital . $entity->getKey();
                     $this->lockingApi->addLock($lockName, $this->getRedirectUrl(null));
                     // reload entity as the addLock call above has triggered the preUpdate event
                     $this->entityFactory->getObjectManager()->refresh($entity);
                 }
             }
         } else {
-            if (!$this->permissionApi->hasPermission($this->permissionComponent, '::', ACCESS_EDIT)) {
+            $permissionLevel = ACCESS_EDIT;
+            if (!$this->permissionApi->hasPermission($this->permissionComponent, '::', $permissionLevel)) {
                 throw new AccessDeniedException();
             }
     
@@ -602,6 +604,10 @@ abstract class AbstractEditHandler
                 $args['commandName'] = $action['id'];
             }
         }
+        if ($this->templateParameters['mode'] == 'create' && $this->form->get('submitrepeat')->isClicked()) {
+            $args['commandName'] = 'submit';
+            $this->repeatCreateAction = true;
+        }
         if ($this->form->get('cancel')->isClicked()) {
             $args['commandName'] = 'cancel';
         }
@@ -630,17 +636,17 @@ abstract class AbstractEditHandler
             }
         }
     
-        if ($isRegularAction && true === $this->hasTranslatableFields) {
-            if ($this->featureActivationHelper->isEnabled(FeatureActivationHelper::TRANSLATIONS, $this->objectType)) {
-                $this->processTranslationsForUpdate();
-            }
-        }
-    
         if ($isRegularAction || $action == 'delete') {
             $success = $this->applyAction($args);
             if (!$success) {
                 // the workflow operation failed
                 return false;
+            }
+    
+            if ($isRegularAction && true === $this->hasTranslatableFields) {
+                if ($this->featureActivationHelper->isEnabled(FeatureActivationHelper::TRANSLATIONS, $this->objectType)) {
+                    $this->processTranslationsForUpdate();
+                }
             }
     
             if ($entity->supportsHookSubscribers()) {
@@ -662,7 +668,7 @@ abstract class AbstractEditHandler
         }
     
         if (true === $this->hasPageLockSupport && $this->templateParameters['mode'] == 'edit' && $this->kernel->isBundle('ZikulaPageLockModule') && null !== $this->lockingApi) {
-            $lockName = 'RKHelperModule' . $this->objectTypeCapital . $this->entityRef->getKey();
+            $lockName = 'RKHelperModule' . $this->objectTypeCapital . $entity->getKey();
             $this->lockingApi->releaseLock($lockName);
         }
     
@@ -752,10 +758,6 @@ abstract class AbstractEditHandler
     {
         // fetch posted data input values as an associative array
         $formData = $this->form->getData();
-    
-        if ($this->templateParameters['mode'] == 'create' && isset($this->form['repeatCreation']) && $this->form['repeatCreation']->getData() == 1) {
-            $this->repeatCreateAction = true;
-        }
     
         if (method_exists($this->entityRef, 'getCreatedBy')) {
             if (isset($this->form['moderationSpecificCreator']) && null !== $this->form['moderationSpecificCreator']->getData()) {

@@ -81,11 +81,11 @@ abstract class AbstractCarouselItemType extends AbstractType
      * CarouselItemType constructor.
      *
      * @param TranslatorInterface $translator    Translator service instance
-     * @param EntityFactory       $entityFactory EntityFactory service instance
+     * @param EntityFactory $entityFactory EntityFactory service instance
      * @param CollectionFilterHelper $collectionFilterHelper CollectionFilterHelper service instance
      * @param EntityDisplayHelper $entityDisplayHelper EntityDisplayHelper service instance
-     * @param ListEntriesHelper   $listHelper    ListEntriesHelper service instance
-     * @param LocaleApiInterface   $localeApi     LocaleApi service instance
+     * @param ListEntriesHelper $listHelper ListEntriesHelper service instance
+     * @param LocaleApiInterface $localeApi LocaleApi service instance
      * @param FeatureActivationHelper $featureActivationHelper FeatureActivationHelper service instance
      */
     public function __construct(
@@ -124,7 +124,6 @@ abstract class AbstractCarouselItemType extends AbstractType
         $this->addEntityFields($builder, $options);
         $this->addIncomingRelationshipFields($builder, $options);
         $this->addModerationFields($builder, $options);
-        $this->addReturnControlField($builder, $options);
         $this->addSubmitButtons($builder, $options);
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
@@ -248,20 +247,18 @@ abstract class AbstractCarouselItemType extends AbstractType
                 'title' => $this->__('if you do not enter a date the date of today will be used')
             ],
             'help' => $this->__('if you do not enter a date the date of today will be used'),
-            'empty_data' => 'now',
             'attr' => [
                 'class' => ' validate-daterange-carouselitem',
                 'title' => $this->__('Enter the item start date of the carousel item')
             ],
             'required' => false,
-            'empty_data' => null,
+            'empty_data' => '',
             'widget' => 'single_text'
         ]);
         
         $builder->add('intemEndDate', DateType::class, [
             'label' => $this->__('Intem end date') . ':',
             'help' => $this->__('Note: this value must be in the future.'),
-            'empty_data' => '2099-12-31',
             'attr' => [
                 'class' => ' validate-date-future validate-daterange-carouselitem',
                 'title' => $this->__('Enter the intem end date of the carousel item')
@@ -358,13 +355,15 @@ abstract class AbstractCarouselItemType extends AbstractType
         if (!$options['has_moderate_permission']) {
             return;
         }
+        if ($options['inline_usage']) {
+            return;
+        }
     
         $builder->add('moderationSpecificCreator', UserLiveSearchType::class, [
             'mapped' => false,
             'label' => $this->__('Creator') . ':',
             'attr' => [
                 'maxlength' => 11,
-                'class' => ' validate-digits',
                 'title' => $this->__('Here you can choose a user which will be set as creator')
             ],
             'empty_data' => 0,
@@ -388,24 +387,6 @@ abstract class AbstractCarouselItemType extends AbstractType
     }
 
     /**
-     * Adds the return control field.
-     *
-     * @param FormBuilderInterface $builder The form builder
-     * @param array                $options The options
-     */
-    public function addReturnControlField(FormBuilderInterface $builder, array $options)
-    {
-        if ($options['mode'] != 'create') {
-            return;
-        }
-        $builder->add('repeatCreation', CheckboxType::class, [
-            'mapped' => false,
-            'label' => $this->__('Create another item after save'),
-            'required' => false
-        ]);
-    }
-
-    /**
      * Adds submit buttons.
      *
      * @param FormBuilderInterface $builder The form builder
@@ -421,6 +402,16 @@ abstract class AbstractCarouselItemType extends AbstractType
                     'class' => $action['buttonClass']
                 ]
             ]);
+            if ($options['mode'] == 'create' && $action['id'] == 'submit' && !$options['inline_usage']) {
+                // add additional button to submit item and return to create form
+                $builder->add('submitrepeat', SubmitType::class, [
+                    'label' => $this->__('Submit and repeat'),
+                    'icon' => 'fa-repeat',
+                    'attr' => [
+                        'class' => $action['buttonClass']
+                    ]
+                ]);
+            }
         }
         $builder->add('reset', ResetType::class, [
             'label' => $this->__('Reset'),

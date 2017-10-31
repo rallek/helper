@@ -53,7 +53,9 @@
         {% endif %}
         {% if carouselItem.itemStartDate is not empty %}
             <dt>{{ __('Item start date') }}</dt>
-            <dd>{{ carouselItem.itemStartDate|localizeddate('medium', 'none') }}</dd>
+            <dd>{% if carouselItem.itemStartDate is not empty %}
+                {{ carouselItem.itemStartDate|localizeddate('medium', 'none') }}
+            {% endif %}</dd>
         {% endif %}
         {% if carouselItem.intemEndDate is not empty %}
             <dt>{{ __('Intem end date') }}</dt>
@@ -95,9 +97,10 @@
 </div>
 {% endblock %}
 {% block display_hooks %}
-    {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.carouselitems.display_view', id=carouselItem.getKey(), urlObject=currentUrlObject) %}
-    {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
-        <h4>{{ providerArea }}</h4>
-        {{ hook }}
-    {% endfor %}
+    {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.carouselitems.display_view', id=carouselItem.getKey(), urlObject=currentUrlObject, outputAsArray=true) %}
+    {% if hooks is iterable and hooks|length > 0 %}
+        {% for area, hook in hooks %}
+            <div class="z-displayhook" data-area="{{ area|e('html_attr') }}">{{ hook }}</div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

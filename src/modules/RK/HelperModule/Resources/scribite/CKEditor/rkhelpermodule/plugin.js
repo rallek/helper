@@ -1,18 +1,15 @@
 CKEDITOR.plugins.add('rkhelpermodule', {
     requires: 'popup',
-    lang: 'en,nl,de',
     init: function (editor) {
         editor.addCommand('insertRKHelperModule', {
             exec: function (editor) {
-                var url = Routing.generate('rkhelpermodule_external_finder', { objectType: 'linker', editor: 'ckeditor' });
-                // call method in RKHelperModule.Finder.js and provide current editor
-                RKHelperModuleFinderCKEditor(editor, url);
+                RKHelperModuleFinderOpenPopup(editor, 'ckeditor');
             }
         });
         editor.ui.addButton('rkhelpermodule', {
-            label: editor.lang.rkhelpermodule.title,
+            label: 'Helper',
             command: 'insertRKHelperModule',
-            icon: this.path.replace('scribite/CKEditor/rkhelpermodule', 'public/images') + 'admin.png'
+            icon: this.path.replace('scribite/CKEditor/rkhelpermodule', 'images') + 'admin.png'
         });
     }
 });

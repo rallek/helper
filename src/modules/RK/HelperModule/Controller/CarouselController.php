@@ -15,6 +15,8 @@ namespace RK\HelperModule\Controller;
 use RK\HelperModule\Controller\Base\AbstractCarouselController;
 
 use RuntimeException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -33,6 +35,7 @@ class CarouselController extends AbstractCarouselController
      * @Route("/admin/carousells",
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+7 days", public=true)
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -52,6 +55,7 @@ class CarouselController extends AbstractCarouselController
      * @Route("/carousells",
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+7 days", public=true)
      *
      * @param Request $request Current request instance
      *
@@ -71,6 +75,7 @@ class CarouselController extends AbstractCarouselController
      *        defaults = {"sort" = "", "sortdir" = "asc", "pos" = 1, "num" = 10, "_format" = "html"},
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+2 hours", public=false)
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -96,6 +101,7 @@ class CarouselController extends AbstractCarouselController
      *        defaults = {"sort" = "", "sortdir" = "asc", "pos" = 1, "num" = 10, "_format" = "html"},
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+2 hours", public=false)
      *
      * @param Request $request Current request instance
      * @param string $sort         Sorting field
@@ -119,6 +125,7 @@ class CarouselController extends AbstractCarouselController
      *        defaults = {"id" = "0", "_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @Cache(expires="+30 minutes", public=false)
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -142,6 +149,7 @@ class CarouselController extends AbstractCarouselController
      *        defaults = {"id" = "0", "_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @Cache(expires="+30 minutes", public=false)
      *
      * @param Request $request Current request instance
      *
@@ -163,6 +171,8 @@ class CarouselController extends AbstractCarouselController
      *        defaults = {"_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @ParamConverter("carousel", class="RKHelperModule:CarouselEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
+     * @Cache(lastModified="carousel.getUpdatedDate()", ETag="'Carousel' ~ carousel.getid() ~ carousel.getUpdatedDate().format('U')")
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -187,6 +197,8 @@ class CarouselController extends AbstractCarouselController
      *        defaults = {"_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @ParamConverter("carousel", class="RKHelperModule:CarouselEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
+     * @Cache(lastModified="carousel.getUpdatedDate()", ETag="'Carousel' ~ carousel.getid() ~ carousel.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param CarouselEntity $carousel Treated carousel instance

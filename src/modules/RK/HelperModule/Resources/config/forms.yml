@@ -52,8 +52,8 @@ services:
         tags:
             - { name: form.type }
     
-    rk_helper_module.form.handler.linker:
-        class: RK\HelperModule\Form\Handler\Linker\EditHandler
+    rk_helper_module.form.handler.common:
+        abstract: true
         arguments:
             - "@kernel"
             - "@translator.default"
@@ -73,8 +73,11 @@ services:
             - "@rk_helper_module.feature_activation_helper"
         calls:
             - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
-        tags:
-            - { name: form.type }
+    
+    
+    rk_helper_module.form.handler.linker:
+        class: RK\HelperModule\Form\Handler\Linker\EditHandler
+        parent: rk_helper_module.form.handler.common
     
     rk_helper_module.form.type.linker:
         class: RK\HelperModule\Form\Type\LinkerType
@@ -89,27 +92,7 @@ services:
     
     rk_helper_module.form.handler.carouselitem:
         class: RK\HelperModule\Form\Handler\CarouselItem\EditHandler
-        arguments:
-            - "@kernel"
-            - "@translator.default"
-            - "@form.factory"
-            - "@request_stack"
-            - "@router"
-            - "@logger"
-            - "@zikula_permissions_module.api.permission"
-            - "@zikula_extensions_module.api.variable"
-            - "@zikula_users_module.current_user"
-            - "@rk_helper_module.entity_factory"
-            - "@rk_helper_module.controller_helper"
-            - "@rk_helper_module.model_helper"
-            - "@rk_helper_module.workflow_helper"
-            - "@rk_helper_module.hook_helper"
-            - "@rk_helper_module.translatable_helper"
-            - "@rk_helper_module.feature_activation_helper"
-        calls:
-            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
-        tags:
-            - { name: form.type }
+        parent: rk_helper_module.form.handler.common
     
     rk_helper_module.form.type.carouselitem:
         class: RK\HelperModule\Form\Type\CarouselItemType
@@ -126,27 +109,7 @@ services:
     
     rk_helper_module.form.handler.carousel:
         class: RK\HelperModule\Form\Handler\Carousel\EditHandler
-        arguments:
-            - "@kernel"
-            - "@translator.default"
-            - "@form.factory"
-            - "@request_stack"
-            - "@router"
-            - "@logger"
-            - "@zikula_permissions_module.api.permission"
-            - "@zikula_extensions_module.api.variable"
-            - "@zikula_users_module.current_user"
-            - "@rk_helper_module.entity_factory"
-            - "@rk_helper_module.controller_helper"
-            - "@rk_helper_module.model_helper"
-            - "@rk_helper_module.workflow_helper"
-            - "@rk_helper_module.hook_helper"
-            - "@rk_helper_module.translatable_helper"
-            - "@rk_helper_module.feature_activation_helper"
-        calls:
-            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
-        tags:
-            - { name: form.type }
+        parent: rk_helper_module.form.handler.common
     
     rk_helper_module.form.type.carousel:
         class: RK\HelperModule\Form\Type\CarouselType
@@ -163,27 +126,7 @@ services:
     
     rk_helper_module.form.handler.image:
         class: RK\HelperModule\Form\Handler\Image\EditHandler
-        arguments:
-            - "@kernel"
-            - "@translator.default"
-            - "@form.factory"
-            - "@request_stack"
-            - "@router"
-            - "@logger"
-            - "@zikula_permissions_module.api.permission"
-            - "@zikula_extensions_module.api.variable"
-            - "@zikula_users_module.current_user"
-            - "@rk_helper_module.entity_factory"
-            - "@rk_helper_module.controller_helper"
-            - "@rk_helper_module.model_helper"
-            - "@rk_helper_module.workflow_helper"
-            - "@rk_helper_module.hook_helper"
-            - "@rk_helper_module.translatable_helper"
-            - "@rk_helper_module.feature_activation_helper"
-        calls:
-            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
-        tags:
-            - { name: form.type }
+        parent: rk_helper_module.form.handler.common
     
     rk_helper_module.form.type.image:
         class: RK\HelperModule\Form\Type\ImageType
@@ -197,27 +140,7 @@ services:
     
     rk_helper_module.form.handler.info:
         class: RK\HelperModule\Form\Handler\Info\EditHandler
-        arguments:
-            - "@kernel"
-            - "@translator.default"
-            - "@form.factory"
-            - "@request_stack"
-            - "@router"
-            - "@logger"
-            - "@zikula_permissions_module.api.permission"
-            - "@zikula_extensions_module.api.variable"
-            - "@zikula_users_module.current_user"
-            - "@rk_helper_module.entity_factory"
-            - "@rk_helper_module.controller_helper"
-            - "@rk_helper_module.model_helper"
-            - "@rk_helper_module.workflow_helper"
-            - "@rk_helper_module.hook_helper"
-            - "@rk_helper_module.translatable_helper"
-            - "@rk_helper_module.feature_activation_helper"
-        calls:
-            - [setLockingApi, ["@?zikula_pagelock_module.api.locking"]]
-        tags:
-            - { name: form.type }
+        parent: rk_helper_module.form.handler.common
     
     rk_helper_module.form.type.info:
         class: RK\HelperModule\Form\Type\InfoType
@@ -236,6 +159,15 @@ services:
         class: RK\HelperModule\Block\Form\Type\ItemListBlockType
         arguments:
             - "@translator.default"
+        tags:
+            - { name: form.type }
+    
+    rk_helper_module.form.type.block.item:
+        class: RK\HelperModule\Block\Form\Type\ItemBlockType
+        arguments:
+            - "@translator.default"
+            - "@rk_helper_module.entity_factory"
+            - "@rk_helper_module.entity_display_helper"
         tags:
             - { name: form.type }
     

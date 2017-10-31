@@ -17,9 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Zikula\Bundle\HookBundle\Category\FormAwareCategory;
 use Zikula\Bundle\HookBundle\Category\UiHooksCategory;
 use Zikula\Component\SortableColumns\Column;
@@ -35,7 +32,6 @@ abstract class AbstractLinkerController extends AbstractController
 {
     /**
      * This is the default action handling the index admin area called without defining arguments.
-     * @Cache(expires="+7 days", public=true)
      *
      * @param Request $request Current request instance
      *
@@ -50,7 +46,6 @@ abstract class AbstractLinkerController extends AbstractController
     
     /**
      * This is the default action handling the index area called without defining arguments.
-     * @Cache(expires="+7 days", public=true)
      *
      * @param Request $request Current request instance
      *
@@ -82,7 +77,6 @@ abstract class AbstractLinkerController extends AbstractController
     }
     /**
      * This action provides an item list overview in the admin area.
-     * @Cache(expires="+2 hours", public=false)
      *
      * @param Request $request Current request instance
      * @param string $sort         Sorting field
@@ -101,7 +95,6 @@ abstract class AbstractLinkerController extends AbstractController
     
     /**
      * This action provides an item list overview.
-     * @Cache(expires="+2 hours", public=false)
      *
      * @param Request $request Current request instance
      * @param string $sort         Sorting field
@@ -164,8 +157,6 @@ abstract class AbstractLinkerController extends AbstractController
     }
     /**
      * This action provides a item detail view in the admin area.
-     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
-     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param LinkerEntity $linker Treated linker instance
@@ -182,8 +173,6 @@ abstract class AbstractLinkerController extends AbstractController
     
     /**
      * This action provides a item detail view.
-     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
-     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param LinkerEntity $linker Treated linker instance
@@ -230,7 +219,6 @@ abstract class AbstractLinkerController extends AbstractController
     }
     /**
      * This action provides a handling of edit requests in the admin area.
-     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      *
@@ -247,7 +235,6 @@ abstract class AbstractLinkerController extends AbstractController
     
     /**
      * This action provides a handling of edit requests.
-     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      *
@@ -294,8 +281,6 @@ abstract class AbstractLinkerController extends AbstractController
     }
     /**
      * This action provides a handling of simple delete requests in the admin area.
-     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
-     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param LinkerEntity $linker Treated linker instance
@@ -313,8 +298,6 @@ abstract class AbstractLinkerController extends AbstractController
     
     /**
      * This action provides a handling of simple delete requests.
-     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
-     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param LinkerEntity $linker Treated linker instance

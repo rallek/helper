@@ -54,11 +54,11 @@ abstract class AbstractTranslatableHelper
     /**
      * TranslatableHelper constructor.
      *
-     * @param TranslatorInterface $translator    Translator service instance
-     * @param RequestStack        $requestStack  RequestStack service instance
-     * @param VariableApiInterface  $variableApi  VariableApi service instance
-     * @param LocaleApiInterface   $localeApi    LocaleApi service instance
-     * @param EntityFactory       $entityFactory EntityFactory service instance
+     * @param TranslatorInterface  $translator    Translator service instance
+     * @param RequestStack         $requestStack  RequestStack service instance
+     * @param VariableApiInterface $variableApi   VariableApi service instance
+     * @param LocaleApiInterface   $localeApi     LocaleApi service instance
+     * @param EntityFactory        $entityFactory EntityFactory service instance
      */
     public function __construct(
         TranslatorInterface $translator,
@@ -190,8 +190,6 @@ abstract class AbstractTranslatableHelper
 
     /**
      * Post-editing method persisting translated fields.
-     * This ensures easy compatibility to the Forms plugins where it
-     * it is not possible yet to define sub arrays in the group attribute.
      *
      * @param EntityAccess  $entity        The entity being edited
      * @param FormInterface $form          Form containing translations
@@ -200,9 +198,6 @@ abstract class AbstractTranslatableHelper
     public function processEntityAfterEditing($entity, $form, $entityManager)
     {
         $objectType = $entity->get_objectType();
-        $entityTransClass = '\\RK\\HelperModule\\Entity\\' . ucfirst($objectType) . 'TranslationEntity';
-        $repository = $entityManager->getRepository($entityTransClass);
-    
         $supportedLanguages = $this->getSupportedLanguages($objectType);
         foreach ($supportedLanguages as $language) {
             if (!isset($form['translations' . $language])) {
@@ -210,12 +205,10 @@ abstract class AbstractTranslatableHelper
             }
             $translatedFields = $form['translations' . $language];
             foreach ($translatedFields as $fieldName => $formField) {
-                if (!$formField->getData()) {
-                    // avoid persisting unrequired translations
-                    continue;
-                }
-                $repository->translate($entity, $fieldName, $language, $formField->getData());
+                $entity[$fieldName] = $formField->getData();
             }
+            $entity['locale'] = $language;
+            $entityManager->flush();
         }
     }
 }

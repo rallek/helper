@@ -15,6 +15,8 @@ namespace RK\HelperModule\Controller;
 use RK\HelperModule\Controller\Base\AbstractLinkerController;
 
 use RuntimeException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -33,6 +35,7 @@ class LinkerController extends AbstractLinkerController
      * @Route("/admin/linkers",
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+7 days", public=true)
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -52,6 +55,7 @@ class LinkerController extends AbstractLinkerController
      * @Route("/linkers",
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+7 days", public=true)
      *
      * @param Request $request Current request instance
      *
@@ -71,6 +75,7 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"sort" = "", "sortdir" = "asc", "pos" = 1, "num" = 10, "_format" = "html"},
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+2 hours", public=false)
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -96,6 +101,7 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"sort" = "", "sortdir" = "asc", "pos" = 1, "num" = 10, "_format" = "html"},
      *        methods = {"GET"}
      * )
+     * @Cache(expires="+2 hours", public=false)
      *
      * @param Request $request Current request instance
      * @param string $sort         Sorting field
@@ -119,6 +125,8 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"_format" = "html"},
      *        methods = {"GET"}
      * )
+     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
+     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -142,6 +150,8 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"_format" = "html"},
      *        methods = {"GET"}
      * )
+     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
+     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param LinkerEntity $linker Treated linker instance
@@ -163,6 +173,7 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"id" = "0", "_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @Cache(expires="+30 minutes", public=false)
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -186,6 +197,7 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"id" = "0", "_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @Cache(expires="+30 minutes", public=false)
      *
      * @param Request $request Current request instance
      *
@@ -207,6 +219,8 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
+     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      * @Theme("admin")
      *
      * @param Request $request Current request instance
@@ -231,6 +245,8 @@ class LinkerController extends AbstractLinkerController
      *        defaults = {"_format" = "html"},
      *        methods = {"GET", "POST"}
      * )
+     * @ParamConverter("linker", class="RKHelperModule:LinkerEntity", options = {"repository_method" = "selectById", "mapping": {"id": "id"}, "map_method_signature" = true})
+     * @Cache(lastModified="linker.getUpdatedDate()", ETag="'Linker' ~ linker.getid() ~ linker.getUpdatedDate().format('U')")
      *
      * @param Request $request Current request instance
      * @param LinkerEntity $linker Treated linker instance

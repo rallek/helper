@@ -45,10 +45,10 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
     /**
      * LinkContainer constructor.
      *
-     * @param TranslatorInterface $translator       Translator service instance
-     * @param Routerinterface     $router           Router service instance
-     * @param PermissionApiInterface       $permissionApi    PermissionApi service instance
-     * @param ControllerHelper    $controllerHelper ControllerHelper service instance
+     * @param TranslatorInterface    $translator       Translator service instance
+     * @param Routerinterface        $router           Router service instance
+     * @param PermissionApiInterface $permissionApi    PermissionApi service instance
+     * @param ControllerHelper       $controllerHelper ControllerHelper service instance
      */
     public function __construct(
         TranslatorInterface $translator,
@@ -120,7 +120,7 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_linker_' . $routeArea . 'view'),
                 'text' => $this->__('Linkers', 'rkhelpermodule'),
-                'title' => $this->__('Linker list', 'rkhelpermodule')
+                'title' => $this->__('Linkers list', 'rkhelpermodule')
             ];
         }
         if (in_array('carouselItem', $allowedObjectTypes)
@@ -128,7 +128,7 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_carouselitem_' . $routeArea . 'view'),
                 'text' => $this->__('Carousel items', 'rkhelpermodule'),
-                'title' => $this->__('Carousel item list', 'rkhelpermodule')
+                'title' => $this->__('Carousel items list', 'rkhelpermodule')
             ];
         }
         if (in_array('carousel', $allowedObjectTypes)
@@ -136,7 +136,7 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_carousel_' . $routeArea . 'view'),
                 'text' => $this->__('Carousells', 'rkhelpermodule'),
-                'title' => $this->__('Carousel list', 'rkhelpermodule')
+                'title' => $this->__('Carousells list', 'rkhelpermodule')
             ];
         }
         if (in_array('image', $allowedObjectTypes)
@@ -144,7 +144,7 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_image_' . $routeArea . 'view'),
                 'text' => $this->__('Images', 'rkhelpermodule'),
-                'title' => $this->__('Image list', 'rkhelpermodule')
+                'title' => $this->__('Images list', 'rkhelpermodule')
             ];
         }
         if (in_array('info', $allowedObjectTypes)
@@ -152,7 +152,7 @@ abstract class AbstractLinkContainer implements LinkContainerInterface
             $links[] = [
                 'url' => $this->router->generate('rkhelpermodule_info_' . $routeArea . 'view'),
                 'text' => $this->__('Infos', 'rkhelpermodule'),
-                'title' => $this->__('Info list', 'rkhelpermodule')
+                'title' => $this->__('Infos list', 'rkhelpermodule')
             ];
         }
         if ($routeArea == 'admin' && $this->permissionApi->hasPermission($this->getBundleName() . '::', '::', ACCESS_ADMIN)) {

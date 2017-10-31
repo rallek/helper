@@ -13,6 +13,7 @@
 namespace RK\HelperModule\Controller\Base;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -27,14 +28,15 @@ abstract class AbstractExternalController extends AbstractController
     /**
      * Displays one item of a certain object type using a separate template for external usages.
      *
-     * @param string $objectType  The currently treated object type
-     * @param int    $id          Identifier of the entity to be shown
-     * @param string $source      Source of this call (contentType or scribite)
-     * @param string $displayMode Display mode (link or embed)
+     * @param Request $request     The current request
+     * @param string  $objectType  The currently treated object type
+     * @param int     $id          Identifier of the entity to be shown
+     * @param string  $source      Source of this call (contentType or scribite)
+     * @param string  $displayMode Display mode (link or embed)
      *
      * @return string Desired data output
      */
-    public function displayAction($objectType, $id, $source, $displayMode)
+    public function displayAction(Request $request, $objectType, $id, $source, $displayMode)
     {
         $controllerHelper = $this->get('rk_helper_module.controller_helper');
         $contextArgs = ['controller' => 'external', 'action' => 'display'];
@@ -56,6 +58,11 @@ abstract class AbstractExternalController extends AbstractController
             return new Response($this->__('No such item.'));
         }
         
+        $template = $request->query->has('template') ? $request->query->get('template', null) : null;
+        if (null === $template || $template == '') {
+            $template = 'display.html.twig';
+        }
+        
         $templateParameters = [
             'objectType' => $objectType,
             'source' => $source,
@@ -66,7 +73,7 @@ abstract class AbstractExternalController extends AbstractController
         $contextArgs = ['controller' => 'external', 'action' => 'display'];
         $templateParameters = $this->get('rk_helper_module.controller_helper')->addTemplateParameters($objectType, $templateParameters, 'controllerAction', $contextArgs);
         
-        return $this->render('@RKHelperModule/External/' . ucfirst($objectType) . '/display.html.twig', $templateParameters);
+        return $this->render('@RKHelperModule/External/' . ucfirst($objectType) . '/' . $template, $templateParameters);
     }
     
     /**
@@ -93,14 +100,21 @@ abstract class AbstractExternalController extends AbstractController
         
         $activatedObjectTypes = $this->getVar('enabledFinderTypes', []);
         if (!in_array($objectType, $activatedObjectTypes)) {
-            throw new AccessDeniedException();
+            if (!count($activatedObjectTypes)) {
+                throw new AccessDeniedException();
+            }
+        
+            // redirect to first valid object type
+            $redirectUrl = $this->get('router')->generate('rkhelpermodule_external_finder', ['objectType' => array_shift($activatedObjectTypes), 'editor' => $editor]);
+        
+            return new RedirectResponse($redirectUrl);
         }
         
         if (!$this->hasPermission('RKHelperModule:' . ucfirst($objectType) . ':', '::', ACCESS_COMMENT)) {
             throw new AccessDeniedException();
         }
         
-        if (empty($editor) || !in_array($editor, ['ckeditor', 'tinymce'])) {
+        if (empty($editor) || !in_array($editor, ['ckeditor', 'quill', 'summernote', 'tinymce'])) {
             return new Response($this->__('Error: Invalid editor context given for external controller action.'));
         }
         

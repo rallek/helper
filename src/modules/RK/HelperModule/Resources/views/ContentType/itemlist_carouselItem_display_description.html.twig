@@ -5,7 +5,7 @@
         {% if carouselItem.itemName %}
             <dd>{{ carouselItem.itemName|striptags|truncate(200, true, '&hellip;') }}</dd>
         {% endif %}
-        <dd><a href="{{ path('rkhelpermodule_carouselitem_display', {'id': carouselItem.getId()}) }}">{{ __('Read more') }}</a>
+        <dd><a href="{{ path('rkhelpermodule_carouselitem_display', {'id': carouselItem.getId()}) }}" title="{{ __('Read more')|e('html_attr') }}">{{ __('Read more') }}</a>
         </dd>
     {% else %}
         <dt>{{ __('No entries found.') }}</dt>

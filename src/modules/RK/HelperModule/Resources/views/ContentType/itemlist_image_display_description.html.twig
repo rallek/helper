@@ -5,7 +5,7 @@
         {% if image.myDescription %}
             <dd>{{ image.myDescription|striptags|truncate(200, true, '&hellip;') }}</dd>
         {% endif %}
-        <dd><a href="{{ path('rkhelpermodule_image_display', {'id': image.getId()}) }}">{{ __('Read more') }}</a>
+        <dd><a href="{{ path('rkhelpermodule_image_display', {'id': image.getId()}) }}" title="{{ __('Read more')|e('html_attr') }}">{{ __('Read more') }}</a>
         </dd>
     {% else %}
         <dt>{{ __('No entries found.') }}</dt>

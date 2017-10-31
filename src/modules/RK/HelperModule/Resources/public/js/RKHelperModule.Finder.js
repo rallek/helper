@@ -14,22 +14,26 @@ function getRKHelperModulePopupAttributes()
     pWidth = screen.width * 0.75;
     pHeight = screen.height * 0.66;
 
-    return 'width=' + pWidth + ',height=' + pHeight + ',scrollbars,resizable';
+    return 'width=' + pWidth + ',height=' + pHeight + ',location=no,menubar=no,toolbar=no,dependent=yes,minimizable=no,modal=yes,alwaysRaised=yes,resizable=yes,scrollbars=yes';
 }
 
 /**
- * Open a popup window with the finder triggered by a CKEditor button.
+ * Open a popup window with the finder triggered by an editor button.
  */
-function RKHelperModuleFinderCKEditor(editor, helperUrl)
+function RKHelperModuleFinderOpenPopup(editor, editorName)
 {
+    var popupUrl;
+
     // Save editor for access in selector window
     currentRKHelperModuleEditor = editor;
 
-    editor.popup(
-        Routing.generate('rkhelpermodule_external_finder', { objectType: 'linker', editor: 'ckeditor' }),
-        /*width*/ '80%', /*height*/ '70%',
-        'location=no,menubar=no,toolbar=no,dependent=yes,minimizable=no,modal=yes,alwaysRaised=yes,resizable=yes,scrollbars=yes'
-    );
+    popupUrl = Routing.generate('rkhelpermodule_external_finder', { objectType: 'linker', editor: editorName });
+
+    if (editorName == 'ckeditor') {
+        editor.popup(popupUrl, /*width*/ '80%', /*height*/ '70%', getRKHelperModulePopupAttributes());
+    } else {
+        window.open(popupUrl, '_blank', getRKHelperModulePopupAttributes());
+    }
 }
 
 
@@ -40,6 +44,10 @@ rKHelperModule.finder = {};
 rKHelperModule.finder.onLoad = function (baseId, selectedId)
 {
     var imageModeEnabled;
+
+    if (jQuery('#rKHelperModuleSelectorForm').length < 1) {
+        return;
+    }
 
     imageModeEnabled = jQuery("[id$='onlyImages']").prop('checked');
     if (!imageModeEnabled) {
@@ -75,9 +83,13 @@ rKHelperModule.finder.handleCancel = function (event)
 
     event.preventDefault();
     editor = jQuery("[id$='editor']").first().val();
-    if ('tinymce' === editor) {
+    if ('ckeditor' === editor) {
         rKHelperClosePopup();
-    } else if ('ckeditor' === editor) {
+    } else if ('quill' === editor) {
+        rKHelperClosePopup();
+    } else if ('summernote' === editor) {
+        rKHelperClosePopup();
+    } else if ('tinymce' === editor) {
         rKHelperClosePopup();
     } else {
         alert('Close Editor: ' + editor);
@@ -144,17 +156,23 @@ rKHelperModule.finder.selectItem = function (itemId)
 {
     var editor, html;
 
+    html = rKHelperGetPasteSnippet('html', itemId);
     editor = jQuery("[id$='editor']").first().val();
-    if ('tinymce' === editor) {
-        html = rKHelperGetPasteSnippet('html', itemId);
-        tinyMCE.activeEditor.execCommand('mceInsertContent', false, html);
-        // other tinymce commands: mceImage, mceInsertLink, mceReplaceContent, see http://www.tinymce.com/wiki.php/Command_identifiers
-    } else if ('ckeditor' === editor) {
+    if ('ckeditor' === editor) {
         if (null !== window.opener.currentRKHelperModuleEditor) {
-            html = rKHelperGetPasteSnippet('html', itemId);
-
             window.opener.currentRKHelperModuleEditor.insertHtml(html);
         }
+    } else if ('quill' === editor) {
+        if (null !== window.opener.currentRKHelperModuleEditor) {
+            window.opener.currentRKHelperModuleEditor.clipboard.dangerouslyPasteHTML(window.opener.currentRKHelperModuleEditor.getLength(), html);
+        }
+    } else if ('summernote' === editor) {
+        if (null !== window.opener.currentRKHelperModuleEditor) {
+            html = jQuery(html).get(0);
+            window.opener.currentRKHelperModuleEditor.invoke('insertNode', html);
+        }
+    } else if ('tinymce' === editor) {
+        window.opener.currentRKHelperModuleEditor.insertContent(html);
     } else {
         alert('Insert into Editor: ' + editor);
     }

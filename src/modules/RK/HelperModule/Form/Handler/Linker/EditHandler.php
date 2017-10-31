@@ -15,7 +15,7 @@ namespace RK\HelperModule\Form\Handler\Linker;
 use RK\HelperModule\Form\Handler\Linker\Base\AbstractEditHandler;
 
 /**
- * This handler class handles the page events of the Form called by the rKHelperModule_linker_edit() function.
+ * This handler class handles the page events of editing forms.
  * It aims on the linker object type.
  */
 class EditHandler extends AbstractEditHandler

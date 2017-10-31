@@ -13,7 +13,6 @@ services:
         arguments:
             - "@translator.default"
             - "@request_stack"
-            - "@logger"
             - "@form.factory"
             - "@zikula_extensions_module.api.variable"
             - "@rk_helper_module.entity_factory"
@@ -80,6 +79,7 @@ services:
         class: RK\HelperModule\Helper\UploadHelper
         arguments:
             - "@translator.default"
+            - "@filesystem"
             - "@session"
             - "@logger"
             - "@zikula_users_module.current_user"

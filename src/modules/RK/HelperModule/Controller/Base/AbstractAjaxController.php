@@ -164,7 +164,7 @@ abstract class AbstractAjaxController extends AbstractController
             $repository = $this->get('rk_helper_module.entity_factory')->getRepository($objectType);
             switch ($fieldName) {
             case 'singleItemIdentifier':
-                    $result = $repository->detectUniqueState('singleItemIdentifier', $value, $exclude);
+                    $result = !$repository->detectUniqueState('singleItemIdentifier', $value, $exclude);
                     break;
             }
             break;

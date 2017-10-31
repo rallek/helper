@@ -34,7 +34,7 @@ function rKHelperInitQuickNavigation()
 /**
  * Simulates a simple alert using bootstrap.
  */
-function rKHelperSimpleAlert(beforeElem, title, content, alertId, cssClass)
+function rKHelperSimpleAlert(anchorElement, title, content, alertId, cssClass)
 {
     var alertBox;
 
@@ -45,8 +45,8 @@ function rKHelperSimpleAlert(beforeElem, title, content, alertId, cssClass)
           <p>' + content + '</p> \
         </div>';
 
-    // insert alert before the given element
-    beforeElem.before(alertBox);
+    // insert alert before the given anchor element
+    anchorElement.before(alertBox);
 
     jQuery('#' + alertId).delay(200).addClass('in').fadeOut(4000, function () {
         jQuery(this).remove();
@@ -131,7 +131,13 @@ function rKHelperInitItemActions(context)
 
     containers.find('.dropdown > ul').removeClass('list-inline').addClass(listClasses);
     containers.find('.dropdown > ul a').each(function (index) {
-        jQuery(this).html(jQuery(this).html() + jQuery(this).find('i').first().attr('title'));
+        var title;
+
+        title = jQuery(this).find('i').first().attr('title');
+        if (title == '') {
+            title = jQuery(this).find('i').first().data('original-title');
+        }
+        jQuery(this).html(jQuery(this).html() + title);
     });
     containers.find('.dropdown > ul a i').addClass('fa-fw');
     containers.find('.dropdown-toggle').removeClass('hidden').dropdown();
@@ -157,7 +163,7 @@ function rKHelperInitInlineWindow(containerElem)
         // check if window exists already
         if (jQuery('#' + newWindowId).length < 1) {
             // create new window instance
-            jQuery('<div id="' + newWindowId + '"></div>')
+            jQuery('<div />', { id: newWindowId })
                 .append(
                     jQuery('<iframe width="100%" height="100%" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto" />')
                         .attr('src', containerElem.attr('href'))

@@ -58,8 +58,8 @@ abstract class AbstractEntityLifecycleListener implements EventSubscriber, Conta
     public function __construct(
         ContainerInterface $container,
         EventDispatcherInterface $eventDispatcher,
-        LoggerInterface $logger)
-    {
+        LoggerInterface $logger
+    ) {
         $this->setContainer($container);
         $this->eventDispatcher = $eventDispatcher;
         $this->logger = $logger;
@@ -168,10 +168,12 @@ abstract class AbstractEntityLifecycleListener implements EventSubscriber, Conta
                 continue;
             }
         
-            if (!($entity[$uploadField] instanceof File)) {
-                $entity[$uploadField] = new File($entity[$uploadField]);
+            if ($entity[$uploadField] instanceof File) {
+                $entity[$uploadField] = $entity[$uploadField]->getFilename();
+            } elseif (false !== strpos($entity[$uploadField], '/')) {
+                $fileParts = explode('/', $entity[$uploadField]);
+                $entity[$uploadField] = end($fileParts);
             }
-            $entity[$uploadField] = $entity[$uploadField]->getFilename();
         }
         
         // create the filter event and dispatch it
@@ -226,10 +228,12 @@ abstract class AbstractEntityLifecycleListener implements EventSubscriber, Conta
                 continue;
             }
         
-            if (!($entity[$uploadField] instanceof File)) {
-                $entity[$uploadField] = new File($entity[$uploadField]);
+            if ($entity[$uploadField] instanceof File) {
+                $entity[$uploadField] = $entity[$uploadField]->getFilename();
+            } elseif (false !== strpos($entity[$uploadField], '/')) {
+                $fileParts = explode('/', $entity[$uploadField]);
+                $entity[$uploadField] = end($fileParts);
             }
-            $entity[$uploadField] = $entity[$uploadField]->getFilename();
         }
         
         // create the filter event and dispatch it

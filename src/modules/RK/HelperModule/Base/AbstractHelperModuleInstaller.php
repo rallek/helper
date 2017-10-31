@@ -36,7 +36,15 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
         // Check if upload directories exist and if needed create them
         try {
             $container = $this->container;
-            $uploadHelper = new \RK\HelperModule\Helper\UploadHelper($container->get('translator.default'), $container->get('session'), $container->get('logger'), $container->get('zikula_users_module.current_user'), $container->get('zikula_extensions_module.api.variable'), $container->getParameter('datadir'));
+            $uploadHelper = new \RK\HelperModule\Helper\UploadHelper(
+                $container->get('translator.default'),
+                $container->get('filesystem'),
+                $container->get('session'),
+                $container->get('logger'),
+                $container->get('zikula_users_module.current_user'),
+                $container->get('zikula_extensions_module.api.variable'),
+                $container->getParameter('datadir')
+            );
             $uploadHelper->checkAndCreateAllUploadFolders();
         } catch (\Exception $exception) {
             $this->addFlash('error', $exception->getMessage());
@@ -185,14 +193,8 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
      */
     protected function updateModVarsTo14()
     {
-        $dbName = $this->getDbName();
         $conn = $this->getConnection();
-    
-        $conn->executeQuery("
-            UPDATE $dbName.module_vars
-            SET modname = 'RKHelperModule'
-            WHERE modname = 'Helper';
-        ");
+        $conn->update('module_vars', ['modname' => 'RKHelperModule'], ['modname' => 'Helper']);
     }
     
     /**
@@ -201,14 +203,7 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     protected function updateExtensionInfoFor14()
     {
         $conn = $this->getConnection();
-        $dbName = $this->getDbName();
-    
-        $conn->executeQuery("
-            UPDATE $dbName.modules
-            SET name = 'RKHelperModule',
-                directory = 'RK/HelperModule'
-            WHERE name = 'Helper';
-        ");
+        $conn->update('modules', ['name' => 'RKHelperModule', 'directory' => 'RK/HelperModule'], ['name' => 'Helper']);
     }
     
     /**
@@ -217,12 +212,10 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     protected function renamePermissionsFor14()
     {
         $conn = $this->getConnection();
-        $dbName = $this->getDbName();
-    
         $componentLength = strlen('Helper') + 1;
     
         $conn->executeQuery("
-            UPDATE $dbName.group_perms
+            UPDATE group_perms
             SET component = CONCAT('RKHelperModule', SUBSTRING(component, $componentLength))
             WHERE component LIKE 'Helper%';
         ");
@@ -234,7 +227,6 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     protected function renameTablesFor14()
     {
         $conn = $this->getConnection();
-        $dbName = $this->getDbName();
     
         $oldPrefix = 'helper_';
         $oldPrefixLength = strlen($oldPrefix);
@@ -251,8 +243,8 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
             $newTableName = str_replace($oldPrefix, $newPrefix, $tableName);
     
             $conn->executeQuery("
-                RENAME TABLE $dbName.$tableName
-                TO $dbName.$newTableName;
+                RENAME TABLE $tableName
+                TO $newTableName;
             ");
         }
     }
@@ -271,49 +263,32 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     protected function updateHookNamesFor14()
     {
         $conn = $this->getConnection();
-        $dbName = $this->getDbName();
     
-        $conn->executeQuery("
-            UPDATE $dbName.hook_area
-            SET owner = 'RKHelperModule'
-            WHERE owner = 'Helper';
-        ");
+        $conn->update('hook_area', ['owner' => 'RKHelperModule'], ['owner' => 'Helper']);
     
         $componentLength = strlen('subscriber.helper') + 1;
         $conn->executeQuery("
-            UPDATE $dbName.hook_area
+            UPDATE hook_area
             SET areaname = CONCAT('subscriber.rkhelpermodule', SUBSTRING(areaname, $componentLength))
             WHERE areaname LIKE 'subscriber.helper%';
         ");
     
-        $conn->executeQuery("
-            UPDATE $dbName.hook_binding
-            SET sowner = 'RKHelperModule'
-            WHERE sowner = 'Helper';
-        ");
+        $conn->update('hook_binding', ['sowner' => 'RKHelperModule'], ['sowner' => 'Helper']);
     
-        $conn->executeQuery("
-            UPDATE $dbName.hook_runtime
-            SET sowner = 'RKHelperModule'
-            WHERE sowner = 'Helper';
-        ");
+        $conn->update('hook_runtime', ['sowner' => 'RKHelperModule'], ['sowner' => 'Helper']);
     
         $componentLength = strlen('helper') + 1;
         $conn->executeQuery("
-            UPDATE $dbName.hook_runtime
+            UPDATE hook_runtime
             SET eventname = CONCAT('rkhelpermodule', SUBSTRING(eventname, $componentLength))
             WHERE eventname LIKE 'helper%';
         ");
     
-        $conn->executeQuery("
-            UPDATE $dbName.hook_subscriber
-            SET owner = 'RKHelperModule'
-            WHERE owner = 'Helper';
-        ");
+        $conn->update('hook_subscriber', ['owner' => 'RKHelperModule'], ['owner' => 'Helper']);
     
         $componentLength = strlen('helper') + 1;
         $conn->executeQuery("
-            UPDATE $dbName.hook_subscriber
+            UPDATE hook_subscriber
             SET eventname = CONCAT('rkhelpermodule', SUBSTRING(eventname, $componentLength))
             WHERE eventname LIKE 'helper%';
         ");
@@ -325,13 +300,12 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     protected function updateWorkflowsFor14()
     {
         $conn = $this->getConnection();
-        $dbName = $this->getDbName();
-    
-        $conn->executeQuery("
-            UPDATE $dbName.workflows
-            SET module = 'RKHelperModule'
-            WHERE module = 'Helper';
-        ");
+        $conn->update('workflows', ['module' => 'RKHelperModule'], ['module' => 'Helper']);
+        $conn->update('workflows', ['obj_table' => 'LinkerEntity'], ['module' => 'RKHelperModule', 'obj_table' => 'linker']);
+        $conn->update('workflows', ['obj_table' => 'CarouselItemEntity'], ['module' => 'RKHelperModule', 'obj_table' => 'carouselItem']);
+        $conn->update('workflows', ['obj_table' => 'CarouselEntity'], ['module' => 'RKHelperModule', 'obj_table' => 'carousel']);
+        $conn->update('workflows', ['obj_table' => 'ImageEntity'], ['module' => 'RKHelperModule', 'obj_table' => 'image']);
+        $conn->update('workflows', ['obj_table' => 'InfoEntity'], ['module' => 'RKHelperModule', 'obj_table' => 'info']);
     }
     
     /**
@@ -342,19 +316,8 @@ abstract class AbstractHelperModuleInstaller extends AbstractExtensionInstaller
     protected function getConnection()
     {
         $entityManager = $this->container->get('doctrine.orm.default_entity_manager');
-        $connection = $entityManager->getConnection();
     
-        return $connection;
-    }
-    
-    /**
-     * Returns the name of the default system database.
-     *
-     * @return string the database name
-     */
-    protected function getDbName()
-    {
-        return $this->container->getParameter('database_name');
+        return $entityManager->getConnection();
     }
     
     /**

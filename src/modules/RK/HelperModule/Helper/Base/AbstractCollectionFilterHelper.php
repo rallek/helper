@@ -52,7 +52,7 @@ abstract class AbstractCollectionFilterHelper
      * CollectionFilterHelper constructor.
      *
      * @param RequestStack $requestStack RequestStack service instance
-     * @param CurrentUserApiInterface $currentUserApi        CurrentUserApi service instance
+     * @param CurrentUserApiInterface $currentUserApi CurrentUserApi service instance
      * @param bool           $showOnlyOwnEntries  Fallback value to determine whether only own entries should be selected or not
      * @param bool           $filterDataByLocale  Whether to apply a locale-based filter or not
      */
