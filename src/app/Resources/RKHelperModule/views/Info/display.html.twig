@@ -1,7 +1,7 @@
 {# purpose of this template: infos display view #}
 {% set baseTemplate = app.request.query.getBoolean('raw', false) ? 'raw' : (routeArea == 'admin' ? 'adminBase' : 'base') %}
 {% extends 'RKHelperModule::' ~ baseTemplate ~ '.html.twig' %}
-{% block pageTitle %}{{ info.getTitleFromDisplayPattern()|default(__('Info')) }}{% endblock %}
+{% block pageTitle %}{{ info|rkhelpermodule_formattedTitle|default(__('Info')) }}{% endblock %}
 {% block titleImage %}
 	{% if getModVar('RKHelperModule', 'titleImage') == false %}
         {% if info.titleImage is not empty %}
@@ -9,11 +9,11 @@
 		   <div class="col-md-12">
 		   <div class="white-space image-text">
 				{% if info.titleImage is not empty and info.titleImageMeta|default %}
-							<a href="{{ info.titleImageUrl }}" title="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}"{% if info.titleImageMeta.isImage %} class="image-link"{% endif %}>
+							<a href="{{ info.titleImageUrl }}" title="{{ info|rkhelpermodule_formattedTitle |e('html_attr') }}"{% if info.titleImageMeta.isImage %} class="image-link"{% endif %}>
 				{% if info.titleImageMeta.isImage %}
 					{% set thumbOptions = attribute(thumbRuntimeOptions, 'infoTitleImage') %}
 					
-					<img src="{{ info.titleImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ info.getTitleFromDisplayPattern()|e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
+					<img src="{{ info.titleImage.getPathname()|imagine_filter('zkroot', thumbOptions) }}" alt="{{ info|rkhelpermodule_formattedTitle |e('html_attr') }}" width="{{ thumbOptions.thumbnail.size[0] }}" height="{{ thumbOptions.thumbnail.size[1] }}" class="img-thumbnail" />
 
 				{% else %}
 					{{ __('Download') }} ({{ info.titleImageMeta.size|rkshowroommodule_fileSize(info.titleImage.getPathname(), false, false) }})
@@ -35,12 +35,14 @@
 {% endblock %}
 {% block title %}
 {% if hasPermission('RKHelperModule::', '::', 'ACCESS_EDIT') %}
-    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], { entity: info, area: routeArea, context: 'display' }) %}
+    {% set templateTitle = info|rkhelpermodule_formattedTitle|default(__('Info')) %}
+    {{ templateTitle|notifyFilters('rkhelpermodule.filter_hooks.infos.filter')|safeHtml }}
+    {% set itemActions = knp_menu_get('RKHelperModule:ItemActionsMenu:menu', [], {entity: info, area: routeArea, context: 'display'}) %}
     <div class="dropdown">
-        <a id="itemActions{{ info.id }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
-        {{ knp_menu_render(itemActions, { template: 'ZikulaMenuModule:Override:actions.html.twig' }) }}
+        <a id="itemActions{{ info.getKey() }}DropDownToggle" role="button" data-toggle="dropdown" data-target="#" href="javascript:void(0);" class="hidden dropdown-toggle"><i class="fa fa-tasks"></i> {{ __('Actions') }} <span class="caret"></span></a>
+        {{ knp_menu_render(itemActions, {template: 'ZikulaMenuModule:Override:actions.html.twig'}) }}
     </div>
-	{% endif %}
+{% endif %}
 {% endblock %}
 {% block admin_page_icon 'eye' %}
 {% block content %}
@@ -70,8 +72,10 @@
 	</div>
 {% endblock %}
 {% block display_hooks %}
-    {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.infos.display_view', id=info.id, urlObject=currentUrlObject) %}
-    {% for providerArea, hook in hooks if providerArea != 'provider.scribite.ui_hooks.editor' %}
-        {{ hook }}
-    {% endfor %}
+    {% set hooks = notifyDisplayHooks(eventName='rkhelpermodule.ui_hooks.infos.display_view', id=info.getKey(), urlObject=currentUrlObject, outputAsArray=true) %}
+    {% if hooks is iterable and hooks|length > 0 %}
+        {% for area, hook in hooks %}
+            <div class="z-displayhook" data-area="{{ area|e('html_attr') }}">{{ hook }}</div>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

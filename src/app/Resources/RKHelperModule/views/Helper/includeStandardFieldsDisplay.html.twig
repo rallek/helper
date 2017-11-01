@@ -15,7 +15,7 @@
         {{ __f('Updated by %user on %date', {'%user': profileLink, '%date': obj.updatedDate|localizeddate('medium', 'short')})|raw }}{% if currentUser.loggedIn %}{% set sendMessageUrl = obj.updatedBy.getUid()|messageSendLink(urlOnly=true) %}{% if sendMessageUrl != '#' %}<a href="{{ sendMessageUrl }}" title="{{ __f('Send private message to %userName%', { '%userName%': obj.updatedBy.getUname() }) }}"><i class="fa fa-envelope-o"></i></a>{% endif %}{% endif %}</small>
     {% endif %}
    
-    {% if panel|default(false) == true %}
+    {% if tabs|default(false) == true %}
 
     {% endif %}
 {% endif %}

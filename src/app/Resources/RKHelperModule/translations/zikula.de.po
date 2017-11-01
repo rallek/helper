@@ -1,0 +1,97 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "Back to paginated view"
+msgstr "Zurück zur Seitenansicht"
+
+msgid "Choose action"
+msgstr "Aktion wählen"
+
+msgid "Copyright"
+msgstr "Copyright"
+
+msgid "Create image"
+msgstr "Bild erstellen"
+
+msgid "Created by %user on %date"
+msgstr "Erstellt von %user am %date"
+
+msgid "Creation"
+msgstr "Erstellung"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Delete content permanently."
+msgstr "Inhalt dauerhaft löschen."
+
+msgid "Download"
+msgstr "Download"
+
+msgid "Image title"
+msgstr "Bildtitel"
+
+msgid "Images list"
+msgstr "Bilderliste"
+
+msgid "Info"
+msgstr "Info"
+
+msgid "Last update"
+msgstr "Letztes Update"
+
+msgid "My description"
+msgstr "Meine Beschreibung"
+
+msgid "My image"
+msgstr "Mein Bild"
+
+msgid "My images"
+msgstr "Meine Bilder"
+
+msgid "No entries found."
+msgstr "Keine Einträge gefunden."
+
+msgid "No images found."
+msgstr "Kein Bild gefunden."
+
+msgid "Read more"
+msgstr "Weiterlesen"
+
+msgid "Send private message to %userName%"
+msgstr "Schicke eine private Nachricht an %userName%"
+
+msgid "Show all entries"
+msgstr "Zeige alle Einträge"
+
+msgid "Sort by %s"
+msgstr "Sortieren nach %s"
+
+msgid "Submit"
+msgstr "Absenden"
+
+msgid ""
+"This entity is for webmaster usage only. Here we can store some images for "
+"graphical usage."
+msgstr ""
+"Hier können Bilder für die Verwendung auf der Homepage gespeichert werden."
+
+msgid "Updated by %user on %date"
+msgstr "Aktualisiert von %user am %date"
+
+msgid "With selected images"
+msgstr "Mit ausgewählten Bildern"
