@@ -1,0 +1,46 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 2.0.4\n"
+"Last-Translator: Ralf Köster <ralf@familie-koester.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+msgid "Do you really want to delete this entry?"
+msgstr "Wollen Sie diesen Eintrag wirklich löschen?"
+
+msgid "Next (Right arrow key)"
+msgstr "Nächste (Pfeiltaste rechts)"
+
+msgid "No date set."
+msgstr "Kein Datum gesetzt."
+
+msgid "Please select a valid file extension."
+msgstr "Bitte wähle einen erlaubten Dateityp."
+
+msgid "Please select a valid html colour code."
+msgstr "Bitte wählen Sie einen gültiges HTML-Farbcode."
+
+msgid "Please select a value in the future."
+msgstr "Bitte ein Datum in der Zukunft wählen."
+
+msgid "Previous (Left arrow key)"
+msgstr "Zurück (Pfeiltaste links)"
+
+msgid "The start must be before the end."
+msgstr "Der Anfang muss vor dem Ende sein."
+
+msgid "This value is already assigned, but must be unique. Please change it."
+msgstr "Dieser Wert existiert shon und er muss eindeutig sein. Bitte ändere ihn."
+
+msgid "This value must not contain spaces."
+msgstr "Dieser Wert darf keine Leerzeichen enthalten."
+
+msgid "of"
+msgstr "von"

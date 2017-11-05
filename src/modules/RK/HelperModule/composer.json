@@ -41,6 +41,7 @@
             "securityschema": {
                 "RKHelperModule::": "::",
                 "RKHelperModule:ItemListBlock:": "Block title::",
+                "RKHelperModule:ItemBlock:": "Block title::",
                 "RKHelperModule:Linker:": "Linker ID::",
                 "RKHelperModule:CarouselItem:": "CarouselItem ID::",
                 "RKHelperModule:Carousel:CarouselItem": "Carousel ID:CarouselItem ID:",

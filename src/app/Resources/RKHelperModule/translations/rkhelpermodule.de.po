@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid ""
@@ -17,6 +17,31 @@ msgid ""
 msgstr ""
 "\"%bar\" wird \"FOObar\", \"Blubbar\" usw. entsprechen, aber nicht \"BarFoo"
 "\"."
+
+#, fuzzy
+#| msgid "Carousel name"
+msgid "%carouselName%"
+msgstr "Karussell Name"
+
+#, fuzzy
+#| msgid "Image title"
+msgid "%imageTitle%"
+msgstr "Bildtitel"
+
+#, fuzzy
+#| msgid "Info title"
+msgid "%infoTitle%"
+msgstr "Titel Infoseite"
+
+#, fuzzy
+#| msgid "Linker headline"
+msgid "%linkerHeadline%"
+msgstr "Linker Schlagzeile"
+
+#, fuzzy
+#| msgid "Subtitle"
+msgid "%title%"
+msgstr "Untertitel"
 
 msgid "10"
 msgstr "10"
@@ -105,13 +130,6 @@ msgstr ""
 "Während der Erstellung der .htaccess-Datei im Verzeichnis \"%path%\" ist ein "
 "Fehler aufgetreten."
 
-msgid ""
-"An error was encountered while removing stored object workflows for the "
-"%extension% extension."
-msgstr ""
-"Während des Entfernens des gespeicherten Workflow-Objektes für das Modul "
-"%extension% ist ein Fehler aufgetreten."
-
 msgid "Approved"
 msgstr "Genehmigt"
 
@@ -142,6 +160,12 @@ msgstr "Karussell"
 msgid "Carousel entries per page"
 msgstr "Karussell-Einträge pro Seite"
 
+msgid "Carousel filter hooks subscriber"
+msgstr ""
+
+msgid "Carousel form aware subscriber"
+msgstr ""
+
 msgid "Carousel group"
 msgstr "Karussell-Gruppe"
 
@@ -151,7 +175,19 @@ msgstr "Karussell Element"
 msgid "Carousel item entries per page"
 msgstr "Karussellelemente pro Seite"
 
-msgid "Carousel item list"
+#, fuzzy
+#| msgid "Carousel items item image"
+msgid "Carousel item filter hooks subscriber"
+msgstr "Karussell Elementbild"
+
+#, fuzzy
+#| msgid "Carousel items item image"
+msgid "Carousel item form aware subscriber"
+msgstr "Karussell Elementbild"
+
+#, fuzzy
+#| msgid "Carousel item list"
+msgid "Carousel item ui hooks subscriber"
 msgstr "Karussell Element Liste"
 
 msgid "Carousel items"
@@ -160,8 +196,10 @@ msgstr "Karussell-Elemente"
 msgid "Carousel items item image"
 msgstr "Karussell Elementbild"
 
-msgid "Carousel list"
-msgstr "Karussell-Liste"
+#, fuzzy
+#| msgid "Carousel item list"
+msgid "Carousel items list"
+msgstr "Karussell Element Liste"
 
 msgid "Carousel locale"
 msgstr "Sprache"
@@ -169,8 +207,16 @@ msgstr "Sprache"
 msgid "Carousel name"
 msgstr "Karussell Name"
 
+msgid "Carousel ui hooks subscriber"
+msgstr ""
+
 msgid "Carousells"
 msgstr "Karussells"
+
+#, fuzzy
+#| msgid "Carousel list"
+msgid "Carousells list"
+msgstr "Karussell-Liste"
 
 msgid "Change selection"
 msgstr "Ändere Auswahl"
@@ -199,9 +245,6 @@ msgstr "Sprache des Linkers auswählen"
 msgid "Choose the thumbnail mode."
 msgstr "Thumbnail Modus auswählen."
 
-msgid "Choose the title color of the carousel item"
-msgstr "Titeltextfarbe der Karussellelemente auswählen"
-
 msgid "Close"
 msgstr "Schließen"
 
@@ -226,13 +269,15 @@ msgstr "Steuerung"
 msgid "Copyright"
 msgstr "Copyright"
 
-msgid "Create another item after save"
-msgstr "Nach dem Speichern einen neuen Eintrag hinzufügen"
-
 msgid "Create carousel"
 msgstr "Karussell erstellen"
 
 msgid "Create carousel item"
+msgstr "Karussell-Element erstellen"
+
+#, fuzzy
+#| msgid "Create carousel item"
+msgid "Create carousel items"
 msgstr "Karussell-Element erstellen"
 
 msgid "Create image"
@@ -443,13 +488,38 @@ msgstr "Karussell bearbeiten"
 msgid "Edit carousel item"
 msgstr "Karussell Element bearbeiten"
 
+#, fuzzy
+#| msgid "Edit carousel item"
+msgid "Edit carousel items workflow"
+msgstr "Karussell Element bearbeiten"
+
+#, fuzzy
+#| msgid "Edit carousel"
+msgid "Edit carousells workflow"
+msgstr "Karussell bearbeiten"
+
 msgid "Edit image"
+msgstr "Bild bearbeiten"
+
+#, fuzzy
+#| msgid "Edit image"
+msgid "Edit images workflow"
 msgstr "Bild bearbeiten"
 
 msgid "Edit info"
 msgstr "Infoseiten bearbeiten"
 
+#, fuzzy
+#| msgid "Edit info"
+msgid "Edit infos workflow"
+msgstr "Infoseiten bearbeiten"
+
 msgid "Edit linker"
+msgstr "Linker bearbeiten"
+
+#, fuzzy
+#| msgid "Edit linker"
+msgid "Edit linkers workflow"
 msgstr "Linker bearbeiten"
 
 msgid "Edit this carousel"
@@ -466,6 +536,27 @@ msgstr "Diese Info bearbeiten"
 
 msgid "Edit this linker"
 msgstr "Diesen Linker bearbeiten"
+
+#, fuzzy
+#| msgid "Edit carousel item"
+msgid "Edit workflow for carousel items"
+msgstr "Karussell Element bearbeiten"
+
+#, fuzzy
+#| msgid "Edit carousel"
+msgid "Edit workflow for carousells"
+msgstr "Karussell bearbeiten"
+
+msgid "Edit workflow for images"
+msgstr ""
+
+msgid "Edit workflow for infos"
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit linker"
+msgid "Edit workflow for linkers"
+msgstr "Linker bearbeiten"
 
 msgid ""
 "Either the first name is Peter and the house number of any address is below "
@@ -484,9 +575,6 @@ msgstr "Diese Option aktivieren um Bilder einzufügen"
 
 msgid "Enabled finder types"
 msgstr "Aktivierte Finder-Typen"
-
-msgid "Enter a part of the user name to search"
-msgstr "Zum Suchen geben Sie einen Teil des Benutzernamens ein"
 
 msgid "Enter the boostrap setting of the linker"
 msgstr "Boostrap Einstellung für die Linker"
@@ -647,6 +735,10 @@ msgid "Enter the thumbnail width view."
 msgstr "Thumbnail Breite Listenansicht eintragen."
 
 #, fuzzy
+msgid "Enter the title color of the carousel item"
+msgstr "Karussell Element Name eingeben"
+
+#, fuzzy
 #| msgid "Enter the info title of the info"
 msgid "Enter the title image of the info"
 msgstr "Titel Infoseite"
@@ -655,25 +747,20 @@ msgstr "Titel Infoseite"
 msgid "Enter the title of the carousel item"
 msgstr "Karussell Element Name eingeben"
 
+msgid "Entry to display"
+msgstr ""
+
 msgid "Error! Could not determine workflow actions."
 msgstr "Fehler! Kann den zugeordneten Workflow nicht erkennen."
 
 msgid "Error! Could not load the associated workflow."
 msgstr "Fehler! Kann den zugeordneten Workflow nicht laden."
 
-msgid "Error! Could not remove stored workflow. Deletion has been aborted."
-msgstr ""
-"Fehler! Konnte den gespeicherten Workflow nicht entfernen. Löschen wurde "
-"abgebrochen."
-
 msgid "Error! Creation attempt failed."
 msgstr "Fehler! Erstellung fehlgeschlagen."
 
 msgid "Error! Deletion attempt failed."
 msgstr "Fehler! Löschen fehlgeschlagen."
-
-msgid "Error! Invalid identifier received."
-msgstr "Fehler! Ungültiger Bezeichner aufgerufen."
 
 msgid "Error! Invalid object type received."
 msgstr "Fehler! Ungültigen Objekttyp erhalten."
@@ -726,6 +813,9 @@ msgstr "Filter"
 
 msgid "Filter (expert option)"
 msgstr "Filter ( Expertenoption )"
+
+msgid "Filter data by locale"
+msgstr ""
 
 msgid "Filter statements"
 msgstr "Filter Statements"
@@ -794,6 +884,9 @@ msgstr ""
 msgid "Here you can configure parameters for list views."
 msgstr "Hier können Sie Parameter für die Listenansichten konfigurieren."
 
+msgid "Here you can inspect and amend the existing workflows."
+msgstr ""
+
 msgid "Here you can manage all basic settings for this application."
 msgstr "Hier kannst Du die Grundeinstellungen für dieses Modul verwalten."
 
@@ -824,8 +917,11 @@ msgstr "Bild"
 msgid "Image entries per page"
 msgstr "Bild Einträge pro Seite"
 
-msgid "Image list"
-msgstr "Bild Liste"
+msgid "Image filter hooks subscriber"
+msgstr ""
+
+msgid "Image form aware subscriber"
+msgstr ""
 
 msgid "Image settings for carousel items item image"
 msgstr "Bildeinstellungen für Karussellelemente Elementbild"
@@ -841,6 +937,9 @@ msgstr "Bildeinstellungen für Linker Bild"
 
 msgid "Image title"
 msgstr "Bildtitel"
+
+msgid "Image ui hooks subscriber"
+msgstr ""
 
 #, fuzzy
 #| msgid "Image with link to the carousel item"
@@ -885,6 +984,11 @@ msgstr "Bild mit relativer Url zur Seite"
 msgid "Images"
 msgstr "Bilder"
 
+#, fuzzy
+#| msgid "Image list"
+msgid "Images list"
+msgstr "Bild Liste"
+
 msgid "Images my image"
 msgstr "Bildeinstellungen für Bilder"
 
@@ -897,8 +1001,11 @@ msgstr "Beschreibung Infoseite"
 msgid "Info entries per page"
 msgstr "Info Einträge pro Seite"
 
-msgid "Info list"
-msgstr "Liste Infoseiten"
+msgid "Info filter hooks subscriber"
+msgstr ""
+
+msgid "Info form aware subscriber"
+msgstr ""
 
 msgid "Info locale"
 msgstr "Sprache"
@@ -906,8 +1013,16 @@ msgstr "Sprache"
 msgid "Info title"
 msgstr "Titel Infoseite"
 
+msgid "Info ui hooks subscriber"
+msgstr ""
+
 msgid "Infos"
 msgstr "Infoseiten"
+
+#, fuzzy
+#| msgid "Info list"
+msgid "Infos list"
+msgstr "Liste Infoseiten"
 
 msgid "Infos title image"
 msgstr "Titelbild Infoseiten"
@@ -971,6 +1086,12 @@ msgstr "Linker"
 msgid "Linker entries per page"
 msgstr "Linker-Einträge pro Seite"
 
+msgid "Linker filter hooks subscriber"
+msgstr ""
+
+msgid "Linker form aware subscriber"
+msgstr ""
+
 msgid "Linker group"
 msgstr "Linker-Gruppe"
 
@@ -980,20 +1101,25 @@ msgstr "Linker Schlagzeile"
 msgid "Linker image"
 msgstr "Linker Bild"
 
-msgid "Linker list"
-msgstr "Linker Liste"
-
 msgid "Linker locale"
 msgstr "Sprache"
 
 msgid "Linker text"
 msgstr "Linker Text"
 
+msgid "Linker ui hooks subscriber"
+msgstr ""
+
 msgid "Linkers"
 msgstr "Linker"
 
 msgid "Linkers linker image"
 msgstr "Linker Bild"
+
+#, fuzzy
+#| msgid "Linker list"
+msgid "Linkers list"
+msgstr "Linker Liste"
 
 msgid "List views"
 msgstr "Listenansichten"
@@ -1003,9 +1129,6 @@ msgstr "MB"
 
 msgid "Manage settings for this application"
 msgstr "Einstellungen für diese Anwendung"
-
-msgid "Manage user"
-msgstr "Benutzer verwalten"
 
 msgid "Moderation"
 msgstr "Moderation"
@@ -1034,6 +1157,9 @@ msgstr "Meine Infoseiten"
 msgid "My linkers"
 msgstr "Meine Linker"
 
+msgid "Needs to be located in the \"External/YourEntity/\" directory."
+msgstr ""
+
 msgid "Newest"
 msgstr "Neueste"
 
@@ -1061,9 +1187,6 @@ msgstr "Kein Element ausgewählt."
 msgid "No linkers found."
 msgstr "Keine Linker gefunden."
 
-msgid "No results found!"
-msgstr "Keine Ergebnisse gefunden!"
-
 msgid "No such item found."
 msgstr "Der entsprechende Eintrag konnte leider nicht gefunden werden."
 
@@ -1076,7 +1199,25 @@ msgstr "Kein Workflow (keine Freigabe)"
 msgid "Not set."
 msgstr "Nicht gesetzt."
 
+msgid "Note: only landscape dimension (no square or portrait) is allowed."
+msgstr ""
+
+msgid ""
+"Note: the image aspect ratio (width / height) must be between %min% and %max"
+"%."
+msgstr ""
+
 msgid "Note: this value must be in the future."
+msgstr "Bitte wähle einen Wert in der Zukunft."
+
+#, fuzzy
+#| msgid "Note: this value must be in the future."
+msgid "Note: this value must not contain spaces."
+msgstr "Bitte wähle einen Wert in der Zukunft."
+
+#, fuzzy
+#| msgid "Note: this value must be in the future."
+msgid "Note: this value must not exceed %amount% characters."
 msgstr "Bitte wähle einen Wert in der Zukunft."
 
 msgid "OK"
@@ -1187,9 +1328,6 @@ msgstr "Zurücksetzen"
 msgid "Reset to empty value"
 msgstr "Eingabe Löschen"
 
-msgid "Return control"
-msgstr "Nächster Schritt"
-
 msgid "Reuse"
 msgstr "Wiederverwenden"
 
@@ -1226,9 +1364,6 @@ msgstr "Linker suchen und auswählen"
 msgid "Search for"
 msgstr "Suche nach"
 
-msgid "Search user"
-msgstr "Benutzer suchen"
-
 msgid "Send private message to %userName%"
 msgstr "Schicke eine private Nachricht an %userName%"
 
@@ -1243,9 +1378,6 @@ msgstr ""
 
 msgid "Show all entries"
 msgstr "Zeige alle Einträge"
-
-msgid "Show syntax examples"
-msgstr "Syntaxbeispiele zeigen"
 
 msgid "Shows all items except these which are approved"
 msgstr "Zeigt alle Einträge außer den Freigegebenen"
@@ -1335,6 +1467,11 @@ msgstr "Status"
 msgid "Submit"
 msgstr "Absenden"
 
+#, fuzzy
+#| msgid "Submit content."
+msgid "Submit and repeat"
+msgstr "Inhalt bestätigen."
+
 msgid "Submit content."
 msgstr "Inhalt bestätigen."
 
@@ -1346,9 +1483,6 @@ msgstr "Wechsel zum Administrationsbereich."
 
 msgid "Switch to user area."
 msgstr "Wechsel zum Nutzerbereich."
-
-msgid "Switch to users administration"
-msgstr "Wechseln Sie in die Benutzerverwaltung"
 
 msgid "Table aliases"
 msgstr "Tabellen Aliase"
@@ -1380,6 +1514,11 @@ msgstr ""
 
 msgid "The enable shrinking option."
 msgstr "Die Option zur Bildverkleinerung für Seiten Bilder."
+
+#, fuzzy
+#| msgid "The use locale option."
+msgid "The filter data by locale option."
+msgstr "Die Übersetzungsoption"
 
 msgid "The first name equals either Peter or Chris"
 msgstr "Der Vorname entspricht entweder Peter oder Chris"
@@ -1508,9 +1647,6 @@ msgid ""
 msgstr ""
 "Dieses Feld ist für die Blockeinstellung. Damit ist es möglich, mehr als ein "
 "Karussell auf einer Seite darzustellen."
-
-msgid "This function requires JavaScript activated!"
-msgstr "Diese Funktion verlangt aktiviertes Javascript!"
 
 msgid ""
 "This has the advantage that it is possible to join a certain table multiple "
@@ -1643,6 +1779,11 @@ msgstr ""
 "benutzen."
 
 msgid ""
+"Whether automatically filter data in the frontend based on the current "
+"locale or not"
+msgstr ""
+
+msgid ""
 "Whether to enable shrinking huge images to maximum dimensions. Stores "
 "downscaled version of the original image."
 msgstr ""
@@ -1673,6 +1814,9 @@ msgstr "Mit ausgewählten Infoseiten"
 
 msgid "With selected linkers"
 msgstr "Mit ausgewählten Linkern"
+
+msgid "Workflows"
+msgstr ""
 
 msgid "Yes"
 msgstr "Ja"
@@ -1840,6 +1984,51 @@ msgid ""
 msgstr ""
 "Mit dieser Entität können die Felder der Infoseiten gemanaged werden. "
 "Bootstrap ist obligatorisch!"
+
+#~ msgid ""
+#~ "An error was encountered while removing stored object workflows for the "
+#~ "%extension% extension."
+#~ msgstr ""
+#~ "Während des Entfernens des gespeicherten Workflow-Objektes für das Modul "
+#~ "%extension% ist ein Fehler aufgetreten."
+
+#~ msgid "Choose the title color of the carousel item"
+#~ msgstr "Titeltextfarbe der Karussellelemente auswählen"
+
+#~ msgid "Create another item after save"
+#~ msgstr "Nach dem Speichern einen neuen Eintrag hinzufügen"
+
+#~ msgid "Enter a part of the user name to search"
+#~ msgstr "Zum Suchen geben Sie einen Teil des Benutzernamens ein"
+
+#~ msgid "Error! Could not remove stored workflow. Deletion has been aborted."
+#~ msgstr ""
+#~ "Fehler! Konnte den gespeicherten Workflow nicht entfernen. Löschen wurde "
+#~ "abgebrochen."
+
+#~ msgid "Error! Invalid identifier received."
+#~ msgstr "Fehler! Ungültiger Bezeichner aufgerufen."
+
+#~ msgid "Manage user"
+#~ msgstr "Benutzer verwalten"
+
+#~ msgid "No results found!"
+#~ msgstr "Keine Ergebnisse gefunden!"
+
+#~ msgid "Return control"
+#~ msgstr "Nächster Schritt"
+
+#~ msgid "Search user"
+#~ msgstr "Benutzer suchen"
+
+#~ msgid "Show syntax examples"
+#~ msgstr "Syntaxbeispiele zeigen"
+
+#~ msgid "Switch to users administration"
+#~ msgstr "Wechseln Sie in die Benutzerverwaltung"
+
+#~ msgid "This function requires JavaScript activated!"
+#~ msgstr "Diese Funktion verlangt aktiviertes Javascript!"
 
 #, fuzzy
 #~ msgid "Choose the thumbnail mode carousel item item image."

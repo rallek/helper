@@ -768,10 +768,6 @@ abstract class AbstractEditHandler
             }
         }
     
-        if (isset($this->form['additionalNotificationRemarks']) && $this->form['additionalNotificationRemarks']->getData() != '') {
-            $this->request->getSession()->set('RKHelperModuleAdditionalNotificationRemarks', $this->form['additionalNotificationRemarks']->getData());
-        }
-    
         // return remaining form data
         return $formData;
     }

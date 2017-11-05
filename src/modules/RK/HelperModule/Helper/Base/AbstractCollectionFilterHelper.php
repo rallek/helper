@@ -567,7 +567,7 @@ abstract class AbstractCollectionFilterHelper
             return $qb;
         }
         $routeName = $this->request->get('_route');
-        $isAdminArea = false !== strpos($routeName, 'rkhelpermodule_carousel item_admin');
+        $isAdminArea = false !== strpos($routeName, 'rkhelpermodule_carouselitem_admin');
         if ($isAdminArea) {
             return $qb;
         }
